@@ -13,7 +13,7 @@ export const metadata: Metadata = constructMetadata({
   title: "O nama",
   description:
     "Aiva je agencija za AI sustave koju su osnovali inženjeri koji vjeruju da se veliki AI proizvodi grade s majstorstvom, a ne prečicama.",
-  path: "/about",
+  path: "/o-nama",
 });
 
 export default function AboutPage() {
@@ -46,7 +46,7 @@ export default function AboutPage() {
               </Reveal>
               <Reveal delay={0.15}>
                 <Button asChild variant="primary" size="lg" className="group">
-                  <Link href="/contact">
+                  <Link href="/kontakt">
                     <span className="min-w-0 truncate">{t("about.cta")}</span>
                     <ArrowRight className="h-4 w-4 shrink-0 group-hover:translate-x-1 transition-transform" />
                   </Link>

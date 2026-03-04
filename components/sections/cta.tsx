@@ -35,7 +35,7 @@ export function CTA() {
         <Reveal delay={0.1}>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button asChild size="lg" variant="primary" className="group w-full sm:w-auto">
-              <Link href="/contact">
+              <Link href="/kontakt">
                 <Calendar className="h-4 w-4 shrink-0" />
                 <span className="min-w-0 truncate">{t("cta.primaryCta")}</span>
                 <ArrowRight className="h-4 w-4 shrink-0 group-hover:translate-x-1 transition-transform" />

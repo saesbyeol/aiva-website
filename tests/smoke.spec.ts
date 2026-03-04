@@ -24,24 +24,24 @@ test.describe("Smoke tests", () => {
     const nav = page.locator("nav[aria-label='Main navigation']");
 
     // Navigate to Services
-    await page.goto("/services");
-    await expect(page).toHaveTitle(/Services/);
+    await page.goto("/usluge");
+    await expect(page).toHaveTitle(/Usluge/);
 
     // Navigate to Work
-    await page.goto("/work");
-    await expect(page).toHaveTitle(/Work/);
+    await page.goto("/radovi");
+    await expect(page).toHaveTitle(/Radovi/);
 
     // Navigate to About
-    await page.goto("/about");
-    await expect(page).toHaveTitle(/About/);
+    await page.goto("/o-nama");
+    await expect(page).toHaveTitle(/O-nama/);
 
     // Navigate to Contact
-    await page.goto("/contact");
-    await expect(page).toHaveTitle(/Contact/);
+    await page.goto("/kontakt");
+    await expect(page).toHaveTitle(/Kontakt/);
   });
 
   test("work case study pages render", async ({ page }) => {
-    await page.goto("/work/clearpath-finance");
+    await page.goto("/radovi/clearpath-finance");
     await expect(page).toHaveTitle(/ClearPath Finance/);
     await expect(page.locator("h1")).toBeVisible();
   });
@@ -49,7 +49,7 @@ test.describe("Smoke tests", () => {
   test("contact form shows validation errors on empty submit", async ({
     page,
   }) => {
-    await page.goto("/contact");
+    await page.goto("/kontakt");
     const form = page.locator("form[aria-label='Contact form']");
     await expect(form).toBeVisible();
 
@@ -64,7 +64,7 @@ test.describe("Smoke tests", () => {
   });
 
   test("contact form accepts valid input", async ({ page }) => {
-    await page.goto("/contact");
+    await page.goto("/kontakt");
     await page.fill('input[name="name"]', "Test User");
     await page.fill('input[name="email"]', "test@example.com");
     await page.fill(

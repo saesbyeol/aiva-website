@@ -8,7 +8,7 @@ import { t, dict } from "@/lib/i18n";
 export const metadata: Metadata = constructMetadata({
   title: "Politika privatnosti",
   description: "Kako Aiva prikuplja, koristi i štiti vaše informacije.",
-  path: "/privacy",
+  path: "/privatnost",
   noIndex: true,
 });
 

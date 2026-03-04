@@ -5,10 +5,10 @@ import { caseStudies } from "@/lib/content";
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
     { url: SITE.url, priority: 1.0 },
-    { url: `${SITE.url}/services`, priority: 0.9 },
-    { url: `${SITE.url}/work`, priority: 0.9 },
-    { url: `${SITE.url}/about`, priority: 0.8 },
-    { url: `${SITE.url}/contact`, priority: 0.8 },
+    { url: `${SITE.url}/usluge`, priority: 0.9 },
+    { url: `${SITE.url}/radovi`, priority: 0.9 },
+    { url: `${SITE.url}/o-nama`, priority: 0.8 },
+    { url: `${SITE.url}/kontakt`, priority: 0.8 },
   ].map((r) => ({
     url: r.url,
     lastModified: new Date(),
@@ -17,7 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   const workRoutes = caseStudies.map((s) => ({
-    url: `${SITE.url}/work/${s.slug}`,
+    url: `${SITE.url}/radovi/${s.slug}`,
     lastModified: new Date(),
     changeFrequency: "yearly" as const,
     priority: 0.7,

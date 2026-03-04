@@ -108,13 +108,13 @@ export function Hero() {
             className="flex flex-col sm:flex-row items-start sm:items-center gap-4"
           >
             <Button asChild size="lg" variant="primary" className="group">
-              <Link href="/contact">
+              <Link href="/kontakt">
                 <span className="min-w-0 truncate">{t("hero.cta1")}</span>
                 <ArrowRight className="h-4 w-4 shrink-0 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
             <Button asChild size="lg" variant="secondary">
-              <Link href="/work">
+              <Link href="/radovi">
                 <span className="min-w-0 truncate">{t("hero.cta2")}</span>
               </Link>
             </Button>

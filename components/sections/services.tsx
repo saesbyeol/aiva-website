@@ -42,7 +42,7 @@ export function Services() {
             </Reveal>
             <Reveal delay={0.1}>
               <Link
-                href="/services"
+                href="/usluge"
                 className="inline-flex items-center gap-2 mt-8 text-sm font-semibold text-accent hover:text-accent-light transition-colors group"
               >
                 {t("services.seeAll")}
@@ -81,7 +81,7 @@ function ServiceCard({
       transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] as [number, number, number, number] }}
     >
       <Link
-        href={`/services#${service.id}`}
+        href={`/usluge#${service.id}`}
         className={cn(
           "group flex items-start gap-5 p-6 rounded-xl border border-border bg-bg-elevated",
           "transition-all duration-300",

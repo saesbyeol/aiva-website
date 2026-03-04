@@ -118,7 +118,7 @@ export function Header() {
               size="sm"
               className="hidden md:inline-flex"
             >
-              <Link href="/contact">{t("nav.bookCall")}</Link>
+              <Link href="/kontakt">{t("nav.bookCall")}</Link>
             </Button>
 
             {/* Mobile menu trigger */}

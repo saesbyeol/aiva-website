@@ -238,7 +238,7 @@ export function ContactForm() {
 
             <p className="text-xs text-fg-muted text-center">
               {t("form.privacy")}{" "}
-              <a href="/privacy" className="underline hover:text-fg transition-colors">
+              <a href="/privatnost" className="underline hover:text-fg transition-colors">
                 {t("form.privacyLink")}
               </a>
               {t("form.privacyNote")}

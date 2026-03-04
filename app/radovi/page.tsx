@@ -13,7 +13,7 @@ export const metadata: Metadata = constructMetadata({
   title: "Radovi",
   description:
     "Studije slučaja AI automatizacije, LLM aplikacija i pipeline-ova za sadržaj koji su donijeli stvarne rezultate.",
-  path: "/work",
+  path: "/radovi",
 });
 
 export default function WorkPage() {
@@ -70,7 +70,7 @@ function CaseStudyCard({
 }) {
   return (
     <Link
-      href={`/work/${study.slug}`}
+      href={`/radovi/${study.slug}`}
       className={cn(
         "group flex flex-col rounded-2xl overflow-hidden border border-border bg-bg-elevated",
         "transition-all duration-300 hover:border-border-strong hover:shadow-lg hover:-translate-y-1"

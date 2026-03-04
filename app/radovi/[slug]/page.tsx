@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return constructMetadata({
     title: study.title,
     description: study.description,
-    path: `/work/${study.slug}`,
+    path: `/radovi/${study.slug}`,
   });
 }
 
@@ -43,7 +43,7 @@ export default async function CaseStudyPage({ params }: Props) {
         <div className="container-tight">
           <Reveal>
             <Link
-              href="/work"
+              href="/radovi"
               className="inline-flex items-center gap-2 text-sm text-fg-secondary hover:text-fg transition-colors mb-8 group"
             >
               <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
@@ -162,7 +162,7 @@ export default async function CaseStudyPage({ params }: Props) {
               {others.map((s) => (
                 <Reveal key={s.id}>
                   <Link
-                    href={`/work/${s.slug}`}
+                    href={`/radovi/${s.slug}`}
                     className="group flex items-start gap-4 p-6 rounded-xl border border-border bg-bg-elevated hover:border-border-strong hover:shadow-md transition-all"
                   >
                     <div className="flex-1">

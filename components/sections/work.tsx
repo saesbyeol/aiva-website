@@ -24,7 +24,7 @@ export function Work() {
           </Reveal>
           <Reveal delay={0.1}>
             <Link
-              href="/work"
+              href="/radovi"
               className="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent-light transition-colors group flex-shrink-0"
             >
               {t("work.seeAll")}
@@ -60,7 +60,7 @@ function CaseStudyCard({
 
   return (
     <Link
-      href={`/work/${study.slug}`}
+      href={`/radovi/${study.slug}`}
       className={cn(
         "group relative flex flex-col rounded-2xl overflow-hidden border border-border",
         "transition-all duration-400 hover:border-border-strong hover:shadow-lg hover:-translate-y-1",

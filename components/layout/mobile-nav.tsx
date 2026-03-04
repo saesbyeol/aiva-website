@@ -97,7 +97,7 @@ export function MobileNav({
               </button>
 
               <Link
-                href="/contact"
+                href="/kontakt"
                 onClick={onClose}
                 className="bg-accent text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-accent-dark transition-colors"
               >

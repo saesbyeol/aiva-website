@@ -12,22 +12,22 @@ export const SITE = {
 };
 
 export const NAV_LINKS = [
-  { label: t("nav.services"), href: "/services" },
-  { label: t("nav.work"), href: "/work" },
-  { label: t("nav.about"), href: "/about" },
-  { label: t("nav.contact"), href: "/contact" },
+  { label: t("nav.services"), href: "/usluge" },
+  { label: t("nav.work"), href: "/radovi" },
+  { label: t("nav.about"), href: "/o-nama" },
+  { label: t("nav.contact"), href: "/kontakt" },
 ];
 
 export const FOOTER_LINKS = {
   company: [
-    { label: t("nav.about"), href: "/about" },
-    { label: t("nav.work"), href: "/work" },
-    { label: t("nav.services"), href: "/services" },
-    { label: t("nav.contact"), href: "/contact" },
+    { label: t("nav.about"), href: "/o-nama" },
+    { label: t("nav.work"), href: "/radovi" },
+    { label: t("nav.services"), href: "/usluge" },
+    { label: t("nav.contact"), href: "/kontakt" },
   ],
   legal: [
-    { label: t("privacy.title"), href: "/privacy" },
-    { label: "Uvjeti korištenja", href: "/privacy#terms" },
+    { label: t("privacy.title"), href: "/privatnost" },
+    { label: "Uvjeti korištenja", href: "/privatnost#terms" },
   ],
   social: [
     { label: "Instagram", href: "https://www.instagram.com/aiva.hr" },

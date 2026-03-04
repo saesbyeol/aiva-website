@@ -24,7 +24,7 @@ export const metadata: Metadata = constructMetadata({
   title: "Usluge",
   description:
     "Od AI automatizacije do prilagođenih LLM aplikacija — gradimo AI sustave koji se integriraju u vaš stek i donose mjerljive rezultate.",
-  path: "/services",
+  path: "/usluge",
 });
 
 const iconMap: Record<string, LucideIcon> = {
@@ -60,7 +60,7 @@ export default function ServicesPage() {
           </Reveal>
           <Reveal delay={0.15}>
             <Button asChild size="lg" variant="primary" className="group">
-              <Link href="/contact">
+              <Link href="/kontakt">
                 <span className="min-w-0 truncate">{t("servicesPage.cta")}</span>
                 <ArrowRight className="h-4 w-4 shrink-0 group-hover:translate-x-1 transition-transform" />
               </Link>

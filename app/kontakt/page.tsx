@@ -11,7 +11,7 @@ export const metadata: Metadata = constructMetadata({
   title: "Kontakt",
   description:
     "Zakažite besplatan uvodni poziv ili nam pošaljite poruku. Odgovaramo unutar jednog radnog dana.",
-  path: "/contact",
+  path: "/kontakt",
 });
 
 const detailIcons: LucideIcon[] = [Mail, Calendar, MapPin, MessageSquare];
