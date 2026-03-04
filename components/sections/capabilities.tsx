@@ -142,7 +142,7 @@ function StatStrip({ stats }: { stats: Stat[] }) {
         {[...stats, ...stats].map((stat, i) => (
           <div key={i} className="flex-shrink-0 text-center">
             <p
-              className="text-display font-black gradient-text leading-[1.1] mb-1"
+              className="text-display font-black gradient-text leading-[1.1] pb-[0.25em] mb-1"
               style={{ fontSize: "clamp(3rem, 6vw, 5rem)" }}
             >
               {stat.value}
