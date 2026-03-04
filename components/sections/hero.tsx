@@ -19,12 +19,12 @@ function AnimatedWord() {
   }, [words.length]);
 
   return (
-    <span className="relative inline-block overflow-hidden pb-[0.2em] -mb-[0.2em]">
+    <span className="relative inline-block overflow-hidden pb-[0.5em] -mb-[0.5em]">
       <motion.span
         key={index}
-        initial={{ y: "110%", opacity: 0 }}
+        initial={{ y: "200%", opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        exit={{ y: "-110%", opacity: 0 }}
+        exit={{ y: "-150%", opacity: 0 }}
         transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
         className="gradient-text inline-block"
       >
