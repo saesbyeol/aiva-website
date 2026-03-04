@@ -66,11 +66,11 @@ export function Hero() {
       <HeroBackground />
 
       <motion.div
-        className="container-wide relative z-10 pt-32 pb-24"
+        className="container-wide relative z-10 pt-36 pb-28"
         style={{ y, opacity }}
       >
         <motion.div
-          className="max-w-5xl"
+          className="max-w-6xl"
           variants={container}
           initial="hidden"
           animate="show"
@@ -87,6 +87,7 @@ export function Hero() {
           <motion.h1
             variants={item}
             className="text-display text-fg leading-[1] mb-6"
+            style={{ fontSize: "clamp(3rem, 7vw, 6rem)" }}
           >
             {t("hero.headlinePrefix")}
             <br />

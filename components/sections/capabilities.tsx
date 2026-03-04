@@ -136,7 +136,7 @@ function StatStrip({ stats }: { stats: Stat[] }) {
     <div className="mt-24 overflow-x-hidden" aria-label="Key statistics">
       <motion.div
         ref={innerRef}
-        className="flex items-center gap-16 lg:gap-24 py-3"
+        className="flex items-center gap-16 lg:gap-24 pt-3 pb-8"
         style={{ x, willChange: "transform" }}
       >
         {[...stats, ...stats].map((stat, i) => (
