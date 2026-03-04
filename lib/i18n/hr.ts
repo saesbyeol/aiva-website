@@ -174,7 +174,7 @@ const hr = {
 
   // ─── FAQ section ────────────────────────────────────────────────────────
   faq: {
-    label: "ČPP",
+    label: "Često postavljena pitanja",
     title: "Uobičajena pitanja, iskreni odgovori.",
     description:
       "Ako nešto nije ovdje, javite nam se — odgovaramo u roku od jednog radnog dana.",
