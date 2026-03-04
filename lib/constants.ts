@@ -6,7 +6,7 @@ export const SITE = {
   description:
     "Aiva gradi produkcijsko-spremne AI sustave — automatizacije, pipeline-ove za sadržaj, prilagođene LLM aplikacije — koji se besprijekorno integriraju u vaše poslovanje i donose mjerljive rezultate.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://aiva.agency",
-  email: "hello@aiva.agency",
+  email: "inquiry@aiva.hr",
   twitter: "@aiva_agency",
   linkedIn: "https://linkedin.com/company/aiva-agency",
 };

@@ -42,7 +42,7 @@ export function CTA() {
               </Link>
             </Button>
             <Button asChild size="lg" variant="secondary" className="w-full sm:w-auto">
-              <a href="mailto:hello@aiva.agency">
+              <a href="mailto:inquiry@aiva.hr">
                 <Mail className="h-4 w-4 shrink-0" />
                 <span className="min-w-0 truncate">{t("cta.secondaryCta")}</span>
               </a>

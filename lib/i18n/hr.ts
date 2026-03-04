@@ -249,8 +249,8 @@ const hr = {
     details: [
       {
         label: "E-pošta",
-        value: "hello@aiva.agency",
-        href: "mailto:hello@aiva.agency",
+        value: "inquiry@aiva.hr",
+        href: "mailto:inquiry@aiva.hr",
       },
       {
         label: "Uvodni poziv",
@@ -312,7 +312,7 @@ const hr = {
     errorRateLimit:
       "Previše zahtjeva. Pričekajte minutu i pokušajte ponovo.",
     errorSend:
-      "Slanje poruke nije uspjelo. Molimo kontaktirajte nas direktno na hello@aiva.agency.",
+      "Slanje poruke nije uspjelo. Molimo kontaktirajte nas direktno na inquiry@aiva.hr.",
     errorInvalid: "Neispravni podaci u obrascu. Provjerite unos.",
     validation: {
       nameMin: "Ime mora imati najmanje 2 znaka",
