@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { t, ta } from "@/lib/i18n";
 
@@ -62,7 +62,7 @@ export function Capabilities() {
         </div>
 
         {/* Large stat strip */}
-        <StatStrip scrollYProgress={scrollYProgress} stats={stats} />
+        <StatStrip stats={stats} />
       </div>
     </section>
   );
@@ -119,22 +119,18 @@ function CapabilityCard({
   );
 }
 
-function StatStrip({
-  scrollYProgress,
-  stats,
-}: {
-  scrollYProgress: ReturnType<typeof useScroll>["scrollYProgress"];
-  stats: Stat[];
-}) {
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-8%"]);
-
+function StatStrip({ stats }: { stats: Stat[] }) {
   return (
-    <div className="mt-24 overflow-hidden" aria-label="Key statistics">
-      <motion.div className="flex items-center gap-16 lg:gap-24" style={{ x }}>
+    <div className="mt-24 overflow-x-hidden" aria-label="Key statistics">
+      <motion.div
+        className="flex items-center gap-16 lg:gap-24 py-3"
+        animate={{ x: ["0%", "-50%"] }}
+        transition={{ duration: 30, ease: "linear", repeat: Infinity }}
+      >
         {[...stats, ...stats].map((stat, i) => (
           <div key={i} className="flex-shrink-0 text-center">
             <p
-              className="text-display font-black gradient-text leading-none mb-1"
+              className="text-display font-black gradient-text leading-[1.1] mb-1"
               style={{ fontSize: "clamp(3rem, 6vw, 5rem)" }}
             >
               {stat.value}
