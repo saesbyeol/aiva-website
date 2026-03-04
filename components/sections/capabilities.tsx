@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { motion, useScroll } from "framer-motion";
+import { motion, useScroll, useMotionValue, useAnimationFrame } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { t, ta } from "@/lib/i18n";
 
@@ -120,12 +120,24 @@ function CapabilityCard({
 }
 
 function StatStrip({ stats }: { stats: Stat[] }) {
+  const x = useMotionValue(0);
+  const innerRef = React.useRef<HTMLDivElement>(null);
+
+  useAnimationFrame((_, delta) => {
+    const el = innerRef.current;
+    if (!el) return;
+    const halfWidth = el.scrollWidth / 2;
+    let next = x.get() - delta * 0.045; // ~45 px/s — slow & smooth
+    if (next <= -halfWidth) next += halfWidth;
+    x.set(next);
+  });
+
   return (
     <div className="mt-24 overflow-x-hidden" aria-label="Key statistics">
       <motion.div
+        ref={innerRef}
         className="flex items-center gap-16 lg:gap-24 py-3"
-        animate={{ x: ["0%", "-50%"] }}
-        transition={{ duration: 30, ease: "linear", repeat: Infinity }}
+        style={{ x, willChange: "transform" }}
       >
         {[...stats, ...stats].map((stat, i) => (
           <div key={i} className="flex-shrink-0 text-center">
