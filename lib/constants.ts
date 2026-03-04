@@ -7,8 +7,8 @@ export const SITE = {
     "Aiva gradi produkcijsko-spremne AI sustave — automatizacije, pipeline-ove za sadržaj, prilagođene LLM aplikacije — koji se besprijekorno integriraju u vaše poslovanje i donose mjerljive rezultate.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://aiva.agency",
   email: "inquiry@aiva.hr",
-  twitter: "@aiva_agency",
-  linkedIn: "https://linkedin.com/company/aiva-agency",
+  instagram: "https://www.instagram.com/aiva.hr",
+  facebook: "https://web.facebook.com/people/Aiva/61586583368219/",
 };
 
 export const NAV_LINKS = [
@@ -30,8 +30,7 @@ export const FOOTER_LINKS = {
     { label: "Uvjeti korištenja", href: "/privacy#terms" },
   ],
   social: [
-    { label: "Twitter", href: "https://twitter.com/aiva_agency" },
-    { label: "LinkedIn", href: "https://linkedin.com/company/aiva-agency" },
-    { label: "GitHub", href: "https://github.com/aiva-agency" },
+    { label: "Instagram", href: "https://www.instagram.com/aiva.hr" },
+    { label: "Facebook", href: "https://web.facebook.com/people/Aiva/61586583368219/" },
   ],
 };
