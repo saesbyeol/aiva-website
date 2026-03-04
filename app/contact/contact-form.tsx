@@ -8,15 +8,16 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Send, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { t } from "@/lib/i18n";
 
 const schema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().email("Please enter a valid email address"),
+  name: z.string().min(2, t("form.validation.nameMin")),
+  email: z.string().email(t("form.validation.emailInvalid")),
   company: z.string().optional(),
   message: z
     .string()
-    .min(20, "Message must be at least 20 characters")
-    .max(2000, "Message must be under 2000 characters"),
+    .min(20, t("form.validation.messageMin"))
+    .max(2000, t("form.validation.messageMax")),
   // Honeypot — not shown to users
   website: z.string().max(0, "").optional(),
   budget: z.enum(["<10k", "10-25k", "25-50k", "50k+", "not-sure"]).optional(),
@@ -55,7 +56,7 @@ export function ContactForm() {
 
       if (!res.ok) {
         const body = await res.json().catch(() => ({}));
-        throw new Error(body.error || "Something went wrong. Please try again.");
+        throw new Error(body.error || t("form.errorGeneric"));
       }
 
       setStatus("success");
@@ -63,16 +64,16 @@ export function ContactForm() {
     } catch (e) {
       setStatus("error");
       setErrorMsg(
-        e instanceof Error ? e.message : "Something went wrong. Please try again."
+        e instanceof Error ? e.message : t("form.errorGeneric")
       );
     }
   };
 
   return (
     <div className="bg-bg-elevated rounded-2xl border border-border p-8 md:p-10">
-      <h2 className="text-h3 font-bold text-fg mb-2">Send us a message</h2>
+      <h2 className="text-h3 font-bold text-fg mb-2">{t("form.title")}</h2>
       <p className="text-sm text-fg-secondary mb-8">
-        We respond within one business day.
+        {t("form.subtitle")}
       </p>
 
       <AnimatePresence mode="wait">
@@ -87,17 +88,16 @@ export function ContactForm() {
               <CheckCircle2 className="w-8 h-8 text-green-500" />
             </div>
             <div>
-              <h3 className="text-h4 font-bold text-fg mb-2">Message sent!</h3>
+              <h3 className="text-h4 font-bold text-fg mb-2">{t("form.successTitle")}</h3>
               <p className="text-body text-fg-secondary">
-                Thanks for reaching out. We&apos;ll be in touch within one business
-                day.
+                {t("form.successDesc")}
               </p>
             </div>
             <button
               onClick={() => setStatus("idle")}
               className="text-sm text-accent hover:text-accent-light transition-colors"
             >
-              Send another message
+              {t("form.sendAnother")}
             </button>
           </motion.div>
         ) : (
@@ -106,7 +106,7 @@ export function ContactForm() {
             onSubmit={handleSubmit(onSubmit)}
             className="space-y-5"
             noValidate
-            aria-label="Contact form"
+            aria-label={t("form.title")}
           >
             {/* Honeypot — hidden from users, bots fill it */}
             <input
@@ -121,14 +121,14 @@ export function ContactForm() {
             {/* Name + Email row */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <Field
-                label="Full name"
+                label={t("form.nameLabel")}
                 required
                 error={errors.name?.message}
               >
                 <input
                   {...register("name")}
                   type="text"
-                  placeholder="Alex Rivera"
+                  placeholder={t("form.namePlaceholder")}
                   className={inputClass(!!errors.name)}
                   aria-required="true"
                   aria-describedby={errors.name ? "name-error" : undefined}
@@ -139,14 +139,14 @@ export function ContactForm() {
               </Field>
 
               <Field
-                label="Work email"
+                label={t("form.emailLabel")}
                 required
                 error={errors.email?.message}
               >
                 <input
                   {...register("email")}
                   type="email"
-                  placeholder="alex@company.com"
+                  placeholder={t("form.emailPlaceholder")}
                   className={inputClass(!!errors.email)}
                   aria-required="true"
                   aria-describedby={errors.email ? "email-error" : undefined}
@@ -158,37 +158,37 @@ export function ContactForm() {
             </div>
 
             {/* Company */}
-            <Field label="Company (optional)">
+            <Field label={t("form.companyLabel")}>
               <input
                 {...register("company")}
                 type="text"
-                placeholder="Acme Inc."
+                placeholder={t("form.companyPlaceholder")}
                 className={inputClass(false)}
               />
             </Field>
 
             {/* Budget */}
-            <Field label="Estimated budget (optional)">
+            <Field label={t("form.budgetLabel")}>
               <select {...register("budget")} className={inputClass(false)}>
-                <option value="">Select a range</option>
-                <option value="<10k">Under $10k</option>
-                <option value="10-25k">$10k – $25k</option>
-                <option value="25-50k">$25k – $50k</option>
-                <option value="50k+">$50k+</option>
-                <option value="not-sure">Not sure yet</option>
+                <option value="">{t("form.budgetOptions.placeholder")}</option>
+                <option value="<10k">{t("form.budgetOptions.under10k")}</option>
+                <option value="10-25k">{t("form.budgetOptions.10_25k")}</option>
+                <option value="25-50k">{t("form.budgetOptions.25_50k")}</option>
+                <option value="50k+">{t("form.budgetOptions.over50k")}</option>
+                <option value="not-sure">{t("form.budgetOptions.notSure")}</option>
               </select>
             </Field>
 
             {/* Message */}
             <Field
-              label="Tell us about your project"
+              label={t("form.messageLabel")}
               required
               error={errors.message?.message}
             >
               <textarea
                 {...register("message")}
                 rows={5}
-                placeholder="Describe the problem you're trying to solve, or the outcome you're looking for..."
+                placeholder={t("form.messagePlaceholder")}
                 className={cn(inputClass(!!errors.message), "resize-none")}
                 aria-required="true"
                 aria-describedby={errors.message ? "message-error" : undefined}
@@ -225,23 +225,23 @@ export function ContactForm() {
             >
               {status === "loading" ? (
                 <>
-                  <Loader2 className="w-4 h-4 animate-spin" />
-                  Sending…
+                  <Loader2 className="w-4 h-4 animate-spin shrink-0" />
+                  <span className="min-w-0 truncate">{t("form.submitting")}</span>
                 </>
               ) : (
                 <>
-                  <Send className="w-4 h-4" />
-                  Send message
+                  <Send className="w-4 h-4 shrink-0" />
+                  <span className="min-w-0 truncate">{t("form.submit")}</span>
                 </>
               )}
             </Button>
 
             <p className="text-xs text-fg-muted text-center">
-              By submitting, you agree to our{" "}
+              {t("form.privacy")}{" "}
               <a href="/privacy" className="underline hover:text-fg transition-colors">
-                Privacy Policy
+                {t("form.privacyLink")}
               </a>
-              . No spam, ever.
+              {t("form.privacyNote")}
             </p>
           </motion.form>
         )}
@@ -250,7 +250,7 @@ export function ContactForm() {
   );
 }
 
-// ─── Helpers ─────────────────────────────────────────────────────────────────
+// ─── Helpers ─────────────────────────────────────────────────────────────────────────────
 function inputClass(hasError: boolean) {
   return cn(
     "w-full px-4 py-3 rounded-lg border bg-bg text-fg text-sm transition-all duration-200",

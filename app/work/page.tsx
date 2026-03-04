@@ -7,11 +7,12 @@ import { Badge } from "@/components/ui/badge";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal, Stagger } from "@/components/motion/reveal";
 import { cn } from "@/lib/utils";
+import { t } from "@/lib/i18n";
 
 export const metadata: Metadata = constructMetadata({
-  title: "Work",
+  title: "Radovi",
   description:
-    "Case studies showcasing AI automation, LLM applications, and content pipelines that delivered real results.",
+    "Studije slučaja AI automatizacije, LLM aplikacija i pipeline-ova za sadržaj koji su donijeli stvarne rezultate.",
   path: "/work",
 });
 
@@ -23,20 +24,18 @@ export default function WorkPage() {
         <div className="container-default">
           <Reveal>
             <Badge variant="accent" className="mb-6">
-              Case studies
+              {t("workPage.badge")}
             </Badge>
           </Reveal>
           <Reveal delay={0.05}>
             <h1 className="text-h1 text-fg mb-6 max-w-3xl">
-              Work that{" "}
-              <span className="gradient-text">speaks for itself.</span>
+              {t("workPage.title")}{" "}
+              <span className="gradient-text">{t("workPage.titleAccent")}</span>
             </h1>
           </Reveal>
           <Reveal delay={0.1}>
             <p className="text-body-lg text-fg-secondary max-w-2xl">
-              Real problems, real implementations, real results. Each case study
-              walks through the full journey — problem, approach, build, and
-              outcomes.
+              {t("workPage.description")}
             </p>
           </Reveal>
         </div>
@@ -76,7 +75,7 @@ function CaseStudyCard({
         "group flex flex-col rounded-2xl overflow-hidden border border-border bg-bg-elevated",
         "transition-all duration-300 hover:border-border-strong hover:shadow-lg hover:-translate-y-1"
       )}
-      aria-label={`Read case study: ${study.title}`}
+      aria-label={`${t("work.readStudy")} ${study.title}`}
     >
       {/* Header visual */}
       <div className="relative aspect-[16/9] overflow-hidden">

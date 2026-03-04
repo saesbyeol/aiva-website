@@ -42,7 +42,7 @@ export default function RootLayout({
   const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="hr" suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"

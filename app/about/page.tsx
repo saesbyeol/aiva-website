@@ -7,42 +7,18 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal, Stagger } from "@/components/motion/reveal";
+import { t, dict } from "@/lib/i18n";
 
 export const metadata: Metadata = constructMetadata({
-  title: "About",
+  title: "O nama",
   description:
-    "Aiva is an AI systems agency founded by engineers who believe great AI products are built with craft, not shortcuts.",
+    "Aiva je agencija za AI sustave koju su osnovali inženjeri koji vjeruju da se veliki AI proizvodi grade s majstorstvom, a ne prečicama.",
   path: "/about",
 });
 
-const principles = [
-  {
-    number: "01",
-    title: "Results over demos",
-    description:
-      "We measure success in time saved, revenue generated, and errors eliminated — not in impressive prototype videos.",
-  },
-  {
-    number: "02",
-    title: "Honesty over hype",
-    description:
-      "We'll tell you when AI isn't the right answer. Our reputation is worth more than one over-sold engagement.",
-  },
-  {
-    number: "03",
-    title: "Craft at every layer",
-    description:
-      "From system architecture to user interface, we hold ourselves to a standard that makes us genuinely proud of our work.",
-  },
-  {
-    number: "04",
-    title: "Long-term partnerships",
-    description:
-      "We design every system so you can own it. Our goal is to be the last AI partner you need — not to create dependency.",
-  },
-];
-
 export default function AboutPage() {
+  const principles = dict.about.principles;
+
   return (
     <>
       {/* Hero */}
@@ -52,34 +28,27 @@ export default function AboutPage() {
             <div>
               <Reveal>
                 <Badge variant="accent" className="mb-6">
-                  Our story
+                  {t("about.badge")}
                 </Badge>
               </Reveal>
               <Reveal delay={0.05}>
                 <h1 className="text-h1 text-fg mb-6">
-                  Built by engineers who got tired of watching AI fail.
+                  {t("about.title")}
                 </h1>
               </Reveal>
               <Reveal delay={0.1}>
                 <p className="text-body-lg text-fg-secondary mb-6 leading-relaxed">
-                  Aiva was founded by engineers and product builders who&apos;d
-                  spent years at the intersection of AI research and real-world
-                  software — and watched too many AI projects fail, not because
-                  the technology wasn&apos;t ready, but because the implementation
-                  wasn&apos;t.
+                  {t("about.description1")}
                 </p>
                 <p className="text-body-lg text-fg-secondary mb-8 leading-relaxed">
-                  We started Aiva with one conviction: production-grade AI
-                  systems should be the norm, not the exception. We exist to
-                  close the gap between what AI can do and what businesses
-                  actually have deployed and running.
+                  {t("about.description2")}
                 </p>
               </Reveal>
               <Reveal delay={0.15}>
-                <Button asChild variant="primary" size="lg">
+                <Button asChild variant="primary" size="lg" className="group">
                   <Link href="/contact">
-                    Start a conversation
-                    <ArrowRight className="w-4 h-4" />
+                    <span className="min-w-0 truncate">{t("about.cta")}</span>
+                    <ArrowRight className="h-4 w-4 shrink-0 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </Button>
               </Reveal>
@@ -117,8 +86,8 @@ export default function AboutPage() {
         <div className="container-default">
           <Reveal className="mb-16">
             <SectionHeading
-              label="Our principles"
-              title="How we think, how we work."
+              label={t("about.principlesLabel")}
+              title={t("about.principlesTitle")}
               align="center"
             />
           </Reveal>
@@ -149,9 +118,9 @@ export default function AboutPage() {
         <div className="container-default">
           <Reveal className="mb-16">
             <SectionHeading
-              label="The team"
-              title="Small on purpose. Obsessive by nature."
-              description="We keep the team tight so every project gets senior-level attention. No juniors handed your work at the back of a sprint."
+              label={t("about.teamLabel")}
+              title={t("about.teamTitle")}
+              description={t("about.teamDescription")}
             />
           </Reveal>
 
@@ -168,9 +137,9 @@ export default function AboutPage() {
         <div className="container-default">
           <Reveal className="mb-14">
             <SectionHeading
-              label="Stack"
-              title="The tools we trust."
-              description="Model-agnostic. Pragmatic. Always the right tool for the job."
+              label={t("about.toolingLabel")}
+              title={t("about.toolingTitle")}
+              description={t("about.toolingDescription")}
             />
           </Reveal>
 
@@ -217,10 +186,10 @@ function TeamCard({ member }: { member: (typeof teamMembers)[0] }) {
       <a
         href={member.linkedin}
         className="mt-4 inline-flex items-center gap-1.5 text-xs text-fg-muted hover:text-accent transition-colors"
-        aria-label={`${member.name} on LinkedIn`}
+        aria-label={`${member.name} na LinkedIn-u`}
       >
         <Linkedin className="w-3.5 h-3.5" />
-        LinkedIn
+        {t("about.linkedin")}
       </a>
     </div>
   );

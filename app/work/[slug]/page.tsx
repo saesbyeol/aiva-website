@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/motion/reveal";
 import { cn } from "@/lib/utils";
+import { t } from "@/lib/i18n";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -46,7 +47,7 @@ export default async function CaseStudyPage({ params }: Props) {
               className="inline-flex items-center gap-2 text-sm text-fg-secondary hover:text-fg transition-colors mb-8 group"
             >
               <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-              All case studies
+              {t("caseStudy.backToWork")}
             </Link>
           </Reveal>
           <Reveal delay={0.05}>
@@ -105,7 +106,7 @@ export default async function CaseStudyPage({ params }: Props) {
             {/* Problem */}
             <Reveal>
               <div>
-                <p className="text-label text-accent mb-3">The problem</p>
+                <p className="text-label text-accent mb-3">{t("caseStudy.problemLabel")}</p>
                 <p className="text-body-lg text-fg-secondary leading-relaxed">
                   {study.problem}
                 </p>
@@ -117,7 +118,7 @@ export default async function CaseStudyPage({ params }: Props) {
             {/* Approach */}
             <Reveal>
               <div>
-                <p className="text-label text-accent mb-3">Our approach</p>
+                <p className="text-label text-accent mb-3">{t("caseStudy.approachLabel")}</p>
                 <p className="text-body-lg text-fg-secondary leading-relaxed">
                   {study.approach}
                 </p>
@@ -129,7 +130,7 @@ export default async function CaseStudyPage({ params }: Props) {
             {/* Results */}
             <Reveal>
               <div>
-                <p className="text-label text-accent mb-6">Results</p>
+                <p className="text-label text-accent mb-6">{t("caseStudy.resultsLabel")}</p>
                 <ul
                   className="grid grid-cols-1 sm:grid-cols-2 gap-4"
                   role="list"
@@ -155,7 +156,7 @@ export default async function CaseStudyPage({ params }: Props) {
         <section className="section-pad bg-bg-secondary border-t border-border" aria-label="More case studies">
           <div className="container-default">
             <Reveal>
-              <h2 className="text-h3 text-fg mb-10">More work</h2>
+              <h2 className="text-h3 text-fg mb-10">{t("caseStudy.moreWork")}</h2>
             </Reveal>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {others.map((s) => (

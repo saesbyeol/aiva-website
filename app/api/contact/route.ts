@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
+import { t } from "@/lib/i18n";
 
 // ─── Rate limiting (in-memory, resets on cold start) ──────────────────────────
 const rateMap = new Map<string, { count: number; resetAt: number }>();
@@ -35,7 +36,7 @@ export async function POST(req: NextRequest) {
     req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
   if (!checkRateLimit(ip)) {
     return NextResponse.json(
-      { error: "Too many requests. Please wait a minute and try again." },
+      { error: t("form.errorRateLimit") },
       { status: 429 }
     );
   }
@@ -47,7 +48,7 @@ export async function POST(req: NextRequest) {
     data = schema.parse(body);
   } catch (e) {
     return NextResponse.json(
-      { error: "Invalid form data. Please check your input." },
+      { error: t("form.errorInvalid") },
       { status: 400 }
     );
   }
@@ -69,20 +70,20 @@ export async function POST(req: NextRequest) {
         from: "Aiva Contact Form <noreply@aiva.agency>",
         to: process.env.CONTACT_EMAIL ?? "hello@aiva.agency",
         replyTo: data.email,
-        subject: `New enquiry from ${data.name}${data.company ? ` (${data.company})` : ""}`,
+        subject: `Nova poruka od ${data.name}${data.company ? ` (${data.company})` : ""}`,
         html: `
           <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; color: #111;">
-            <h2 style="color: #6366f1;">New contact form submission</h2>
+            <h2 style="color: #6366f1;">Nova poruka putem obrasca za kontakt</h2>
             <table style="width: 100%; border-collapse: collapse;">
-              <tr><td style="padding: 8px 0; color: #666; width: 120px;">Name</td><td style="padding: 8px 0; font-weight: 600;">${data.name}</td></tr>
-              <tr><td style="padding: 8px 0; color: #666;">Email</td><td style="padding: 8px 0;"><a href="mailto:${data.email}">${data.email}</a></td></tr>
-              ${data.company ? `<tr><td style="padding: 8px 0; color: #666;">Company</td><td style="padding: 8px 0;">${data.company}</td></tr>` : ""}
-              ${data.budget ? `<tr><td style="padding: 8px 0; color: #666;">Budget</td><td style="padding: 8px 0;">${data.budget}</td></tr>` : ""}
+              <tr><td style="padding: 8px 0; color: #666; width: 120px;">Ime</td><td style="padding: 8px 0; font-weight: 600;">${data.name}</td></tr>
+              <tr><td style="padding: 8px 0; color: #666;">E-mail</td><td style="padding: 8px 0;"><a href="mailto:${data.email}">${data.email}</a></td></tr>
+              ${data.company ? `<tr><td style="padding: 8px 0; color: #666;">Tvrtka</td><td style="padding: 8px 0;">${data.company}</td></tr>` : ""}
+              ${data.budget ? `<tr><td style="padding: 8px 0; color: #666;">Prora\u010dun</td><td style="padding: 8px 0;">${data.budget}</td></tr>` : ""}
             </table>
             <div style="margin-top: 16px; padding: 16px; background: #f9f9f9; border-radius: 8px; border-left: 3px solid #6366f1;">
               <p style="margin: 0; white-space: pre-wrap;">${data.message}</p>
             </div>
-            <p style="margin-top: 24px; color: #999; font-size: 12px;">Sent via aiva.agency contact form · IP: ${ip}</p>
+            <p style="margin-top: 24px; color: #999; font-size: 12px;">Poslano putem aiva.agency obrasca \u00b7 IP: ${ip}</p>
           </div>
         `,
       });
@@ -91,14 +92,14 @@ export async function POST(req: NextRequest) {
     } catch (e) {
       console.error("Resend error:", e);
       return NextResponse.json(
-        { error: "Failed to send message. Please try emailing us directly at hello@aiva.agency." },
+        { error: t("form.errorSend") },
         { status: 500 }
       );
     }
   }
 
   // Fallback — log and return success (dev / no Resend key)
-  console.log("📩 Contact form submission (no RESEND_API_KEY configured):", {
+  console.log("Poruka putem obrasca za kontakt (RESEND_API_KEY nije konfiguriran):", {
     name: data.name,
     email: data.email,
     company: data.company,
@@ -109,6 +110,6 @@ export async function POST(req: NextRequest) {
 
   return NextResponse.json({
     ok: true,
-    note: "Message logged (email delivery not configured in this environment).",
+    note: "Poruka zabilježena (dostava e-pošte nije konfigurirana u ovom okruženju).",
   });
 }

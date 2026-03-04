@@ -18,11 +18,12 @@ import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal, Stagger } from "@/components/motion/reveal";
 import { cn } from "@/lib/utils";
+import { t } from "@/lib/i18n";
 
 export const metadata: Metadata = constructMetadata({
-  title: "Services",
+  title: "Usluge",
   description:
-    "From AI automation to custom LLM applications — we build AI systems that integrate with your stack and deliver measurable results.",
+    "Od AI automatizacije do prilagođenih LLM aplikacija — gradimo AI sustave koji se integriraju u vaš stek i donose mjerljive rezultate.",
   path: "/services",
 });
 
@@ -42,28 +43,26 @@ export default function ServicesPage() {
         <div className="container-default">
           <Reveal>
             <Badge variant="accent" className="mb-6">
-              What we do
+              {t("servicesPage.badge")}
             </Badge>
           </Reveal>
           <Reveal delay={0.05}>
             <h1 className="text-h1 text-fg mb-6 max-w-4xl">
-              AI that fits your business.
+              {t("servicesPage.title")}
               <br />
-              <span className="gradient-text">Not the other way around.</span>
+              <span className="gradient-text">{t("servicesPage.titleAccent")}</span>
             </h1>
           </Reveal>
           <Reveal delay={0.1}>
             <p className="text-body-lg text-fg-secondary max-w-2xl mb-10">
-              We design bespoke AI systems across automation, content, custom
-              LLM apps, and data integrations — all grounded in a strategic
-              layer that ensures you build the right thing, not just something.
+              {t("servicesPage.description")}
             </p>
           </Reveal>
           <Reveal delay={0.15}>
-            <Button asChild size="lg" variant="primary">
+            <Button asChild size="lg" variant="primary" className="group">
               <Link href="/contact">
-                Book a free discovery call
-                <ArrowRight className="w-4 h-4" />
+                <span className="min-w-0 truncate">{t("servicesPage.cta")}</span>
+                <ArrowRight className="h-4 w-4 shrink-0 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
           </Reveal>
@@ -107,7 +106,7 @@ export default function ServicesPage() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       <div>
                         <p className="text-label text-fg-muted mb-3">
-                          Outcomes
+                          {t("services.outcomesLabel")}
                         </p>
                         <ul className="space-y-2" role="list">
                           {service.outcomes.map((o) => (
@@ -123,7 +122,7 @@ export default function ServicesPage() {
                       </div>
                       <div>
                         <p className="text-label text-fg-muted mb-3">
-                          Deliverables
+                          {t("services.deliverablesLabel")}
                         </p>
                         <ul className="space-y-2" role="list">
                           {service.deliverables.map((d) => (
@@ -186,9 +185,9 @@ export default function ServicesPage() {
         <div className="container-default">
           <Reveal className="mb-16">
             <SectionHeading
-              label="Packages"
-              title="Start where it makes sense."
-              description="Pick a tier that matches your current stage. Every engagement can evolve."
+              label={t("servicesPage.packagesLabel")}
+              title={t("servicesPage.packagesTitle")}
+              description={t("servicesPage.packagesDescription")}
               align="center"
             />
           </Reveal>
@@ -216,7 +215,7 @@ function PackageCard({ pkg }: { pkg: (typeof packages)[0] }) {
     >
       {pkg.highlighted && (
         <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-          <Badge variant="accent">Most popular</Badge>
+          <Badge variant="accent">Najpopularnije</Badge>
         </div>
       )}
       <p className="text-label text-fg-muted mb-1">{pkg.tagline}</p>
