@@ -1,0 +1,148 @@
+"use client";
+
+import * as React from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { cn } from "@/lib/utils";
+import { t, ta } from "@/lib/i18n";
+
+type CapCard = { number: string; title: string; subtitle: string; description: string; accent: string; };
+type Stat = { value: string; label: string; };
+
+export function Capabilities() {
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
+
+  const capabilities = ta<CapCard[]>("capabilities.cards");
+  const stats = ta<Stat[]>("capabilities.stats");
+
+  return (
+    <section
+      ref={containerRef}
+      className="section-pad bg-bg relative overflow-hidden"
+      aria-label="Our capabilities"
+    >
+      {/* Background accent */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(99,102,241,0.04)_0%,transparent_70%)]" />
+      </div>
+
+      <div className="container-wide">
+        {/* Header — pins while you scroll through cards */}
+        <div className="text-center mb-20">
+          <motion.p
+            className="text-label text-fg-muted mb-4"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            {t("capabilities.label")}
+          </motion.p>
+          <motion.h2
+            className="text-h1 text-fg"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            {t("capabilities.title")}
+            <br />
+            <span className="gradient-text">{t("capabilities.titleAccent")}</span>
+          </motion.h2>
+        </div>
+
+        {/* Capabilities grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {capabilities.map((cap, i) => (
+            <CapabilityCard key={cap.number} cap={cap} index={i} />
+          ))}
+        </div>
+
+        {/* Large stat strip */}
+        <StatStrip scrollYProgress={scrollYProgress} stats={stats} />
+      </div>
+    </section>
+  );
+}
+
+function CapabilityCard({
+  cap,
+  index,
+}: {
+  cap: CapCard;
+  index: number;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 48 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{
+        duration: 0.7,
+        delay: index * 0.1,
+        ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
+      }}
+      whileHover={{ y: -6 }}
+      className={cn(
+        "group relative p-8 rounded-2xl border border-border bg-bg-elevated",
+        "overflow-hidden transition-shadow duration-300 hover:shadow-lg hover:border-border-strong"
+      )}
+    >
+      {/* Number */}
+      <span
+        className="absolute top-6 right-6 text-6xl font-black text-fg-muted/10 select-none"
+        aria-hidden="true"
+      >
+        {cap.number}
+      </span>
+
+      {/* Gradient line */}
+      <div
+        className={cn(
+          "w-12 h-1 rounded-full bg-gradient-to-r mb-6",
+          cap.accent
+        )}
+        aria-hidden="true"
+      />
+
+      <p className="text-label text-fg-muted mb-2">{cap.subtitle}</p>
+      <h3 className="text-h3 font-bold text-fg mb-4 group-hover:text-accent transition-colors">
+        {cap.title}
+      </h3>
+      <p className="text-body-lg text-fg-secondary leading-relaxed">
+        {cap.description}
+      </p>
+    </motion.div>
+  );
+}
+
+function StatStrip({
+  scrollYProgress,
+  stats,
+}: {
+  scrollYProgress: ReturnType<typeof useScroll>["scrollYProgress"];
+  stats: Stat[];
+}) {
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-8%"]);
+
+  return (
+    <div className="mt-24 overflow-hidden" aria-label="Key statistics">
+      <motion.div className="flex items-center gap-16 lg:gap-24" style={{ x }}>
+        {[...stats, ...stats].map((stat, i) => (
+          <div key={i} className="flex-shrink-0 text-center">
+            <p
+              className="text-display font-black gradient-text leading-none mb-1"
+              style={{ fontSize: "clamp(3rem, 6vw, 5rem)" }}
+            >
+              {stat.value}
+            </p>
+            <p className="text-small text-fg-muted">{stat.label}</p>
+          </div>
+        ))}
+      </motion.div>
+    </div>
+  );
+}

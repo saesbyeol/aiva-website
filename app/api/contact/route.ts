@@ -1,0 +1,114 @@
+import { NextRequest, NextResponse } from "next/server";
+import { z } from "zod";
+
+// ─── Rate limiting (in-memory, resets on cold start) ──────────────────────────
+const rateMap = new Map<string, { count: number; resetAt: number }>();
+const RATE_LIMIT = 3;
+const RATE_WINDOW = 60 * 1000; // 1 minute
+
+function checkRateLimit(ip: string): boolean {
+  const now = Date.now();
+  const entry = rateMap.get(ip);
+  if (!entry || now > entry.resetAt) {
+    rateMap.set(ip, { count: 1, resetAt: now + RATE_WINDOW });
+    return true;
+  }
+  if (entry.count >= RATE_LIMIT) return false;
+  entry.count++;
+  return true;
+}
+
+// ─── Schema ────────────────────────────────────────────────────────────────────
+const schema = z.object({
+  name: z.string().min(2).max(100),
+  email: z.string().email(),
+  company: z.string().max(100).optional(),
+  message: z.string().min(20).max(2000),
+  budget: z.string().optional(),
+  website: z.string().max(0).optional(), // honeypot
+});
+
+// ─── Handler ────────────────────────────────────────────────────────────────────
+export async function POST(req: NextRequest) {
+  // IP-based rate limiting
+  const ip =
+    req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
+  if (!checkRateLimit(ip)) {
+    return NextResponse.json(
+      { error: "Too many requests. Please wait a minute and try again." },
+      { status: 429 }
+    );
+  }
+
+  // Parse + validate
+  let data: z.infer<typeof schema>;
+  try {
+    const body = await req.json();
+    data = schema.parse(body);
+  } catch (e) {
+    return NextResponse.json(
+      { error: "Invalid form data. Please check your input." },
+      { status: 400 }
+    );
+  }
+
+  // Honeypot check
+  if (data.website) {
+    return NextResponse.json({ ok: true }); // silently discard
+  }
+
+  // Email sending
+  const resendKey = process.env.RESEND_API_KEY;
+
+  if (resendKey) {
+    try {
+      const { Resend } = await import("resend");
+      const resend = new Resend(resendKey);
+
+      await resend.emails.send({
+        from: "Aiva Contact Form <noreply@aiva.agency>",
+        to: process.env.CONTACT_EMAIL ?? "hello@aiva.agency",
+        replyTo: data.email,
+        subject: `New enquiry from ${data.name}${data.company ? ` (${data.company})` : ""}`,
+        html: `
+          <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; color: #111;">
+            <h2 style="color: #6366f1;">New contact form submission</h2>
+            <table style="width: 100%; border-collapse: collapse;">
+              <tr><td style="padding: 8px 0; color: #666; width: 120px;">Name</td><td style="padding: 8px 0; font-weight: 600;">${data.name}</td></tr>
+              <tr><td style="padding: 8px 0; color: #666;">Email</td><td style="padding: 8px 0;"><a href="mailto:${data.email}">${data.email}</a></td></tr>
+              ${data.company ? `<tr><td style="padding: 8px 0; color: #666;">Company</td><td style="padding: 8px 0;">${data.company}</td></tr>` : ""}
+              ${data.budget ? `<tr><td style="padding: 8px 0; color: #666;">Budget</td><td style="padding: 8px 0;">${data.budget}</td></tr>` : ""}
+            </table>
+            <div style="margin-top: 16px; padding: 16px; background: #f9f9f9; border-radius: 8px; border-left: 3px solid #6366f1;">
+              <p style="margin: 0; white-space: pre-wrap;">${data.message}</p>
+            </div>
+            <p style="margin-top: 24px; color: #999; font-size: 12px;">Sent via aiva.agency contact form · IP: ${ip}</p>
+          </div>
+        `,
+      });
+
+      return NextResponse.json({ ok: true });
+    } catch (e) {
+      console.error("Resend error:", e);
+      return NextResponse.json(
+        { error: "Failed to send message. Please try emailing us directly at hello@aiva.agency." },
+        { status: 500 }
+      );
+    }
+  }
+
+  // Fallback — log and return success (dev / no Resend key)
+  console.log("📩 Contact form submission (no RESEND_API_KEY configured):", {
+    name: data.name,
+    email: data.email,
+    company: data.company,
+    budget: data.budget,
+    message: data.message,
+    timestamp: new Date().toISOString(),
+  });
+
+  return NextResponse.json({
+    ok: true,
+    note: "Message logged (email delivery not configured in this environment).",
+  });
+}
