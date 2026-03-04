@@ -31,7 +31,7 @@ const hr = {
     company: "Tvrtka",
     social: "Društvene mreže",
     legal: "Pravno",
-    builtWith: "Izgrađeno s Next.js, Framer Motion & Tailwind CSS",
+    builtWith: "Made with ❤️ by Aiva",
     rights: "Sva prava pridržana.",
   },
 
