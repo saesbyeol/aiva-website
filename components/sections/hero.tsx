@@ -26,7 +26,7 @@ function AnimatedWord() {
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: "-150%", opacity: 0 }}
         transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
-        className="gradient-text inline-block"
+        className="gradient-text inline-block pb-[0.25em]"
       >
         {words[index]}
       </motion.span>
