@@ -189,7 +189,7 @@ const hr = {
       "Recite nam koji je vaš najveći operativni uski grlo. Reći ćemo vam može li AI riješiti problem — i točno kako. Bez prezentacija. Bez obveza.",
     primaryCta: "Rezerviraj uvodni poziv",
     secondaryCta: "Pošalji nam poruku",
-    note: "Tipično odgovaramo unutar 1 radnog dana · Bez spama, nikad",
+    note: "Tipično odgovaramo unutar 1 radnog dana",
   },
 
   // ─── About page ──────────────────────────────────────────────────────────
