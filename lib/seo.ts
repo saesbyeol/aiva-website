@@ -38,8 +38,6 @@ export function constructMetadata({
       title: fullTitle,
       description,
       images: [image],
-      creator: SITE.twitter,
-      site: SITE.twitter,
     },
     robots: noIndex
       ? { index: false, follow: false }
@@ -56,8 +54,8 @@ export const organizationSchema = {
   description: SITE.description,
   email: SITE.email,
   sameAs: [
-    "https://twitter.com/aiva_agency",
-    "https://linkedin.com/company/aiva-agency",
+    SITE.instagram,
+    SITE.facebook,
   ],
 };
 
