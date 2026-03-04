@@ -43,7 +43,7 @@ const hr = {
     description:
       "Dizajniramo, gradimo i isporučujemo AI automatizacije, pipeline-ove za sadržaj i prilagođene LLM aplikacije koji se integriraju u vaše poslovanje i donose mjerljiv ROI — ne prezentacije.",
     cta1: "Rezerviraj besplatan poziv",
-    cta2: "Pogledaj radove",
+    cta2: "Naši projekti",
     trustedBy: "Više od 40 timova nam vjeruje",
     sectors: "iz financija, prava, e-trgovine i SaaS-a",
     avgRating: "prosj. ocjena",
