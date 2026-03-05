@@ -186,7 +186,7 @@ const hr = {
     title: "Razvijamo AI rješenja koja donose",
     titleAccent: "stvarne rezultate",
     description:
-      "Recite nam koji je vaš najveći operativni uski grlo. Reći ćemo vam može li AI riješiti problem — i točno kako. Bez prezentacija. Bez obveza.",
+      "Opišite nam svoj najveći operativni izazov. Analizirat ćemo može li AI optimizirati taj proces i predložiti vam konkretne korake.",
     primaryCta: "Rezerviraj uvodni poziv",
     secondaryCta: "Pošalji nam poruku",
     note: "Tipično odgovaramo unutar 1 radnog dana",
