@@ -105,10 +105,10 @@ const hr = {
       },
       {
         number: "03",
-        title: "Optimiziramo",
+        title: "Kontinuirano poboljšavamo",
         subtitle: "Kontinuirano poboljšanje",
         description:
-          "Instrumentiramo sve. Nakon lansiranja iteriramo na temelju stvarnih podataka o performansama — ne nagađanja.",
+          "Nakon implementacije pratimo rezultate i optimiziramo sustav kako bi donosio još bolje performanse.",
         accent: "from-green-500 to-teal-500",
       },
       {
