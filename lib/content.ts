@@ -23,6 +23,7 @@ export const services = [
     ],
     timeline: "1–2 tjedna",
     color: "from-violet-500 to-indigo-600",
+    image: "/images/services/n8n-workflow.gif",
   },
   {
     id: "content-pipelines",
