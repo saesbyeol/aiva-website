@@ -39,7 +39,7 @@ export function Capabilities() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            {t("capabilities.title")}<span className="gradient-text">{t("capabilities.titleAccent")}</span>
+            {t("capabilities.title")}<span className="gradient-text inline-block pb-[0.25em]">{t("capabilities.titleAccent")}</span>
           </motion.h2>
         </div>
 
