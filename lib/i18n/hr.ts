@@ -17,7 +17,7 @@ const hr = {
     work: "Radovi",
     about: "O nama",
     contact: "Kontakt",
-    bookCall: "Rezerviraj poziv",
+    bookCall: "Rezervirajte poziv",
     skipToContent: "Prijeđi na sadržaj",
     openMenu: "Otvori izbornik navigacije",
     closeMenu: "Zatvori izbornik navigacije",
