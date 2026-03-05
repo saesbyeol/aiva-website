@@ -115,7 +115,7 @@ export function Hero() {
             variants={item}
             className="text-sm text-fg-muted mb-10 tracking-wide"
           >
-            AI chatbotovi&nbsp;•&nbsp;marketing automatizacija&nbsp;•&nbsp;AI sadržaj
+            AI chatbotovi&nbsp;•&nbsp;Automatizacija marketinga&nbsp;•&nbsp;AI sadržaj&nbsp;•&nbsp;AI izrada web stranica
           </motion.p>
 
           {/* CTAs */}
