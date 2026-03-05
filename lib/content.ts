@@ -78,20 +78,19 @@ export const services = [
     shortDescription:
       "Izrađujemo moderne web stranice uz pomoć AI alata koje su optimizirane za brzinu i konverzije.",
     description:
-      "AI je samo toliko dobar koliko su dobri njegovi podaci. Pregledavamo, čistimo i strukturiramo vaš podatkovni ekosustav — gradeći robusne pipeline-ove, API-je i integracijske slojeve koji čine vašu organizaciju AI-spremnom i otključavaju analitiku kakvu dosad niste imali.",
+      "Izrađujemo moderne web stranice (poput naše) uz pomoć AI alata koji ubrzavaju razvoj, optimiziraju dizajn i povećavaju konverzije. Stranice su brze, optimizirane za SEO i spremne za marketing kampanje.",
     outcomes: [
-      "Jedinstveni izvor istine kroz sve sustave",
-      "Sinkronizacija i transformacija podataka u stvarnom vremenu",
-      "Strukturirani podatkovni sloj spreman za AI",
-      "Smanjenje troškova upravljanja podacima za 70%+",
+      "Profesionalna web stranica prilagođena vašem brendu",
+      "Web stranica izrađena unutar nekoliko dana",
+      "Bolja konverzija posjetitelja u klijente",
+      "Moderna i brza web infrastruktura",
     ],
     deliverables: [
-      "Plan arhitekture podataka",
-      "ETL/ELT pipeline-ovi",
-      "Integracijski sloj API-ja",
-      "Praćenje kvalitete podataka",
+      "Dizajn i razvoj moderne web stranice",
+      "Optimizacija za tražilice (SEO) i performanse",
+      "Spremno za oglašavanje i skaliranje",
     ],
-    timeline: "4–10 tjedana",
+    timeline: "2–3 radna dana",
     color: "from-green-500 to-teal-600",
   },
 ];
