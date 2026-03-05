@@ -135,7 +135,7 @@ export const adShowcase = [
       "Promotivni video oglas generiran AI alatima — prilagođeni vizuali, dinamičan copy i branding u skladu s vašim identitetom.",
     tags: ["Video", "Produkt", "Meta Ads"],
     color: "from-violet-500 to-indigo-600",
-    // image: "/images/ads/ad1.gif",
+    video: "/videos/skincaread.mp4",
   },
   {
     id: "ugc-video-1",
