@@ -37,7 +37,7 @@ const hr = {
 
   // ─── Hero section ─────────────────────────────────────────────────────────
   hero: {
-    eyebrow: "Agencija za AI sustave — Izgrađena za stvarni svijet",
+    eyebrow: "AI automatizacija za moderne tvrtke",
     headlinePrefix: "AI sustavi koji",
     words: ["povećavaju profit.", "optimiziraju.", "štede vrijeme.", "skaliraju."],
     description:
