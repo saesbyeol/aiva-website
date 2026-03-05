@@ -11,7 +11,7 @@ export default function HomePage() {
       <Hero />
       <Services />
       <Capabilities />
-      <Work />
+      {/* <Work /> */}
       <FAQ />
       <CTA />
     </>
