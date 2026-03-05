@@ -4,7 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { Menu, X, Sun, Moon, Home } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { NAV_LINKS } from "@/lib/constants";
 import { Button } from "@/components/ui/button";
@@ -114,20 +114,20 @@ export function Header() {
 
             {pathname === "/" ? (
               <span
-                className="hidden md:inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg text-fg-muted bg-bg-elevated opacity-50 cursor-not-allowed select-none"
+                className="w-9 h-9 hidden md:flex items-center justify-center rounded-lg text-fg-muted opacity-40 cursor-not-allowed"
                 aria-disabled="true"
+                aria-label={t("nav.backHome")}
               >
-                {t("nav.backHome")}
+                <Home className="w-4 h-4" />
               </span>
             ) : (
-              <Button
-                asChild
-                variant="secondary"
-                size="sm"
-                className="hidden md:inline-flex"
+              <Link
+                href="/"
+                className="w-9 h-9 hidden md:flex items-center justify-center rounded-lg text-fg-secondary hover:text-fg hover:bg-bg-elevated transition-all"
+                aria-label={t("nav.backHome")}
               >
-                <Link href="/">{t("nav.backHome")}</Link>
-              </Button>
+                <Home className="w-4 h-4" />
+              </Link>
             )}
 
             <Button
