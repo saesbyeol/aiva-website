@@ -112,6 +112,24 @@ export function Header() {
               )}
             </button>
 
+            {pathname === "/" ? (
+              <span
+                className="hidden md:inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg text-fg-muted bg-bg-elevated opacity-50 cursor-not-allowed select-none"
+                aria-disabled="true"
+              >
+                {t("nav.backHome")}
+              </span>
+            ) : (
+              <Button
+                asChild
+                variant="secondary"
+                size="sm"
+                className="hidden md:inline-flex"
+              >
+                <Link href="/">{t("nav.backHome")}</Link>
+              </Button>
+            )}
+
             <Button
               asChild
               variant="primary"

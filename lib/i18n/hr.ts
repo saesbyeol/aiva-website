@@ -18,6 +18,7 @@ const hr = {
     about: "O nama",
     contact: "Kontakt",
     bookCall: "Rezervirajte poziv",
+    backHome: "Povratak na početnu stranicu",
     skipToContent: "Prijeđi na sadržaj",
     openMenu: "Otvori izbornik navigacije",
     closeMenu: "Zatvori izbornik navigacije",
