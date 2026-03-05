@@ -50,9 +50,9 @@ export const services = [
   {
     id: "custom-llm-apps",
     icon: "BrainCircuit",
-    title: "Prilagođene LLM Aplikacije",
+    title: "Prilagođeni 24/7 chatbotovi",
     shortDescription:
-      "Namjenska AI rješenja — interni alati, agenti za korisnike, ko-piloti — isporučeni produkcijski spremni.",
+      "Implementiramo pametne chatbotove koji odgovaraju na upite korisnika, pomažu u prodaji i automatiziraju korisničku podršku.",
     description:
       "Od internih asistenata za znanje do chatbotova okrenutih klijentima i inteligentnih ko-pilota, gradimo prilagođene LLM aplikacije za vaš specifični slučaj upotrebe. RAG arhitekture, upotreba alata i multi-agentni okviri su uključeni.",
     outcomes: [
