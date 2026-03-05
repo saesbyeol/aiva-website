@@ -3,7 +3,7 @@ import { constructMetadata } from "@/lib/seo";
 import { ContactForm } from "./contact-form";
 import { Badge } from "@/components/ui/badge";
 import { Reveal } from "@/components/motion/reveal";
-import { Mail, Calendar, MapPin, MessageSquare } from "lucide-react";
+import { Mail, Calendar, MessageSquare } from "lucide-react";
 import { t, dict } from "@/lib/i18n";
 import type { LucideIcon } from "lucide-react";
 
@@ -14,7 +14,7 @@ export const metadata: Metadata = constructMetadata({
   path: "/kontakt",
 });
 
-const detailIcons: LucideIcon[] = [Mail, Calendar, MapPin, MessageSquare];
+const detailIcons: LucideIcon[] = [Mail, Calendar, MessageSquare];
 
 export default function ContactPage() {
   return (

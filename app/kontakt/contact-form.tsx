@@ -20,7 +20,6 @@ const schema = z.object({
     .max(2000, t("form.validation.messageMax")),
   // Honeypot — not shown to users
   website: z.string().max(0, "").optional(),
-  budget: z.enum(["<10k", "10-25k", "25-50k", "50k+", "not-sure"]).optional(),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -165,18 +164,6 @@ export function ContactForm() {
                 placeholder={t("form.companyPlaceholder")}
                 className={inputClass(false)}
               />
-            </Field>
-
-            {/* Budget */}
-            <Field label={t("form.budgetLabel")}>
-              <select {...register("budget")} className={inputClass(false)}>
-                <option value="">{t("form.budgetOptions.placeholder")}</option>
-                <option value="<10k">{t("form.budgetOptions.under10k")}</option>
-                <option value="10-25k">{t("form.budgetOptions.10_25k")}</option>
-                <option value="25-50k">{t("form.budgetOptions.25_50k")}</option>
-                <option value="50k+">{t("form.budgetOptions.over50k")}</option>
-                <option value="not-sure">{t("form.budgetOptions.notSure")}</option>
-              </select>
             </Field>
 
             {/* Message */}

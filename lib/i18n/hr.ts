@@ -246,7 +246,7 @@ const hr = {
     title: "Razgovarajmo o vašem",
     titleAccent: "problemu.",
     description:
-      "Recite nam na čemu radite i reći ćemo vam može li AI pomoći — i kako. Bez prodajnog govora. Bez pritiska. Samo iskren razgovor.",
+      "Recite nam na čemu radite i reći ćemo vam može li AI pomoći.",
     details: [
       {
         label: "E-pošta",
@@ -257,11 +257,6 @@ const hr = {
         label: "Uvodni poziv",
         value: "Zakažite na Calendly",
         href: "#calendly",
-      },
-      {
-        label: "Lokacija",
-        value: "Na daljinu, globalno",
-        href: null,
       },
       {
         label: "Vrijeme odgovora",
