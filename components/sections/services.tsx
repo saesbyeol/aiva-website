@@ -7,8 +7,7 @@ import {
   Zap,
   FileText,
   BrainCircuit,
-  Database,
-  Compass,
+  Globe,
   ArrowRight,
   type LucideIcon,
 } from "lucide-react";
@@ -22,8 +21,7 @@ const iconMap: Record<string, LucideIcon> = {
   Zap,
   FileText,
   BrainCircuit,
-  Database,
-  Compass,
+  Globe,
 };
 
 export function Services() {

@@ -72,7 +72,7 @@ export const services = [
   },
   {
     id: "data-integrations",
-    icon: "Database",
+    icon: "Globe",
     title: "AI Web Stranice",
     shortDescription:
       "Izrađujemo moderne web stranice uz pomoć AI alata koje su optimizirane za brzinu i konverzije.",
@@ -92,29 +92,6 @@ export const services = [
     ],
     timeline: "4–10 tjedana",
     color: "from-green-500 to-teal-600",
-  },
-  {
-    id: "ai-strategy",
-    icon: "Compass",
-    title: "AI Strategija",
-    shortDescription:
-      "Jasan plan za uvođenje AI-ja — prioritiziran prema ROI-u, utemeljen u stvarnosti i izgrađen za izvršenje.",
-    description:
-      "Prije izgradnje, pomažemo vam otkriti gdje AI stvara najveću polugu u vašem poslovanju. Naši strateški angažmani kombiniraju tehničku procjenu s poslovnom analizom kako bi proizveli konkretan, prioritiziran plan — ne samo prezentaciju.",
-    outcomes: [
-      "Rangirani popis AI prilika prema ROI-u",
-      "Jasan okvir odluke graditi/kupiti/partnerirati",
-      "Procjena rizika i usklađenosti",
-      "Plan provedbe na 12 mjeseci",
-    ],
-    deliverables: [
-      "Revizija AI-spremnosti",
-      "Matrica mogućnosti",
-      "Preporuke tehničke arhitekture",
-      "Plan implementacije",
-    ],
-    timeline: "2–3 tjedna",
-    color: "from-orange-500 to-amber-600",
   },
 ];
 
