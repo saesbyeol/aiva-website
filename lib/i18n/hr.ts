@@ -151,11 +151,12 @@ const hr = {
 
   // ─── Work page ────────────────────────────────────────────────────────────
   workPage: {
-    badge: "Studije slučaja",
-    title: "Radovi koji",
-    titleAccent: "govore sami za sebe.",
+    badge: "Naši radovi",
+    title: "AI reklame koje",
+    titleAccent: "pretvaraju.",
     description:
-      "Pravi problemi, prava implementacija, pravi rezultati. Svaka studija slučaja prikazuje cijelo putovanje — problem, pristup, izradu i ishode.",
+      "Primjeri AI generiranog oglasnog sadržaja — video, vizuali i UGC reklame koje privlače pažnju i pretvaraju gledatelje u klijente.",
+    comingSoon: "Uskoro",
   },
 
   // ─── Case study detail page ───────────────────────────────────────────────

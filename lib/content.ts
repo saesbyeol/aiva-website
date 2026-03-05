@@ -124,6 +124,40 @@ export const process = [
   },
 ];
 
+// ─── Ad Showcase ──────────────────────────────────────────────────────────────
+export const adShowcase = [
+  {
+    id: "product-video-1",
+    title: "AI video oglas za proizvod",
+    category: "Video oglas",
+    description:
+      "Promotivni video oglas generiran AI alatima — prilagođeni vizuali, dinamičan copy i branding u skladu s vašim identitetom.",
+    tags: ["Video", "Produkt", "Meta Ads"],
+    color: "from-violet-500 to-indigo-600",
+    // image: "/images/ads/ad1.gif",
+  },
+  {
+    id: "ugc-video-1",
+    title: "UGC-stil video reklama",
+    category: "UGC video",
+    description:
+      "Autentičan video u UGC stilu — AI scenarij, glas i vizuali koji izgledaju kao preporuka pravog korisnika.",
+    tags: ["UGC", "TikTok", "Reels"],
+    color: "from-cyan-500 to-blue-600",
+    // image: "/images/ads/ad2.gif",
+  },
+  {
+    id: "carousel-ad-1",
+    title: "Carousel oglas za webshop",
+    category: "Carousel oglas",
+    description:
+      "Višeslikovni oglas s AI generiranim opisima i vizualima prilagođenim brendu i ciljnoj publici.",
+    tags: ["Carousel", "E-commerce", "Instagram"],
+    color: "from-purple-500 to-pink-600",
+    // image: "/images/ads/ad3.gif",
+  },
+];
+
 export const caseStudies = [
   {
     id: "clearpath-finance",
