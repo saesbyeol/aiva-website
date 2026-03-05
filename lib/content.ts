@@ -51,24 +51,24 @@ export const services = [
   {
     id: "custom-llm-apps",
     icon: "BrainCircuit",
-    title: "Prilagođeni 24/7 chatbotovi",
+    title: "AI chatbotovi 24/7",
     shortDescription:
       "Implementiramo pametne chatbotove koji odgovaraju na upite korisnika, pomažu u prodaji i automatiziraju korisničku podršku.",
     description:
-      "Od internih asistenata za znanje do chatbotova okrenutih klijentima i inteligentnih ko-pilota, gradimo prilagođene LLM aplikacije za vaš specifični slučaj upotrebe. RAG arhitekture, upotreba alata i multi-agentni okviri su uključeni.",
+      "Implementiramo pametne AI chatbotove koji odgovaraju na pitanja kupaca, automatiziraju podršku i pomažu u prodaji. Chatbot može raditi na vašoj web stranici, WhatsAppu ili društvenim mrežama te koristiti vaše podatke kako bi davao točne odgovore.",
     outcomes: [
-      "Vlastiti AI produkt isporučen za tjedne",
-      "Kontekstualno svjesni odgovori iz vaših podataka",
-      "Sigurnost i kontrola pristupa na razini poduzeća",
-      "Skalabilna arhitektura koja raste s vama",
+      "Odgovori kupcima 24/7 bez čekanja",
+      "Automatizacija do 80% korisničkih upita",
+      "Brža podrška i bolji korisnički doživljaj",
+      "Povećanje konverzije na web stranici",
+      "Odgovori korisnicima unutar nekoliko sekundi",
     ],
     deliverables: [
-      "Full-stack LLM aplikacija",
-      "RAG pipeline s vektorskom pohranom",
-      "Administrativna ploča i analitika",
-      "Postavljanje i konfiguracija infrastrukture",
+      "AI chatbot integriran u web stranicu",
+      "Integracija s vašim sustavima i bazama podataka",
+      "Analitika razgovora i optimizacija odgovora",
     ],
-    timeline: "6–12 tjedana",
+    timeline: "1 radni dan",
     color: "from-purple-500 to-pink-600",
   },
   {
