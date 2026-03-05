@@ -4,7 +4,7 @@ export const SITE = {
   name: "Aiva",
   tagline: "AI sustavi koji se isporučuju.",
   description:
-    "Aiva gradi produkcijsko-spremne AI sustave — automatizacije, pipeline-ove za sadržaj, prilagođene LLM aplikacije — koji se besprijekorno integriraju u vaše poslovanje i donose mjerljive rezultate.",
+    "Pomažemo tvrtkama da uvedu AI u svakodnevno poslovanje kroz automatizaciju marketinga, sadržaja i prodajnih procesa.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://aiva.agency",
   email: "automation.aiva@gmail.com",
   instagram: "https://www.instagram.com/aiva.hr",
