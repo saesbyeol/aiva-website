@@ -55,13 +55,23 @@ export default function WorkPage() {
 }
 
 function AdCard({ item }: { item: (typeof adShowcase)[0] }) {
+  const hasVideo = "video" in item && item.video;
   const hasImage = "image" in item && item.image;
 
   return (
     <div className="group flex flex-col rounded-2xl overflow-hidden border border-border bg-bg-elevated hover:border-border-strong hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
       {/* Media */}
-      <div className="relative aspect-square overflow-hidden bg-bg">
-        {hasImage ? (
+      <div className="relative aspect-[9/16] overflow-hidden bg-bg">
+        {hasVideo ? (
+          <video
+            src={item.video as string}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        ) : hasImage ? (
           <Image
             src={item.image as string}
             alt={item.title}

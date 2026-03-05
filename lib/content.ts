@@ -144,7 +144,7 @@ export const adShowcase = [
       "Autentičan video u UGC stilu — AI scenarij, glas i vizuali koji izgledaju kao preporuka pravog korisnika.",
     tags: ["UGC", "TikTok", "Reels"],
     color: "from-cyan-500 to-blue-600",
-    // image: "/images/ads/ad2.gif",
+    video: "/videos/ugc.mp4",
   },
   {
     id: "carousel-ad-1",
