@@ -39,7 +39,7 @@ const hr = {
   hero: {
     eyebrow: "Agencija za AI sustave — Izgrađena za stvarni svijet",
     headlinePrefix: "AI sustavi koji",
-    words: ["povećavaju profit.", "optimiziraju poslovanje.", "štede vrijeme.", "skaliraju."],
+    words: ["povećavaju profit.", "optimiziraju.", "štede vrijeme.", "skaliraju."],
     description:
       "Dizajniramo, gradimo i isporučujemo AI automatizacije, pipeline-ove za sadržaj i prilagođene LLM aplikacije koji se integriraju u vaše poslovanje i donose mjerljiv ROI — ne prezentacije.",
     cta1: "Rezerviraj besplatan poziv",
