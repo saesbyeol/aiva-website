@@ -32,25 +32,14 @@ export function Capabilities() {
       <div className="container-wide">
         {/* Header — pins while you scroll through cards */}
         <div className="text-center mb-20">
-          <motion.p
-            className="text-label text-fg-muted mb-4"
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            {t("capabilities.label")}
-          </motion.p>
           <motion.h2
             className="text-h1 text-fg"
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ duration: 0.6 }}
           >
             {t("capabilities.title")}
-            <br />
-            <span className="gradient-text">{t("capabilities.titleAccent")}</span>
           </motion.h2>
         </div>
 
