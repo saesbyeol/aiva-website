@@ -226,37 +226,43 @@ export const faqs = [
     id: 1,
     question: "S kojim vrstama poduzeća surađujete?",
     answer:
-      "Primarno surađujemo s poduzećima u fazi rasta (5–200 milijuna $ ARR) i podjelima velikih poduzeća gdje AI može stvoriti mjerljivu operativnu polugu. Isporučivali smo za klijente u financijama, pravu, e-commerceu, zdravstvu i SaaS sektoru. Zajednička nit je stvarni problem koji treba riješiti i otvorenost za iterativan rad.",
+      "Radimo s malim i srednjim tvrtkama, startupima i digitalnim brendovima koji žele automatizirati procese i povećati učinkovitost uz AI.",
   },
   {
     id: 2,
-    question: "Kako postupate s privatnošću i sigurnošću podataka?",
+    question: "Koliko traje implementacija AI rješenja?",
     answer:
-      "Sigurnost podataka je apsolutni prioritet. Poslujemo pod strogim ugovorima o tajnosti, podržavamo lokalne ili privatne cloud implementacije i osiguravamo da svi AI pipeline-ovi budu usklađeni s relevantnim propisima o zaštiti podataka (GDPR, HIPAA, SOC 2). Nikada ne koristimo podatke klijenata za treniranje modela trećih strana.",
+      "Ovisno o kompleksnosti projekta, implementacija može trajati do nekoliko dana.",
   },
   {
     id: 3,
-    question: "Radite li s OpenAI / Anthropic / open source modelima?",
+    question: "Trebamo li tehnički tim da koristimo AI rješenja?",
     answer:
-      "Agnostični smo prema modelu i biramo pravi alat za svaki zadatak. Radimo s vodećim pružateljima (OpenAI, Anthropic, Google, Mistral) kao i s open-source alternativama iz razloga troška ili suvereniteta podataka. Naša arhitektura je dizajnirana za zamjenu modela bez prearchitekturiranja vašeg sustava.",
+      "Ne. Naša rješenja su dizajnirana da budu jednostavna za korištenje i integriraju se u vaše postojeće alate i procese.",
   },
   {
     id: 4,
-    question: "Kakva je vaša tipična struktura angažmana?",
+    question: "Može li se AI integrirati u naše postojeće sustave?",
     answer:
-      "Većina projekata počinje s 2-tjednim discovery sprintom (fiksna naknada) koji proizvodi detaljan prijedlog. Angažmani za izgradnju su na bazi vremena i materijala s opcijom mjesečnog retainera za tekuće radove. Transparentni smo oko troškova unaprijed i ne naplaćujemo iznenađenja.",
+      "Da. AI sustavi koje razvijamo mogu se integrirati s vašim postojećim alatima poput CRM-a, web stranica, marketing platformi i drugih poslovnih sustava.",
   },
   {
     id: 5,
-    question: "Možete li raditi s našim postojećim tech stackom?",
+    question: "Koliko košta implementacija AI sustava?",
     answer:
-      "Da. Integrirali smo se sa svime, od starih SAP sustava do modernih Notion radnih prostora. Naš pristup je integracija na prvom mjestu — proširujemo ono što već imate, umjesto da forsiramo potpunu zamjenu.",
+      "Cijena ovisi o kompleksnosti projekta i potrebama vašeg poslovanja. Nakon uvodnog razgovora možemo vam dati jasnu procjenu.",
   },
   {
     id: 6,
-    question: "Kako izgleda uspjeh nakon završetka angažmana?",
+    question: "Kako započeti suradnju?",
     answer:
-      "Uspjeh mjerimo prema ishodima: ušteda vremena, generirani prihod, smanjene pogreške. Svaki angažman završava s potpunom dokumentacijom, obukom tima i 90-dnevnim prozorom podrške. Mnogi klijenti nas zadržavaju za tekuću optimizaciju — ali nikad niste ovisni o nama da bi sustav radio.",
+      "Najjednostavnije je rezervirati uvodni poziv gdje ćemo analizirati vaše potrebe i predložiti konkretna AI rješenja.",
+  },
+  {
+    id: 7,
+    question: "Je li AI rješenje prilagođeno našem poslovanju?",
+    answer:
+      "Da. Svako rješenje dizajniramo prema vašim procesima, ciljevima i postojećim alatima kako bi donijelo maksimalnu vrijednost.",
   },
 ];
 
