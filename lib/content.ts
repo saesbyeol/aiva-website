@@ -154,7 +154,7 @@ export const adShowcase = [
       "Višeslikovni oglas s AI generiranim opisima i vizualima prilagođenim brendu i ciljnoj publici.",
     tags: ["Carousel", "E-commerce", "Instagram"],
     color: "from-purple-500 to-pink-600",
-    // image: "/images/ads/ad3.gif",
+    video: "/videos/caraucel.mp4",
   },
 ];
 
