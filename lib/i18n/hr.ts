@@ -6,7 +6,7 @@
 const hr = {
   // ─── Site metadata ────────────────────────────────────────────────────────
   site: {
-    tagline: "AI sustavi koji se isporučuju.",
+    tagline: "AI sustavi koji povećavaju profit.",
     description:
       "Aiva gradi produkcijsko-spremne AI sustave — automatizacije, pipeline-ove za sadržaj, prilagođene LLM aplikacije — koji se besprijekorno integriraju u vaše poslovanje i donose mjerljive rezultate.",
   },
@@ -39,7 +39,7 @@ const hr = {
   hero: {
     eyebrow: "Agencija za AI sustave — Izgrađena za stvarni svijet",
     headlinePrefix: "AI sustavi koji",
-    words: ["se isporučuju.", "skaliraju.", "rade.", "traju."],
+    words: ["povećavaju profit.", "optimiziraju poslovanje.", "štede vrijeme.", "skaliraju."],
     description:
       "Dizajniramo, gradimo i isporučujemo AI automatizacije, pipeline-ove za sadržaj i prilagođene LLM aplikacije koji se integriraju u vaše poslovanje i donose mjerljiv ROI — ne prezentacije.",
     cta1: "Rezerviraj besplatan poziv",
