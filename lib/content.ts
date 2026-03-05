@@ -8,20 +8,20 @@ export const services = [
     shortDescription:
       "Automatiziramo ponavljajuće zadatke i procese kako bi vaš tim mogao raditi brže i fokusirati se na važnije stvari.",
     description:
-      "Dizajniramo i implementiramo inteligentne sustave automatizacije koji se izravno integriraju u vaš postojeći tech stack — CRM-ove, ERP-ove, komunikacijske alate i više. Od kvalifikacije potencijalnih klijenata do obrade faktura, naši pipeline-ovi preuzimaju rutinske zadatke kako bi se vaš tim mogao usredotočiti na ono što je bitno.",
+      "Pomažemo tvrtkama automatizirati ponavljajuće procese pomoću AI sustava koji se integriraju u postojeće alate i poslovne procese. Na taj način vaš tim može trošiti manje vremena na ručni rad, a više na stvari koje donose rast.",
     outcomes: [
-      "60–80% smanjenje vremena ručne obrade",
-      "Prijenos podataka bez pogrešaka između sustava",
-      "Upozorenja u stvarnom vremenu i logika eskalacije",
-      "Potpuna revizijska staza i observabilnost",
+      "Manje ručnog rada",
+      "Brži i točniji prijenos podataka između sustava",
+      "Automatizirani procesi koji rade 24/7",
+      "Bolja kontrola i pregled poslovnih procesa",
     ],
     deliverables: [
-      "Prilagođeni planovi automatizacije",
-      "Integracijsk konektori (Zapier, Make, prilagođeni API-ji)",
-      "Nadzorne ploče za praćenje",
-      "Priručnici i dokumentacija",
+      "Plan automatizacije prilagođen vašem poslovanju",
+      "Integracija s postojećim alatima i sustavima",
+      "Dashboard za praćenje automatizacija",
+      "Dokumentacija i podrška",
     ],
-    timeline: "4–8 tjedana",
+    timeline: "1–2 tjedna",
     color: "from-violet-500 to-indigo-600",
   },
   {
