@@ -97,10 +97,10 @@ const hr = {
       },
       {
         number: "02",
-        title: "Inženjering",
+        title: "Razvijamo pouzdana AI rješenja",
         subtitle: "Arhitektura produkcijske kvalitete",
         description:
-          "Pouzdano, observabilno, održivo. Gradimo sustave koji rade u produkciji bez nadzora.",
+          "Gradimo stabilne i pouzdane AI sustave koji se integriraju u vaše poslovanje i rade bez prekida.",
         accent: "from-cyan-500 to-blue-500",
       },
       {
