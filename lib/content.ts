@@ -71,6 +71,7 @@ export const services = [
     ],
     timeline: "1 radni dan",
     color: "from-purple-500 to-pink-600",
+    image: "/images/services/chatbot.png",
   },
   {
     id: "data-integrations",
