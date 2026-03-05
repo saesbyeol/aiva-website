@@ -92,6 +92,7 @@ export const services = [
     ],
     timeline: "2–3 radna dana",
     color: "from-green-500 to-teal-600",
+    image: "/images/services/web-stranice.png",
   },
 ];
 
