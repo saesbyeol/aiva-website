@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Zap,
   FileText,
@@ -128,23 +129,35 @@ export default function ServicesPage() {
                     )}
                     aria-hidden="true"
                   >
-                    <div
-                      className={cn(
-                        "absolute inset-0 bg-gradient-to-br opacity-20",
-                        service.color
-                      )}
-                    />
-                    <div
-                      className="absolute inset-0 opacity-10"
-                      style={{
-                        backgroundImage:
-                          "linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px)",
-                        backgroundSize: "40px 40px",
-                      }}
-                    />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <Icon className="w-20 h-20 text-white/10" />
-                    </div>
+                    {"image" in service && service.image ? (
+                      <Image
+                        src={service.image as string}
+                        alt={service.title}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                      />
+                    ) : (
+                      <>
+                        <div
+                          className={cn(
+                            "absolute inset-0 bg-gradient-to-br opacity-20",
+                            service.color
+                          )}
+                        />
+                        <div
+                          className="absolute inset-0 opacity-10"
+                          style={{
+                            backgroundImage:
+                              "linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px)",
+                            backgroundSize: "40px 40px",
+                          }}
+                        />
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <Icon className="w-20 h-20 text-white/10" />
+                        </div>
+                      </>
+                    )}
                     <div className="absolute bottom-4 left-4 flex items-center gap-2">
                       <Clock className="w-3.5 h-3.5 text-fg-muted" />
                       <span className="text-xs text-fg-muted">

@@ -31,21 +31,22 @@ export const services = [
     shortDescription:
       "Automatiziramo produkciju sadržaja za marketing, društvene mreže i kampanje bez povećanja troškova i broja zaposlenih.",
     description:
-      "Gradimo end-to-end pipeline-ove za sadržaj koji generiraju, recenziraju i objavljuju konzistentan sadržaj usklađen s brandom kroz sve kanale. Fino podešeni prema vašem glasu, utemeljeni u vašoj bazi znanja i isporučeni s radnim tokovima za pregled uz ljudski nadzor.",
+      "Kreiramo AI sadržaj za brzu i skalabilnu izradu marketinškog sadržaja — od reklama za društvene mreže do videa i vizuala proizvoda. Automatiziramo produkciju sadržaja kako biste mogli kontinuirano objavljivati kvalitetne materijale prilagođene vašem brendu i publici. Od promotivnih videa i recenzija proizvoda do vizuala za kampanje, AI alati omogućuju bržu produkciju, testiranje i optimizaciju sadržaja za različite kanale i društvene mreže.",
     outcomes: [
-      "10x više sadržaja uz konzistentan glas branda",
-      "SEO-optimizirani nacrti za nekoliko minuta, ne dana",
-      "Automatizirana distribucija kroz više kanala",
-      "Kontinuirano poboljšanje kvalitete putem petlji povratnih informacija",
+      "Više sadržaja uz dosljedan vizualni identitet brenda",
+      "Brža izrada reklama za društvene mreže",
+      "AI generirani video i vizuali proizvoda",
+      "Skalabilna produkcija sadržaja za više platformi",
     ],
     deliverables: [
-      "Fino podešena arhitektura promptova",
-      "API za generiranje sadržaja",
-      "Radni tok pregleda i odobravanja",
-      "Sustav za ocjenjivanje kvalitete",
+      "AI generirani promotivni video sadržaj",
+      "Video recenzije proizvoda i demonstracije",
+      "Vizuali i slike proizvoda za marketing",
+      "Reklame optimizirane za društvene mreže",
     ],
-    timeline: "3–6 tjedana",
+    timeline: "1 radni dan",
     color: "from-cyan-500 to-blue-600",
+    image: "/images/services/ai_sadrzaj.png",
   },
   {
     id: "custom-llm-apps",
