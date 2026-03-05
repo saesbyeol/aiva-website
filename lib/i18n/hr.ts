@@ -183,8 +183,8 @@ const hr = {
   // ─── CTA section ─────────────────────────────────────────────────────────
   cta: {
     label: "Spremi za početak?",
-    title: "Gradimo nešto",
-    titleAccent: "što zaista funkcionira.",
+    title: "Razvijamo AI rješenja koja donose",
+    titleAccent: "stvarne rezultate",
     description:
       "Recite nam koji je vaš najveći operativni uski grlo. Reći ćemo vam može li AI riješiti problem — i točno kako. Bez prezentacija. Bez obveza.",
     primaryCta: "Rezerviraj uvodni poziv",
