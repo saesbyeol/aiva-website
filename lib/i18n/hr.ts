@@ -69,6 +69,7 @@ const hr = {
 
   // ─── Services page ────────────────────────────────────────────────────────
   servicesPage: {
+    pageTitle: "Naše usluge",
     badge: "Što radimo",
     title: "AI koji se prilagođava vašem poslovanju.",
     titleAccent: "A ne obrnuto.",

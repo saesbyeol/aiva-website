@@ -39,32 +39,12 @@ export default function ServicesPage() {
   return (
     <>
       {/* Hero */}
-      <section className="pt-40 pb-24 bg-bg" aria-label="Services hero">
+      <section className="pt-40 pb-16 bg-bg" aria-label="Services hero">
         <div className="container-default">
           <Reveal>
-            <Badge variant="accent" className="mb-6">
-              {t("servicesPage.badge")}
-            </Badge>
-          </Reveal>
-          <Reveal delay={0.05}>
-            <h1 className="text-h1 text-fg mb-6 max-w-4xl">
-              {t("servicesPage.title")}
-              <br />
-              <span className="gradient-text">{t("servicesPage.titleAccent")}</span>
+            <h1 className="text-h1 text-fg">
+              {t("servicesPage.pageTitle")}
             </h1>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <p className="text-body-lg text-fg-secondary max-w-2xl mb-10">
-              {t("servicesPage.description")}
-            </p>
-          </Reveal>
-          <Reveal delay={0.15}>
-            <Button asChild size="lg" variant="primary" className="group">
-              <Link href="/kontakt">
-                <span className="min-w-0 truncate">{t("servicesPage.cta")}</span>
-                <ArrowRight className="h-4 w-4 shrink-0 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </Button>
           </Reveal>
         </div>
       </section>
