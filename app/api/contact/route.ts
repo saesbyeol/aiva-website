@@ -68,7 +68,7 @@ export async function POST(req: NextRequest) {
 
       await resend.emails.send({
         from: "Aiva Contact Form <noreply@aiva.agency>",
-        to: process.env.CONTACT_EMAIL ?? "inquiry@aiva.hr",
+        to: process.env.CONTACT_EMAIL ?? "automation.aiva@gmail.com",
         replyTo: data.email,
         subject: `Nova poruka od ${data.name}${data.company ? ` (${data.company})` : ""}`,
         html: `
