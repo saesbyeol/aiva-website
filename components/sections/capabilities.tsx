@@ -97,7 +97,6 @@ function CapabilityCard({
         aria-hidden="true"
       />
 
-      <p className="text-label text-fg-muted mb-2">{cap.subtitle}</p>
       <h3 className="text-h3 font-bold text-fg mb-4 group-hover:text-accent transition-colors">
         {cap.title}
       </h3>
