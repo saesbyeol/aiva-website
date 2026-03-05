@@ -50,8 +50,6 @@ export function Capabilities() {
           ))}
         </div>
 
-        {/* Large stat strip */}
-        <StatStrip stats={stats} />
       </div>
     </section>
   );
