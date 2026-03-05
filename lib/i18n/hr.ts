@@ -46,7 +46,7 @@ const hr = {
     cta2: "Naši projekti",
     trustedBy: "Više od 40 timova nam vjeruje",
     sectors: "iz financija, prava, e-trgovine i SaaS-a",
-    avgRating: "prosj. ocjena",
+    avgRating: "dostava usluga",
     scroll: "skrolaj",
   },
 
