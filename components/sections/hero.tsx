@@ -18,15 +18,23 @@ function AnimatedWord() {
     return () => clearInterval(interval);
   }, [words.length]);
 
+  // Longest word acts as an invisible spacer so the container width never changes,
+  // preventing the headline from reflowing/shifting between words.
+  const longestWord = words.reduce((a, b) => (a.length > b.length ? a : b), "");
+
   return (
     <span className="relative inline-block overflow-hidden pb-[0.5em] -mb-[0.5em]">
+      {/* Invisible spacer — fixes container to the widest word's width */}
+      <span className="invisible whitespace-nowrap gradient-text inline-block pb-[0.25em]" aria-hidden="true">
+        {longestWord}
+      </span>
       <motion.span
         key={index}
         initial={{ y: "200%", opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: "-150%", opacity: 0 }}
         transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
-        className="gradient-text inline-block pb-[0.25em]"
+        className="gradient-text inline-block pb-[0.25em] absolute top-0 left-0"
       >
         {words[index]}
       </motion.span>
