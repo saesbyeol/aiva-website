@@ -73,9 +73,9 @@ export const services = [
   {
     id: "data-integrations",
     icon: "Database",
-    title: "Podaci i Integracije",
+    title: "AI Web Stranice",
     shortDescription:
-      "Povežite vaš podatkovni ekosustav. ETL pipeline-ovi, API integracije i podatkovne osnove za AI-spremnost.",
+      "Izrađujemo moderne web stranice uz pomoć AI alata koje su optimizirane za brzinu i konverzije.",
     description:
       "AI je samo toliko dobar koliko su dobri njegovi podaci. Pregledavamo, čistimo i strukturiramo vaš podatkovni ekosustav — gradeći robusne pipeline-ove, API-je i integracijske slojeve koji čine vašu organizaciju AI-spremnom i otključavaju analitiku kakvu dosad niste imali.",
     outcomes: [
