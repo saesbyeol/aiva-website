@@ -113,10 +113,10 @@ const hr = {
       },
       {
         number: "04",
-        title: "Skaliramo",
+        title: "Implementiramo rješenja koja rastu s vašim poslovanjem",
         subtitle: "Izgrađeno za rast",
         description:
-          "Arhitektura koju dizajniramo prvog dana podnosi 100 puta veći obujam stotog dana. Bez potrebe za preradom.",
+          "Naši AI sustavi fleksibilni su i omogućuju jednostavno proširenje funkcionalnosti kako se vaše potrebe razvijaju.",
         accent: "from-orange-500 to-amber-500",
       },
     ],
