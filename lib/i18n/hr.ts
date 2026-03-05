@@ -187,8 +187,8 @@ const hr = {
     titleAccent: "stvarne rezultate",
     description:
       "Opišite nam svoj najveći operativni izazov. Analizirat ćemo može li AI optimizirati taj proces i predložiti vam konkretne korake.",
-    primaryCta: "Rezerviraj uvodni poziv",
-    secondaryCta: "Pošalji nam poruku",
+    primaryCta: "Rezervirajte uvodni poziv",
+    secondaryCta: "Pošaljite nam poruku",
     note: "Tipično odgovaramo unutar 1 radnog dana",
   },
 
