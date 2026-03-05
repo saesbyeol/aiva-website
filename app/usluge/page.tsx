@@ -12,11 +12,10 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { constructMetadata } from "@/lib/seo";
-import { services, packages } from "@/lib/content";
+import { services } from "@/lib/content";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { Reveal, Stagger } from "@/components/motion/reveal";
+import { Reveal } from "@/components/motion/reveal";
 import { cn } from "@/lib/utils";
 import { t } from "@/lib/i18n";
 
@@ -160,66 +159,6 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Packages */}
-      <section className="section-pad bg-bg" aria-label="Service packages">
-        <div className="container-default">
-          <Reveal className="mb-16">
-            <SectionHeading
-              label={t("servicesPage.packagesLabel")}
-              title={t("servicesPage.packagesTitle")}
-              description={t("servicesPage.packagesDescription")}
-              align="center"
-            />
-          </Reveal>
-
-          <Stagger className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {packages.map((pkg) => (
-              <PackageCard key={pkg.id} pkg={pkg} />
-            ))}
-          </Stagger>
-        </div>
-      </section>
     </>
-  );
-}
-
-function PackageCard({ pkg }: { pkg: (typeof packages)[0] }) {
-  return (
-    <div
-      className={cn(
-        "relative flex flex-col p-8 rounded-2xl border transition-all duration-300",
-        pkg.highlighted
-          ? "border-accent bg-accent/5 shadow-glow"
-          : "border-border bg-bg-elevated hover:border-border-strong hover:shadow-md"
-      )}
-    >
-      {pkg.highlighted && (
-        <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-          <Badge variant="accent">Najpopularnije</Badge>
-        </div>
-      )}
-      <p className="text-label text-fg-muted mb-1">{pkg.tagline}</p>
-      <h3 className="text-h3 font-bold text-fg mb-1">{pkg.name}</h3>
-      <p className="text-2xl font-black text-accent mb-4">{pkg.price}</p>
-      <p className="text-body text-fg-secondary mb-6 flex-1">
-        {pkg.description}
-      </p>
-      <ul className="space-y-3 mb-8" role="list">
-        {pkg.features.map((f) => (
-          <li key={f} className="flex items-start gap-2 text-sm text-fg-secondary">
-            <CheckCircle2 className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" />
-            {f}
-          </li>
-        ))}
-      </ul>
-      <Button
-        asChild
-        variant={pkg.highlighted ? "primary" : "secondary"}
-        size="lg"
-        className="w-full"
-      >
-        <Link href="/contact">{pkg.cta}</Link>
-      </Button>
-    </div>
   );
 }
