@@ -65,7 +65,7 @@ export function Header() {
         transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
       >
         <nav
-          className="container-wide h-16 flex items-center justify-between"
+          className="container-wide h-16 flex items-center justify-between relative"
           aria-label="Main navigation"
         >
           {/* Logo */}
@@ -78,7 +78,7 @@ export function Header() {
           </Link>
 
           {/* Desktop nav */}
-          <ul className="hidden md:flex items-center gap-1" role="list">
+          <ul className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-1" role="list">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
                 <Link
