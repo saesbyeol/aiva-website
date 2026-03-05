@@ -27,9 +27,9 @@ export const services = [
   {
     id: "content-pipelines",
     icon: "FileText",
-    title: "AI Pipeline-ovi za Sadržaj",
+    title: "AI izrada sadržaja",
     shortDescription:
-      "Skalirajte produkciju sadržaja bez povećanja broja zaposlenika. AI-pogonjeni pipeline-ovi prilagođeni vašem glasu branda.",
+      "Automatiziramo produkciju sadržaja za marketing, društvene mreže i kampanje bez povećanja troškova i broja zaposlenih.",
     description:
       "Gradimo end-to-end pipeline-ove za sadržaj koji generiraju, recenziraju i objavljuju konzistentan sadržaj usklađen s brandom kroz sve kanale. Fino podešeni prema vašem glasu, utemeljeni u vašoj bazi znanja i isporučeni s radnim tokovima za pregled uz ljudski nadzor.",
     outcomes: [
