@@ -84,8 +84,8 @@ const hr = {
   // ─── Capabilities section ────────────────────────────────────────────────
   capabilities: {
     label: "",
-    title: "Zašto Aiva",
-    titleAccent: "",
+    title: "Zašto ",
+    titleAccent: "Aiva?",
     cards: [
       {
         number: "01",
