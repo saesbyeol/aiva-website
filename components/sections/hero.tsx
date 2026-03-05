@@ -97,9 +97,17 @@ export function Hero() {
           {/* Sub */}
           <motion.p
             variants={item}
-            className="text-body-lg text-fg-secondary max-w-2xl mb-10 leading-relaxed"
+            className="text-body-lg text-fg-secondary max-w-2xl mb-5 leading-relaxed"
           >
             {t("hero.description")}
+          </motion.p>
+
+          {/* Services tag line */}
+          <motion.p
+            variants={item}
+            className="text-sm text-fg-muted mb-10 tracking-wide"
+          >
+            AI chatbotovi&nbsp;•&nbsp;marketing automatizacija&nbsp;•&nbsp;AI sadržaj
           </motion.p>
 
           {/* CTAs */}
