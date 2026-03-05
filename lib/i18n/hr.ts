@@ -89,10 +89,10 @@ const hr = {
     cards: [
       {
         number: "01",
-        title: "Razumijemo",
+        title: "Razumijemo vaše poslovanje",
         subtitle: "Duboko poznavanje domene",
         description:
-          "Učimo vaše poslovanje prije nego napišemo i redak koda. Svaki sustav koji gradimo oblikovan je vašom operativnom stvarnošću.",
+          "Prije nego što implementiramo AI, analiziramo vaše procese i ciljeve kako bismo izgradili rješenje koje donosi stvarnu vrijednost.",
         accent: "from-violet-500 to-indigo-500",
       },
       {
