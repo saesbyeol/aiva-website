@@ -13,7 +13,7 @@ export const SITE = {
 
 export const NAV_LINKS = [
   { label: t("nav.services"), href: "/usluge" },
-  { label: t("nav.work"), href: "/radovi" },
+  // { label: t("nav.work"), href: "/radovi" },
   { label: t("nav.about"), href: "/o-nama" },
   { label: t("nav.contact"), href: "/kontakt" },
 ];
@@ -21,7 +21,7 @@ export const NAV_LINKS = [
 export const FOOTER_LINKS = {
   company: [
     { label: t("nav.about"), href: "/o-nama" },
-    { label: t("nav.work"), href: "/radovi" },
+    // { label: t("nav.work"), href: "/radovi" },
     { label: t("nav.services"), href: "/usluge" },
     { label: t("nav.contact"), href: "/kontakt" },
   ],
