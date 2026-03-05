@@ -196,11 +196,11 @@ const hr = {
   // ─── About page ──────────────────────────────────────────────────────────
   about: {
     badge: "Naša priča",
-    title: "Izgrađeno od inženjera koji su se umorili od promatranja propasti AI-ja.",
+    title: "AI rješenja izgrađena od strane stručnjaka za digitalni marketing.",
     description1:
-      "Aivu su osnovali inženjeri i graditelji proizvoda koji su godinama bili na sjecištu AI istraživanja i stvarnog softvera — i gledali previše AI projekata koji su propali, ne zato što tehnologija nije bila spremna, već zato što implementacija nije bila.",
+      "Aivu su osnovali stručnjaci za digitalni marketing koji su godinama radili na izgradnji kampanja, sadržaja i online prodajnih sustava za različite tvrtke. Kroz rad s klijentima vidjeli smo koliko vremena i resursa tvrtke troše na ponavljajuće zadatke u marketingu i poslovnim procesima.",
     description2:
-      "Pokrenuli smo Aivu s jednim uvjerenjem: AI sustavi produkcijske kvalitete trebaju biti norma, a ne iznimka. Postojimo kako bismo zatvorili jaz između onoga što AI može učiniti i onoga što tvrtke zapravo imaju implementirano i u radu.",
+      "Zato smo počeli razvijati AI sustave koji automatiziraju sadržaj, komunikaciju i operativne procese — kako bi tvrtke mogle raditi brže i učinkovitije. Danas pomažemo tvrtkama implementirati AI rješenja koja povećavaju produktivnost, optimiziraju marketing i omogućuju skaliranje poslovanja.",
     cta: "Započni razgovor",
     principlesLabel: "Naša načela",
     principlesTitle: "Kako razmišljamo, kako radimo.",

@@ -44,14 +44,14 @@ export default function AboutPage() {
                   {t("about.description2")}
                 </p>
               </Reveal>
-              <Reveal delay={0.15}>
+              {/* <Reveal delay={0.15}>
                 <Button asChild variant="primary" size="lg" className="group">
                   <Link href="/kontakt">
                     <span className="min-w-0 truncate">{t("about.cta")}</span>
                     <ArrowRight className="h-4 w-4 shrink-0 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </Button>
-              </Reveal>
+              </Reveal> */}
             </div>
 
             {/* Right visual */}
