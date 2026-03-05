@@ -114,7 +114,7 @@ export default function AboutPage() {
       </section>
 
       {/* Team */}
-      <section className="section-pad bg-bg" aria-label="Team">
+      {/* <section className="section-pad bg-bg" aria-label="Team">
         <div className="container-default">
           <Reveal className="mb-16">
             <SectionHeading
@@ -130,10 +130,10 @@ export default function AboutPage() {
             ))}
           </Stagger>
         </div>
-      </section>
+      </section> */}
 
       {/* Tooling */}
-      <section className="section-pad bg-bg-secondary" aria-label="Tooling stack">
+      {/* <section className="section-pad bg-bg-secondary" aria-label="Tooling stack">
         <div className="container-default">
           <Reveal className="mb-14">
             <SectionHeading
@@ -163,7 +163,7 @@ export default function AboutPage() {
             ))}
           </Stagger>
         </div>
-      </section>
+      </section> */}
     </>
   );
 }
