@@ -6,7 +6,7 @@ export const services = [
     icon: "Zap",
     title: "AI Automatizacija",
     shortDescription:
-      "Eliminira repetitivan rad. Gradi inteligentne radne tokove koji rade 24/7 bez ručnog nadzora.",
+      "Automatiziramo ponavljajuće zadatke i procese kako bi vaš tim mogao raditi brže i fokusirati se na važnije stvari.",
     description:
       "Dizajniramo i implementiramo inteligentne sustave automatizacije koji se izravno integriraju u vaš postojeći tech stack — CRM-ove, ERP-ove, komunikacijske alate i više. Od kvalifikacije potencijalnih klijenata do obrade faktura, naši pipeline-ovi preuzimaju rutinske zadatke kako bi se vaš tim mogao usredotočiti na ono što je bitno.",
     outcomes: [
