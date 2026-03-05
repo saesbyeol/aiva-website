@@ -41,7 +41,7 @@ const hr = {
     headlinePrefix: "AI sustavi koji",
     words: ["povećavaju profit.", "optimiziraju.", "štede vrijeme.", "skaliraju."],
     description:
-      "Dizajniramo, gradimo i isporučujemo AI automatizacije, pipeline-ove za sadržaj i prilagođene LLM aplikacije koji se integriraju u vaše poslovanje i donose mjerljiv ROI — ne prezentacije.",
+      "Pomažemo tvrtkama da uvedu AI u svakodnevno poslovanje kroz automatizaciju marketinga, sadržaja i prodajnih procesa.",
     cta1: "Rezerviraj besplatan poziv",
     cta2: "Naši projekti",
     trustedBy: "Više od 40 timova nam vjeruje",
