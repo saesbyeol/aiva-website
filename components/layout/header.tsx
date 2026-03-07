@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+import { motion } from "framer-motion";
 import { Menu, X, Sun, Moon, Home } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { NAV_LINKS } from "@/lib/constants";
@@ -13,14 +13,16 @@ import { t } from "@/lib/i18n";
 
 export function Header() {
   const pathname = usePathname();
-  const { scrollY } = useScroll();
   const [scrolled, setScrolled] = React.useState(false);
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [theme, setTheme] = React.useState<"dark" | "light">("dark");
 
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    setScrolled(latest > 20);
-  });
+  // Native passive scroll listener — no Framer Motion overhead
+  React.useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   // Initialize theme from localStorage
   React.useEffect(() => {
@@ -57,7 +59,7 @@ export function Header() {
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
           scrolled
-            ? "bg-bg/80 backdrop-blur-xl border-b border-border shadow-sm"
+            ? "bg-bg/95 md:bg-bg/80 md:backdrop-blur-xl border-b border-border shadow-sm"
             : "bg-transparent"
         )}
         initial={{ y: -80, opacity: 0 }}
