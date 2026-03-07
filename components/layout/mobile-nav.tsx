@@ -2,8 +2,9 @@
 
 import * as React from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sun, Moon, ArrowRight } from "lucide-react";
+import { Sun, Moon, ArrowRight, Home } from "lucide-react";
 import { NAV_LINKS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { t } from "@/lib/i18n";
@@ -21,6 +22,7 @@ export function MobileNav({
   theme,
   onToggleTheme,
 }: MobileNavProps) {
+  const pathname = usePathname();
   // Prevent body scroll when open
   React.useEffect(() => {
     if (isOpen) {
@@ -62,12 +64,35 @@ export function MobileNav({
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
           >
             <ul className="flex flex-col gap-1 flex-1" role="list">
+              {/* Home link */}
+              <motion.li
+                initial={{ opacity: 0, x: -16 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.05, duration: 0.3 }}
+              >
+                {pathname === "/" ? (
+                  <span className="flex items-center justify-between py-4 text-2xl font-semibold text-fg-muted opacity-40 border-b border-border cursor-not-allowed select-none">
+                    {t("nav.backHome")}
+                    <Home className="w-5 h-5" />
+                  </span>
+                ) : (
+                  <Link
+                    href="/"
+                    onClick={onClose}
+                    className="flex items-center justify-between py-4 text-2xl font-semibold text-fg hover:text-accent transition-colors border-b border-border group"
+                  >
+                    {t("nav.backHome")}
+                    <Home className="w-5 h-5 text-fg-muted group-hover:text-accent transition-colors" />
+                  </Link>
+                )}
+              </motion.li>
+
               {NAV_LINKS.map((link, i) => (
                 <motion.li
                   key={link.href}
                   initial={{ opacity: 0, x: -16 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.05 + i * 0.05, duration: 0.3 }}
+                  transition={{ delay: 0.1 + i * 0.05, duration: 0.3 }}
                 >
                   <Link
                     href={link.href}

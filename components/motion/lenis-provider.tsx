@@ -4,6 +4,9 @@ import * as React from "react";
 
 export function LenisProvider({ children }: { children: React.ReactNode }) {
   React.useEffect(() => {
+    // Disable on touch/mobile devices — Lenis fights native scroll and causes lag
+    if ("ontouchstart" in window || navigator.maxTouchPoints > 0) return;
+
     // Respect prefers-reduced-motion
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (mediaQuery.matches) return;
