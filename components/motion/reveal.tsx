@@ -1,11 +1,45 @@
 "use client";
 
 import * as React from "react";
-import { motion, useInView, type Variants } from "framer-motion";
 import { cn } from "@/lib/utils";
 
-// Typed cubic bezier as const tuple for Framer Motion compat
-const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
+const EASE = "cubic-bezier(0.16, 1, 0.3, 1)";
+
+const animationName: Record<string, string> = {
+  up: "reveal-up",
+  down: "reveal-down",
+  left: "reveal-left",
+  right: "reveal-right",
+  none: "reveal-fade",
+};
+
+function useInViewOnce(amount = 0.15) {
+  const ref = React.useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = React.useState(false);
+
+  React.useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    // Skip animation when prefers-reduced-motion is set
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setVisible(true);
+      return;
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: amount }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [amount]);
+
+  return { ref, visible };
+}
 
 interface RevealProps {
   children: React.ReactNode;
@@ -17,52 +51,34 @@ interface RevealProps {
   amount?: number;
 }
 
-const revealVariants: Record<string, Variants> = {
-  up: {
-    hidden: { opacity: 0, y: 32 },
-    visible: { opacity: 1, y: 0 },
-  },
-  down: {
-    hidden: { opacity: 0, y: -32 },
-    visible: { opacity: 1, y: 0 },
-  },
-  left: {
-    hidden: { opacity: 0, x: -32 },
-    visible: { opacity: 1, x: 0 },
-  },
-  right: {
-    hidden: { opacity: 0, x: 32 },
-    visible: { opacity: 1, x: 0 },
-  },
-  none: {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1 },
-  },
-};
-
 export function Reveal({
   children,
   className,
   delay = 0,
   duration = 0.6,
   direction = "up",
-  once = true,
   amount = 0.15,
 }: RevealProps) {
-  const ref = React.useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once, amount });
+  const { ref, visible } = useInViewOnce(amount);
 
   return (
-    <motion.div
+    <div
       ref={ref}
       className={className}
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
-      variants={revealVariants[direction]}
-      transition={{ duration, delay, ease: EASE }}
+      style={
+        visible
+          ? {
+              animationName: animationName[direction],
+              animationDuration: `${duration}s`,
+              animationDelay: `${delay}s`,
+              animationFillMode: "both",
+              animationTimingFunction: EASE,
+            }
+          : { opacity: 0 }
+      }
     >
       {children}
-    </motion.div>
+    </div>
   );
 }
 
@@ -79,41 +95,29 @@ export function Stagger({
   children,
   className,
   staggerDelay = 0.1,
-  once = true,
   amount = 0.1,
 }: StaggerProps) {
-  const ref = React.useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once, amount });
-
-  const containerVariants: Variants = {
-    hidden: {},
-    visible: {
-      transition: { staggerChildren: staggerDelay },
-    },
-  };
-
-  const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 24 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: EASE },
-    },
-  };
-
-  const staggeredChildren = React.Children.map(children, (child) => (
-    <motion.div variants={itemVariants}>{child}</motion.div>
-  ));
+  const { ref, visible } = useInViewOnce(amount);
 
   return (
-    <motion.div
-      ref={ref}
-      className={cn(className)}
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
-      variants={containerVariants}
-    >
-      {staggeredChildren}
-    </motion.div>
+    <div ref={ref} className={cn(className)}>
+      {React.Children.map(children, (child, i) => (
+        <div
+          style={
+            visible
+              ? {
+                  animationName: "reveal-up",
+                  animationDuration: "0.6s",
+                  animationDelay: `${i * staggerDelay}s`,
+                  animationFillMode: "both",
+                  animationTimingFunction: EASE,
+                }
+              : { opacity: 0 }
+          }
+        >
+          {child}
+        </div>
+      ))}
+    </div>
   );
 }

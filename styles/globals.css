@@ -68,6 +68,26 @@
     100% { opacity: 1; transform: translateY(0); }
   }
   --animate-header-slide-down: header-slide-down 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+  @keyframes reveal-up {
+    from { opacity: 0; transform: translateY(32px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes reveal-down {
+    from { opacity: 0; transform: translateY(-32px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes reveal-left {
+    from { opacity: 0; transform: translateX(-32px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes reveal-right {
+    from { opacity: 0; transform: translateX(32px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes reveal-fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
 }
 
 /* ─── CSS Custom Properties (also for light mode switching) ─────────────── */
