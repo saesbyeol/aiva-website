@@ -90,6 +90,11 @@
   }
 }
 
+/* ─── On touch/mobile: disable all reveal animations, show content immediately */
+@media (hover: none) and (pointer: coarse) {
+  [data-reveal] { opacity: 1 !important; animation: none !important; transform: none !important; }
+}
+
 /* ─── CSS Custom Properties (also for light mode switching) ─────────────── */
 :root {
   --section-pad: clamp(3rem, 6vw, 5.5rem);

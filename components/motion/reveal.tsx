@@ -20,8 +20,12 @@ function useInViewOnce(amount = 0.15) {
   React.useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    // Skip animation when prefers-reduced-motion is set
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    // Skip animation on touch devices or reduced-motion — CSS already shows content
+    if (
+      "ontouchstart" in window ||
+      navigator.maxTouchPoints > 0 ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
       setVisible(true);
       return;
     }
@@ -64,6 +68,7 @@ export function Reveal({
   return (
     <div
       ref={ref}
+      data-reveal
       className={className}
       style={
         visible
@@ -103,6 +108,7 @@ export function Stagger({
     <div ref={ref} className={cn(className)}>
       {React.Children.map(children, (child, i) => (
         <div
+          data-reveal
           style={
             visible
               ? {
