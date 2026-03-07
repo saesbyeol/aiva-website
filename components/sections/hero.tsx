@@ -2,10 +2,23 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { t, ta } from "@/lib/i18n";
+
+const EASE = "cubic-bezier(0.16, 1, 0.3, 1)";
+
+// CSS-based staggered entry animation (no Framer Motion, no scroll tracking)
+function fadeUp(delay: number): React.CSSProperties {
+  return {
+    animationName: "reveal-up",
+    animationDuration: "0.7s",
+    animationDelay: `${delay}s`,
+    animationFillMode: "both",
+    animationTimingFunction: EASE,
+  };
+}
 
 function AnimatedWord() {
   const words = ta<string[]>("hero.words");
@@ -18,13 +31,10 @@ function AnimatedWord() {
     return () => clearInterval(interval);
   }, [words.length]);
 
-  // Longest word acts as an invisible spacer so the container width never changes,
-  // preventing the headline from reflowing/shifting between words.
   const longestWord = words.reduce((a, b) => (a.length > b.length ? a : b), "");
 
   return (
     <span className="relative inline-block overflow-hidden pb-[0.5em] -mb-[0.5em]">
-      {/* Invisible spacer — fixes container to the widest word's width */}
       <span className="invisible whitespace-nowrap gradient-text inline-block pb-[0.25em]" aria-hidden="true">
         {longestWord}
       </span>
@@ -43,86 +53,47 @@ function AnimatedWord() {
 }
 
 export function Hero() {
-  const ref = React.useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-
-  const container = {
-    hidden: {},
-    show: {
-      transition: {
-        staggerChildren: 0.12,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const ease = [0.16, 1, 0.3, 1] as [number, number, number, number];
-  const item = {
-    hidden: { opacity: 0, y: 40 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.7, ease } },
-  };
-
   return (
     <section
-      ref={ref}
       className="relative min-h-screen flex items-center overflow-hidden bg-bg"
       aria-label="Hero"
     >
-      {/* Animated background */}
       <HeroBackground />
 
-      <motion.div
-        className="container-wide relative z-10 pt-36 pb-28"
-        style={{ y, opacity }}
-      >
-        <motion.div
-          className="max-w-6xl"
-          variants={container}
-          initial="hidden"
-          animate="show"
-        >
+      {/* No parallax — removed useScroll/useTransform which ran on every scroll frame */}
+      <div className="container-wide relative z-10 pt-36 pb-28">
+        <div className="max-w-6xl">
           {/* Eyebrow */}
-          <motion.div variants={item} className="mb-8">
+          <div data-reveal style={fadeUp(0.2)} className="mb-8">
             <span className="inline-flex items-center gap-2 text-label text-fg-muted border border-border rounded-full px-4 py-1.5 bg-bg-elevated">
               <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse-slow" />
               {t("hero.eyebrow")}
             </span>
-          </motion.div>
+          </div>
 
           {/* Headline */}
-          <motion.h1
-            variants={item}
+          <h1
+            data-reveal
+            style={{ ...fadeUp(0.32), fontSize: "clamp(3rem, 7vw, 6rem)" }}
             className="text-display text-fg leading-[1] mb-6"
-            style={{ fontSize: "clamp(3rem, 7vw, 6rem)" }}
           >
             {t("hero.headlinePrefix")}
             <br />
             <AnimatedWord />
-          </motion.h1>
+          </h1>
 
           {/* Sub */}
-          <motion.p
-            variants={item}
-            className="text-body-lg text-fg-secondary max-w-2xl mb-5 leading-relaxed"
-          >
+          <p data-reveal style={fadeUp(0.44)} className="text-body-lg text-fg-secondary max-w-2xl mb-5 leading-relaxed">
             {t("hero.description")}
-          </motion.p>
+          </p>
 
           {/* Services tag line */}
-          <motion.p
-            variants={item}
-            className="text-sm text-fg-muted mb-10 tracking-wide"
-          >
+          <p data-reveal style={fadeUp(0.56)} className="text-sm text-fg-muted mb-10 tracking-wide">
             AI chatbotovi&nbsp;•&nbsp;Automatizacija marketinga&nbsp;•&nbsp;AI sadržaj&nbsp;•&nbsp;AI izrada web stranica
-          </motion.p>
+          </p>
 
           {/* CTAs */}
-          <motion.div
-            variants={item}
-            className="flex flex-col sm:flex-row items-start sm:items-center gap-4"
-          >
+          <div data-reveal style={fadeUp(0.68)} className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
             <Button asChild size="lg" variant="primary" className="group">
               <Link href="/kontakt">
                 <span className="min-w-0 truncate">{t("hero.cta1")}</span>
@@ -134,13 +105,10 @@ export function Hero() {
                 <span className="min-w-0 truncate">{t("hero.cta2")}</span>
               </Link>
             </Button>
-          </motion.div>
+          </div>
 
           {/* Social proof */}
-          <motion.div
-            variants={item}
-            className="mt-14 flex flex-col sm:flex-row items-start sm:items-center gap-6"
-          >
+          <div data-reveal style={fadeUp(0.8)} className="mt-14 flex flex-col sm:flex-row items-start sm:items-center gap-6">
             <div className="flex -space-x-2.5">
               {[0, 1, 2, 3].map((i) => (
                 <div
@@ -151,44 +119,34 @@ export function Hero() {
               ))}
             </div>
             <div>
-              <p className="text-sm font-semibold text-fg">
-                {t("hero.trustedBy")}
-              </p>
-              <p className="text-xs text-fg-muted">
-                {t("hero.sectors")}
-              </p>
+              <p className="text-sm font-semibold text-fg">{t("hero.trustedBy")}</p>
+              <p className="text-xs text-fg-muted">{t("hero.sectors")}</p>
             </div>
             <div className="hidden sm:block w-px h-8 bg-border" />
             <div className="flex items-center gap-1.5">
               {[1, 2, 3, 4, 5].map((s) => (
-                <svg
-                  key={s}
-                  className="w-4 h-4 fill-amber-400 text-amber-400"
-                  viewBox="0 0 20 20"
-                  aria-hidden="true"
-                >
+                <svg key={s} className="w-4 h-4 fill-amber-400 text-amber-400" viewBox="0 0 20 20" aria-hidden="true">
                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                 </svg>
               ))}
               <span className="text-xs text-fg-muted ml-1">{t("hero.avgRating")}</span>
             </div>
-          </motion.div>
-        </motion.div>
-      </motion.div>
+          </div>
+        </div>
+      </div>
 
       {/* Scroll hint */}
-      <motion.div
+      <div
+        data-reveal
+        style={fadeUp(1.4)}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.4, duration: 0.6 }}
         aria-hidden="true"
       >
         <span className="text-xs text-fg-muted tracking-widest uppercase">
           {t("hero.scroll")}
         </span>
         <div className="w-px h-8 bg-gradient-to-b from-transparent to-fg-muted" />
-      </motion.div>
+      </div>
     </section>
   );
 }
@@ -205,28 +163,15 @@ function HeroBackground() {
       <div
         className="absolute inset-0 opacity-[0.15]"
         style={{
-          backgroundImage:
-            "radial-gradient(circle, rgba(255,255,255,0.6) 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.6) 1px, transparent 1px)",
           backgroundSize: "32px 32px",
         }}
       />
 
-      {/* Floating shapes */}
-      <FloatingShape
-        className="top-[15%] right-[12%] w-20 h-20"
-        delay={0}
-        shape="ring"
-      />
-      <FloatingShape
-        className="bottom-[25%] left-[8%] w-14 h-14"
-        delay={1.5}
-        shape="dot"
-      />
-      <FloatingShape
-        className="top-[45%] right-[25%] w-10 h-10"
-        delay={0.8}
-        shape="square"
-      />
+      {/* Floating shapes — CSS animation, no Framer Motion repeat:Infinity */}
+      <FloatingShape className="top-[15%] right-[12%] w-20 h-20" delay={0} shape="ring" />
+      <FloatingShape className="bottom-[25%] left-[8%] w-14 h-14" delay={1.5} shape="dot" />
+      <FloatingShape className="top-[45%] right-[25%] w-10 h-10" delay={0.8} shape="square" />
 
       {/* Grain overlay */}
       <div
@@ -249,15 +194,9 @@ function FloatingShape({
   shape: "ring" | "dot" | "square";
 }) {
   return (
-    <motion.div
-      className={`absolute ${className}`}
-      animate={{ y: [0, -18, 0] }}
-      transition={{
-        duration: 5 + delay,
-        repeat: Infinity,
-        ease: "easeInOut",
-        delay,
-      }}
+    <div
+      className={`absolute animate-float ${className}`}
+      style={{ animationDelay: `${delay}s` }}
     >
       {shape === "ring" && (
         <div className="w-full h-full rounded-full border border-accent/20 animate-spin-slow" />
@@ -268,6 +207,6 @@ function FloatingShape({
       {shape === "square" && (
         <div className="w-full h-full rounded-lg border border-fg-muted/10 rotate-12" />
       )}
-    </motion.div>
+    </div>
   );
 }
