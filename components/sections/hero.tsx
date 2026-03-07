@@ -53,15 +53,39 @@ function AnimatedWord() {
 }
 
 export function Hero() {
+  const sectionRef = React.useRef<HTMLElement>(null);
+  const innerRef = React.useRef<HTMLDivElement>(null);
+
+  // Scroll-linked fade: direct DOM mutation, no React state, no re-renders
+  // Disabled on touch devices to keep native scroll smooth
+  React.useEffect(() => {
+    const section = sectionRef.current;
+    const inner = innerRef.current;
+    if (!section || !inner) return;
+    if ("ontouchstart" in window || navigator.maxTouchPoints > 0) return;
+
+    const onScroll = () => {
+      const scrollY = window.scrollY;
+      const heroH = section.offsetHeight;
+      if (scrollY > heroH) return;
+      const p = scrollY / heroH;
+      inner.style.transform = `translateY(${(p * 25).toFixed(2)}%)`;
+      inner.style.opacity = String(Math.max(0, 1 - p * 2).toFixed(3));
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       className="relative min-h-screen flex items-center overflow-hidden bg-bg"
       aria-label="Hero"
     >
       <HeroBackground />
 
-      {/* No parallax — removed useScroll/useTransform which ran on every scroll frame */}
-      <div className="container-wide relative z-10 pt-36 pb-28">
+      <div ref={innerRef} className="container-wide relative z-10 pt-36 pb-28">
         <div className="max-w-6xl">
           {/* Eyebrow */}
           <div data-reveal style={fadeUp(0.2)} className="mb-8">

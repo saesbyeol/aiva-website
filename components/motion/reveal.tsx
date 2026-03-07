@@ -20,12 +20,8 @@ function useInViewOnce(amount = 0.15) {
   React.useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    // Skip animation on touch devices or reduced-motion — CSS already shows content
-    if (
-      "ontouchstart" in window ||
-      navigator.maxTouchPoints > 0 ||
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    ) {
+    // Skip animation when prefers-reduced-motion is set
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       setVisible(true);
       return;
     }
