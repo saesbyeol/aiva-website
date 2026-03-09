@@ -58,17 +58,22 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: true }); // silently discard
   }
 
-  // Email sending
-  const resendKey = process.env.RESEND_API_KEY;
+  // Email sending via Gmail SMTP (nodemailer)
+  const gmailUser = process.env.GMAIL_USER;
+  const gmailPass = process.env.GMAIL_APP_PASSWORD;
+  const toEmail = process.env.CONTACT_EMAIL ?? "automation.aiva@gmail.com";
 
-  if (resendKey) {
+  if (gmailUser && gmailPass) {
     try {
-      const { Resend } = await import("resend");
-      const resend = new Resend(resendKey);
+      const nodemailer = await import("nodemailer");
+      const transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: { user: gmailUser, pass: gmailPass },
+      });
 
-      await resend.emails.send({
-        from: "Aiva Contact Form <noreply@aiva.agency>",
-        to: process.env.CONTACT_EMAIL ?? "automation.aiva@gmail.com",
+      await transporter.sendMail({
+        from: `"Aiva Contact Form" <${gmailUser}>`,
+        to: toEmail,
         replyTo: data.email,
         subject: `Nova poruka od ${data.name}${data.company ? ` (${data.company})` : ""}`,
         html: `
@@ -78,19 +83,18 @@ export async function POST(req: NextRequest) {
               <tr><td style="padding: 8px 0; color: #666; width: 120px;">Ime</td><td style="padding: 8px 0; font-weight: 600;">${data.name}</td></tr>
               <tr><td style="padding: 8px 0; color: #666;">E-mail</td><td style="padding: 8px 0;"><a href="mailto:${data.email}">${data.email}</a></td></tr>
               ${data.company ? `<tr><td style="padding: 8px 0; color: #666;">Tvrtka</td><td style="padding: 8px 0;">${data.company}</td></tr>` : ""}
-              ${data.budget ? `<tr><td style="padding: 8px 0; color: #666;">Prora\u010dun</td><td style="padding: 8px 0;">${data.budget}</td></tr>` : ""}
             </table>
             <div style="margin-top: 16px; padding: 16px; background: #f9f9f9; border-radius: 8px; border-left: 3px solid #6366f1;">
               <p style="margin: 0; white-space: pre-wrap;">${data.message}</p>
             </div>
-            <p style="margin-top: 24px; color: #999; font-size: 12px;">Poslano putem aiva.agency obrasca \u00b7 IP: ${ip}</p>
+            <p style="margin-top: 24px; color: #999; font-size: 12px;">Poslano putem aiva.agency obrasca &middot; IP: ${ip}</p>
           </div>
         `,
       });
 
       return NextResponse.json({ ok: true });
     } catch (e) {
-      console.error("Resend error:", e);
+      console.error("Nodemailer error:", e);
       return NextResponse.json(
         { error: t("form.errorSend") },
         { status: 500 }
@@ -98,18 +102,17 @@ export async function POST(req: NextRequest) {
     }
   }
 
-  // Fallback — log and return success (dev / no Resend key)
-  console.log("Poruka putem obrasca za kontakt (RESEND_API_KEY nije konfiguriran):", {
+  // Fallback — log (no env vars configured)
+  console.log("[contact] GMAIL_USER / GMAIL_APP_PASSWORD not set. Message:", {
     name: data.name,
     email: data.email,
     company: data.company,
-    budget: data.budget,
     message: data.message,
     timestamp: new Date().toISOString(),
   });
 
   return NextResponse.json({
     ok: true,
-    note: "Poruka zabilježena (dostava e-pošte nije konfigurirana u ovom okruženju).",
+    note: "Poruka zabilježena (dostava e-pošte nije konfigurirana).",
   });
 }
