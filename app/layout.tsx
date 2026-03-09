@@ -2,10 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Syne, Inter } from "next/font/google";
 import Script from "next/script";
 import "@/styles/globals.css";
-import { Header } from "@/components/layout/header";
-import { Footer } from "@/components/layout/footer";
-import { LenisProvider } from "@/components/motion/lenis-provider";
-import { ProgressBar } from "@/components/motion/progress-bar";
+import { SiteShell } from "@/components/layout/site-shell";
 import { constructMetadata, organizationSchema, websiteSchema } from "@/lib/seo";
 
 // ─── Fonts ──────────────────────────────────────────────────────────────────
@@ -73,14 +70,7 @@ export default function RootLayout({
             __html: `(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="EbGKmwn46Oc5zd54aPaAF";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();`,
           }}
         />
-        <LenisProvider>
-          <ProgressBar />
-          <Header />
-          <main id="main-content" tabIndex={-1}>
-            {children}
-          </main>
-          <Footer />
-        </LenisProvider>
+        <SiteShell>{children}</SiteShell>
       </body>
     </html>
   );
