@@ -58,23 +58,17 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: true }); // silently discard
   }
 
-  // Email sending via Gmail SMTP (nodemailer)
-  const gmailUser = process.env.GMAIL_USER;
-  const gmailPass = process.env.GMAIL_APP_PASSWORD;
+  // Email sending via Resend
+  const resendKey = process.env.RESEND_API_KEY;
   const toEmail = process.env.CONTACT_EMAIL ?? "automation.aiva@gmail.com";
 
-  if (gmailUser && gmailPass) {
+  if (resendKey) {
     try {
-      const nodemailer = await import("nodemailer");
-      const transporter = nodemailer.createTransport({
-        host: "smtp.gmail.com",
-        port: 465,
-        secure: true,
-        auth: { user: gmailUser, pass: gmailPass },
-      });
+      const { Resend } = await import("resend");
+      const resend = new Resend(resendKey);
 
-      await transporter.sendMail({
-        from: `"Aiva Contact Form" <${gmailUser}>`,
+      await resend.emails.send({
+        from: "onboarding@resend.dev",
         to: toEmail,
         replyTo: data.email,
         subject: `Nova poruka od ${data.name}${data.company ? ` (${data.company})` : ""}`,
@@ -97,7 +91,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ ok: true });
     } catch (e) {
       const msg = e instanceof Error ? e.message : String(e);
-      console.error("Nodemailer error:", msg);
+      console.error("Resend error:", msg);
       return NextResponse.json(
         { error: t("form.errorSend"), detail: msg },
         { status: 500 }
@@ -105,8 +99,8 @@ export async function POST(req: NextRequest) {
     }
   }
 
-  // Fallback — log (no env vars configured)
-  console.log("[contact] GMAIL_USER / GMAIL_APP_PASSWORD not set. Message:", {
+  // Fallback — log (RESEND_API_KEY not set)
+  console.log("[contact] RESEND_API_KEY not set. Message:", {
     name: data.name,
     email: data.email,
     company: data.company,
