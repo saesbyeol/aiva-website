@@ -67,7 +67,9 @@ export async function POST(req: NextRequest) {
     try {
       const nodemailer = await import("nodemailer");
       const transporter = nodemailer.createTransport({
-        service: "gmail",
+        host: "smtp.gmail.com",
+        port: 465,
+        secure: true,
         auth: { user: gmailUser, pass: gmailPass },
       });
 
@@ -94,9 +96,10 @@ export async function POST(req: NextRequest) {
 
       return NextResponse.json({ ok: true });
     } catch (e) {
-      console.error("Nodemailer error:", e);
+      const msg = e instanceof Error ? e.message : String(e);
+      console.error("Nodemailer error:", msg);
       return NextResponse.json(
-        { error: t("form.errorSend") },
+        { error: t("form.errorSend"), detail: msg },
         { status: 500 }
       );
     }
