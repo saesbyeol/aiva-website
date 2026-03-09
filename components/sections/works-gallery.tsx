@@ -3,17 +3,22 @@
 import React from "react";
 import Link from "next/link";
 import { ArrowUpRight, X, Play } from "lucide-react";
-import { caseStudies, adShowcase } from "@/lib/content";
 import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/motion/reveal";
+import type { SanityCaseStudy, SanityVideoAd } from "@/sanity/lib/queries";
 
-// ─── Data ──────────────────────────────────────────────────────────────────────
+// ─── Gradient palette (cycles by index) ───────────────────────────────────────
 
-const CASE_GRADIENTS: Record<string, string> = {
-  "clearpath-finance": "from-violet-950 via-indigo-900 to-blue-950",
-  "nova-ecommerce": "from-cyan-950 via-sky-900 to-slate-900",
-  "atlas-legal": "from-emerald-950 via-teal-900 to-slate-900",
-};
+const GRADIENTS = [
+  "from-violet-950 via-indigo-900 to-blue-950",
+  "from-cyan-950 via-sky-900 to-slate-900",
+  "from-emerald-950 via-teal-900 to-slate-900",
+  "from-rose-950 via-pink-900 to-purple-950",
+  "from-amber-950 via-orange-900 to-slate-900",
+  "from-indigo-950 via-violet-900 to-fuchsia-950",
+];
+
+// ─── Unified work type for the grid ───────────────────────────────────────────
 
 type Work = {
   id: string;
@@ -28,50 +33,65 @@ type Work = {
   video: string | null;
 };
 
-const works: Work[] = [
-  ...caseStudies.map((s, i) => ({
-    id: s.id,
-    num: i + 1,
-    title: s.title,
-    client: s.client,
-    category: s.category,
-    year: s.year,
-    type: "case-study" as const,
-    href: `/radovi/${s.slug}`,
-    gradient: CASE_GRADIENTS[s.slug] ?? "from-violet-950 to-indigo-900",
-    video: null,
-  })),
-  ...adShowcase.map((a, i) => ({
-    id: a.id,
-    num: caseStudies.length + i + 1,
-    title: a.title,
-    client: null,
-    category: a.category,
-    year: "2025",
-    type: "ad" as const,
-    href: null,
-    gradient: a.color,
-    video: a.video ?? null,
-  })),
-];
+function toWorks(caseStudies: SanityCaseStudy[], videoAds: SanityVideoAd[]): Work[] {
+  return [
+    ...caseStudies.map((s, i) => ({
+      id: s._id,
+      num: i + 1,
+      title: s.title,
+      client: s.client,
+      category: s.category,
+      year: s.year,
+      type: "case-study" as const,
+      href: `/radovi/${s.slug}`,
+      gradient: GRADIENTS[i % GRADIENTS.length],
+      video: null,
+    })),
+    ...videoAds.map((a, i) => ({
+      id: a._id,
+      num: caseStudies.length + i + 1,
+      title: a.title,
+      client: null,
+      category: a.category,
+      year: "2025",
+      type: "ad" as const,
+      href: null,
+      gradient: GRADIENTS[(caseStudies.length + i) % GRADIENTS.length],
+      video: a.videoUrl,
+    })),
+  ];
+}
 
-const FILTERS = [
-  { label: "Sve", value: "all", count: works.length },
-  { label: "Video oglasi", value: "ad", count: adShowcase.length },
-  { label: "Projekti", value: "case-study", count: caseStudies.length },
-] as const;
+// ─── Filter config ────────────────────────────────────────────────────────────
 
-type FilterValue = (typeof FILTERS)[number]["value"];
+const FILTER_VALUES = ["all", "case-study", "ad"] as const;
+type FilterValue = (typeof FILTER_VALUES)[number];
 
-// ─── Gallery ───────────────────────────────────────────────────────────────────
+// ─── Gallery ──────────────────────────────────────────────────────────────────
 
-export default function WorksGallery() {
+interface Props {
+  caseStudies: SanityCaseStudy[];
+  videoAds: SanityVideoAd[];
+}
+
+export default function WorksGallery({ caseStudies, videoAds }: Props) {
   const [active, setActive] = React.useState<FilterValue>("all");
   const [modalSrc, setModalSrc] = React.useState<string | null>(null);
 
+  const works = React.useMemo(
+    () => toWorks(caseStudies, videoAds),
+    [caseStudies, videoAds]
+  );
+
+  const FILTERS = [
+    { label: "Sve", value: "all" as FilterValue, count: works.length },
+    { label: "Video oglasi", value: "ad" as FilterValue, count: videoAds.length },
+    { label: "Projekti", value: "case-study" as FilterValue, count: caseStudies.length },
+  ];
+
   const filtered = React.useMemo(
     () => (active === "all" ? works : works.filter((w) => w.type === active)),
-    [active]
+    [active, works]
   );
 
   return (
@@ -124,28 +144,34 @@ export default function WorksGallery() {
       {/* ── Grid ── */}
       <section className="pb-32" aria-label="Works gallery">
         <div className="container-default">
-          <div
-            key={active}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5"
-            role="list"
-          >
-            {filtered.map((work, i) =>
-              work.video ? (
-                <VideoCard
-                  key={work.id}
-                  work={work}
-                  staggerIndex={i}
-                  onOpen={setModalSrc}
-                />
-              ) : (
-                <StaticCard key={work.id} work={work} staggerIndex={i} />
-              )
-            )}
-          </div>
+          {filtered.length === 0 ? (
+            <div className="text-center py-24 text-fg-muted">
+              <p className="text-body">Još nema sadržaja u ovoj kategoriji.</p>
+            </div>
+          ) : (
+            <div
+              key={active}
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5"
+              role="list"
+            >
+              {filtered.map((work, i) =>
+                work.video ? (
+                  <VideoCard
+                    key={work.id}
+                    work={work}
+                    staggerIndex={i}
+                    onOpen={setModalSrc}
+                  />
+                ) : (
+                  <StaticCard key={work.id} work={work} staggerIndex={i} />
+                )
+              )}
+            </div>
+          )}
         </div>
       </section>
 
-      {/* ── Video Modal ── */}
+      {/* ── Video modal ── */}
       {modalSrc && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm"
@@ -172,9 +198,9 @@ export default function WorksGallery() {
   );
 }
 
-// ─── Shared card shell styles ──────────────────────────────────────────────────
+// ─── Shared helpers ────────────────────────────────────────────────────────────
 
-function cardShell(staggerIndex: number, clickable: boolean) {
+function cardBaseStyle(staggerIndex: number, clickable: boolean) {
   return {
     className: cn(
       "group relative overflow-hidden rounded-2xl bg-bg-elevated border border-border",
@@ -192,24 +218,25 @@ function cardShell(staggerIndex: number, clickable: boolean) {
   };
 }
 
-// ─── Overlay (always visible, arrow appears on hover) ─────────────────────────
+function TopLabels({ work }: { work: Work }) {
+  return (
+    <div className="absolute top-4 left-4 right-4 flex items-start justify-between z-20 pointer-events-none">
+      <span className="font-mono text-[11px] text-white/40 tabular-nums">
+        {String(work.num).padStart(2, "0")}
+      </span>
+      <span className="text-[10px] font-semibold tracking-wider text-white/60 uppercase bg-black/30 backdrop-blur-sm border border-white/10 px-2.5 py-1 rounded-full">
+        {work.category}
+      </span>
+    </div>
+  );
+}
 
-function CardOverlay({
-  work,
-  showArrow,
-}: {
-  work: Work;
-  showArrow: boolean;
-}) {
+function BottomOverlay({ work, showArrow }: { work: Work; showArrow: boolean }) {
   return (
     <div className="absolute inset-x-0 bottom-0 z-10 p-5 bg-gradient-to-t from-black/95 via-black/80 to-transparent">
-      <p className="font-mono text-[11px] text-white/50 mb-2 tabular-nums">
-        {work.year}
-      </p>
+      <p className="font-mono text-[11px] text-white/50 mb-2 tabular-nums">{work.year}</p>
       <div className="flex items-start gap-3">
-        <h2 className="flex-1 text-sm font-bold text-white leading-snug">
-          {work.title}
-        </h2>
+        <h2 className="flex-1 text-sm font-bold text-white leading-snug">{work.title}</h2>
         {showArrow && (
           <span
             aria-hidden
@@ -219,9 +246,7 @@ function CardOverlay({
           </span>
         )}
       </div>
-      {work.client && (
-        <p className="text-xs text-white/40 mt-1.5">{work.client}</p>
-      )}
+      {work.client && <p className="text-xs text-white/40 mt-1.5">{work.client}</p>}
     </div>
   );
 }
@@ -229,28 +254,15 @@ function CardOverlay({
 // ─── Static card (case studies) ───────────────────────────────────────────────
 
 function StaticCard({ work, staggerIndex }: { work: Work; staggerIndex: number }) {
-  const shell = cardShell(staggerIndex, true);
-
+  const base = cardBaseStyle(staggerIndex, true);
   const inner = (
-    <div role="listitem" {...shell}>
-      {/* Gradient BG */}
-      <div
-        className={cn(
-          "absolute inset-0 bg-gradient-to-br opacity-70 transition-opacity duration-500 group-hover:opacity-90",
-          work.gradient
-        )}
-      />
-      {/* Dot grid */}
+    <div role="listitem" {...base}>
+      <div className={cn("absolute inset-0 bg-gradient-to-br opacity-70 transition-opacity duration-500 group-hover:opacity-90", work.gradient)} />
       <div
         className="absolute inset-0 opacity-[0.055]"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px)",
-          backgroundSize: "22px 22px",
-        }}
+        style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px)", backgroundSize: "22px 22px" }}
         aria-hidden
       />
-      {/* Client watermark */}
       {work.client && (
         <div className="absolute inset-0 flex items-center justify-center px-10">
           <p className="font-black text-white/[0.07] text-center leading-tight uppercase tracking-tight select-none text-4xl md:text-5xl">
@@ -258,21 +270,9 @@ function StaticCard({ work, staggerIndex }: { work: Work; staggerIndex: number }
           </p>
         </div>
       )}
-
-      {/* Top scrim */}
-      <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/50 to-transparent pointer-events-none" />
-
-      {/* Top labels */}
-      <div className="absolute top-4 left-4 right-4 flex items-start justify-between z-10 pointer-events-none">
-        <span className="font-mono text-[11px] text-white/40 tabular-nums">
-          {String(work.num).padStart(2, "0")}
-        </span>
-        <span className="text-[10px] font-semibold tracking-wider text-white/60 uppercase bg-black/30 backdrop-blur-sm border border-white/10 px-2.5 py-1 rounded-full">
-          {work.category}
-        </span>
-      </div>
-
-      <CardOverlay work={work} showArrow={true} />
+      <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/50 to-transparent pointer-events-none z-10" />
+      <TopLabels work={work} />
+      <BottomOverlay work={work} showArrow={true} />
     </div>
   );
 
@@ -285,18 +285,10 @@ function StaticCard({ work, staggerIndex }: { work: Work; staggerIndex: number }
 
 // ─── Video card (hover to play, click to open modal) ──────────────────────────
 
-function VideoCard({
-  work,
-  staggerIndex,
-  onOpen,
-}: {
-  work: Work;
-  staggerIndex: number;
-  onOpen: (src: string) => void;
-}) {
+function VideoCard({ work, staggerIndex, onOpen }: { work: Work; staggerIndex: number; onOpen: (src: string) => void }) {
   const videoRef = React.useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = React.useState(false);
-  const shell = cardShell(staggerIndex, true);
+  const base = cardBaseStyle(staggerIndex, true);
 
   const handleEnter = React.useCallback(() => {
     videoRef.current?.play().catch(() => {});
@@ -305,61 +297,37 @@ function VideoCard({
 
   const handleLeave = React.useCallback(() => {
     const v = videoRef.current;
-    if (v) {
-      v.pause();
-      v.currentTime = 0;
-    }
+    if (v) { v.pause(); v.currentTime = 0; }
     setPlaying(false);
   }, []);
 
   return (
     <div
       role="listitem"
-      {...shell}
+      {...base}
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
-      onClick={() => onOpen(work.video!)}
+      onClick={() => work.video && onOpen(work.video)}
       aria-label={`Pogledaj video: ${work.title}`}
     >
-      {/* Video */}
       <video
         ref={videoRef}
-        src={work.video!}
+        src={work.video ?? ""}
         muted
         loop
         playsInline
         className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
         aria-hidden
       />
-
-      {/* Play icon — visible when not playing */}
-      <div
-        className={cn(
-          "absolute inset-0 z-10 flex items-center justify-center transition-opacity duration-300",
-          playing ? "opacity-0" : "opacity-100"
-        )}
-      >
+      {/* Play icon */}
+      <div className={cn("absolute inset-0 z-10 flex items-center justify-center transition-opacity duration-300", playing ? "opacity-0" : "opacity-100")}>
         <div className="w-14 h-14 rounded-full bg-black/50 backdrop-blur-sm border border-white/20 flex items-center justify-center">
           <Play className="w-6 h-6 text-white ml-0.5" fill="white" />
         </div>
       </div>
-
-      {/* Top scrim */}
       <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/60 to-transparent pointer-events-none z-10" />
-
-      {/* Top labels */}
-      <div className="absolute top-4 left-4 right-4 flex items-start justify-between z-20 pointer-events-none">
-        <span className="font-mono text-[11px] text-white/40 tabular-nums">
-          {String(work.num).padStart(2, "0")}
-        </span>
-        <span className="text-[10px] font-semibold tracking-wider text-white/60 uppercase bg-black/30 backdrop-blur-sm border border-white/10 px-2.5 py-1 rounded-full">
-          {work.category}
-        </span>
-      </div>
-
-      <div className="relative z-10">
-        <CardOverlay work={work} showArrow={false} />
-      </div>
+      <TopLabels work={work} />
+      <BottomOverlay work={work} showArrow={false} />
     </div>
   );
 }
