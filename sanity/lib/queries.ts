@@ -4,6 +4,11 @@ import { caseStudies as fallbackCaseStudies, adShowcase as fallbackAdShowcase } 
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
+export type SanityGalleryImage = {
+  url: string;
+  caption: string | null;
+};
+
 export type SanityCaseStudy = {
   _id: string;
   title: string;
@@ -17,6 +22,7 @@ export type SanityCaseStudy = {
   approach: string;
   results: string[];
   coverImageUrl: string | null;
+  gallery: SanityGalleryImage[];
   featured: boolean;
   order: number;
 };
@@ -46,6 +52,10 @@ const caseStudiesQuery = groq`*[_type == "caseStudy"] | order(order asc) {
   approach,
   results,
   "coverImageUrl": coverImage.asset->url,
+  "gallery": gallery[]{
+    "url": asset->url,
+    caption
+  },
   featured,
   order
 }`;
@@ -73,6 +83,10 @@ const caseStudyBySlugQuery = groq`*[_type == "caseStudy" && slug.current == $slu
   approach,
   results,
   "coverImageUrl": coverImage.asset->url,
+  "gallery": gallery[]{
+    "url": asset->url,
+    caption
+  },
   featured,
   order
 }`;
@@ -94,6 +108,7 @@ export async function getCaseStudies(): Promise<SanityCaseStudy[]> {
       approach: s.approach,
       results: s.results,
       coverImageUrl: s.coverImage ?? null,
+      gallery: [],
       featured: s.featured,
       order: i,
     }));
@@ -141,6 +156,7 @@ export async function getCaseStudyBySlug(slug: string): Promise<SanityCaseStudy 
       approach: s.approach,
       results: s.results,
       coverImageUrl: s.coverImage ?? null,
+      gallery: [],
       featured: s.featured,
       order: 0,
     };

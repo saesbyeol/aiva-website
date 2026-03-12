@@ -35,6 +35,7 @@ export const caseStudy = defineType({
           { title: "Prilagođene LLM Aplikacije", value: "Prilagođene LLM Aplikacije" },
           { title: "AI Web Stranice", value: "AI Web Stranice" },
           { title: "AI Chatbotovi", value: "AI Chatbotovi" },
+          { title: "AI Marketing", value: "AI Marketing" },
         ],
       },
       validation: (r) => r.required(),
@@ -80,9 +81,29 @@ export const caseStudy = defineType({
     }),
     defineField({
       name: "coverImage",
-      title: "Naslovna slika",
+      title: "Naslovna slika (thumbnail kartice)",
       type: "image",
+      description: "Prikazuje se na kartici u galeriji radova",
       options: { hotspot: true },
+    }),
+    defineField({
+      name: "gallery",
+      title: "Galerija slika",
+      type: "array",
+      description: "Prikazuje se na stranici projekta — dodajte koliko god slika želite",
+      of: [
+        {
+          type: "image",
+          options: { hotspot: true },
+          fields: [
+            {
+              name: "caption",
+              title: "Opis slike (opcionalno)",
+              type: "string",
+            },
+          ],
+        },
+      ],
     }),
     defineField({
       name: "featured",

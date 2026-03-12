@@ -7,6 +7,7 @@ import { getCaseStudyBySlug, getCaseStudies } from "@/sanity/lib/queries";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/motion/reveal";
+import { CaseStudyGallery } from "@/components/sections/case-study-gallery";
 import { t } from "@/lib/i18n";
 
 interface Props {
@@ -106,6 +107,11 @@ export default async function CaseStudyPage({ params }: Props) {
           </div>
         </Reveal>
       </div>
+
+      {/* Gallery */}
+      {study.gallery?.length > 0 && (
+        <CaseStudyGallery images={study.gallery} />
+      )}
 
       {/* Body */}
       <section className="pb-24 bg-bg" aria-label="Case study details">

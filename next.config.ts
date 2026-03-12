@@ -7,7 +7,12 @@ const nextConfig: NextConfig = {
   // Image optimization settings
   images: {
     formats: ["image/avif", "image/webp"],
-    remotePatterns: [],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "cdn.sanity.io",
+      },
+    ],
   },
 
   // Security headers are handled by vercel.json for Vercel
