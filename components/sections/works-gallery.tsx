@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, X, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -31,6 +32,7 @@ type Work = {
   href: string | null;
   gradient: string;
   video: string | null;
+  coverImage: string | null;
 };
 
 function toWorks(caseStudies: SanityCaseStudy[], videoAds: SanityVideoAd[]): Work[] {
@@ -46,6 +48,7 @@ function toWorks(caseStudies: SanityCaseStudy[], videoAds: SanityVideoAd[]): Wor
       href: `/radovi/${s.slug}`,
       gradient: GRADIENTS[i % GRADIENTS.length],
       video: null,
+      coverImage: s.coverImageUrl ?? null,
     })),
     ...videoAds.map((a, i) => ({
       id: a._id,
@@ -58,6 +61,7 @@ function toWorks(caseStudies: SanityCaseStudy[], videoAds: SanityVideoAd[]): Wor
       href: null,
       gradient: GRADIENTS[(caseStudies.length + i) % GRADIENTS.length],
       video: a.videoUrl,
+      coverImage: null,
     })),
   ];
 }
@@ -257,18 +261,36 @@ function StaticCard({ work, staggerIndex }: { work: Work; staggerIndex: number }
   const base = cardBaseStyle(staggerIndex, true);
   const inner = (
     <div role="listitem" {...base}>
-      <div className={cn("absolute inset-0 bg-gradient-to-br opacity-70 transition-opacity duration-500 group-hover:opacity-90", work.gradient)} />
-      <div
-        className="absolute inset-0 opacity-[0.055]"
-        style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px)", backgroundSize: "22px 22px" }}
-        aria-hidden
-      />
-      {work.client && (
-        <div className="absolute inset-0 flex items-center justify-center px-10">
-          <p className="font-black text-white/[0.07] text-center leading-tight uppercase tracking-tight select-none text-4xl md:text-5xl">
-            {work.client}
-          </p>
-        </div>
+      {work.coverImage ? (
+        /* ── Photo thumbnail ── */
+        <>
+          <Image
+            src={work.coverImage}
+            alt={work.title}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+          {/* dark scrim so text stays readable */}
+          <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors duration-500" />
+        </>
+      ) : (
+        /* ── Gradient placeholder ── */
+        <>
+          <div className={cn("absolute inset-0 bg-gradient-to-br opacity-70 transition-opacity duration-500 group-hover:opacity-90", work.gradient)} />
+          <div
+            className="absolute inset-0 opacity-[0.055]"
+            style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px)", backgroundSize: "22px 22px" }}
+            aria-hidden
+          />
+          {work.client && (
+            <div className="absolute inset-0 flex items-center justify-center px-10">
+              <p className="font-black text-white/[0.07] text-center leading-tight uppercase tracking-tight select-none text-4xl md:text-5xl">
+                {work.client}
+              </p>
+            </div>
+          )}
+        </>
       )}
       <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/50 to-transparent pointer-events-none z-10" />
       <TopLabels work={work} />
