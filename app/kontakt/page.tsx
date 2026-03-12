@@ -94,7 +94,7 @@ export default function ContactPage() {
                     {t("contact.calendlyDesc")}
                   </p>
                   <a
-                    href="https://calendly.com/aiva-agency"
+                    href="https://calendly.com/automation-aiva/30min"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-5 py-2.5 bg-accent text-white text-sm font-semibold rounded-lg hover:bg-accent-dark transition-colors"
