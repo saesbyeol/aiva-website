@@ -15,14 +15,12 @@ export const caseStudy = defineType({
       name: "client",
       title: "Klijent",
       type: "string",
-      validation: (r) => r.required(),
     }),
     defineField({
       name: "slug",
       title: "URL (slug)",
       type: "slug",
-      options: { source: "client", maxLength: 96 },
-      validation: (r) => r.required(),
+      options: { source: "title", maxLength: 96 },
     }),
     defineField({
       name: "category",
