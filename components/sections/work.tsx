@@ -106,7 +106,7 @@ function CaseStudyCard({
 
       {/* Content */}
       <div className="flex flex-col flex-1 p-6">
-        <p className="text-label text-accent mb-2">{study.client}</p>
+        {study.client && <p className="text-label text-accent mb-2">{study.client}</p>}
         <h3 className="text-h4 font-bold text-fg mb-3 group-hover:text-accent transition-colors leading-tight">
           {study.title}
         </h3>
