@@ -2,6 +2,30 @@
 
 export const services = [
   {
+    id: "audit",
+    icon: "Search",
+    title: "Audit",
+    shortDescription:
+      "Analiziramo vaše postojeće procese, alate i digitalni ekosustav kako bismo identificirali konkretne prilike za AI automatizaciju.",
+    description:
+      "Prije bilo kakve implementacije, provjeravamo gdje se zapravo gubi vrijeme i novac. Analiziramo vaše poslovne procese, trenutne alate, tijekove rada i digitalne kanale te izrađujemo jasno izvješće s prioritiziranim preporukama. Dobivate konkretan plan akcija — bez žargona, samo ono što vrijedi implementirati.",
+    outcomes: [
+      "Jasan uvid u sve procese koji se mogu automatizirati",
+      "Prioritizirana lista AI prilike prema ROI-u",
+      "Pregled trenutnih alata i gdje postoje praznine",
+      "Preporuke prilagođene vašem timu i budžetu",
+    ],
+    deliverables: [
+      "Pisano izvješće s nalazima i preporukama",
+      "Mapa automatizacijskih prilika",
+      "Prijedlog plana implementacije",
+      "Videokonferencija za pojašnjenje rezultata",
+    ],
+    timeline: "2–5 radnih dana",
+    color: "from-amber-500 to-orange-600",
+    image: "/images/services/audit.png",
+  },
+  {
     id: "ai-automation",
     icon: "Zap",
     title: "AI Automatizacija",
