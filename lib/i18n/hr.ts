@@ -14,7 +14,7 @@ const hr = {
   // ─── Navigation ───────────────────────────────────────────────────────────
   nav: {
     services: "Usluge",
-    work: "Radovi",
+    work: "Naši projekti",
     about: "O nama",
     contact: "Kontakt",
     bookCall: "Rezervirajte poziv",
