@@ -37,10 +37,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
+  const cookiebotId = process.env.NEXT_PUBLIC_COOKIEBOT_ID;
 
   return (
     <html lang="hr" suppressHydrationWarning>
       <head>
+        {/* Cookiebot — must be first script so it can block others before they run */}
+        {cookiebotId && (
+          <script
+            id="Cookiebot"
+            src="https://consent.cookiebot.com/uc.js"
+            data-cbid={cookiebotId}
+            data-blockingmode="auto"
+            data-culture="HR"
+            type="text/javascript"
+            async
+          />
+        )}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
