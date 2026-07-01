@@ -76,6 +76,16 @@ function toWorks(caseStudies: SanityCaseStudy[], videoAds: SanityVideoAd[]): Wor
 
 const ALL = "all";
 
+// Fixed filter chips. A project appears under a chip when its Tagovi in Sanity
+// contain the exact matching string. Chips always show, even at 0 (rendered "•").
+const FILTER_TAGS = [
+  "Video oglasi",
+  "Generiranje slika",
+  "E-commerce",
+  "Web stranice",
+  "AI rješenja",
+] as const;
+
 interface Props {
   caseStudies: SanityCaseStudy[];
   videoAds: SanityVideoAd[];
@@ -91,8 +101,8 @@ export default function WorksGallery({ caseStudies, videoAds }: Props) {
     [caseStudies, videoAds]
   );
 
-  // Build filter chips from the tags actually present on the works.
-  // A work can carry several tags, so counts intentionally overlap.
+  // Fixed chips; count = works whose tags include the chip. A work can carry
+  // several tags, so counts intentionally overlap.
   const filters = React.useMemo(() => {
     const counts = new Map<string, number>();
     for (const w of works) {
@@ -100,9 +110,11 @@ export default function WorksGallery({ caseStudies, videoAds }: Props) {
         counts.set(tag, (counts.get(tag) ?? 0) + 1);
       }
     }
-    const tagChips = Array.from(counts.entries())
-      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "hr"))
-      .map(([label, count]) => ({ label, value: label, count }));
+    const tagChips = FILTER_TAGS.map((label) => ({
+      label,
+      value: label,
+      count: counts.get(label) ?? 0,
+    }));
     return [{ label: "Sve", value: ALL, count: works.length }, ...tagChips];
   }, [works]);
 
@@ -149,7 +161,7 @@ export default function WorksGallery({ caseStudies, videoAds }: Props) {
                 >
                   {f.label}
                   <span className="font-mono text-xs opacity-60 tabular-nums">
-                    {f.count}
+                    {f.count === 0 ? "•" : f.count}
                   </span>
                 </button>
               ))}
