@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Sun, Moon, ArrowRight, Home } from "lucide-react";
 import { getNavLinks } from "@/lib/constants";
 import { cn } from "@/lib/utils";
+import { LocaleToggle } from "./locale-toggle";
 
 interface MobileNavProps {
   isOpen: boolean;
@@ -109,18 +110,22 @@ export function MobileNav({
 
             {/* Bottom actions */}
             <div className="flex items-center justify-between pt-6 border-t border-border">
-              <button
-                onClick={onToggleTheme}
-                className="flex items-center gap-2 text-sm text-fg-secondary hover:text-fg transition-colors"
-                aria-label={`${t("nav.switchTo")} ${theme === "dark" ? t("nav.lightMode") : t("nav.darkMode")}`}
-              >
-                {theme === "dark" ? (
-                  <Sun className="w-4 h-4" />
-                ) : (
-                  <Moon className="w-4 h-4" />
-                )}
-                {theme === "dark" ? t("nav.lightMode") : t("nav.darkMode")}
-              </button>
+              <div className="flex items-center gap-4">
+                <button
+                  onClick={onToggleTheme}
+                  className="flex items-center gap-2 text-sm text-fg-secondary hover:text-fg transition-colors"
+                  aria-label={`${t("nav.switchTo")} ${theme === "dark" ? t("nav.lightMode") : t("nav.darkMode")}`}
+                >
+                  {theme === "dark" ? (
+                    <Sun className="w-4 h-4" />
+                  ) : (
+                    <Moon className="w-4 h-4" />
+                  )}
+                  {theme === "dark" ? t("nav.lightMode") : t("nav.darkMode")}
+                </button>
+
+                <LocaleToggle />
+              </div>
 
               <Link
                 href="/kontakt"

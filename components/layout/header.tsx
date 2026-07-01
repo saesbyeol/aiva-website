@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import { getNavLinks } from "@/lib/constants";
 import { Button } from "@/components/ui/button";
 import { MobileNav } from "./mobile-nav";
+import { LocaleToggle } from "./locale-toggle";
 
 export function Header() {
   const t = useTranslations();
@@ -98,6 +99,8 @@ export function Header() {
 
           {/* Actions */}
           <div className="flex items-center gap-2">
+            <LocaleToggle className="hidden md:flex" />
+
             {/* Theme toggle */}
             <button
               onClick={toggleTheme}
