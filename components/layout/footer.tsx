@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { SITE, getFooterLinks } from "@/lib/constants";
@@ -77,12 +76,9 @@ export function Footer() {
             <p className="text-label mb-4">{t("footer.legal")}</p>
             <ul className="space-y-3" role="list">
               {footerLinks.legal.map((link) => (
-                <li key={link.href}>
-                  {/* "/privatnost#terms" is a hash fragment, not a routed
-                      pathname key, so it falls outside the strict AppPathnames
-                      union — bridge the type here. */}
+                <li key={typeof link.href === "string" ? link.href : link.href.pathname}>
                   <Link
-                    href={link.href as React.ComponentProps<typeof Link>["href"]}
+                    href={link.href}
                     className="text-sm text-fg-secondary hover:text-fg transition-colors link-underline"
                   >
                     {link.label}

@@ -35,7 +35,10 @@ export function getFooterLinks(t: T) {
     ],
     legal: [
       { label: t("privacy.title"), href: "/privatnost" as const },
-      { label: t("footer.terms"), href: "/privatnost#terms" as const },
+      {
+        label: t("footer.terms"),
+        href: { pathname: "/privatnost", hash: "terms" } as const,
+      },
     ],
     social: [
       { label: "Instagram", href: SITE.instagram },
