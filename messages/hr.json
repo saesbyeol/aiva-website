@@ -22,7 +22,8 @@
     "social": "Društvene mreže",
     "legal": "Pravno",
     "builtWith": "Made with ❤️ by Aiva",
-    "rights": "Sva prava pridržana."
+    "rights": "Sva prava pridržana.",
+    "terms": "Uvjeti korištenja"
   },
   "hero": {
     "eyebrow": "AI automatizacija za moderne tvrtke",
@@ -39,7 +40,8 @@
     "trustedBy": "AI rješenja stručnjaka za digitalni marketing",
     "sectors": "automatizacija · sadržaj · chatbotovi · web",
     "avgRating": "dostava usluga",
-    "scroll": "skrolaj"
+    "scroll": "skrolaj",
+    "servicesTagline": "AI chatbotovi • Automatizacija marketinga • AI sadržaj • AI izrada web stranica"
   },
   "clients": {
     "label": "Tvrtke koje nam vjeruju"
@@ -130,7 +132,8 @@
     "client": "Klijent",
     "tags": "Oznake",
     "year": "Godina",
-    "readStudy": "Pročitaj studiju slučaja:"
+    "readStudy": "Pročitaj studiju slučaja:",
+    "emptyCategory": "Još nema sadržaja u ovoj kategoriji."
   },
   "workPage": {
     "badge": "Naši radovi",
