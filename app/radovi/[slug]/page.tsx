@@ -113,6 +113,19 @@ export default async function CaseStudyPage({ params }: Props) {
         <CaseStudyGallery images={study.gallery} />
       )}
 
+      {/* Description below the media */}
+      {study.mediaDescription && (
+        <section className="pb-16 bg-bg" aria-label="Opis projekta">
+          <div className="container-tight">
+            <Reveal>
+              <p className="text-body-lg text-fg-secondary leading-relaxed whitespace-pre-line">
+                {study.mediaDescription}
+              </p>
+            </Reveal>
+          </div>
+        </section>
+      )}
+
       {/* Body */}
       <section className="pb-24 bg-bg" aria-label="Case study details">
         <div className="container-tight">

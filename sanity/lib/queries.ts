@@ -4,10 +4,14 @@ import { caseStudies as fallbackCaseStudies, adShowcase as fallbackAdShowcase } 
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
-export type SanityGalleryImage = {
-  url: string;
+export type SanityGalleryItem = {
+  kind: "image" | "video";
+  url: string | null;
   caption: string | null;
 };
+
+/** @deprecated use SanityGalleryItem — kept as alias for older imports */
+export type SanityGalleryImage = SanityGalleryItem;
 
 export type SanityCaseStudy = {
   _id: string;
@@ -22,7 +26,8 @@ export type SanityCaseStudy = {
   approach: string;
   results: string[];
   coverImageUrl: string | null;
-  gallery: SanityGalleryImage[];
+  gallery: SanityGalleryItem[];
+  mediaDescription: string | null;
   featured: boolean;
   order: number;
 };
@@ -53,9 +58,11 @@ const caseStudiesQuery = groq`*[_type == "caseStudy"] | order(order asc) {
   results,
   "coverImageUrl": coverImage.asset->url,
   "gallery": gallery[]{
-    "url": asset->url,
+    "kind": select(_type == "galleryVideo" => "video", "image"),
+    "url": select(_type == "galleryVideo" => file.asset->url, asset->url),
     caption
   },
+  mediaDescription,
   featured,
   order
 }`;
@@ -84,9 +91,11 @@ const caseStudyBySlugQuery = groq`*[_type == "caseStudy" && slug.current == $slu
   results,
   "coverImageUrl": coverImage.asset->url,
   "gallery": gallery[]{
-    "url": asset->url,
+    "kind": select(_type == "galleryVideo" => "video", "image"),
+    "url": select(_type == "galleryVideo" => file.asset->url, asset->url),
     caption
   },
+  mediaDescription,
   featured,
   order
 }`;
@@ -109,6 +118,7 @@ export async function getCaseStudies(): Promise<SanityCaseStudy[]> {
       results: s.results,
       coverImageUrl: s.coverImage ?? null,
       gallery: [],
+      mediaDescription: null,
       featured: s.featured,
       order: i,
     }));
@@ -157,6 +167,7 @@ export async function getCaseStudyBySlug(slug: string): Promise<SanityCaseStudy 
       results: s.results,
       coverImageUrl: s.coverImage ?? null,
       gallery: [],
+      mediaDescription: null,
       featured: s.featured,
       order: 0,
     };
