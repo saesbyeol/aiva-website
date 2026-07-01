@@ -86,12 +86,14 @@ export const caseStudy = defineType({
     }),
     defineField({
       name: "gallery",
-      title: "Galerija slika",
+      title: "Galerija (slike i videi)",
       type: "array",
-      description: "Prikazuje se na stranici projekta — dodajte koliko god slika želite",
+      description:
+        "Prikazuje se na stranici projekta — dodajte slike i/ili videe u željenom redoslijedu",
       of: [
         {
           type: "image",
+          title: "Slika",
           options: { hotspot: true },
           fields: [
             {
@@ -101,7 +103,39 @@ export const caseStudy = defineType({
             },
           ],
         },
+        {
+          type: "object",
+          name: "galleryVideo",
+          title: "Video",
+          fields: [
+            {
+              name: "file",
+              title: "Video datoteka",
+              type: "file",
+              options: { accept: "video/*" },
+              validation: (r) => r.required(),
+            },
+            {
+              name: "caption",
+              title: "Opis videa (opcionalno)",
+              type: "string",
+            },
+          ],
+          preview: {
+            select: { title: "caption", fileName: "file.asset.originalFilename" },
+            prepare({ title, fileName }) {
+              return { title: title || fileName || "Video", subtitle: "Video" };
+            },
+          },
+        },
       ],
+    }),
+    defineField({
+      name: "mediaDescription",
+      title: "Opis ispod galerije",
+      type: "text",
+      rows: 4,
+      description: "Tekst koji se prikazuje ispod galerije na stranici projekta (opcionalno)",
     }),
     defineField({
       name: "featured",
