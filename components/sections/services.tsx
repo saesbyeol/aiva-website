@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { motion } from "framer-motion";
 import {
@@ -15,7 +15,8 @@ import {
 import { cn } from "@/lib/utils";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal, Stagger } from "@/components/motion/reveal";
-import { services } from "@/lib/content";
+import { getContent } from "@/lib/content-i18n";
+import type { services } from "@/lib/content";
 
 const iconMap: Record<string, LucideIcon> = {
   Zap,
@@ -26,6 +27,8 @@ const iconMap: Record<string, LucideIcon> = {
 
 export function Services() {
   const t = useTranslations();
+  const locale = useLocale();
+  const { services } = getContent(locale);
   return (
     <section className="section-pad bg-bg" aria-label="Services">
       <div className="container-default">

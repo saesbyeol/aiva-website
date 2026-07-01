@@ -1,17 +1,19 @@
 "use client";
 
 import * as React from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/motion/reveal";
-import { process as processSteps } from "@/lib/content";
+import { getContent } from "@/lib/content-i18n";
 import { cn } from "@/lib/utils";
 
 const CYCLE_MS = 3200;
 
 export function Process() {
   const t = useTranslations();
+  const locale = useLocale();
+  const { process: processSteps } = getContent(locale);
   const [active, setActive] = React.useState(0);
   const [paused, setPaused] = React.useState(false);
 

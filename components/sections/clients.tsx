@@ -1,11 +1,13 @@
 import * as React from "react";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { Marquee } from "@/components/ui/marquee";
 import { Reveal } from "@/components/motion/reveal";
-import { clients } from "@/lib/content";
+import { getContent } from "@/lib/content-i18n";
 
 export async function Clients() {
   const t = await getTranslations();
+  const locale = await getLocale();
+  const { clients } = getContent(locale);
   return (
     <section className="py-16 border-y border-border overflow-hidden" aria-label="Clients">
       <div className="container-default mb-10">

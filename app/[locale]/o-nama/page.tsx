@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Linkedin } from "lucide-react";
 import { constructMetadata } from "@/lib/seo";
-import { teamMembers, toolingStack } from "@/lib/content";
+import { getContent } from "@/lib/content-i18n";
+import type { teamMembers } from "@/lib/content";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -24,6 +25,7 @@ export default async function AboutPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations();
+  const { teamMembers, toolingStack } = getContent(locale);
   const principles = t.raw("about.principles") as {
     number: string;
     title: string;
