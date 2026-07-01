@@ -3,10 +3,10 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useTranslations } from "next-intl";
-import { ArrowUpRight, X, Play } from "lucide-react";
+import { ArrowRight, X, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/motion/reveal";
+import { useTranslations } from "next-intl";
 import type { SanityCaseStudy, SanityVideoAd } from "@/sanity/lib/queries";
 
 // ─── Gradient palette (cycles by index) ───────────────────────────────────────
@@ -29,6 +29,8 @@ type Work = {
   client: string | null;
   category: string;
   year: string;
+  description: string | null;
+  tags: string[];
   type: "case-study" | "ad";
   href: string | null;
   gradient: string;
@@ -45,6 +47,8 @@ function toWorks(caseStudies: SanityCaseStudy[], videoAds: SanityVideoAd[]): Wor
       client: s.client,
       category: s.category,
       year: s.year,
+      description: s.description ?? null,
+      tags: s.tags ?? [],
       type: "case-study" as const,
       href: `/radovi/${s.slug}`,
       gradient: GRADIENTS[i % GRADIENTS.length],
@@ -58,6 +62,8 @@ function toWorks(caseStudies: SanityCaseStudy[], videoAds: SanityVideoAd[]): Wor
       client: null,
       category: a.category,
       year: "2025",
+      description: a.description ?? null,
+      tags: a.tags ?? [],
       type: "ad" as const,
       href: null,
       gradient: GRADIENTS[(caseStudies.length + i) % GRADIENTS.length],
@@ -67,12 +73,19 @@ function toWorks(caseStudies: SanityCaseStudy[], videoAds: SanityVideoAd[]): Wor
   ];
 }
 
-// ─── Filter config ────────────────────────────────────────────────────────────
-
-const FILTER_VALUES = ["all", "case-study", "ad"] as const;
-type FilterValue = (typeof FILTER_VALUES)[number];
-
 // ─── Gallery ──────────────────────────────────────────────────────────────────
+
+const ALL = "all";
+
+// Fixed filter chips. A project appears under a chip when its Tagovi in Sanity
+// contain the exact matching string. Chips always show, even at 0 (rendered "•").
+const FILTER_TAGS = [
+  "Video oglasi",
+  "Generiranje slika",
+  "E-commerce",
+  "Web stranice",
+  "AI rješenja",
+] as const;
 
 interface Props {
   caseStudies: SanityCaseStudy[];
@@ -81,7 +94,8 @@ interface Props {
 
 export default function WorksGallery({ caseStudies, videoAds }: Props) {
   const t = useTranslations();
-  const [active, setActive] = React.useState<FilterValue>("all");
+  // `active` is either ALL or a tag string
+  const [active, setActive] = React.useState<string>(ALL);
   const [modalSrc, setModalSrc] = React.useState<string | null>(null);
 
   const works = React.useMemo(
@@ -89,14 +103,25 @@ export default function WorksGallery({ caseStudies, videoAds }: Props) {
     [caseStudies, videoAds]
   );
 
-  const FILTERS = [
-    { label: "Sve", value: "all" as FilterValue, count: works.length },
-    { label: "Video oglasi", value: "ad" as FilterValue, count: videoAds.length },
-    { label: "Projekti", value: "case-study" as FilterValue, count: caseStudies.length },
-  ];
+  // Fixed chips; count = works whose tags include the chip. A work can carry
+  // several tags, so counts intentionally overlap.
+  const filters = React.useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const w of works) {
+      for (const tag of w.tags) {
+        counts.set(tag, (counts.get(tag) ?? 0) + 1);
+      }
+    }
+    const tagChips = FILTER_TAGS.map((label) => ({
+      label,
+      value: label,
+      count: counts.get(label) ?? 0,
+    }));
+    return [{ label: "Sve", value: ALL, count: works.length }, ...tagChips];
+  }, [works]);
 
   const filtered = React.useMemo(
-    () => (active === "all" ? works : works.filter((w) => w.type === active)),
+    () => (active === ALL ? works : works.filter((w) => w.tags.includes(active))),
     [active, works]
   );
 
@@ -122,23 +147,23 @@ export default function WorksGallery({ caseStudies, videoAds }: Props) {
 
           {/* Filter pills */}
           <Reveal delay={0.15}>
-            <div className="flex gap-2 flex-wrap" role="tablist" aria-label="Filter radova">
-              {FILTERS.map((f) => (
+            <div className="flex gap-2.5 flex-wrap" role="tablist" aria-label="Filter radova">
+              {filters.map((f) => (
                 <button
                   key={f.value}
                   role="tab"
                   aria-selected={active === f.value}
                   onClick={() => setActive(f.value)}
                   className={cn(
-                    "px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 border",
+                    "inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 border",
                     active === f.value
                       ? "bg-accent text-white border-accent shadow-[0_0_24px_rgba(99,102,241,0.45)]"
                       : "text-fg-secondary border-border hover:border-border-strong hover:text-fg bg-transparent"
                   )}
                 >
                   {f.label}
-                  <span className="ml-1.5 font-mono text-xs opacity-50">
-                    [{f.count}]
+                  <span className="font-mono text-xs opacity-60 tabular-nums">
+                    {f.count === 0 ? "•" : f.count}
                   </span>
                 </button>
               ))}
@@ -157,7 +182,7 @@ export default function WorksGallery({ caseStudies, videoAds }: Props) {
           ) : (
             <div
               key={active}
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 items-start"
               role="list"
             >
               {filtered.map((work, i) =>
@@ -204,115 +229,108 @@ export default function WorksGallery({ caseStudies, videoAds }: Props) {
   );
 }
 
-// ─── Shared helpers ────────────────────────────────────────────────────────────
+// ─── Shared card pieces ────────────────────────────────────────────────────────
 
-function cardBaseStyle(staggerIndex: number, clickable: boolean) {
+function cardAnimation(staggerIndex: number): React.CSSProperties {
   return {
-    className: cn(
-      "group relative overflow-hidden rounded-2xl bg-bg-elevated border border-border",
-      "aspect-[3/4] transition-all duration-500 ease-out",
-      "hover:border-border-strong hover:shadow-[0_0_60px_rgba(99,102,241,0.15)]",
-      clickable ? "cursor-pointer" : "cursor-default"
-    ),
-    style: {
-      animationName: "reveal-up",
-      animationDuration: "0.55s",
-      animationDelay: `${Math.min(staggerIndex * 55, 400)}ms`,
-      animationFillMode: "both",
-      animationTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
-    } as React.CSSProperties,
+    animationName: "reveal-up",
+    animationDuration: "0.55s",
+    animationDelay: `${Math.min(staggerIndex * 55, 400)}ms`,
+    animationFillMode: "both",
+    animationTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
   };
 }
 
-function TopLabels({ work }: { work: Work }) {
+const cardShell =
+  "group relative block rounded-2xl border border-border bg-bg-elevated p-3 " +
+  "transition-all duration-500 ease-out hover:border-border-strong " +
+  "hover:shadow-[0_0_50px_rgba(99,102,241,0.12)] " +
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent";
+
+/** "PROJECT 01" badge pinned to the media */
+function ProjectBadge({ num }: { num: number }) {
   return (
-    <div className="absolute top-4 left-4 right-4 flex items-start justify-between z-20 pointer-events-none">
-      <span className="font-mono text-[11px] text-white/40 tabular-nums">
-        {String(work.num).padStart(2, "0")}
-      </span>
-      <span className="text-[10px] font-semibold tracking-wider text-white/60 uppercase bg-black/30 backdrop-blur-sm border border-white/10 px-2.5 py-1 rounded-full">
-        {work.category}
+    <span className="absolute top-4 left-4 z-20 font-mono text-[11px] tracking-widest uppercase text-white/80 bg-black/40 backdrop-blur-sm border border-white/15 rounded-md px-2.5 py-1">
+      Project {String(num).padStart(2, "0")}
+    </span>
+  );
+}
+
+/** Text block below the media: category · year, title, description, CTA */
+function CardBody({ work, cta }: { work: Work; cta: string }) {
+  return (
+    <div className="pt-5 px-1.5 pb-1.5">
+      <p className="font-mono text-xs tracking-wider uppercase text-accent mb-3">
+        {work.category} · {work.year}
+      </p>
+      <h2 className="text-xl font-bold text-fg leading-snug mb-2.5 group-hover:text-accent transition-colors duration-300">
+        {work.title}
+      </h2>
+      {work.description && (
+        <p className="text-body text-fg-secondary leading-relaxed line-clamp-2 mb-4">
+          {work.description}
+        </p>
+      )}
+      <span className="inline-flex items-center gap-1.5 font-mono text-sm text-accent">
+        {cta}
+        <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
       </span>
     </div>
   );
 }
 
-function BottomOverlay({ work, showArrow }: { work: Work; showArrow: boolean }) {
-  return (
-    <div className="absolute inset-x-0 bottom-0 z-10 p-5 bg-gradient-to-t from-black/95 via-black/80 to-transparent">
-      <p className="font-mono text-[11px] text-white/50 mb-2 tabular-nums">{work.year}</p>
-      <div className="flex items-start gap-3">
-        <h2 className="flex-1 text-sm font-bold text-white leading-snug">{work.title}</h2>
-        {showArrow && (
-          <span
-            aria-hidden
-            className="flex-shrink-0 w-8 h-8 rounded-full bg-accent/20 border border-accent/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100"
-          >
-            <ArrowUpRight className="w-4 h-4 text-accent" />
-          </span>
-        )}
-      </div>
-      {work.client && <p className="text-xs text-white/40 mt-1.5">{work.client}</p>}
-    </div>
-  );
-}
-
-// ─── Static card (case studies) ───────────────────────────────────────────────
+// ─── Static card (case studies) — whole card links to the project ─────────────
 
 function StaticCard({ work, staggerIndex }: { work: Work; staggerIndex: number }) {
-  const base = cardBaseStyle(staggerIndex, true);
-  const inner = (
-    <div role="listitem" {...base}>
-      {work.coverImage ? (
-        /* ── Photo thumbnail ── */
-        <>
-          <Image
-            src={work.coverImage}
-            alt={work.title}
-            fill
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            className="object-cover transition-transform duration-700 group-hover:scale-105"
-          />
-          {/* dark scrim so text stays readable */}
-          <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors duration-500" />
-        </>
-      ) : (
-        /* ── Gradient placeholder ── */
-        <>
-          <div className={cn("absolute inset-0 bg-gradient-to-br opacity-70 transition-opacity duration-500 group-hover:opacity-90", work.gradient)} />
-          <div
-            className="absolute inset-0 opacity-[0.055]"
-            style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px)", backgroundSize: "22px 22px" }}
-            aria-hidden
-          />
-          {work.client && (
-            <div className="absolute inset-0 flex items-center justify-center px-10">
-              <p className="font-black text-white/[0.07] text-center leading-tight uppercase tracking-tight select-none text-4xl md:text-5xl">
-                {work.client}
-              </p>
-            </div>
-          )}
-        </>
-      )}
-      <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/50 to-transparent pointer-events-none z-10" />
-      <TopLabels work={work} />
-      <BottomOverlay work={work} showArrow={true} />
-    </div>
-  );
-
   return (
-    <Link href={work.href!} className="block" aria-label={work.title}>
-      {inner}
+    <Link
+      href={work.href!}
+      role="listitem"
+      aria-label={work.title}
+      className={cardShell}
+      style={cardAnimation(staggerIndex)}
+    >
+      <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-bg">
+        {work.coverImage ? (
+          <>
+            <Image
+              src={work.coverImage}
+              alt={work.title}
+              fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-500" />
+          </>
+        ) : (
+          <>
+            <div className={cn("absolute inset-0 bg-gradient-to-br opacity-70 transition-opacity duration-500 group-hover:opacity-90", work.gradient)} />
+            <div
+              className="absolute inset-0 opacity-[0.055]"
+              style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px)", backgroundSize: "22px 22px" }}
+              aria-hidden
+            />
+            {work.client && (
+              <div className="absolute inset-0 flex items-center justify-center px-8">
+                <p className="font-black text-white/[0.08] text-center leading-tight uppercase tracking-tight select-none text-4xl md:text-5xl">
+                  {work.client}
+                </p>
+              </div>
+            )}
+          </>
+        )}
+        <ProjectBadge num={work.num} />
+      </div>
+      <CardBody work={work} cta="Pogledaj projekt" />
     </Link>
   );
 }
 
-// ─── Video card (hover to play, click to open modal) ──────────────────────────
+// ─── Video card (hover to play, whole card opens modal) ───────────────────────
 
 function VideoCard({ work, staggerIndex, onOpen }: { work: Work; staggerIndex: number; onOpen: (src: string) => void }) {
   const videoRef = React.useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = React.useState(false);
-  const base = cardBaseStyle(staggerIndex, true);
 
   const handleEnter = React.useCallback(() => {
     videoRef.current?.play().catch(() => {});
@@ -325,33 +343,44 @@ function VideoCard({ work, staggerIndex, onOpen }: { work: Work; staggerIndex: n
     setPlaying(false);
   }, []);
 
+  const open = React.useCallback(() => {
+    if (work.video) onOpen(work.video);
+  }, [work.video, onOpen]);
+
   return (
     <div
       role="listitem"
-      {...base}
+      aria-label={`Pogledaj video: ${work.title}`}
+      tabIndex={0}
+      className={cn(cardShell, "cursor-pointer")}
+      style={cardAnimation(staggerIndex)}
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
-      onClick={() => work.video && onOpen(work.video)}
-      aria-label={`Pogledaj video: ${work.title}`}
+      onClick={open}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); }
+      }}
     >
-      <video
-        ref={videoRef}
-        src={work.video ?? ""}
-        muted
-        loop
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-        aria-hidden
-      />
-      {/* Play icon */}
-      <div className={cn("absolute inset-0 z-10 flex items-center justify-center transition-opacity duration-300", playing ? "opacity-0" : "opacity-100")}>
-        <div className="w-14 h-14 rounded-full bg-black/50 backdrop-blur-sm border border-white/20 flex items-center justify-center">
-          <Play className="w-6 h-6 text-white ml-0.5" fill="white" />
+      <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-bg">
+        <video
+          ref={videoRef}
+          src={work.video ?? ""}
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          aria-hidden
+        />
+        {/* Play icon (hidden while playing) */}
+        <div className={cn("absolute inset-0 z-10 flex items-center justify-center transition-opacity duration-300", playing ? "opacity-0" : "opacity-100")}>
+          <div className="w-14 h-14 rounded-full bg-black/50 backdrop-blur-sm border border-white/20 flex items-center justify-center">
+            <Play className="w-6 h-6 text-white ml-0.5" fill="white" />
+          </div>
         </div>
+        <ProjectBadge num={work.num} />
       </div>
-      <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/60 to-transparent pointer-events-none z-10" />
-      <TopLabels work={work} />
-      <BottomOverlay work={work} showArrow={false} />
+      <CardBody work={work} cta="Pogledaj video" />
     </div>
   );
 }
