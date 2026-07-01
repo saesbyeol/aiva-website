@@ -56,16 +56,16 @@ export default async function PrivacyPage({ params }: Props) {
 
             <Section title={t("privacy.s2Title")}>
               <p>
-                <strong className="text-fg">Podaci obrasca za kontakt:</strong>{" "}
-                {t("privacy.s2Form").replace("Podaci obrasca za kontakt: ", "")}
+                <strong className="text-fg">{t("privacy.s2FormLabel")}:</strong>{" "}
+                {t("privacy.s2FormBody")}
               </p>
               <p>
-                <strong className="text-fg">Analitika:</strong>{" "}
-                {t("privacy.s2Analytics").replace("Analitika: ", "")}
+                <strong className="text-fg">{t("privacy.s2AnalyticsLabel")}:</strong>{" "}
+                {t("privacy.s2AnalyticsBody")}
               </p>
               <p>
-                <strong className="text-fg">Kolačići:</strong>{" "}
-                {t("privacy.s2Cookies").replace("Kolačići: ", "")}
+                <strong className="text-fg">{t("privacy.s2CookiesLabel")}:</strong>{" "}
+                {t("privacy.s2CookiesBody")}
               </p>
             </Section>
 
