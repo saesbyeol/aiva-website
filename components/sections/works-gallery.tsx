@@ -29,6 +29,7 @@ type Work = {
   category: string;
   year: string;
   description: string | null;
+  tags: string[];
   type: "case-study" | "ad";
   href: string | null;
   gradient: string;
@@ -46,6 +47,7 @@ function toWorks(caseStudies: SanityCaseStudy[], videoAds: SanityVideoAd[]): Wor
       category: s.category,
       year: s.year,
       description: s.description ?? null,
+      tags: s.tags ?? [],
       type: "case-study" as const,
       href: `/radovi/${s.slug}`,
       gradient: GRADIENTS[i % GRADIENTS.length],
@@ -60,6 +62,7 @@ function toWorks(caseStudies: SanityCaseStudy[], videoAds: SanityVideoAd[]): Wor
       category: a.category,
       year: "2025",
       description: a.description ?? null,
+      tags: a.tags ?? [],
       type: "ad" as const,
       href: null,
       gradient: GRADIENTS[(caseStudies.length + i) % GRADIENTS.length],
@@ -69,12 +72,9 @@ function toWorks(caseStudies: SanityCaseStudy[], videoAds: SanityVideoAd[]): Wor
   ];
 }
 
-// ─── Filter config ────────────────────────────────────────────────────────────
-
-const FILTER_VALUES = ["all", "case-study", "ad"] as const;
-type FilterValue = (typeof FILTER_VALUES)[number];
-
 // ─── Gallery ──────────────────────────────────────────────────────────────────
+
+const ALL = "all";
 
 interface Props {
   caseStudies: SanityCaseStudy[];
@@ -82,7 +82,8 @@ interface Props {
 }
 
 export default function WorksGallery({ caseStudies, videoAds }: Props) {
-  const [active, setActive] = React.useState<FilterValue>("all");
+  // `active` is either ALL or a tag string
+  const [active, setActive] = React.useState<string>(ALL);
   const [modalSrc, setModalSrc] = React.useState<string | null>(null);
 
   const works = React.useMemo(
@@ -90,14 +91,23 @@ export default function WorksGallery({ caseStudies, videoAds }: Props) {
     [caseStudies, videoAds]
   );
 
-  const FILTERS = [
-    { label: "Sve", value: "all" as FilterValue, count: works.length },
-    { label: "Video oglasi", value: "ad" as FilterValue, count: videoAds.length },
-    { label: "Projekti", value: "case-study" as FilterValue, count: caseStudies.length },
-  ];
+  // Build filter chips from the tags actually present on the works.
+  // A work can carry several tags, so counts intentionally overlap.
+  const filters = React.useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const w of works) {
+      for (const tag of w.tags) {
+        counts.set(tag, (counts.get(tag) ?? 0) + 1);
+      }
+    }
+    const tagChips = Array.from(counts.entries())
+      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "hr"))
+      .map(([label, count]) => ({ label, value: label, count }));
+    return [{ label: "Sve", value: ALL, count: works.length }, ...tagChips];
+  }, [works]);
 
   const filtered = React.useMemo(
-    () => (active === "all" ? works : works.filter((w) => w.type === active)),
+    () => (active === ALL ? works : works.filter((w) => w.tags.includes(active))),
     [active, works]
   );
 
@@ -123,23 +133,23 @@ export default function WorksGallery({ caseStudies, videoAds }: Props) {
 
           {/* Filter pills */}
           <Reveal delay={0.15}>
-            <div className="flex gap-2 flex-wrap" role="tablist" aria-label="Filter radova">
-              {FILTERS.map((f) => (
+            <div className="flex gap-2.5 flex-wrap" role="tablist" aria-label="Filter radova">
+              {filters.map((f) => (
                 <button
                   key={f.value}
                   role="tab"
                   aria-selected={active === f.value}
                   onClick={() => setActive(f.value)}
                   className={cn(
-                    "px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 border",
+                    "inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 border",
                     active === f.value
                       ? "bg-accent text-white border-accent shadow-[0_0_24px_rgba(99,102,241,0.45)]"
                       : "text-fg-secondary border-border hover:border-border-strong hover:text-fg bg-transparent"
                   )}
                 >
                   {f.label}
-                  <span className="ml-1.5 font-mono text-xs opacity-50">
-                    [{f.count}]
+                  <span className="font-mono text-xs opacity-60 tabular-nums">
+                    {f.count}
                   </span>
                 </button>
               ))}
