@@ -18,12 +18,15 @@ async function clickEnToggle(page: Page) {
     return;
   }
 
-  // Narrow viewport: header toggle is hidden via `md:flex`, use the mobile
-  // nav's copy instead.
-  await page.locator("button[aria-label='Open navigation menu']").click();
-  const mobileToggle = page
-    .locator("#mobile-nav")
-    .getByRole("button", { name: /^en$/i });
+  // Narrow viewport: header toggle is hidden via `md:flex`. Open the mobile
+  // nav and use its copy of the toggle instead. The hamburger button's
+  // accessible name comes from the (currently Croatian-only, see en.json)
+  // nav.openMenu/closeMenu translations, so we target it by the stable
+  // `aria-controls="mobile-nav"` attribute rather than by text.
+  await page.locator('header button[aria-controls="mobile-nav"]').click();
+  const mobileNav = page.locator("#mobile-nav");
+  await expect(mobileNav).toBeVisible();
+  const mobileToggle = mobileNav.getByRole("button", { name: /^en$/i });
   await expect(mobileToggle).toBeVisible();
   await mobileToggle.click();
 }

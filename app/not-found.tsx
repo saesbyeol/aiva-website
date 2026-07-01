@@ -1,10 +1,22 @@
+import Link from "next/link";
 import { getTranslations } from "next-intl/server";
-import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
+import { routing } from "@/i18n/routing";
 
 export default async function NotFound() {
-  const t = await getTranslations();
+  // This file lives outside app/[locale]/, so it renders for paths that
+  // don't match any locale-prefixed route at all (e.g. a request-locale
+  // mismatch or a completely unknown top-level path). There is no
+  // NextIntlClientProvider ancestor here (that's only mounted by
+  // app/[locale]/layout.tsx), so:
+  //  - getTranslations() needs an explicit locale, since there's no
+  //    request-scoped locale to read.
+  //  - the locale-aware `Link` from "@/i18n/navigation" can't be used here
+  //    either (it calls useLocale() under the hood, which throws "No intl
+  //    context found" without a provider) — use plain next/link to "/"
+  //    instead, which is exactly the prefix-free default-locale home.
+  const t = await getTranslations({ locale: routing.defaultLocale });
   return (
     <section
       className="min-h-screen flex items-center justify-center bg-bg"
