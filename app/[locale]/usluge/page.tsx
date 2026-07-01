@@ -13,7 +13,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { constructMetadata } from "@/lib/seo";
-import { services } from "@/lib/content";
+import { getContent } from "@/lib/content-i18n";
 import { Badge } from "@/components/ui/badge";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/motion/reveal";
@@ -43,6 +43,7 @@ export default async function ServicesPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations();
+  const { services } = getContent(locale);
   return (
     <>
       {/* Hero */}

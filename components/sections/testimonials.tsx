@@ -1,16 +1,19 @@
 "use client";
 
 import * as React from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { motion, useInView } from "framer-motion";
 import { Quote } from "lucide-react";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal, Stagger } from "@/components/motion/reveal";
-import { testimonials } from "@/lib/content";
+import { getContent } from "@/lib/content-i18n";
+import type { testimonials } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
 export function Testimonials() {
   const t = useTranslations();
+  const locale = useLocale();
+  const { testimonials } = getContent(locale);
   return (
     <section
       className="section-pad bg-bg-secondary overflow-hidden"

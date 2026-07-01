@@ -1,343 +1,346 @@
 {
   "site": {
-    "tagline": "AI sustavi koji povećavaju profit.",
-    "description": "Aiva gradi produkcijsko-spremne AI sustave — automatizacije, pipeline-ove za sadržaj, prilagođene LLM aplikacije — koji se besprijekorno integriraju u vaše poslovanje i donose mjerljive rezultate."
+    "tagline": "AI systems that increase profit.",
+    "description": "Aiva builds production-ready AI systems — automations, content pipelines, custom LLM applications — that integrate seamlessly into your business and deliver measurable results."
   },
   "nav": {
-    "services": "Usluge",
-    "work": "Naši projekti",
-    "about": "O nama",
-    "contact": "Kontakt",
-    "bookCall": "Rezervirajte poziv",
-    "backHome": "Povratak na početnu stranicu",
-    "skipToContent": "Prijeđi na sadržaj",
-    "openMenu": "Otvori izbornik navigacije",
-    "closeMenu": "Zatvori izbornik navigacije",
-    "lightMode": "Svijetli način",
-    "darkMode": "Tamni način",
-    "switchTo": "Prebaci na"
+    "services": "Services",
+    "work": "Our Work",
+    "about": "About",
+    "contact": "Contact",
+    "bookCall": "Book a call",
+    "backHome": "Back to homepage",
+    "skipToContent": "Skip to content",
+    "openMenu": "Open navigation menu",
+    "closeMenu": "Close navigation menu",
+    "lightMode": "Light mode",
+    "darkMode": "Dark mode",
+    "switchTo": "Switch to"
   },
   "footer": {
-    "company": "Tvrtka",
-    "social": "Društvene mreže",
-    "legal": "Pravno",
+    "company": "Company",
+    "social": "Social",
+    "legal": "Legal",
     "builtWith": "Made with ❤️ by Aiva",
-    "rights": "Sva prava pridržana.",
-    "terms": "Uvjeti korištenja"
+    "rights": "All rights reserved.",
+    "terms": "Terms of use"
   },
   "hero": {
-    "eyebrow": "AI automatizacija za moderne tvrtke",
-    "headlinePrefix": "AI sustavi koji",
+    "eyebrow": "AI automation for modern businesses",
+    "headlinePrefix": "AI systems that",
     "words": [
-      "povećavaju profit.",
-      "optimiziraju.",
-      "štede vrijeme.",
-      "skaliraju."
+      "increase profit.",
+      "optimize.",
+      "save time.",
+      "scale."
     ],
-    "description": "Pomažemo tvrtkama da uvedu AI u svakodnevno poslovanje kroz automatizaciju marketinga, sadržaja i prodajnih procesa.",
-    "cta1": "Rezerviraj besplatan poziv",
-    "cta2": "Naši projekti",
-    "trustedBy": "AI rješenja stručnjaka za digitalni marketing",
-    "sectors": "automatizacija · sadržaj · chatbotovi · web",
-    "avgRating": "dostava usluga",
-    "scroll": "skrolaj",
-    "servicesTagline": "AI chatbotovi • Automatizacija marketinga • AI sadržaj • AI izrada web stranica"
+    "description": "We help businesses bring AI into everyday operations through marketing, content, and sales-process automation.",
+    "cta1": "Book a free call",
+    "cta2": "Our work",
+    "trustedBy": "AI solutions from digital marketing experts",
+    "sectors": "automation · content · chatbots · web",
+    "avgRating": "service delivery",
+    "scroll": "scroll",
+    "servicesTagline": "AI chatbots • Marketing automation • AI content • AI website development"
   },
   "clients": {
-    "label": "Tvrtke koje nam vjeruju"
+    "label": "Companies that trust us"
   },
   "services": {
-    "label": "Što radimo",
-    "title": "Inteligencija izgrađena za integraciju.",
-    "description": "Gradimo AI sustave koji odgovaraju vašem stogu, timu i ciljevima — a ne obrnuto.",
-    "seeAll": "Pogledaj sve usluge",
-    "outcomesLabel": "Ishodi",
-    "deliverablesLabel": "Isporuke",
-    "timelineLabel": "Trajanje"
+    "label": "What we do",
+    "title": "Intelligence built to integrate.",
+    "description": "We build AI systems that fit your stack, your team, and your goals — not the other way around.",
+    "seeAll": "View all services",
+    "outcomesLabel": "Outcomes",
+    "deliverablesLabel": "Deliverables",
+    "timelineLabel": "Timeline"
   },
   "servicesPage": {
-    "pageTitle": "Naše usluge",
-    "badge": "Što radimo",
-    "title": "AI koji se prilagođava vašem poslovanju.",
-    "titleAccent": "A ne obrnuto.",
-    "description": "Dizajniramo prilagođene AI sustave za automatizaciju, sadržaj, prilagođene LLM aplikacije i integracije podataka — sve utemeljeno na strateškom sloju koji osigurava da gradite pravu stvar.",
-    "cta": "Rezerviraj besplatan uvodni poziv",
-    "packagesLabel": "Paketi",
-    "packagesTitle": "Počnite tamo gdje ima smisla.",
-    "packagesDescription": "Odaberite razinu koja odgovara vašem trenutnom stadiju. Svaki angažman može rasti."
+    "pageTitle": "Our services",
+    "badge": "What we do",
+    "title": "AI that adapts to your business.",
+    "titleAccent": "Not the other way around.",
+    "description": "We design custom AI systems for automation, content, custom LLM applications, and data integrations — all built on a strategic layer that ensures you're building the right thing.",
+    "cta": "Book a free intro call",
+    "packagesLabel": "Packages",
+    "packagesTitle": "Start where it makes sense.",
+    "packagesDescription": "Choose the tier that matches your current stage. Every engagement can grow."
   },
   "capabilities": {
     "label": "",
-    "title": "Zašto ",
+    "title": "Why ",
     "titleAccent": "Aiva?",
     "cards": [
       {
         "number": "01",
-        "title": "Razumijemo vaše poslovanje",
-        "subtitle": "Duboko poznavanje domene",
-        "description": "Prije nego što implementiramo AI, analiziramo vaše procese i ciljeve kako bismo izgradili rješenje koje donosi stvarnu vrijednost.",
+        "title": "We understand your business",
+        "subtitle": "Deep domain knowledge",
+        "description": "Before we implement AI, we analyze your processes and goals to build a solution that delivers real value.",
         "accent": "from-violet-500 to-indigo-500"
       },
       {
         "number": "02",
-        "title": "Razvijamo pouzdana AI rješenja",
-        "subtitle": "Arhitektura produkcijske kvalitete",
-        "description": "Gradimo stabilne i pouzdane AI sustave koji se integriraju u vaše poslovanje i rade bez prekida.",
+        "title": "We build reliable AI solutions",
+        "subtitle": "Production-grade architecture",
+        "description": "We build stable, reliable AI systems that integrate into your business and run without interruption.",
         "accent": "from-cyan-500 to-blue-500"
       },
       {
         "number": "03",
-        "title": "Kontinuirano poboljšavamo",
-        "subtitle": "Kontinuirano poboljšanje",
-        "description": "Nakon implementacije pratimo rezultate i optimiziramo sustav kako bi donosio još bolje performanse.",
+        "title": "We keep improving",
+        "subtitle": "Continuous improvement",
+        "description": "After launch, we track results and optimize the system to deliver even better performance.",
         "accent": "from-green-500 to-teal-500"
       },
       {
         "number": "04",
-        "title": "Implementiramo rješenja koja rastu s vašim poslovanjem",
-        "subtitle": "Izgrađeno za rast",
-        "description": "Naši AI sustavi fleksibilni su i omogućuju jednostavno proširenje funkcionalnosti kako se vaše potrebe razvijaju.",
+        "title": "We implement solutions that grow with your business",
+        "subtitle": "Built to grow",
+        "description": "Our AI systems are flexible, making it easy to extend functionality as your needs evolve.",
         "accent": "from-orange-500 to-amber-500"
       }
     ],
     "stats": [
       {
         "value": "74%",
-        "label": "Prosj. ušteda vremena"
+        "label": "Avg. time saved"
       },
       {
         "value": "40+",
-        "label": "Isporučenih sustava"
+        "label": "Systems delivered"
       },
       {
-        "value": "9 tj.",
-        "label": "Prosj. do lansiranja"
+        "value": "9 wks",
+        "label": "Avg. time to launch"
       },
       {
         "value": "12M+ €",
-        "label": "Vrijednost za klijente"
+        "label": "Value delivered to clients"
       }
     ]
   },
   "process": {
-    "label": "Kako radimo",
-    "title": "Od otkrića do isporuke — brzo, jasno, mjerljivo."
+    "label": "How we work",
+    "title": "From discovery to delivery — fast, clear, measurable."
   },
   "work": {
-    "label": "Studije slučaja",
-    "title": "Radovi koji govore.",
-    "seeAll": "Sve studije slučaja",
-    "keyResult": "Ključni rezultat",
-    "category": "Kategorija",
-    "client": "Klijent",
-    "tags": "Oznake",
-    "year": "Godina",
-    "readStudy": "Pročitaj studiju slučaja:",
-    "emptyCategory": "Još nema sadržaja u ovoj kategoriji."
+    "label": "Case studies",
+    "title": "Work that speaks for itself.",
+    "seeAll": "All case studies",
+    "keyResult": "Key result",
+    "category": "Category",
+    "client": "Client",
+    "tags": "Tags",
+    "year": "Year",
+    "readStudy": "Read case study:",
+    "emptyCategory": "No content in this category yet."
   },
   "workPage": {
-    "badge": "Naši radovi",
-    "title": "AI reklame koje",
-    "titleAccent": "pretvaraju.",
-    "description": "Primjeri AI generiranog oglasnog sadržaja — video, vizuali i UGC reklame koje privlače pažnju i pretvaraju gledatelje u klijente.",
-    "comingSoon": "Uskoro"
+    "badge": "Our work",
+    "title": "AI ads that",
+    "titleAccent": "convert.",
+    "description": "Examples of AI-generated ad content — video, visuals, and UGC ads that grab attention and turn viewers into clients.",
+    "comingSoon": "Coming soon"
   },
   "caseStudy": {
-    "backToWork": "Sve studije slučaja",
+    "backToWork": "All case studies",
     "problemLabel": "Problem",
-    "approachLabel": "Naš pristup",
-    "resultsLabel": "Rezultati",
-    "moreWork": "Više radova",
-    "readMore": "Pročitaj studiju slučaja:"
+    "approachLabel": "Our approach",
+    "resultsLabel": "Results",
+    "moreWork": "More work",
+    "readMore": "Read case study:"
   },
   "testimonials": {
-    "label": "Što klijenti kažu",
-    "title": "Rezultati o kojima ne prestaju pričati."
+    "label": "What clients say",
+    "title": "Results people can't stop talking about."
   },
   "faq": {
-    "label": "Često postavljena pitanja",
-    "title": "Uobičajena pitanja, iskreni odgovori.",
-    "description": "Ako nešto nije ovdje, javite nam se — odgovaramo u roku od jednog radnog dana."
+    "label": "Frequently asked questions",
+    "title": "Common questions, honest answers.",
+    "description": "If something's not covered here, reach out — we reply within one business day."
   },
   "cta": {
-    "label": "Spremi za početak?",
-    "title": "Razvijamo AI rješenja koja donose",
-    "titleAccent": "stvarne rezultate",
-    "description": "Opišite nam svoj najveći operativni izazov. Analizirat ćemo može li AI optimizirati taj proces i predložiti vam konkretne korake.",
-    "primaryCta": "Rezervirajte uvodni poziv",
-    "secondaryCta": "Pošaljite nam poruku",
-    "note": "Tipično odgovaramo unutar 1 radnog dana"
+    "label": "Ready to get started?",
+    "title": "We build AI solutions that deliver",
+    "titleAccent": "real results",
+    "description": "Tell us about your biggest operational challenge. We'll assess whether AI can optimize that process and suggest concrete next steps.",
+    "primaryCta": "Book an intro call",
+    "secondaryCta": "Send us a message",
+    "note": "We typically reply within 1 business day"
   },
   "about": {
-    "badge": "Naša priča",
-    "title": "AI rješenja izgrađena od strane stručnjaka za digitalni marketing.",
-    "description1": "Aivu su osnovali stručnjaci za digitalni marketing koji su godinama radili na izgradnji kampanja, sadržaja i online prodajnih sustava za različite tvrtke. Kroz rad s klijentima vidjeli smo koliko vremena i resursa tvrtke troše na ponavljajuće zadatke u marketingu i poslovnim procesima.",
-    "description2": "Zato smo počeli razvijati AI sustave koji automatiziraju sadržaj, komunikaciju i operativne procese — kako bi tvrtke mogle raditi brže i učinkovitije. Danas pomažemo tvrtkama implementirati AI rješenja koja povećavaju produktivnost, optimiziraju marketing i omogućuju skaliranje poslovanja.",
-    "cta": "Započni razgovor",
-    "principlesLabel": "Naša načela",
-    "principlesTitle": "Kako razmišljamo, kako radimo.",
+    "badge": "Our story",
+    "title": "AI solutions built by digital marketing experts.",
+    "description1": "Aiva was founded by digital marketing experts who spent years building campaigns, content, and online sales systems for a variety of companies. Through our work with clients, we saw how much time and resources businesses were losing to repetitive marketing and operational tasks.",
+    "description2": "So we started building AI systems that automate content, communication, and operational processes — so businesses can work faster and more efficiently. Today we help companies implement AI solutions that boost productivity, optimize marketing, and enable business scaling.",
+    "cta": "Start a conversation",
+    "principlesLabel": "Our principles",
+    "principlesTitle": "How we think, how we work.",
     "principles": [
       {
         "number": "01",
-        "title": "Rezultati iznad demonstracija",
-        "description": "Uspjeh mjerimo u uštedi vremena, generiranom prihodu i eliminiranim greškama — ne impresivnim videozapisima prototipova."
+        "title": "Results over demos",
+        "description": "We measure success in time saved, revenue generated, and errors eliminated — not impressive prototype videos."
       },
       {
         "number": "02",
-        "title": "Iskrenost iznad hype-a",
-        "description": "Reći ćemo vam kada AI nije pravi odgovor. Naša reputacija vrednija je od jednog preprodanog angažmana."
+        "title": "Honesty over hype",
+        "description": "We'll tell you when AI isn't the right answer. Our reputation is worth more than any single oversold engagement."
       },
       {
         "number": "03",
-        "title": "Majstorstvo na svakom sloju",
-        "description": "Od arhitekture sustava do korisničkog sučelja, držimo se standarda koji nas čini istinski ponosnim na naš rad."
+        "title": "Craft at every layer",
+        "description": "From system architecture to the user interface, we hold ourselves to a standard that makes us genuinely proud of our work."
       },
       {
         "number": "04",
-        "title": "Dugoročna partnerstva",
-        "description": "Dizajniramo svaki sustav tako da ga vi možete posjedovati. Naš cilj je biti posljednji AI partner koji vam je potreban — ne stvarati ovisnost."
+        "title": "Long-term partnerships",
+        "description": "We design every system so you can own it. Our goal is to be the last AI partner you need — not to create dependency."
       }
     ],
-    "teamLabel": "Tim",
-    "teamTitle": "Mali namjerno. Opsesivni po prirodi.",
-    "teamDescription": "Tim držimo kompaktnim kako bi svaki projekt dobio pozornost na senior razini. Nema juniors kojima se vaš rad predaje na kraju sprinta.",
-    "toolingLabel": "Alati",
-    "toolingTitle": "Alati kojima vjerujemo.",
-    "toolingDescription": "Neutralni po modelu. Pragmatični. Uvijek pravo sredstvo za posao.",
+    "teamLabel": "Team",
+    "teamTitle": "Small on purpose. Obsessive by nature.",
+    "teamDescription": "We keep the team compact so every project gets senior-level attention. No juniors handing off your work at the end of a sprint.",
+    "toolingLabel": "Tools",
+    "toolingTitle": "Tools we trust.",
+    "toolingDescription": "Model-agnostic. Pragmatic. Always the right tool for the job.",
     "linkedin": "LinkedIn"
   },
   "contact": {
-    "badge": "Kontakt",
-    "title": "Razgovarajmo o vašem",
-    "titleAccent": "problemu.",
-    "description": "Recite nam na čemu radite i reći ćemo vam može li AI pomoći.",
+    "badge": "Contact",
+    "title": "Let's talk about your",
+    "titleAccent": "challenge.",
+    "description": "Tell us what you're working on and we'll tell you whether AI can help.",
     "details": [
       {
-        "label": "E-pošta",
+        "label": "Email",
         "value": "automation.aiva@gmail.com",
         "href": "mailto:automation.aiva@gmail.com"
       },
       {
-        "label": "Uvodni poziv",
-        "value": "Zakažite na Calendly",
+        "label": "Intro call",
+        "value": "Schedule on Calendly",
         "href": "#calendly"
       },
       {
-        "label": "Vrijeme odgovora",
-        "value": "Unutar 1 radnog dana",
+        "label": "Response time",
+        "value": "Within 1 business day",
         "href": null
       }
     ],
-    "calendlyTitle": "Preferirate direktno zakazivanje?",
-    "calendlyDesc": "Zakažite 30-minutni uvodni razgovor u terminu koji vam odgovara.",
-    "calendlyBtn": "Otvori Calendly",
-    "calendlyAriaLabel": "Zakažite uvodni poziv na Calendly (otvara se u novoj kartici)"
+    "calendlyTitle": "Prefer to schedule directly?",
+    "calendlyDesc": "Book a 30-minute intro call at a time that works for you.",
+    "calendlyBtn": "Open Calendly",
+    "calendlyAriaLabel": "Book an intro call on Calendly (opens in a new tab)"
   },
   "form": {
-    "title": "Pošaljite nam poruku",
-    "subtitle": "Odgovaramo unutar jednog radnog dana.",
-    "namePlaceholder": "Ana Horvat",
-    "nameLabel": "Ime i prezime",
-    "emailLabel": "Poslovni e-mail",
-    "emailPlaceholder": "ana@tvrtka.hr",
-    "companyLabel": "Tvrtka (nije obavezno)",
-    "companyPlaceholder": "Acme d.o.o.",
-    "budgetLabel": "Procijenjeni proračun (nije obavezno)",
+    "title": "Send us a message",
+    "subtitle": "We reply within one business day.",
+    "namePlaceholder": "Jane Doe",
+    "nameLabel": "Full name",
+    "emailLabel": "Work email",
+    "emailPlaceholder": "jane@company.com",
+    "companyLabel": "Company (optional)",
+    "companyPlaceholder": "Acme Inc.",
+    "budgetLabel": "Estimated budget (optional)",
     "budgetOptions": {
-      "placeholder": "Odaberite raspon",
-      "under10k": "Manje od 10.000 €",
-      "10_25k": "10.000 – 25.000 €",
-      "25_50k": "25.000 – 50.000 €",
-      "over50k": "Više od 50.000 €",
-      "notSure": "Još nisam siguran/na"
+      "placeholder": "Select a range",
+      "under10k": "Under €10,000",
+      "10_25k": "€10,000 – €25,000",
+      "25_50k": "€25,000 – €50,000",
+      "over50k": "Over €50,000",
+      "notSure": "Not sure yet"
     },
-    "messageLabel": "Opišite nam vaš projekt",
-    "messagePlaceholder": "Opišite problem koji pokušavate riješiti ili rezultat koji tražite...",
-    "submit": "Pošalji poruku",
-    "submitting": "Šaljem…",
-    "successTitle": "Poruka poslana!",
-    "successDesc": "Hvala na javljanju. Javit ćemo se unutar jednog radnog dana.",
-    "sendAnother": "Pošalji drugu poruku",
-    "privacy": "Slanjem prihvaćate našu",
-    "privacyLink": "Politiku privatnosti",
-    "privacyNote": ". Bez spama, nikad.",
-    "required": "Obavezno",
-    "errorGeneric": "Nešto je pošlo po krivu. Molimo pokušajte ponovo.",
-    "errorRateLimit": "Previše zahtjeva. Pričekajte minutu i pokušajte ponovo.",
-    "errorSend": "Slanje poruke nije uspjelo. Molimo kontaktirajte nas direktno na automation.aiva@gmail.com.",
-    "errorInvalid": "Neispravni podaci u obrascu. Provjerite unos.",
+    "messageLabel": "Tell us about your project",
+    "messagePlaceholder": "Describe the problem you're trying to solve or the outcome you're looking for...",
+    "submit": "Send message",
+    "submitting": "Sending…",
+    "successTitle": "Message sent!",
+    "successDesc": "Thanks for reaching out. We'll get back to you within one business day.",
+    "sendAnother": "Send another message",
+    "privacy": "By submitting, you accept our",
+    "privacyLink": "Privacy Policy",
+    "privacyNote": ". No spam, ever.",
+    "required": "Required",
+    "errorGeneric": "Something went wrong. Please try again.",
+    "errorRateLimit": "Too many requests. Please wait a minute and try again.",
+    "errorSend": "We couldn't send your message. Please contact us directly at automation.aiva@gmail.com.",
+    "errorInvalid": "Invalid form data. Please check your entries.",
     "validation": {
-      "nameMin": "Ime mora imati najmanje 2 znaka",
-      "emailInvalid": "Molimo unesite valjanu e-mail adresu",
-      "messageMin": "Poruka mora imati najmanje 20 znakova",
-      "messageMax": "Poruka mora imati manje od 2000 znakova"
+      "nameMin": "Name must be at least 2 characters",
+      "emailInvalid": "Please enter a valid email address",
+      "messageMin": "Message must be at least 20 characters",
+      "messageMax": "Message must be under 2000 characters"
     }
   },
   "privacy": {
-    "badge": "Pravno",
-    "title": "Politika privatnosti",
-    "updated": "Zadnja izmjena: siječanj 2025.",
-    "s1Title": "1. Tko smo",
-    "s1Body": "Aiva (\"Aiva\", \"mi\", \"nas\" ili \"naš\") upravlja web-stranicom {url}. Ova politika privatnosti objašnjava kako postupamo s informacijama koje nam pružate ili koje prikupljamo korištenjem ove web-stranice.",
-    "s1Contact": "Za pitanja kontaktirajte nas na",
-    "s2Title": "2. Informacije koje prikupljamo",
-    "s2Form": "Podaci obrasca za kontakt: Kada pošaljete naš obrazac za kontakt, prikupljamo vaše ime, e-mail adresu, naziv tvrtke (nije obavezno) i poruku. Koristi se isključivo za odgovaranje na vaš upit.",
-    "s2Analytics": "Analitika: Ako je konfigurirana analitika (Plausible), prikupljamo anonimizirane podatke o posjetima stranice. Plausible ne koristi kolačiće i usklađen je s GDPR-om. Ne prikupljaju se osobni podaci.",
-    "s2Cookies": "Kolačići: Ova web-stranica ne koristi kolačiće za praćenje ili oglašavanje. Možemo postaviti kolačić sesije za preferencije teme (tamni/svijetli način).",
-    "s3Title": "3. Kako koristimo vaše informacije",
+    "badge": "Legal",
+    "title": "Privacy Policy",
+    "updated": "Last updated: January 2025",
+    "s1Title": "1. Who we are",
+    "s1Body": "Aiva (\"Aiva\", \"we\", \"us\", or \"our\") operates the website {url}. This privacy policy explains how we handle information you provide to us or that we collect through use of this website.",
+    "s1Contact": "For questions, contact us at",
+    "s2Title": "2. Information we collect",
+    "s2FormLabel": "Contact form data",
+    "s2FormBody": "When you submit our contact form, we collect your name, email address, company name (optional), and message. It's used solely to respond to your inquiry.",
+    "s2AnalyticsLabel": "Analytics",
+    "s2AnalyticsBody": "If analytics is configured (Plausible), we collect anonymized data about site visits. Plausible does not use cookies and is GDPR-compliant. No personal data is collected.",
+    "s2CookiesLabel": "Cookies",
+    "s2CookiesBody": "This website does not use cookies for tracking or advertising. We may set a session cookie for theme preference (dark/light mode).",
+    "s3Title": "3. How we use your information",
     "s3List": [
-      "Za odgovaranje na upite poslane putem našeg obrasca za kontakt",
-      "Za razumijevanje ukupne upotrebe web-stranice i poboljšanje performansi",
-      "Za usklađivanje s pravnim obvezama"
+      "To respond to inquiries submitted through our contact form",
+      "To understand overall website usage and improve performance",
+      "To comply with legal obligations"
     ],
-    "s3NoBuy": "Ne prodajemo, iznajmljujemo niti trgujemo vašim osobnim podacima trećim stranama.",
-    "s4Title": "4. Čuvanje podataka",
-    "s4Body": "Podaci obrasca za kontakt čuvaju se do 12 mjeseci, nakon čega se brišu osim ako imamo tekući ugovorni odnos. Možete zahtijevati brisanje u bilo trenutku.",
-    "s5Title": "5. Vaša prava",
-    "s5Body": "Prema GDPR-u i primjenjivim zakonima o zaštiti podataka, imate pravo: pristupiti osobnim podacima, ispraviti netočnosti, zahtijevati brisanje, povući pristanak i podnijeti pritužbu nadzornom tijelu.",
-    "s5Contact": "Za ostvarivanje bilo kojeg od ovih prava, pišite nam na",
-    "s6Title": "6. Usluge trećih strana",
-    "s6Body": "Možemo koristiti sljedeće usluge trećih strana, svaka s vlastitim politikama privatnosti:",
+    "s3NoBuy": "We do not sell, rent, or trade your personal data to third parties.",
+    "s4Title": "4. Data retention",
+    "s4Body": "Contact form data is retained for up to 12 months, after which it is deleted unless we have an ongoing contractual relationship. You may request deletion at any time.",
+    "s5Title": "5. Your rights",
+    "s5Body": "Under GDPR and applicable data protection laws, you have the right to: access your personal data, correct inaccuracies, request deletion, withdraw consent, and lodge a complaint with a supervisory authority.",
+    "s5Contact": "To exercise any of these rights, write to us at",
+    "s6Title": "6. Third-party services",
+    "s6Body": "We may use the following third-party services, each with its own privacy policy:",
     "s6List": [
       {
         "name": "Resend",
-        "desc": "— dostava e-pošte"
+        "desc": "— email delivery"
       },
       {
         "name": "Plausible Analytics",
-        "desc": "— web analitika koja čuva privatnost (nije obavezno)"
+        "desc": "— privacy-friendly web analytics (optional)"
       },
       {
         "name": "Vercel",
-        "desc": "— hosting web-stranice"
+        "desc": "— website hosting"
       }
     ],
-    "s7Title": "7. Sigurnost",
-    "s7Body": "Implementiramo odgovarajuće tehničke i organizacijske mjere za zaštitu vaših osobnih podataka od neovlaštenog pristupa, gubitka ili otkrivanja. Svi podaci prenose se putem HTTPS-a.",
-    "s8Title": "8. Izmjene ove politike",
-    "s8Body": "Ovu politiku možemo ažurirati s vremena na vrijeme. Datum \"Zadnja izmjena\" na vrhu odražava najnoviju reviziju. Nastavak korištenja web-stranice podrazumijeva prihvaćanje ažurirane politike.",
-    "s9Title": "9. Uvjeti korištenja",
-    "s9Body1": "Pristupom ovoj web-stranici pristajete na zakonito i savjesno korištenje. Nije dopušteno koristiti je za prijenos štetnog, nezakonitog ili uvredljivog sadržaja. Zadržavamo pravo ograničenja pristupa prema vlastitoj prosudbi.",
-    "s9Body2": "Sav sadržaj na ovoj web-stranici vlasništvo je tvrtke Aiva i zaštićen je primjenjivim zakonima o intelektualnom vlasništvu."
+    "s7Title": "7. Security",
+    "s7Body": "We implement appropriate technical and organizational measures to protect your personal data from unauthorized access, loss, or disclosure. All data is transmitted over HTTPS.",
+    "s8Title": "8. Changes to this policy",
+    "s8Body": "We may update this policy from time to time. The \"Last updated\" date at the top reflects the most recent revision. Continued use of the website constitutes acceptance of the updated policy.",
+    "s9Title": "9. Terms of use",
+    "s9Body1": "By accessing this website, you agree to lawful and good-faith use. It may not be used to transmit harmful, unlawful, or offensive content. We reserve the right to restrict access at our discretion.",
+    "s9Body2": "All content on this website is the property of Aiva and is protected by applicable intellectual property laws."
   },
   "notFound": {
     "label": "404",
-    "title": "Stranica nije pronađena",
-    "description": "Stranica koju tražite ne postoji ili je premještena.",
-    "cta": "Povratak na početnu"
+    "title": "Page not found",
+    "description": "The page you're looking for doesn't exist or has been moved.",
+    "cta": "Back to homepage"
   },
   "common": {
-    "learnMore": "Saznaj više",
-    "viewAll": "Pogledaj sve",
-    "backTo": "Natrag na",
-    "openInNewTab": "(otvara se u novoj kartici)",
-    "moreFrom": "Više od",
-    "allRightsReserved": "Sva prava pridržana."
+    "learnMore": "Learn more",
+    "viewAll": "View all",
+    "backTo": "Back to",
+    "openInNewTab": "(opens in a new tab)",
+    "moreFrom": "More from",
+    "allRightsReserved": "All rights reserved."
   },
   "a11y": {
-    "homeLink": "Aiva — početna",
-    "themeToggle": "Prebaci na {mode} način",
-    "linkedInLink": "{name} na LinkedIn-u",
-    "openCalendly": "Zakažite uvodni poziv na Calendly (otvara se u novoj kartici)"
+    "homeLink": "Aiva — home",
+    "themeToggle": "Switch to {mode} mode",
+    "linkedInLink": "{name} on LinkedIn",
+    "openCalendly": "Book an intro call on Calendly (opens in a new tab)"
   }
 }
