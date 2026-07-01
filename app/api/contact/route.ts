@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
-import { t } from "@/lib/i18n";
+import { getTranslations } from "next-intl/server";
 
 // ─── Rate limiting (in-memory, resets on cold start) ──────────────────────────
 const rateMap = new Map<string, { count: number; resetAt: number }>();
@@ -31,6 +31,8 @@ const schema = z.object({
 
 // ─── Handler ────────────────────────────────────────────────────────────────────
 export async function POST(req: NextRequest) {
+  const t = await getTranslations();
+
   // IP-based rate limiting
   const ip =
     req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";

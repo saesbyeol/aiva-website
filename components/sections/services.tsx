@@ -1,7 +1,8 @@
 "use client";
 
 import * as React from "react";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { motion } from "framer-motion";
 import {
   Zap,
@@ -15,7 +16,6 @@ import { cn } from "@/lib/utils";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal, Stagger } from "@/components/motion/reveal";
 import { services } from "@/lib/content";
-import { t } from "@/lib/i18n";
 
 const iconMap: Record<string, LucideIcon> = {
   Zap,
@@ -25,6 +25,7 @@ const iconMap: Record<string, LucideIcon> = {
 };
 
 export function Services() {
+  const t = useTranslations();
   return (
     <section className="section-pad bg-bg" aria-label="Services">
       <div className="container-default">
@@ -79,7 +80,7 @@ function ServiceCard({
       transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] as [number, number, number, number] }}
     >
       <Link
-        href={`/usluge#${service.id}`}
+        href={{ pathname: "/usluge", hash: service.id }}
         className={cn(
           "group flex items-start gap-5 p-6 rounded-xl border border-border bg-bg-elevated",
           "transition-all duration-300",

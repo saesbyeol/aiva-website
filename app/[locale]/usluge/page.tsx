@@ -18,7 +18,7 @@ import { Badge } from "@/components/ui/badge";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/motion/reveal";
 import { cn } from "@/lib/utils";
-import { t } from "@/lib/i18n";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 export const metadata: Metadata = constructMetadata({
   title: "Usluge",
@@ -35,7 +35,14 @@ const iconMap: Record<string, LucideIcon> = {
   Compass,
 };
 
-export default function ServicesPage() {
+interface Props {
+  params: Promise<{ locale: string }>;
+}
+
+export default async function ServicesPage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations();
   return (
     <>
       {/* Hero */}

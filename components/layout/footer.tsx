@@ -1,10 +1,13 @@
-import * as React from "react";
-import Link from "next/link";
-import { SITE, FOOTER_LINKS } from "@/lib/constants";
+"use client";
+
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
+import { SITE, getFooterLinks } from "@/lib/constants";
 import { ArrowUpRight } from "lucide-react";
-import { t } from "@/lib/i18n";
 
 export function Footer() {
+  const t = useTranslations();
+  const footerLinks = getFooterLinks(t);
   const year = new Date().getFullYear();
 
   return (
@@ -35,7 +38,7 @@ export function Footer() {
           <div>
             <p className="text-label mb-4">{t("footer.company")}</p>
             <ul className="space-y-3" role="list">
-              {FOOTER_LINKS.company.map((link) => (
+              {footerLinks.company.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
@@ -52,7 +55,7 @@ export function Footer() {
           <div>
             <p className="text-label mb-4">{t("footer.social")}</p>
             <ul className="space-y-3" role="list">
-              {FOOTER_LINKS.social.map((link) => (
+              {footerLinks.social.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
@@ -72,8 +75,8 @@ export function Footer() {
           <div>
             <p className="text-label mb-4">{t("footer.legal")}</p>
             <ul className="space-y-3" role="list">
-              {FOOTER_LINKS.legal.map((link) => (
-                <li key={link.href}>
+              {footerLinks.legal.map((link) => (
+                <li key={typeof link.href === "string" ? link.href : link.href.pathname}>
                   <Link
                     href={link.href}
                     className="text-sm text-fg-secondary hover:text-fg transition-colors link-underline"

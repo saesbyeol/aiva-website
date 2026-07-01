@@ -1,11 +1,12 @@
 import * as React from "react";
+import { getTranslations } from "next-intl/server";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Accordion } from "@/components/ui/accordion";
 import { Reveal } from "@/components/motion/reveal";
 import { faqs } from "@/lib/content";
-import { t } from "@/lib/i18n";
 
-export function FAQ() {
+export async function FAQ() {
+  const t = await getTranslations();
   return (
     <section className="section-pad bg-bg" aria-label="Frequently asked questions">
       <div className="container-tight">

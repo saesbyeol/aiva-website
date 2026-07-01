@@ -12,7 +12,16 @@ test.describe("Smoke tests", () => {
     await expect(hero).toBeVisible();
   });
 
-  test("skip-to-content link is focusable", async ({ page }) => {
+  test("skip-to-content link is focusable", async ({ page, browserName }) => {
+    // WebKit's Playwright emulation doesn't move focus on keyboard.press("Tab")
+    // by default (a known WebKit "Full Keyboard Access" limitation, tracked
+    // upstream in Playwright/WebKit — not an app bug). This only affects the
+    // "Mobile Safari" project, which runs on the webkit engine. Chromium is
+    // unaffected and still fully verifies Tab-to-focus below.
+    test.skip(
+      browserName === "webkit",
+      "WebKit emulation does not move focus on Tab press (Full Keyboard Access limitation); skip-link presence is still covered by other projects."
+    );
     await page.goto("/");
     await page.keyboard.press("Tab");
     const skipLink = page.locator('a[href="#main-content"]');
@@ -29,11 +38,11 @@ test.describe("Smoke tests", () => {
 
     // Navigate to Work
     await page.goto("/radovi");
-    await expect(page).toHaveTitle(/Radovi/);
+    await expect(page).toHaveTitle(/Naši radovi/);
 
     // Navigate to About
     await page.goto("/o-nama");
-    await expect(page).toHaveTitle(/O-nama/);
+    await expect(page).toHaveTitle(/O nama/);
 
     // Navigate to Contact
     await page.goto("/kontakt");
@@ -42,7 +51,9 @@ test.describe("Smoke tests", () => {
 
   test("work case study pages render", async ({ page }) => {
     await page.goto("/radovi/clearpath-finance");
-    await expect(page).toHaveTitle(/ClearPath Finance/);
+    // The <title> is the case study's Croatian headline (lib/content.ts),
+    // not the client name — the client name never appears in <title>.
+    await expect(page).toHaveTitle(/Automatizacija Obrade Kredita/);
     await expect(page.locator("h1")).toBeVisible();
   });
 
@@ -50,7 +61,8 @@ test.describe("Smoke tests", () => {
     page,
   }) => {
     await page.goto("/kontakt");
-    const form = page.locator("form[aria-label='Contact form']");
+    // aria-label={t("form.title")} renders the Croatian string (messages/hr.json).
+    const form = page.locator("form[aria-label='Pošaljite nam poruku']");
     await expect(form).toBeVisible();
 
     // Submit empty form
@@ -81,8 +93,9 @@ test.describe("Smoke tests", () => {
     await page.setViewportSize({ width: 375, height: 812 });
     await page.goto("/");
 
+    // aria-label={t("nav.openMenu")} renders the Croatian string (messages/hr.json).
     const menuButton = page.locator(
-      "button[aria-label='Open navigation menu']"
+      "button[aria-label='Otvori izbornik navigacije']"
     );
     await expect(menuButton).toBeVisible();
     await menuButton.click();
@@ -95,7 +108,8 @@ test.describe("Smoke tests", () => {
 
   test("404 page renders", async ({ page }) => {
     await page.goto("/this-page-does-not-exist");
-    await expect(page.locator("h1")).toContainText("Page not found");
+    // t("notFound.title") renders the Croatian string (messages/hr.json).
+    await expect(page.locator("h1")).toContainText("Stranica nije pronađena");
   });
 
   test("page has no accessibility violations in main heading order", async ({

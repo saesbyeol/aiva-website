@@ -4,7 +4,7 @@ import { ContactForm } from "./contact-form";
 import { Badge } from "@/components/ui/badge";
 import { Reveal } from "@/components/motion/reveal";
 import { Mail, Calendar, MessageSquare } from "lucide-react";
-import { t, dict } from "@/lib/i18n";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { LucideIcon } from "lucide-react";
 
 export const metadata: Metadata = constructMetadata({
@@ -16,7 +16,19 @@ export const metadata: Metadata = constructMetadata({
 
 const detailIcons: LucideIcon[] = [Mail, Calendar, MessageSquare];
 
-export default function ContactPage() {
+interface Props {
+  params: Promise<{ locale: string }>;
+}
+
+export default async function ContactPage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations();
+  const details = t.raw("contact.details") as {
+    label: string;
+    value: string;
+    href: string | null;
+  }[];
   return (
     <>
       {/* Hero */}
@@ -45,7 +57,7 @@ export default function ContactPage() {
 
               <Reveal delay={0.15}>
                 <div className="space-y-5">
-                  {dict.contact.details.map((detail, i) => {
+                  {details.map((detail, i) => {
                     const Icon = detailIcons[i];
                     return (
                       <div

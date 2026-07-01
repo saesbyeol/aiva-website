@@ -1,13 +1,13 @@
 "use client";
 
 import * as React from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { Link, usePathname } from "@/i18n/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sun, Moon, ArrowRight, Home } from "lucide-react";
-import { NAV_LINKS } from "@/lib/constants";
+import { getNavLinks } from "@/lib/constants";
 import { cn } from "@/lib/utils";
-import { t } from "@/lib/i18n";
+import { LocaleToggle } from "./locale-toggle";
 
 interface MobileNavProps {
   isOpen: boolean;
@@ -22,6 +22,8 @@ export function MobileNav({
   theme,
   onToggleTheme,
 }: MobileNavProps) {
+  const t = useTranslations();
+  const navLinks = getNavLinks(t);
   const pathname = usePathname();
   // Prevent body scroll when open
   React.useEffect(() => {
@@ -87,7 +89,7 @@ export function MobileNav({
                 )}
               </motion.li>
 
-              {NAV_LINKS.map((link, i) => (
+              {navLinks.map((link, i) => (
                 <motion.li
                   key={link.href}
                   initial={{ opacity: 0, x: -16 }}
@@ -108,18 +110,22 @@ export function MobileNav({
 
             {/* Bottom actions */}
             <div className="flex items-center justify-between pt-6 border-t border-border">
-              <button
-                onClick={onToggleTheme}
-                className="flex items-center gap-2 text-sm text-fg-secondary hover:text-fg transition-colors"
-                aria-label={`${t("nav.switchTo")} ${theme === "dark" ? t("nav.lightMode") : t("nav.darkMode")}`}
-              >
-                {theme === "dark" ? (
-                  <Sun className="w-4 h-4" />
-                ) : (
-                  <Moon className="w-4 h-4" />
-                )}
-                {theme === "dark" ? t("nav.lightMode") : t("nav.darkMode")}
-              </button>
+              <div className="flex items-center gap-4">
+                <button
+                  onClick={onToggleTheme}
+                  className="flex items-center gap-2 text-sm text-fg-secondary hover:text-fg transition-colors"
+                  aria-label={`${t("nav.switchTo")} ${theme === "dark" ? t("nav.lightMode") : t("nav.darkMode")}`}
+                >
+                  {theme === "dark" ? (
+                    <Sun className="w-4 h-4" />
+                  ) : (
+                    <Moon className="w-4 h-4" />
+                  )}
+                  {theme === "dark" ? t("nav.lightMode") : t("nav.darkMode")}
+                </button>
+
+                <LocaleToggle />
+              </div>
 
               <Link
                 href="/kontakt"

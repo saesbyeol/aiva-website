@@ -4,8 +4,15 @@ import { Capabilities } from "@/components/sections/capabilities";
 import { Work } from "@/components/sections/work";
 import { FAQ } from "@/components/sections/faq";
 import { CTA } from "@/components/sections/cta";
+import { setRequestLocale } from "next-intl/server";
 
-export default function HomePage() {
+interface Props {
+  params: Promise<{ locale: string }>;
+}
+
+export default async function HomePage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
   return (
     <>
       <Hero />

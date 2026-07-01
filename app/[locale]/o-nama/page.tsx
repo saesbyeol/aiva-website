@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal, Stagger } from "@/components/motion/reveal";
-import { t, dict } from "@/lib/i18n";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 export const metadata: Metadata = constructMetadata({
   title: "O nama",
@@ -16,8 +16,19 @@ export const metadata: Metadata = constructMetadata({
   path: "/o-nama",
 });
 
-export default function AboutPage() {
-  const principles = dict.about.principles;
+interface Props {
+  params: Promise<{ locale: string }>;
+}
+
+export default async function AboutPage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations();
+  const principles = t.raw("about.principles") as {
+    number: string;
+    title: string;
+    description: string;
+  }[];
 
   return (
     <>
@@ -168,7 +179,13 @@ export default function AboutPage() {
   );
 }
 
-function TeamCard({ member }: { member: (typeof teamMembers)[0] }) {
+function TeamCard({
+  member,
+  t,
+}: {
+  member: (typeof teamMembers)[0];
+  t: Awaited<ReturnType<typeof getTranslations>>;
+}) {
   return (
     <div className="group flex flex-col p-6 rounded-xl border border-border bg-bg-elevated hover:border-border-strong hover:shadow-md transition-all">
       {/* Avatar */}
