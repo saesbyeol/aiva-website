@@ -5,6 +5,7 @@ import Image from "next/image";
 import { X, ChevronLeft, ChevronRight, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/motion/reveal";
+import { useTranslations } from "next-intl";
 import type { SanityGalleryItem } from "@/sanity/lib/queries";
 
 interface Props {
@@ -12,6 +13,7 @@ interface Props {
 }
 
 export function CaseStudyGallery({ images }: Props) {
+  const t = useTranslations();
   // Only render items that actually resolved to a media URL.
   const items = React.useMemo(
     () => images.filter((m): m is SanityGalleryItem & { url: string } => !!m.url),
@@ -127,7 +129,7 @@ export function CaseStudyGallery({ images }: Props) {
           {/* Close */}
           <button
             onClick={close}
-            aria-label="Zatvori"
+            aria-label={t("work.galleryClose")}
             className="absolute top-5 right-5 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center transition-colors z-10"
           >
             <X className="w-5 h-5 text-white" />
@@ -137,7 +139,7 @@ export function CaseStudyGallery({ images }: Props) {
           {items.length > 1 && (
             <button
               onClick={(e) => { e.stopPropagation(); prev(); }}
-              aria-label="Prethodni"
+              aria-label={t("work.galleryPrev")}
               className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center transition-colors z-10"
             >
               <ChevronLeft className="w-5 h-5 text-white" />
@@ -187,7 +189,7 @@ export function CaseStudyGallery({ images }: Props) {
           {items.length > 1 && (
             <button
               onClick={(e) => { e.stopPropagation(); next(); }}
-              aria-label="Sljedeći"
+              aria-label={t("work.galleryNext")}
               className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center transition-colors z-10"
             >
               <ChevronRight className="w-5 h-5 text-white" />

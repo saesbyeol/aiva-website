@@ -87,6 +87,16 @@ const FILTER_TAGS = [
   "AI rješenja",
 ] as const;
 
+// Maps the Croatian tag value (must match Sanity data / FILTER_TAGS) to the
+// translation key used for the displayed chip label.
+const CHIP_LABEL_KEYS: Record<string, string> = {
+  "Video oglasi": "work.chipVideoAds",
+  "Generiranje slika": "work.chipImageGen",
+  "E-commerce": "work.chipEcommerce",
+  "Web stranice": "work.chipWebsites",
+  "AI rješenja": "work.chipAiSolutions",
+};
+
 interface Props {
   caseStudies: SanityCaseStudy[];
   videoAds: SanityVideoAd[];
@@ -113,12 +123,12 @@ export default function WorksGallery({ caseStudies, videoAds }: Props) {
       }
     }
     const tagChips = FILTER_TAGS.map((label) => ({
-      label,
+      label: CHIP_LABEL_KEYS[label] ? t(CHIP_LABEL_KEYS[label]) : label,
       value: label,
       count: counts.get(label) ?? 0,
     }));
-    return [{ label: "Sve", value: ALL, count: works.length }, ...tagChips];
-  }, [works]);
+    return [{ label: t("work.filterAll"), value: ALL, count: works.length }, ...tagChips];
+  }, [works, t]);
 
   const filtered = React.useMemo(
     () => (active === ALL ? works : works.filter((w) => w.tags.includes(active))),
@@ -131,23 +141,23 @@ export default function WorksGallery({ caseStudies, videoAds }: Props) {
       <section className="pt-40 pb-14" aria-label="Works header">
         <div className="container-default">
           <Reveal>
-            <p className="text-label text-accent mb-3">NAŠI RADOVI</p>
+            <p className="text-label text-accent mb-3">{t("work.galleryEyebrow")}</p>
           </Reveal>
           <Reveal delay={0.05}>
             <h1 className="text-h1 text-fg mb-4">
-              Rezultati koji{" "}
-              <span className="gradient-text">govore sami za sebe.</span>
+              {t("work.galleryHeadingLead")}{" "}
+              <span className="gradient-text">{t("work.galleryHeadingAccent")}</span>
             </h1>
           </Reveal>
           <Reveal delay={0.1}>
             <p className="text-body-lg text-fg-secondary max-w-xl mb-10">
-              Od AI video oglasa do enterprise sustava — projekti koje smo izgradili za naše klijente.
+              {t("work.gallerySubtitle")}
             </p>
           </Reveal>
 
           {/* Filter pills */}
           <Reveal delay={0.15}>
-            <div className="flex gap-2.5 flex-wrap" role="tablist" aria-label="Filter radova">
+            <div className="flex gap-2.5 flex-wrap" role="tablist" aria-label={t("work.filterAria")}>
               {filters.map((f) => (
                 <button
                   key={f.value}
@@ -210,7 +220,7 @@ export default function WorksGallery({ caseStudies, videoAds }: Props) {
         >
           <button
             onClick={() => setModalSrc(null)}
-            aria-label="Zatvori"
+            aria-label={t("work.galleryClose")}
             className="absolute top-5 right-5 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center transition-colors"
           >
             <X className="w-5 h-5 text-white" />
@@ -282,6 +292,7 @@ function CardBody({ work, cta }: { work: Work; cta: string }) {
 // ─── Static card (case studies) — whole card links to the project ─────────────
 
 function StaticCard({ work, staggerIndex }: { work: Work; staggerIndex: number }) {
+  const t = useTranslations();
   return (
     <Link
       href={work.href!}
@@ -321,7 +332,7 @@ function StaticCard({ work, staggerIndex }: { work: Work; staggerIndex: number }
         )}
         <ProjectBadge num={work.num} />
       </div>
-      <CardBody work={work} cta="Pogledaj projekt" />
+      <CardBody work={work} cta={t("work.ctaProject")} />
     </Link>
   );
 }
@@ -329,6 +340,7 @@ function StaticCard({ work, staggerIndex }: { work: Work; staggerIndex: number }
 // ─── Video card (hover to play, whole card opens modal) ───────────────────────
 
 function VideoCard({ work, staggerIndex, onOpen }: { work: Work; staggerIndex: number; onOpen: (src: string) => void }) {
+  const t = useTranslations();
   const videoRef = React.useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = React.useState(false);
 
@@ -350,7 +362,7 @@ function VideoCard({ work, staggerIndex, onOpen }: { work: Work; staggerIndex: n
   return (
     <div
       role="listitem"
-      aria-label={`Pogledaj video: ${work.title}`}
+      aria-label={`${t("work.ctaVideo")}: ${work.title}`}
       tabIndex={0}
       className={cn(cardShell, "cursor-pointer")}
       style={cardAnimation(staggerIndex)}
@@ -380,7 +392,7 @@ function VideoCard({ work, staggerIndex, onOpen }: { work: Work; staggerIndex: n
         </div>
         <ProjectBadge num={work.num} />
       </div>
-      <CardBody work={work} cta="Pogledaj video" />
+      <CardBody work={work} cta={t("work.ctaVideo")} />
     </div>
   );
 }

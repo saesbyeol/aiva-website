@@ -24,7 +24,7 @@ export function Footer() {
               <span className="gradient-text">Aiva</span>
             </Link>
             <p className="text-fg-secondary text-sm max-w-xs leading-relaxed">
-              {SITE.description}
+              {t("site.description")}
             </p>
             <a
               href={`mailto:${SITE.email}`}
