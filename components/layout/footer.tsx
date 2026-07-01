@@ -76,7 +76,7 @@ export function Footer() {
             <p className="text-label mb-4">{t("footer.legal")}</p>
             <ul className="space-y-3" role="list">
               {footerLinks.legal.map((link) => (
-                <li key={typeof link.href === "string" ? link.href : link.href.pathname}>
+                <li key={link.label}>
                   <Link
                     href={link.href}
                     className="text-sm text-fg-secondary hover:text-fg transition-colors link-underline"
