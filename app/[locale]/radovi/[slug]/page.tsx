@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { ArrowLeft, CheckCircle2, ArrowRight } from "lucide-react";
 import { constructMetadata } from "@/lib/seo";
 import { getCaseStudyBySlug, getCaseStudies } from "@/sanity/lib/queries";
@@ -8,10 +8,10 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/motion/reveal";
 import { CaseStudyGallery } from "@/components/sections/case-study-gallery";
-import { t } from "@/lib/i18n";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 interface Props {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string; locale: string }>;
 }
 
 export async function generateStaticParams() {
@@ -31,7 +31,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function CaseStudyPage({ params }: Props) {
-  const { slug } = await params;
+  const { slug, locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations();
   const study = await getCaseStudyBySlug(slug);
   if (!study) notFound();
 
@@ -168,7 +170,7 @@ export default async function CaseStudyPage({ params }: Props) {
               {others.map((s) => (
                 <Reveal key={s._id}>
                   <Link
-                    href={`/radovi/${s.slug}`}
+                    href={{ pathname: "/radovi/[slug]", params: { slug: s.slug } }}
                     className="group flex items-start gap-4 p-6 rounded-xl border border-border bg-bg-elevated hover:border-border-strong hover:shadow-md transition-all"
                   >
                     <div className="flex-1">

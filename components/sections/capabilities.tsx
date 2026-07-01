@@ -1,22 +1,23 @@
 "use client";
 
 import * as React from "react";
+import { useTranslations } from "next-intl";
 import { motion, useScroll, useMotionValue, useAnimationFrame } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { t, ta } from "@/lib/i18n";
 
 type CapCard = { number: string; title: string; subtitle: string; description: string; accent: string; };
 type Stat = { value: string; label: string; };
 
 export function Capabilities() {
+  const t = useTranslations();
   const containerRef = React.useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"],
   });
 
-  const capabilities = ta<CapCard[]>("capabilities.cards");
-  const stats = ta<Stat[]>("capabilities.stats");
+  const capabilities = t.raw("capabilities.cards") as CapCard[];
+  const stats = t.raw("capabilities.stats") as Stat[];
 
   return (
     <section

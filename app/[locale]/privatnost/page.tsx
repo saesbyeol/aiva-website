@@ -3,7 +3,7 @@ import { constructMetadata } from "@/lib/seo";
 import { Reveal } from "@/components/motion/reveal";
 import { Badge } from "@/components/ui/badge";
 import { SITE } from "@/lib/constants";
-import { t, dict } from "@/lib/i18n";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 export const metadata: Metadata = constructMetadata({
   title: "Politika privatnosti",
@@ -12,7 +12,16 @@ export const metadata: Metadata = constructMetadata({
   noIndex: true,
 });
 
-export default function PrivacyPage() {
+interface Props {
+  params: Promise<{ locale: string }>;
+}
+
+export default async function PrivacyPage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations();
+  const s3List = t.raw("privacy.s3List") as string[];
+  const s6List = t.raw("privacy.s6List") as { name: string; desc: string }[];
   const s1Parts = t("privacy.s1Body").split("{url}");
 
   return (
@@ -62,7 +71,7 @@ export default function PrivacyPage() {
 
             <Section title={t("privacy.s3Title")}>
               <ul className="list-disc list-inside space-y-2">
-                {dict.privacy.s3List.map((item) => (
+                {s3List.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
               </ul>
@@ -89,7 +98,7 @@ export default function PrivacyPage() {
             <Section title={t("privacy.s6Title")}>
               <p>{t("privacy.s6Body")}</p>
               <ul className="list-disc list-inside space-y-1">
-                {dict.privacy.s6List.map((item) => (
+                {s6List.map((item) => (
                   <li key={item.name}>
                     <strong className="text-fg">{item.name}</strong> {item.desc}
                   </li>

@@ -1,9 +1,10 @@
-import Link from "next/link";
+import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
-import { t } from "@/lib/i18n";
 
-export default function NotFound() {
+export default async function NotFound() {
+  const t = await getTranslations();
   return (
     <section
       className="min-h-screen flex items-center justify-center bg-bg"

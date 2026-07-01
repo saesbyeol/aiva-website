@@ -1,10 +1,11 @@
 import * as React from "react";
+import { getTranslations } from "next-intl/server";
 import { Marquee } from "@/components/ui/marquee";
 import { Reveal } from "@/components/motion/reveal";
 import { clients } from "@/lib/content";
-import { t } from "@/lib/i18n";
 
-export function Clients() {
+export async function Clients() {
+  const t = await getTranslations();
   return (
     <section className="py-16 border-y border-border overflow-hidden" aria-label="Clients">
       <div className="container-default mb-10">

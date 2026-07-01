@@ -1,7 +1,8 @@
 "use client";
 
 import * as React from "react";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { motion } from "framer-motion";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -9,9 +10,9 @@ import { Badge } from "@/components/ui/badge";
 import { Reveal, Stagger } from "@/components/motion/reveal";
 import { caseStudies } from "@/lib/content";
 import { cn } from "@/lib/utils";
-import { t } from "@/lib/i18n";
 
 export function Work() {
+  const t = useTranslations();
   return (
     <section className="section-pad bg-bg" aria-label="Featured work">
       <div className="container-default">
@@ -50,6 +51,7 @@ function CaseStudyCard({
   study: (typeof caseStudies)[0];
   index: number;
 }) {
+  const t = useTranslations();
   const [hovered, setHovered] = React.useState(false);
 
   const gradients = [
@@ -60,7 +62,7 @@ function CaseStudyCard({
 
   return (
     <Link
-      href={`/radovi/${study.slug}`}
+      href={{ pathname: "/radovi/[slug]", params: { slug: study.slug } }}
       className={cn(
         "group relative flex flex-col rounded-2xl overflow-hidden border border-border",
         "transition-all duration-400 hover:border-border-strong hover:shadow-lg hover:-translate-y-1",

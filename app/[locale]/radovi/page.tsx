@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { constructMetadata } from "@/lib/seo";
 import WorksGallery from "@/components/sections/works-gallery";
 import { getCaseStudies, getVideoAds } from "@/sanity/lib/queries";
+import { setRequestLocale } from "next-intl/server";
 
 export const metadata: Metadata = constructMetadata({
   title: "Naši radovi",
@@ -10,7 +11,13 @@ export const metadata: Metadata = constructMetadata({
   path: "/radovi",
 });
 
-export default async function WorksPage() {
+interface Props {
+  params: Promise<{ locale: string }>;
+}
+
+export default async function WorksPage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
   const [caseStudies, videoAds] = await Promise.all([
     getCaseStudies(),
     getVideoAds(),

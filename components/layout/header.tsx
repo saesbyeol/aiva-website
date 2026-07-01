@@ -1,16 +1,17 @@
 "use client";
 
 import * as React from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { Link, usePathname } from "@/i18n/navigation";
 import { Menu, X, Sun, Moon, Home } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { NAV_LINKS } from "@/lib/constants";
+import { getNavLinks } from "@/lib/constants";
 import { Button } from "@/components/ui/button";
 import { MobileNav } from "./mobile-nav";
-import { t } from "@/lib/i18n";
 
 export function Header() {
+  const t = useTranslations();
+  const navLinks = getNavLinks(t);
   const pathname = usePathname();
   const [scrolled, setScrolled] = React.useState(false);
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -77,7 +78,7 @@ export function Header() {
 
           {/* Desktop nav */}
           <ul className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-1" role="list">
-            {NAV_LINKS.map((link) => (
+            {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}

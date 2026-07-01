@@ -1,14 +1,15 @@
 "use client";
 
 import * as React from "react";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { motion } from "framer-motion";
 import { ArrowRight, Calendar, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/motion/reveal";
-import { t } from "@/lib/i18n";
 
 export function CTA() {
+  const t = useTranslations();
   return (
     <section
       className="section-pad bg-bg-secondary relative overflow-hidden"

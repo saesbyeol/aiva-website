@@ -1,15 +1,16 @@
 "use client";
 
 import * as React from "react";
+import { useTranslations } from "next-intl";
 import { motion, useInView } from "framer-motion";
 import { Quote } from "lucide-react";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal, Stagger } from "@/components/motion/reveal";
 import { testimonials } from "@/lib/content";
 import { cn } from "@/lib/utils";
-import { t } from "@/lib/i18n";
 
 export function Testimonials() {
+  const t = useTranslations();
   return (
     <section
       className="section-pad bg-bg-secondary overflow-hidden"
@@ -25,8 +26,8 @@ export function Testimonials() {
         </Reveal>
 
         <Stagger className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {testimonials.map((t) => (
-            <TestimonialCard key={t.id} testimonial={t} />
+          {testimonials.map((item) => (
+            <TestimonialCard key={item.id} testimonial={item} />
           ))}
         </Stagger>
       </div>

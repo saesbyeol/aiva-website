@@ -1,13 +1,12 @@
 "use client";
 
 import * as React from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { Link, usePathname } from "@/i18n/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sun, Moon, ArrowRight, Home } from "lucide-react";
-import { NAV_LINKS } from "@/lib/constants";
+import { getNavLinks } from "@/lib/constants";
 import { cn } from "@/lib/utils";
-import { t } from "@/lib/i18n";
 
 interface MobileNavProps {
   isOpen: boolean;
@@ -22,6 +21,8 @@ export function MobileNav({
   theme,
   onToggleTheme,
 }: MobileNavProps) {
+  const t = useTranslations();
+  const navLinks = getNavLinks(t);
   const pathname = usePathname();
   // Prevent body scroll when open
   React.useEffect(() => {
@@ -87,7 +88,7 @@ export function MobileNav({
                 )}
               </motion.li>
 
-              {NAV_LINKS.map((link, i) => (
+              {navLinks.map((link, i) => (
                 <motion.li
                   key={link.href}
                   initial={{ opacity: 0, x: -16 }}

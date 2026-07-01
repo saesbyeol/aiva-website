@@ -4,31 +4,36 @@ import * as React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { t } from "@/lib/i18n";
-
-const schema = z.object({
-  name: z.string().min(2, t("form.validation.nameMin")),
-  email: z.string().email(t("form.validation.emailInvalid")),
-  company: z.string().optional(),
-  message: z
-    .string()
-    .min(20, t("form.validation.messageMin"))
-    .max(2000, t("form.validation.messageMax")),
-  // Honeypot — not shown to users
-  website: z.string().max(0, "").optional(),
-});
-
-type FormData = z.infer<typeof schema>;
 
 type Status = "idle" | "loading" | "success" | "error";
 
 export function ContactForm() {
+  const t = useTranslations();
   const [status, setStatus] = React.useState<Status>("idle");
   const [errorMsg, setErrorMsg] = React.useState("");
+
+  const schema = React.useMemo(
+    () =>
+      z.object({
+        name: z.string().min(2, t("form.validation.nameMin")),
+        email: z.string().email(t("form.validation.emailInvalid")),
+        company: z.string().optional(),
+        message: z
+          .string()
+          .min(20, t("form.validation.messageMin"))
+          .max(2000, t("form.validation.messageMax")),
+        // Honeypot — not shown to users
+        website: z.string().max(0, "").optional(),
+      }),
+    [t]
+  );
+
+  type FormData = z.infer<typeof schema>;
 
   const {
     register,

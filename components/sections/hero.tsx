@@ -1,11 +1,11 @@
 "use client";
 
 import * as React from "react";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { t, ta } from "@/lib/i18n";
 
 const EASE = "cubic-bezier(0.16, 1, 0.3, 1)";
 
@@ -21,7 +21,8 @@ function fadeUp(delay: number): React.CSSProperties {
 }
 
 function AnimatedWord() {
-  const words = ta<string[]>("hero.words");
+  const t = useTranslations();
+  const words = t.raw("hero.words") as string[];
   const [index, setIndex] = React.useState(0);
 
   React.useEffect(() => {
@@ -53,6 +54,7 @@ function AnimatedWord() {
 }
 
 export function Hero() {
+  const t = useTranslations();
   const sectionRef = React.useRef<HTMLElement>(null);
   const innerRef = React.useRef<HTMLDivElement>(null);
 
@@ -113,7 +115,7 @@ export function Hero() {
 
           {/* Services tag line */}
           <p data-reveal style={fadeUp(0.56)} className="text-sm text-fg-muted mb-10 tracking-wide">
-            AI chatbotovi&nbsp;•&nbsp;Automatizacija marketinga&nbsp;•&nbsp;AI sadržaj&nbsp;•&nbsp;AI izrada web stranica
+            {t("hero.servicesTagline")}
           </p>
 
           {/* CTAs */}

@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { ArrowUpRight, X, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/motion/reveal";
@@ -79,6 +80,7 @@ interface Props {
 }
 
 export default function WorksGallery({ caseStudies, videoAds }: Props) {
+  const t = useTranslations();
   const [active, setActive] = React.useState<FilterValue>("all");
   const [modalSrc, setModalSrc] = React.useState<string | null>(null);
 
@@ -150,7 +152,7 @@ export default function WorksGallery({ caseStudies, videoAds }: Props) {
         <div className="container-default">
           {filtered.length === 0 ? (
             <div className="text-center py-24 text-fg-muted">
-              <p className="text-body">Još nema sadržaja u ovoj kategoriji.</p>
+              <p className="text-body">{t("work.emptyCategory")}</p>
             </div>
           ) : (
             <div
