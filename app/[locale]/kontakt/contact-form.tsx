@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Send, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { Link } from "@/i18n/navigation";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -230,9 +231,9 @@ export function ContactForm() {
 
             <p className="text-xs text-fg-muted text-center">
               {t("form.privacy")}{" "}
-              <a href="/privatnost" className="underline hover:text-fg transition-colors">
+              <Link href="/privatnost" className="underline hover:text-fg transition-colors">
                 {t("form.privacyLink")}
-              </a>
+              </Link>
               {t("form.privacyNote")}
             </p>
           </motion.form>
