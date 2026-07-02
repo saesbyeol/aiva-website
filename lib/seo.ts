@@ -7,6 +7,8 @@ interface SeoProps {
   path?: string;
   image?: string;
   noIndex?: boolean;
+  locale?: string;
+  tagline?: string;
 }
 
 export function constructMetadata({
@@ -15,9 +17,12 @@ export function constructMetadata({
   path = "",
   image = "/og-image.svg",
   noIndex = false,
+  locale,
+  tagline = SITE.tagline,
 }: SeoProps = {}): Metadata {
-  const fullTitle = title ? `${title} — ${SITE.name}` : `${SITE.name} — ${SITE.tagline}`;
+  const fullTitle = title ? title : `${SITE.name} — ${tagline}`;
   const url = `${SITE.url}${path}`;
+  const ogLocale = locale === "en" ? "en_US" : "hr_HR";
 
   return {
     title: fullTitle,
@@ -31,7 +36,7 @@ export function constructMetadata({
       siteName: SITE.name,
       images: [{ url: image, width: 1200, height: 630, alt: fullTitle }],
       type: "website",
-      locale: "hr_HR",
+      locale: ogLocale,
     },
     twitter: {
       card: "summary_large_image",

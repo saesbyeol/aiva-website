@@ -2,14 +2,22 @@ import type { Metadata } from "next";
 import { constructMetadata } from "@/lib/seo";
 import WorksGallery from "@/components/sections/works-gallery";
 import { getCaseStudies, getVideoAds } from "@/sanity/lib/queries";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
-export const metadata: Metadata = constructMetadata({
-  title: "Naši radovi",
-  description:
-    "Pogledajte naše projekte — od AI video oglasa do enterprise automatizacijskih sustava.",
-  path: "/radovi",
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale });
+  return constructMetadata({
+    title: t("meta.work.title"),
+    description: t("meta.work.description"),
+    path: "/radovi",
+    locale,
+  });
+}
 
 interface Props {
   params: Promise<{ locale: string }>;

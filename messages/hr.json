@@ -358,5 +358,27 @@
     "themeToggle": "Prebaci na {mode} način",
     "linkedInLink": "{name} na LinkedIn-u",
     "openCalendly": "Zakažite uvodni poziv na Calendly (otvara se u novoj kartici)"
+  },
+  "meta": {
+    "about": {
+      "title": "O nama",
+      "description": "Aiva je agencija za AI sustave koju su osnovali inženjeri koji vjeruju da se veliki AI proizvodi grade s majstorstvom, a ne prečicama."
+    },
+    "work": {
+      "title": "Naši radovi",
+      "description": "Pogledajte naše projekte — od AI video oglasa do enterprise automatizacijskih sustava."
+    },
+    "contact": {
+      "title": "Kontakt",
+      "description": "Zakažite besplatan uvodni poziv ili nam pošaljite poruku. Odgovaramo unutar jednog radnog dana."
+    },
+    "privacy": {
+      "title": "Politika privatnosti",
+      "description": "Kako Aiva prikuplja, koristi i štiti vaše informacije."
+    },
+    "services": {
+      "title": "Usluge",
+      "description": "Od AI automatizacije do prilagođenih LLM aplikacija — gradimo AI sustave koji se integriraju u vaš stek i donose mjerljive rezultate."
+    }
   }
 }

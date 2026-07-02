@@ -5,7 +5,7 @@ import "@/styles/globals.css";
 import { SiteShell } from "@/components/layout/site-shell";
 import { constructMetadata, organizationSchema, websiteSchema } from "@/lib/seo";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
-import { setRequestLocale, getMessages } from "next-intl/server";
+import { setRequestLocale, getMessages, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 
@@ -24,7 +24,23 @@ const inter = Inter({
 });
 
 // ─── Metadata ────────────────────────────────────────────────────────────────
-export const metadata: Metadata = constructMetadata();
+// HR keeps the exact defaults from lib/constants.ts (SITE.tagline / SITE.description)
+// so the / (HR) homepage metadata stays byte-identical to before this change —
+// messages/hr.json's site.tagline/site.description already diverge from those
+// constants (used elsewhere, e.g. the footer), so they are only applied for "en".
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale });
+  return constructMetadata({
+    description: locale === "en" ? t("site.description") : undefined,
+    tagline: locale === "en" ? t("site.tagline") : undefined,
+    locale,
+  });
+}
 
 export const viewport: Viewport = {
   themeColor: [

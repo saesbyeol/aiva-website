@@ -7,12 +7,20 @@ import { Mail, Calendar, MessageSquare } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { LucideIcon } from "lucide-react";
 
-export const metadata: Metadata = constructMetadata({
-  title: "Kontakt",
-  description:
-    "Zakažite besplatan uvodni poziv ili nam pošaljite poruku. Odgovaramo unutar jednog radnog dana.",
-  path: "/kontakt",
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale });
+  return constructMetadata({
+    title: t("meta.contact.title"),
+    description: t("meta.contact.description"),
+    path: "/kontakt",
+    locale,
+  });
+}
 
 const detailIcons: LucideIcon[] = [Mail, Calendar, MessageSquare];
 

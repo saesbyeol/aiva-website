@@ -10,12 +10,20 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal, Stagger } from "@/components/motion/reveal";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
-export const metadata: Metadata = constructMetadata({
-  title: "O nama",
-  description:
-    "Aiva je agencija za AI sustave koju su osnovali inženjeri koji vjeruju da se veliki AI proizvodi grade s majstorstvom, a ne prečicama.",
-  path: "/o-nama",
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale });
+  return constructMetadata({
+    title: t("meta.about.title"),
+    description: t("meta.about.description"),
+    path: "/o-nama",
+    locale,
+  });
+}
 
 interface Props {
   params: Promise<{ locale: string }>;

@@ -20,12 +20,20 @@ import { Reveal } from "@/components/motion/reveal";
 import { cn } from "@/lib/utils";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
-export const metadata: Metadata = constructMetadata({
-  title: "Usluge",
-  description:
-    "Od AI automatizacije do prilagođenih LLM aplikacija — gradimo AI sustave koji se integriraju u vaš stek i donose mjerljive rezultate.",
-  path: "/usluge",
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale });
+  return constructMetadata({
+    title: t("meta.services.title"),
+    description: t("meta.services.description"),
+    path: "/usluge",
+    locale,
+  });
+}
 
 const iconMap: Record<string, LucideIcon> = {
   Zap,

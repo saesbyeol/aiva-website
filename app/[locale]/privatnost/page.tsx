@@ -5,12 +5,21 @@ import { Badge } from "@/components/ui/badge";
 import { SITE } from "@/lib/constants";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
-export const metadata: Metadata = constructMetadata({
-  title: "Politika privatnosti",
-  description: "Kako Aiva prikuplja, koristi i štiti vaše informacije.",
-  path: "/privatnost",
-  noIndex: true,
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale });
+  return constructMetadata({
+    title: t("meta.privacy.title"),
+    description: t("meta.privacy.description"),
+    path: "/privatnost",
+    noIndex: true,
+    locale,
+  });
+}
 
 interface Props {
   params: Promise<{ locale: string }>;

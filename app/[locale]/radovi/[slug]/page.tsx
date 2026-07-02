@@ -20,13 +20,14 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params;
+  const { slug, locale } = await params;
   const study = await getCaseStudyBySlug(slug);
   if (!study) return {};
   return constructMetadata({
     title: study.title,
     description: study.description,
     path: `/radovi/${study.slug}`,
+    locale,
   });
 }
 

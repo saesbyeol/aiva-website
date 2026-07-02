@@ -358,5 +358,27 @@
     "themeToggle": "Switch to {mode} mode",
     "linkedInLink": "{name} on LinkedIn",
     "openCalendly": "Book an intro call on Calendly (opens in a new tab)"
+  },
+  "meta": {
+    "about": {
+      "title": "About",
+      "description": "Aiva is an AI systems agency founded by engineers who believe great AI products are built with craft, not shortcuts."
+    },
+    "work": {
+      "title": "Our work",
+      "description": "See the projects we've built for our clients — from AI video ads to enterprise automation systems."
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "Book a free intro call or send us a message — we reply within one business day."
+    },
+    "privacy": {
+      "title": "Privacy policy",
+      "description": "How Aiva collects, uses, and protects your information."
+    },
+    "services": {
+      "title": "Services",
+      "description": "From AI automation to custom LLM apps — we build AI systems that integrate into your stack and deliver measurable results."
+    }
   }
 }
