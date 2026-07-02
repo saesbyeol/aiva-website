@@ -37,7 +37,6 @@ export async function generateMetadata({
   const t = await getTranslations({ locale });
   return constructMetadata({
     description: locale === "en" ? t("site.description") : undefined,
-    tagline: locale === "en" ? t("site.tagline") : undefined,
     locale,
   });
 }

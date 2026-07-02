@@ -8,7 +8,6 @@ interface SeoProps {
   image?: string;
   noIndex?: boolean;
   locale?: string;
-  tagline?: string;
 }
 
 export function constructMetadata({
@@ -18,9 +17,8 @@ export function constructMetadata({
   image = "/og-image.svg",
   noIndex = false,
   locale,
-  tagline = SITE.tagline,
 }: SeoProps = {}): Metadata {
-  const fullTitle = title ? title : `${SITE.name} — ${tagline}`;
+  const fullTitle = title ? title : SITE.name;
   const url = `${SITE.url}${path}`;
   const ogLocale = locale === "en" ? "en_US" : "hr_HR";
 
