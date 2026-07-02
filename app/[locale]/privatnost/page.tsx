@@ -109,7 +109,7 @@ export default async function PrivacyPage({ params }: Props) {
               <ul className="list-disc list-inside space-y-1">
                 {s6List.map((item) => (
                   <li key={item.name}>
-                    <strong className="text-fg">{item.name}</strong> {item.desc}
+                    <strong className="text-fg">{item.name}</strong>: {item.desc}
                   </li>
                 ))}
               </ul>

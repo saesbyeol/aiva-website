@@ -320,15 +320,15 @@
     "s6List": [
       {
         "name": "Resend",
-        "desc": ": email delivery"
+        "desc": "email delivery"
       },
       {
         "name": "Plausible Analytics",
-        "desc": ": privacy-friendly web analytics (optional)"
+        "desc": "privacy-friendly web analytics (optional)"
       },
       {
         "name": "Vercel",
-        "desc": ": website hosting"
+        "desc": "website hosting"
       }
     ],
     "s7Title": "7. Security",

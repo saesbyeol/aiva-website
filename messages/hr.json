@@ -320,15 +320,15 @@
     "s6List": [
       {
         "name": "Resend",
-        "desc": ": dostava e-pošte"
+        "desc": "dostava e-pošte"
       },
       {
         "name": "Plausible Analytics",
-        "desc": ": web analitika koja čuva privatnost (nije obavezno)"
+        "desc": "web analitika koja čuva privatnost (nije obavezno)"
       },
       {
         "name": "Vercel",
-        "desc": ": hosting web-stranice"
+        "desc": "hosting web-stranice"
       }
     ],
     "s7Title": "7. Sigurnost",
