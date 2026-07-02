@@ -101,6 +101,29 @@ const CHIP_LABEL_KEYS: Record<string, string> = {
   "Marketinška kampanja": "work.chipMarketingCampaign",
 };
 
+// Per-chip sub-filters. When a chip with an entry here is active, a secondary
+// row of pills appears; each narrows the grid to works whose `category` (the
+// Sanity Kategorija field) equals the sub value. Values MUST match the enum in
+// sanity/schemaTypes/videoAd.ts. Add an entry to give any chip its own subs.
+const SUBCATEGORIES: Record<string, readonly string[]> = {
+  "Video oglasi": [
+    "Video Oglas",
+    "UGC Video",
+    "Carousel Oglas",
+    "Reels / TikTok",
+    "Product Video",
+  ],
+};
+
+// Maps a sub value (Sanity category) to the translation key for its pill label.
+const SUB_LABEL_KEYS: Record<string, string> = {
+  "Video Oglas": "work.subVideoAd",
+  "UGC Video": "work.subUgc",
+  "Carousel Oglas": "work.subCarousel",
+  "Reels / TikTok": "work.subReelsTiktok",
+  "Product Video": "work.subProductVideo",
+};
+
 interface Props {
   caseStudies: SanityCaseStudy[];
   videoAds: SanityVideoAd[];
@@ -108,9 +131,16 @@ interface Props {
 
 export default function WorksGallery({ caseStudies, videoAds }: Props) {
   const t = useTranslations();
-  // `active` is either ALL or a tag string
+  // `active` is either ALL or a tag string; `activeSub` is ALL or a category value
   const [active, setActive] = React.useState<string>(ALL);
+  const [activeSub, setActiveSub] = React.useState<string>(ALL);
   const [modalSrc, setModalSrc] = React.useState<string | null>(null);
+
+  // Selecting a top chip always resets the sub-filter.
+  const selectChip = React.useCallback((value: string) => {
+    setActive(value);
+    setActiveSub(ALL);
+  }, []);
 
   const works = React.useMemo(
     () => toWorks(caseStudies, videoAds),
@@ -134,10 +164,26 @@ export default function WorksGallery({ caseStudies, videoAds }: Props) {
     return [{ label: t("work.filterAll"), value: ALL, count: works.length }, ...tagChips];
   }, [works, t]);
 
-  const filtered = React.useMemo(
-    () => (active === ALL ? works : works.filter((w) => w.tags.includes(active))),
-    [active, works]
-  );
+  // Sub-filter pills for the active chip (empty when the chip has none).
+  const subFilters = React.useMemo(() => {
+    const subs = active === ALL ? undefined : SUBCATEGORIES[active];
+    if (!subs) return [];
+    const inChip = works.filter((w) => w.tags.includes(active));
+    const counts = new Map<string, number>();
+    for (const w of inChip) counts.set(w.category, (counts.get(w.category) ?? 0) + 1);
+    const subChips = subs.map((value) => ({
+      label: SUB_LABEL_KEYS[value] ? t(SUB_LABEL_KEYS[value]) : value,
+      value,
+      count: counts.get(value) ?? 0,
+    }));
+    return [{ label: t("work.filterAll"), value: ALL, count: inChip.length }, ...subChips];
+  }, [active, works, t]);
+
+  const filtered = React.useMemo(() => {
+    let list = active === ALL ? works : works.filter((w) => w.tags.includes(active));
+    if (activeSub !== ALL) list = list.filter((w) => w.category === activeSub);
+    return list;
+  }, [active, activeSub, works]);
 
   return (
     <div className="min-h-screen bg-bg">
@@ -167,7 +213,7 @@ export default function WorksGallery({ caseStudies, videoAds }: Props) {
                   key={f.value}
                   role="tab"
                   aria-selected={active === f.value}
-                  onClick={() => setActive(f.value)}
+                  onClick={() => selectChip(f.value)}
                   className={cn(
                     "inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 border",
                     active === f.value
@@ -183,6 +229,35 @@ export default function WorksGallery({ caseStudies, videoAds }: Props) {
               ))}
             </div>
           </Reveal>
+
+          {/* Sub-filter pills — shown only for chips with subcategories */}
+          {subFilters.length > 0 && (
+            <div
+              className="mt-3 flex gap-2 flex-wrap"
+              role="tablist"
+              aria-label={t("work.subFilterAria")}
+            >
+              {subFilters.map((s) => (
+                <button
+                  key={s.value}
+                  role="tab"
+                  aria-selected={activeSub === s.value}
+                  onClick={() => setActiveSub(s.value)}
+                  className={cn(
+                    "inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-200 border",
+                    activeSub === s.value
+                      ? "bg-accent/15 text-accent border-accent/40"
+                      : "text-fg-muted border-border/70 hover:border-border-strong hover:text-fg-secondary bg-transparent"
+                  )}
+                >
+                  {s.label}
+                  <span className="font-mono text-[10px] opacity-60 tabular-nums">
+                    {s.count === 0 ? "•" : s.count}
+                  </span>
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
