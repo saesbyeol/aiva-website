@@ -85,6 +85,8 @@ const FILTER_TAGS = [
   "E-commerce",
   "Web stranice",
   "AI rješenja",
+  "Produktna fotografija",
+  "Marketinška kampanja",
 ] as const;
 
 // Maps the Croatian tag value (must match Sanity data / FILTER_TAGS) to the
@@ -95,6 +97,8 @@ const CHIP_LABEL_KEYS: Record<string, string> = {
   "E-commerce": "work.chipEcommerce",
   "Web stranice": "work.chipWebsites",
   "AI rješenja": "work.chipAiSolutions",
+  "Produktna fotografija": "work.chipProductPhotography",
+  "Marketinška kampanja": "work.chipMarketingCampaign",
 };
 
 interface Props {
