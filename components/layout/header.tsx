@@ -72,7 +72,7 @@ export function Header() {
           <Link
             href="/"
             className="text-xl font-extrabold tracking-tight text-fg hover:text-accent transition-colors"
-            aria-label="Aiva — home"
+            aria-label="Aiva, home"
           >
             <span className="gradient-text">Aiva</span>
           </Link>

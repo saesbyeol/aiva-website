@@ -8,7 +8,7 @@ export const services = [
     shortDescription:
       "Analiziramo vaše postojeće procese, alate i digitalni ekosustav kako bismo identificirali konkretne prilike za AI automatizaciju.",
     description:
-      "Prije bilo kakve implementacije, provjeravamo gdje se zapravo gubi vrijeme i novac. Analiziramo vaše poslovne procese, trenutne alate, tijekove rada i digitalne kanale te izrađujemo jasno izvješće s prioritiziranim preporukama. Dobivate konkretan plan akcija — bez žargona, samo ono što vrijedi implementirati.",
+      "Prije bilo kakve implementacije, provjeravamo gdje se zapravo gubi vrijeme i novac. Analiziramo vaše poslovne procese, trenutne alate, tijekove rada i digitalne kanale te izrađujemo jasno izvješće s prioritiziranim preporukama. Dobivate konkretan plan akcija, bez žargona, samo ono što vrijedi implementirati.",
     outcomes: [
       "Jasan uvid u sve procese koji se mogu automatizirati",
       "Prioritizirana lista AI prilike prema ROI-u",
@@ -56,7 +56,7 @@ export const services = [
     shortDescription:
       "Automatiziramo produkciju sadržaja za marketing, društvene mreže i kampanje bez povećanja troškova i broja zaposlenih.",
     description:
-      "Kreiramo AI sadržaj za brzu i skalabilnu izradu marketinškog sadržaja — od reklama za društvene mreže do videa i vizuala proizvoda. Automatiziramo produkciju sadržaja kako biste mogli kontinuirano objavljivati kvalitetne materijale prilagođene vašem brendu i publici. Od promotivnih videa i recenzija proizvoda do vizuala za kampanje, AI alati omogućuju bržu produkciju, testiranje i optimizaciju sadržaja za različite kanale i društvene mreže.",
+      "Kreiramo AI sadržaj za brzu i skalabilnu izradu marketinškog sadržaja: od reklama za društvene mreže do videa i vizuala proizvoda. Automatiziramo produkciju sadržaja kako biste mogli kontinuirano objavljivati kvalitetne materijale prilagođene vašem brendu i publici. Od promotivnih videa i recenzija proizvoda do vizuala za kampanje, AI alati omogućuju bržu produkciju, testiranje i optimizaciju sadržaja za različite kanale i društvene mreže.",
     outcomes: [
       "Više sadržaja uz dosljedan vizualni identitet brenda",
       "Brža izrada reklama za društvene mreže",
@@ -127,7 +127,7 @@ export const process = [
     step: "01",
     title: "Otkrijemo",
     description:
-      "Provodimo fokusirani discovery sprint — intervjui sa dionicima, mapiranje procesa, revizija podataka — kako bismo razumjeli vaše poslovanje i identificirali AI prilike s najvećom polugom.",
+      "Provodimo fokusirani discovery sprint: intervjui sa dionicima, mapiranje procesa, revizija podataka, kako bismo razumjeli vaše poslovanje i identificirali AI prilike s najvećom polugom.",
   },
   {
     step: "02",
@@ -139,7 +139,7 @@ export const process = [
     step: "03",
     title: "Izgradimo",
     description:
-      "Brzi, iterativni razvoj s tjednim demonstracijama. Isporučujemo na staging rano kako biste mogli validirati nasuprot stvarnoj upotrebi — bez velikih lansiranja odjednom.",
+      "Brzi, iterativni razvoj s tjednim demonstracijama. Isporučujemo na staging rano kako biste mogli validirati nasuprot stvarnoj upotrebi, bez velikih lansiranja odjednom.",
   },
   {
     step: "04",
@@ -156,7 +156,7 @@ export const adShowcase = [
     title: "AI video oglas za proizvod",
     category: "Video oglas",
     description:
-      "Promotivni video oglas generiran AI alatima — prilagođeni vizuali, dinamičan copy i branding u skladu s vašim identitetom.",
+      "Promotivni video oglas generiran AI alatima: prilagođeni vizuali, dinamičan copy i branding u skladu s vašim identitetom.",
     tags: ["Video", "Produkt", "Meta Ads"],
     color: "from-violet-500 to-indigo-600",
     video: "/videos/skincaread.mp4",
@@ -166,7 +166,7 @@ export const adShowcase = [
     title: "UGC-stil video reklama",
     category: "UGC video",
     description:
-      "Autentičan video u UGC stilu — AI scenarij, glas i vizuali koji izgledaju kao preporuka pravog korisnika.",
+      "Autentičan video u UGC stilu: AI scenarij, glas i vizuali koji izgledaju kao preporuka pravog korisnika.",
     tags: ["UGC", "TikTok", "Reels"],
     color: "from-cyan-500 to-blue-600",
     video: "/videos/ugc.mp4",
@@ -194,7 +194,7 @@ export const caseStudies = [
     description:
       "Kako smo pomogli zajmodavcu srednje veličine smanjiti vrijeme obrade kredita za 74% bez doticanja njihovog temeljnog bankarskog sustava.",
     problem:
-      "Tim za kreditno poslovanje ClearPatha bio je preplavljen ručnim pregledom dokumenata — u prosjeku 11 dana po zahtjevu, s visokim stopama pogrešaka i rastućim rizikom usklađenosti.",
+      "Tim za kreditno poslovanje ClearPatha bio je preplavljen ručnim pregledom dokumenata, u prosjeku 11 dana po zahtjevu, s visokim stopama pogrešaka i rastućim rizikom usklađenosti.",
     approach:
       "Dizajnirali smo pipeline za inteligenciju dokumenata koristeći fino podešeni model klasifikacije, sloj OCR ekstrakcije i automatizaciju stabla odlučivanja koja se integrirala putem API-ja s njihovim postojećim LOS-om.",
     results: [
@@ -215,11 +215,11 @@ export const caseStudies = [
     category: "AI Pipeline-ovi za Sadržaj",
     tags: ["Sadržaj", "E-commerce", "Skaliranje"],
     description:
-      "Izgradnja pipeline-a za sadržaj konzistentnog s brandom koji je šesteročlani tim za sadržaj pretvorio u operaciju od 40 ljudi — uz djelić troška.",
+      "Izgradnja pipeline-a za sadržaj konzistentnog s brandom koji je šesteročlani tim za sadržaj pretvorio u operaciju od 40 ljudi, uz djelić troška.",
     problem:
       "Nova je trebala opise proizvoda, e-mail kopije i sadržaj za društvene mreže za 4.000+ novih SKU-ova mjesečno. Njihov tim imao je 6 ljudi. Kvaliteta je bila nekonzistentna, rokovi su propuštani.",
     approach:
-      "Izgradili smo višestupanjski pipeline za sadržaj s fino podešavanjem glasa branda, automatiziranim QA ocjenjivanjem i slojem ljudskog pregleda za rubne slučajeve — sve integrirano u njihov PIM sustav.",
+      "Izgradili smo višestupanjski pipeline za sadržaj s fino podešavanjem glasa branda, automatiziranim QA ocjenjivanjem i slojem ljudskog pregleda za rubne slučajeve, sve integrirano u njihov PIM sustav.",
     results: [
       "4.000 opisa proizvoda generiranih mjesečno",
       "98,2% ocjena konzistentnosti branda (poraslo s 71%)",
@@ -240,7 +240,7 @@ export const caseStudies = [
     description:
       "Prilagođeni asistent za znanje koji 120 odvjetnika ima trenutačan pristup 15 godišnjoj internoj povijesti predmeta, ugovorima i istraživanjima.",
     problem:
-      "Stariji suradnici trošili su 30% naplatnih sati na interno dohvaćanje znanja — pretražujući nestrukturirane Sharepoint dokumente, e-mail niti i stare spise predmeta.",
+      "Stariji suradnici trošili su 30% naplatnih sati na interno dohvaćanje znanja, pretražujući nestrukturirane Sharepoint dokumente, e-mail niti i stare spise predmeta.",
     approach:
       "Izgradili smo RAG-temeljenog LLM asistenta s kontrolama sigurnog pristupa, preciznim citiranjem izvora i slojem ocjenjivanja pouzdanosti kako bi se spriječile halucinacije u pravnom kontekstu.",
     results: [
@@ -259,7 +259,7 @@ export const testimonials = [
   {
     id: 1,
     quote:
-      "Aiva nam nije samo izgradila alat — temeljito su promijenili način na koji naš operativni tim radi. ROI je bio vidljiv unutar 60 dana od lansiranja.",
+      "Aiva nam nije samo izgradila alat, temeljito su promijenili način na koji naš operativni tim radi. ROI je bio vidljiv unutar 60 dana od lansiranja.",
     author: "Sarah Chen",
     role: "COO, ClearPath Finance",
     avatar: "/images/avatars/sarah.jpg",
@@ -267,7 +267,7 @@ export const testimonials = [
   {
     id: 2,
     quote:
-      "Radio sam s AI dobavljačima koji previše obećavaju, a premalo isporučuju. Aiva je bila suprotnost — konzervativne procjene, iznimno izvršenje.",
+      "Radio sam s AI dobavljačima koji previše obećavaju, a premalo isporučuju. Aiva je bila suprotnost: konzervativne procjene, iznimno izvršenje.",
     author: "Marcus Webb",
     role: "Head of Digital, Nova Commerce",
     avatar: "/images/avatars/marcus.jpg",

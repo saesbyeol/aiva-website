@@ -89,7 +89,7 @@ function ServiceCard({
           "transition-all duration-300",
           "hover:border-border-strong hover:shadow-md hover:bg-bg-secondary"
         )}
-        aria-label={`${service.title} — ${service.shortDescription}`}
+        aria-label={`${service.title}, ${service.shortDescription}`}
       >
         {/* Icon */}
         <div

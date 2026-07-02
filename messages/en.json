@@ -49,7 +49,7 @@
   "services": {
     "label": "What we do",
     "title": "Intelligence built to integrate.",
-    "description": "We build AI systems that fit your stack, your team, and your goals — not the other way around.",
+    "description": "We build AI systems that fit your stack, your team, and your goals, not the other way around.",
     "seeAll": "View all services",
     "outcomesLabel": "Outcomes",
     "deliverablesLabel": "Deliverables",
@@ -60,7 +60,7 @@
     "badge": "What we do",
     "title": "AI that adapts to your business.",
     "titleAccent": "Not the other way around.",
-    "description": "We design custom AI systems for automation, content, custom LLM applications, and data integrations — all built on a strategic layer that ensures you're building the right thing.",
+    "description": "We design custom AI systems for automation, content, custom LLM applications, and data integrations, all built on a strategic layer that ensures you're building the right thing.",
     "cta": "Book a free intro call",
     "packagesLabel": "Packages",
     "packagesTitle": "Start where it makes sense.",
@@ -121,7 +121,7 @@
   },
   "process": {
     "label": "How we work",
-    "title": "From discovery to delivery — fast, clear, measurable."
+    "title": "From discovery to delivery: fast, clear, measurable."
   },
   "work": {
     "label": "Case studies",
@@ -137,7 +137,7 @@
     "galleryEyebrow": "OUR WORK",
     "galleryHeadingLead": "Results that",
     "galleryHeadingAccent": "speak for themselves.",
-    "gallerySubtitle": "From AI video ads to enterprise systems — projects we've built for our clients.",
+    "gallerySubtitle": "From AI video ads to enterprise systems, projects we've built for our clients.",
     "filterAll": "All",
     "filterAria": "Filter works",
     "ctaProject": "View project",
@@ -155,7 +155,7 @@
     "badge": "Our work",
     "title": "AI ads that",
     "titleAccent": "convert.",
-    "description": "Examples of AI-generated ad content — video, visuals, and UGC ads that grab attention and turn viewers into clients.",
+    "description": "Examples of AI-generated ad content: video, visuals, and UGC ads that grab attention and turn viewers into clients.",
     "comingSoon": "Coming soon"
   },
   "caseStudy": {
@@ -173,7 +173,7 @@
   "faq": {
     "label": "Frequently asked questions",
     "title": "Common questions, honest answers.",
-    "description": "If something's not covered here, reach out — we reply within one business day."
+    "description": "If something's not covered here, reach out: we reply within one business day."
   },
   "cta": {
     "label": "Ready to get started?",
@@ -188,7 +188,7 @@
     "badge": "Our story",
     "title": "AI solutions built by digital marketing experts.",
     "description1": "Aiva was founded by digital marketing experts who spent years building campaigns, content, and online sales systems for a variety of companies. Through our work with clients, we saw how much time and resources businesses were losing to repetitive marketing and operational tasks.",
-    "description2": "So we started building AI systems that automate content, communication, and operational processes — so businesses can work faster and more efficiently. Today we help companies implement AI solutions that boost productivity, optimize marketing, and enable business scaling.",
+    "description2": "So we started building AI systems that automate content, communication, and operational processes, so businesses can work faster and more efficiently. Today we help companies implement AI solutions that boost productivity, optimize marketing, and enable business scaling.",
     "cta": "Start a conversation",
     "principlesLabel": "Our principles",
     "principlesTitle": "How we think, how we work.",
@@ -196,7 +196,7 @@
       {
         "number": "01",
         "title": "Results over demos",
-        "description": "We measure success in time saved, revenue generated, and errors eliminated — not impressive prototype videos."
+        "description": "We measure success in time saved, revenue generated, and errors eliminated, not impressive prototype videos."
       },
       {
         "number": "02",
@@ -211,7 +211,7 @@
       {
         "number": "04",
         "title": "Long-term partnerships",
-        "description": "We design every system so you can own it. Our goal is to be the last AI partner you need — not to create dependency."
+        "description": "We design every system so you can own it. Our goal is to be the last AI partner you need, not to create dependency."
       }
     ],
     "teamLabel": "Team",
@@ -320,15 +320,15 @@
     "s6List": [
       {
         "name": "Resend",
-        "desc": "— email delivery"
+        "desc": ": email delivery"
       },
       {
         "name": "Plausible Analytics",
-        "desc": "— privacy-friendly web analytics (optional)"
+        "desc": ": privacy-friendly web analytics (optional)"
       },
       {
         "name": "Vercel",
-        "desc": "— website hosting"
+        "desc": ": website hosting"
       }
     ],
     "s7Title": "7. Security",
@@ -354,7 +354,7 @@
     "allRightsReserved": "All rights reserved."
   },
   "a11y": {
-    "homeLink": "Aiva — home",
+    "homeLink": "Aiva, home",
     "themeToggle": "Switch to {mode} mode",
     "linkedInLink": "{name} on LinkedIn",
     "openCalendly": "Book an intro call on Calendly (opens in a new tab)"
@@ -366,11 +366,11 @@
     },
     "work": {
       "title": "Our work",
-      "description": "See the projects we've built for our clients — from AI video ads to enterprise automation systems."
+      "description": "See the projects we've built for our clients, from AI video ads to enterprise automation systems."
     },
     "contact": {
       "title": "Contact",
-      "description": "Book a free intro call or send us a message — we reply within one business day."
+      "description": "Book a free intro call or send us a message: we reply within one business day."
     },
     "privacy": {
       "title": "Privacy policy",
@@ -378,7 +378,7 @@
     },
     "services": {
       "title": "Services",
-      "description": "From AI automation to custom LLM apps — we build AI systems that integrate into your stack and deliver measurable results."
+      "description": "From AI automation to custom LLM apps, we build AI systems that integrate into your stack and deliver measurable results."
     }
   }
 }

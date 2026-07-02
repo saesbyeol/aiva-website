@@ -49,7 +49,7 @@
   "services": {
     "label": "Što radimo",
     "title": "Inteligencija izgrađena za integraciju.",
-    "description": "Gradimo AI sustave koji odgovaraju vašem stogu, timu i ciljevima — a ne obrnuto.",
+    "description": "Gradimo AI sustave koji odgovaraju vašem stogu, timu i ciljevima, a ne obrnuto.",
     "seeAll": "Pogledaj sve usluge",
     "outcomesLabel": "Ishodi",
     "deliverablesLabel": "Isporuke",
@@ -60,7 +60,7 @@
     "badge": "Što radimo",
     "title": "AI koji se prilagođava vašem poslovanju.",
     "titleAccent": "A ne obrnuto.",
-    "description": "Dizajniramo prilagođene AI sustave za automatizaciju, sadržaj, prilagođene LLM aplikacije i integracije podataka — sve utemeljeno na strateškom sloju koji osigurava da gradite pravu stvar.",
+    "description": "Dizajniramo prilagođene AI sustave za automatizaciju, sadržaj, prilagođene LLM aplikacije i integracije podataka, sve utemeljeno na strateškom sloju koji osigurava da gradite pravu stvar.",
     "cta": "Rezerviraj besplatan uvodni poziv",
     "packagesLabel": "Paketi",
     "packagesTitle": "Počnite tamo gdje ima smisla.",
@@ -121,7 +121,7 @@
   },
   "process": {
     "label": "Kako radimo",
-    "title": "Od otkrića do isporuke — brzo, jasno, mjerljivo."
+    "title": "Od otkrića do isporuke: brzo, jasno, mjerljivo."
   },
   "work": {
     "label": "Studije slučaja",
@@ -137,7 +137,7 @@
     "galleryEyebrow": "NAŠI RADOVI",
     "galleryHeadingLead": "Rezultati koji",
     "galleryHeadingAccent": "govore sami za sebe.",
-    "gallerySubtitle": "Od AI video oglasa do enterprise sustava — projekti koje smo izgradili za naše klijente.",
+    "gallerySubtitle": "Od AI video oglasa do enterprise sustava, projekti koje smo izgradili za naše klijente.",
     "filterAll": "Sve",
     "filterAria": "Filter radova",
     "ctaProject": "Pogledaj projekt",
@@ -155,7 +155,7 @@
     "badge": "Naši radovi",
     "title": "AI reklame koje",
     "titleAccent": "pretvaraju.",
-    "description": "Primjeri AI generiranog oglasnog sadržaja — video, vizuali i UGC reklame koje privlače pažnju i pretvaraju gledatelje u klijente.",
+    "description": "Primjeri AI generiranog oglasnog sadržaja: video, vizuali i UGC reklame koje privlače pažnju i pretvaraju gledatelje u klijente.",
     "comingSoon": "Uskoro"
   },
   "caseStudy": {
@@ -173,7 +173,7 @@
   "faq": {
     "label": "Često postavljena pitanja",
     "title": "Uobičajena pitanja, iskreni odgovori.",
-    "description": "Ako nešto nije ovdje, javite nam se — odgovaramo u roku od jednog radnog dana."
+    "description": "Ako nešto nije ovdje, javite nam se: odgovaramo u roku od jednog radnog dana."
   },
   "cta": {
     "label": "Spremi za početak?",
@@ -188,7 +188,7 @@
     "badge": "Naša priča",
     "title": "AI rješenja izgrađena od strane stručnjaka za digitalni marketing.",
     "description1": "Aivu su osnovali stručnjaci za digitalni marketing koji su godinama radili na izgradnji kampanja, sadržaja i online prodajnih sustava za različite tvrtke. Kroz rad s klijentima vidjeli smo koliko vremena i resursa tvrtke troše na ponavljajuće zadatke u marketingu i poslovnim procesima.",
-    "description2": "Zato smo počeli razvijati AI sustave koji automatiziraju sadržaj, komunikaciju i operativne procese — kako bi tvrtke mogle raditi brže i učinkovitije. Danas pomažemo tvrtkama implementirati AI rješenja koja povećavaju produktivnost, optimiziraju marketing i omogućuju skaliranje poslovanja.",
+    "description2": "Zato smo počeli razvijati AI sustave koji automatiziraju sadržaj, komunikaciju i operativne procese, kako bi tvrtke mogle raditi brže i učinkovitije. Danas pomažemo tvrtkama implementirati AI rješenja koja povećavaju produktivnost, optimiziraju marketing i omogućuju skaliranje poslovanja.",
     "cta": "Započni razgovor",
     "principlesLabel": "Naša načela",
     "principlesTitle": "Kako razmišljamo, kako radimo.",
@@ -196,7 +196,7 @@
       {
         "number": "01",
         "title": "Rezultati iznad demonstracija",
-        "description": "Uspjeh mjerimo u uštedi vremena, generiranom prihodu i eliminiranim greškama — ne impresivnim videozapisima prototipova."
+        "description": "Uspjeh mjerimo u uštedi vremena, generiranom prihodu i eliminiranim greškama, ne impresivnim videozapisima prototipova."
       },
       {
         "number": "02",
@@ -211,7 +211,7 @@
       {
         "number": "04",
         "title": "Dugoročna partnerstva",
-        "description": "Dizajniramo svaki sustav tako da ga vi možete posjedovati. Naš cilj je biti posljednji AI partner koji vam je potreban — ne stvarati ovisnost."
+        "description": "Dizajniramo svaki sustav tako da ga vi možete posjedovati. Naš cilj je biti posljednji AI partner koji vam je potreban, ne stvarati ovisnost."
       }
     ],
     "teamLabel": "Tim",
@@ -320,15 +320,15 @@
     "s6List": [
       {
         "name": "Resend",
-        "desc": "— dostava e-pošte"
+        "desc": ": dostava e-pošte"
       },
       {
         "name": "Plausible Analytics",
-        "desc": "— web analitika koja čuva privatnost (nije obavezno)"
+        "desc": ": web analitika koja čuva privatnost (nije obavezno)"
       },
       {
         "name": "Vercel",
-        "desc": "— hosting web-stranice"
+        "desc": ": hosting web-stranice"
       }
     ],
     "s7Title": "7. Sigurnost",
@@ -354,7 +354,7 @@
     "allRightsReserved": "Sva prava pridržana."
   },
   "a11y": {
-    "homeLink": "Aiva — početna",
+    "homeLink": "Aiva, početna",
     "themeToggle": "Prebaci na {mode} način",
     "linkedInLink": "{name} na LinkedIn-u",
     "openCalendly": "Zakažite uvodni poziv na Calendly (otvara se u novoj kartici)"
@@ -366,7 +366,7 @@
     },
     "work": {
       "title": "Naši radovi",
-      "description": "Pogledajte naše projekte — od AI video oglasa do enterprise automatizacijskih sustava."
+      "description": "Pogledajte naše projekte, od AI video oglasa do enterprise automatizacijskih sustava."
     },
     "contact": {
       "title": "Kontakt",
@@ -378,7 +378,7 @@
     },
     "services": {
       "title": "Usluge",
-      "description": "Od AI automatizacije do prilagođenih LLM aplikacija — gradimo AI sustave koji se integriraju u vaš stek i donose mjerljive rezultate."
+      "description": "Od AI automatizacije do prilagođenih LLM aplikacija, gradimo AI sustave koji se integriraju u vaš stek i donose mjerljive rezultate."
     }
   }
 }

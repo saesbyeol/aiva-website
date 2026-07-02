@@ -8,7 +8,7 @@ export const services = [
     shortDescription:
       "We analyze your existing processes, tools, and digital ecosystem to identify concrete opportunities for AI automation.",
     description:
-      "Before any implementation, we check where time and money are actually being lost. We analyze your business processes, current tools, workflows, and digital channels, then put together a clear report with prioritized recommendations. You get a concrete action plan — no jargon, just what's worth implementing.",
+      "Before any implementation, we check where time and money are actually being lost. We analyze your business processes, current tools, workflows, and digital channels, then put together a clear report with prioritized recommendations. You get a concrete action plan, no jargon, just what's worth implementing.",
     outcomes: [
       "Clear visibility into every process that can be automated",
       "A prioritized list of AI opportunities ranked by ROI",
@@ -56,7 +56,7 @@ export const services = [
     shortDescription:
       "We automate content production for marketing, social media, and campaigns without adding costs or headcount.",
     description:
-      "We create AI content for fast, scalable production of marketing materials — from social media ads to product videos and visuals. We automate content production so you can consistently publish quality materials tailored to your brand and audience. From promotional videos and product reviews to campaign visuals, AI tools enable faster production, testing, and optimization of content across channels and social platforms.",
+      "We create AI content for fast, scalable production of marketing materials: from social media ads to product videos and visuals. We automate content production so you can consistently publish quality materials tailored to your brand and audience. From promotional videos and product reviews to campaign visuals, AI tools enable faster production, testing, and optimization of content across channels and social platforms.",
     outcomes: [
       "More content with a consistent brand visual identity",
       "Faster production of social media ads",
@@ -127,7 +127,7 @@ export const process = [
     step: "01",
     title: "Discover",
     description:
-      "We run a focused discovery sprint — stakeholder interviews, process mapping, data review — to understand your business and identify the AI opportunities with the biggest leverage.",
+      "We run a focused discovery sprint: stakeholder interviews, process mapping, data review, to understand your business and identify the AI opportunities with the biggest leverage.",
   },
   {
     step: "02",
@@ -139,7 +139,7 @@ export const process = [
     step: "03",
     title: "Build",
     description:
-      "Fast, iterative development with weekly demos. We ship to staging early so you can validate against real usage — no big-bang launches.",
+      "Fast, iterative development with weekly demos. We ship to staging early so you can validate against real usage, no big-bang launches.",
   },
   {
     step: "04",
@@ -153,7 +153,7 @@ export const testimonials = [
   {
     id: 1,
     quote:
-      "Aiva didn't just build us a tool — they fundamentally changed how our operations team works. The ROI was visible within 60 days of launch.",
+      "Aiva didn't just build us a tool: they fundamentally changed how our operations team works. The ROI was visible within 60 days of launch.",
     author: "Sarah Chen",
     role: "COO, ClearPath Finance",
     avatar: "/images/avatars/sarah.jpg",
@@ -161,7 +161,7 @@ export const testimonials = [
   {
     id: 2,
     quote:
-      "I've worked with AI vendors who overpromise and underdeliver. Aiva was the opposite — conservative estimates, outstanding execution.",
+      "I've worked with AI vendors who overpromise and underdeliver. Aiva was the opposite: conservative estimates, outstanding execution.",
     author: "Marcus Webb",
     role: "Head of Digital, Nova Commerce",
     avatar: "/images/avatars/marcus.jpg",

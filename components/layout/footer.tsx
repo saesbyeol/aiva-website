@@ -19,7 +19,7 @@ export function Footer() {
             <Link
               href="/"
               className="text-2xl font-extrabold tracking-tight"
-              aria-label="Aiva — home"
+              aria-label="Aiva, home"
             >
               <span className="gradient-text">Aiva</span>
             </Link>
