@@ -80,7 +80,7 @@ const ALL = "all";
 // Fixed filter chips. A project appears under a chip when its Tagovi in Sanity
 // contain the exact matching string. Chips always show, even at 0 (rendered "•").
 const FILTER_TAGS = [
-  "Video oglasi",
+  "Generiranje videozapisa",
   "Generiranje slika",
   "E-commerce",
   "Web stranice",
@@ -92,7 +92,7 @@ const FILTER_TAGS = [
 // Maps the Croatian tag value (must match Sanity data / FILTER_TAGS) to the
 // translation key used for the displayed chip label.
 const CHIP_LABEL_KEYS: Record<string, string> = {
-  "Video oglasi": "work.chipVideoAds",
+  "Generiranje videozapisa": "work.chipVideoGeneration",
   "Generiranje slika": "work.chipImageGen",
   "E-commerce": "work.chipEcommerce",
   "Web stranice": "work.chipWebsites",
@@ -106,7 +106,7 @@ const CHIP_LABEL_KEYS: Record<string, string> = {
 // Sanity Kategorija field) equals the sub value. Values MUST match the enum in
 // sanity/schemaTypes/videoAd.ts. Add an entry to give any chip its own subs.
 const SUBCATEGORIES: Record<string, readonly string[]> = {
-  "Video oglasi": [
+  "Generiranje videozapisa": [
     "Video Oglas",
     "UGC Video",
     "Carousel Oglas",
