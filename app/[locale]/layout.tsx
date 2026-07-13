@@ -50,7 +50,11 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-export const dynamicParams = false;
+// Allow on-demand (ISR) rendering of dynamic child routes not enumerated at
+// build time — e.g. case-study `[slug]` pages for Sanity documents added after
+// the last deploy. Invalid locales are still rejected by the explicit
+// `hasLocale(...) notFound()` guard in the layout below, so this stays safe.
+export const dynamicParams = true;
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
