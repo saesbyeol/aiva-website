@@ -327,15 +327,6 @@ const cardShell =
   "hover:shadow-[0_0_50px_rgba(99,102,241,0.12)] " +
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent";
 
-/** "PROJECT 01" badge pinned to the media */
-function ProjectBadge({ num }: { num: number }) {
-  return (
-    <span className="absolute top-4 left-4 z-20 font-mono text-[11px] tracking-widest uppercase text-white/80 bg-black/40 backdrop-blur-sm border border-white/15 rounded-md px-2.5 py-1">
-      Project {String(num).padStart(2, "0")}
-    </span>
-  );
-}
-
 /** Text block below the media: category · year, title, description, CTA */
 function CardBody({ work, cta }: { work: Work; cta: string }) {
   return (
@@ -400,7 +391,6 @@ function StaticCard({ work, staggerIndex }: { work: Work; staggerIndex: number }
             )}
           </>
         )}
-        <ProjectBadge num={work.num} />
       </div>
       <CardBody work={work} cta={t("work.ctaProject")} />
     </Link>
@@ -460,7 +450,6 @@ function VideoCard({ work, staggerIndex, onOpen }: { work: Work; staggerIndex: n
             <Play className="w-6 h-6 text-white ml-0.5" fill="white" />
           </div>
         </div>
-        <ProjectBadge num={work.num} />
       </div>
       <CardBody work={work} cta={t("work.ctaVideo")} />
     </div>
