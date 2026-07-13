@@ -82,10 +82,8 @@ const ALL = "all";
 const FILTER_TAGS = [
   "Generiranje videozapisa",
   "Generiranje slika",
-  "E-commerce",
   "Web stranice",
   "AI rješenja",
-  "Marketinška kampanja",
 ] as const;
 
 // Maps the Croatian tag value (must match Sanity data / FILTER_TAGS) to the
@@ -95,10 +93,8 @@ const FILTER_TAGS = [
 const CHIP_LABEL_KEYS: Record<string, string> = {
   "Generiranje videozapisa": "work.chipVideoGeneration",
   "Generiranje slika": "work.chipImageGen",
-  "E-commerce": "work.chipEcommerce",
   "Web stranice": "work.chipWebsites",
   "AI rješenja": "work.chipAiSolutions",
-  "Marketinška kampanja": "work.chipMarketingCampaign",
 };
 
 // Per-chip sub-filters. When a chip with an entry here is active, a secondary
@@ -108,13 +104,15 @@ const CHIP_LABEL_KEYS: Record<string, string> = {
 // (image subs). Add an entry to give any chip its own subs.
 const SUBCATEGORIES: Record<string, readonly string[]> = {
   "Generiranje videozapisa": ["UGC Video"],
-  "Generiranje slika": ["Fashion"],
+  "Generiranje slika": ["Ecommerce", "Fashion", "Marketing kampanje"],
 };
 
 // Maps a sub value (Sanity category) to the translation key for its pill label.
 const SUB_LABEL_KEYS: Record<string, string> = {
   "UGC Video": "work.subUgc",
+  "Ecommerce": "work.subEcommerce",
   "Fashion": "work.subFashion",
+  "Marketing kampanje": "work.subMarketingCampaign",
 };
 
 interface Props {
