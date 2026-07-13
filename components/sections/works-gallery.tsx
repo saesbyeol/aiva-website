@@ -108,15 +108,13 @@ const CHIP_LABEL_KEYS: Record<string, string> = {
 // (image subs). Add an entry to give any chip its own subs.
 const SUBCATEGORIES: Record<string, readonly string[]> = {
   "Generiranje videozapisa": ["UGC Video"],
-  "Generiranje slika": ["Ecommerce", "Fashion", "Marketing kampanje"],
+  "Generiranje slika": ["Fashion"],
 };
 
 // Maps a sub value (Sanity category) to the translation key for its pill label.
 const SUB_LABEL_KEYS: Record<string, string> = {
   "UGC Video": "work.subUgc",
-  "Ecommerce": "work.subEcommerce",
   "Fashion": "work.subFashion",
-  "Marketing kampanje": "work.subMarketingCampaign",
 };
 
 interface Props {

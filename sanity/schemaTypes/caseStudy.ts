@@ -34,10 +34,8 @@ export const caseStudy = defineType({
           { title: "AI Web Stranice", value: "AI Web Stranice" },
           { title: "AI Chatbotovi", value: "AI Chatbotovi" },
           { title: "AI Marketing", value: "AI Marketing" },
-          // Sub-filter categories for the "AI slike" (Generiranje slika) chip
-          { title: "Ecommerce", value: "Ecommerce" },
+          // Sub-filter category for the "AI slike" (Generiranje slika) chip
           { title: "Fashion", value: "Fashion" },
-          { title: "Marketing kampanje", value: "Marketing kampanje" },
         ],
       },
       validation: (r) => r.required(),
