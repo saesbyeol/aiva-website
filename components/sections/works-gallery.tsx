@@ -82,46 +82,37 @@ const ALL = "all";
 const FILTER_TAGS = [
   "Generiranje videozapisa",
   "Generiranje slika",
-  "E-commerce",
   "Web stranice",
   "AI rješenja",
-  "Produktna fotografija",
-  "Marketinška kampanja",
 ] as const;
 
 // Maps the Croatian tag value (must match Sanity data / FILTER_TAGS) to the
-// translation key used for the displayed chip label.
+// translation key used for the displayed chip label. NOTE: the tag *value*
+// stays stable so existing Sanity documents keep matching — only the label
+// text changes (e.g. "Generiranje slika" now displays as "AI slike").
 const CHIP_LABEL_KEYS: Record<string, string> = {
   "Generiranje videozapisa": "work.chipVideoGeneration",
   "Generiranje slika": "work.chipImageGen",
-  "E-commerce": "work.chipEcommerce",
   "Web stranice": "work.chipWebsites",
   "AI rješenja": "work.chipAiSolutions",
-  "Produktna fotografija": "work.chipProductPhotography",
-  "Marketinška kampanja": "work.chipMarketingCampaign",
 };
 
 // Per-chip sub-filters. When a chip with an entry here is active, a secondary
 // row of pills appears; each narrows the grid to works whose `category` (the
 // Sanity Kategorija field) equals the sub value. Values MUST match the enum in
-// sanity/schemaTypes/videoAd.ts. Add an entry to give any chip its own subs.
+// sanity/schemaTypes/videoAd.ts (video subs) or sanity/schemaTypes/caseStudy.ts
+// (image subs). Add an entry to give any chip its own subs.
 const SUBCATEGORIES: Record<string, readonly string[]> = {
-  "Generiranje videozapisa": [
-    "Video Oglas",
-    "UGC Video",
-    "Carousel Oglas",
-    "Reels / TikTok",
-    "Product Video",
-  ],
+  "Generiranje videozapisa": ["UGC Video"],
+  "Generiranje slika": ["Ecommerce", "Fashion", "Marketing kampanje"],
 };
 
 // Maps a sub value (Sanity category) to the translation key for its pill label.
 const SUB_LABEL_KEYS: Record<string, string> = {
-  "Video Oglas": "work.subVideoAd",
   "UGC Video": "work.subUgc",
-  "Carousel Oglas": "work.subCarousel",
-  "Reels / TikTok": "work.subReelsTiktok",
-  "Product Video": "work.subProductVideo",
+  "Ecommerce": "work.subEcommerce",
+  "Fashion": "work.subFashion",
+  "Marketing kampanje": "work.subMarketingCampaign",
 };
 
 interface Props {
