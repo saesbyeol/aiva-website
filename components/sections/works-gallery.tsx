@@ -465,15 +465,37 @@ function VideoCard({ work, staggerIndex, onOpen }: { work: Work; staggerIndex: n
 
 function WebsiteCard({ work, staggerIndex }: { work: Work; staggerIndex: number }) {
   const t = useTranslations();
+  const [expanded, setExpanded] = React.useState(false);
+  const [truncated, setTruncated] = React.useState(false);
+  const descRef = React.useRef<HTMLParagraphElement>(null);
+
+  // Measure (in clamped state) whether the description overflows two lines, so
+  // the toggle only appears when there's actually more text to read.
+  React.useEffect(() => {
+    const el = descRef.current;
+    if (el) setTruncated(el.scrollHeight > el.clientHeight + 1);
+  }, [work.description]);
+
+  const open = React.useCallback(() => {
+    if (work.externalUrl) window.open(work.externalUrl, "_blank", "noopener,noreferrer");
+  }, [work.externalUrl]);
+
   return (
-    <a
-      href={work.externalUrl!}
-      target="_blank"
-      rel="noopener noreferrer"
+    <div
       role="listitem"
       aria-label={`${t("work.ctaWebsite")}: ${work.title}`}
-      className={cardShell}
+      tabIndex={0}
+      className={cn(cardShell, "cursor-pointer")}
       style={cardAnimation(staggerIndex)}
+      onClick={open}
+      onKeyDown={(e) => {
+        // Ignore key events bubbling up from the inner toggle button.
+        if (e.target !== e.currentTarget) return;
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          open();
+        }
+      }}
     >
       <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-bg">
         {/* Live preview: scaled desktop render of the site (or an uploaded poster) */}
@@ -510,7 +532,46 @@ function WebsiteCard({ work, staggerIndex }: { work: Work; staggerIndex: number 
           <ArrowUpRight className="w-3.5 h-3.5" />
         </span>
       </div>
-      <CardBody work={work} cta={t("work.ctaWebsite")} />
-    </a>
+
+      {/* Body — description is expandable since there's no internal detail page */}
+      <div className="pt-5 px-1.5 pb-1.5">
+        <p className="font-mono text-xs tracking-wider uppercase text-accent mb-3">
+          {work.category} · {work.year}
+        </p>
+        <h2 className="text-xl font-bold text-fg leading-snug mb-2.5 group-hover:text-accent transition-colors duration-300">
+          {work.title}
+        </h2>
+        {work.description && (
+          <>
+            <p
+              ref={descRef}
+              className={cn(
+                "text-body text-fg-secondary leading-relaxed mb-2",
+                !expanded && "line-clamp-2"
+              )}
+            >
+              {work.description}
+            </p>
+            {(truncated || expanded) && (
+              <button
+                type="button"
+                aria-expanded={expanded}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setExpanded((v) => !v);
+                }}
+                className="mb-3 font-mono text-xs text-fg-muted hover:text-accent transition-colors"
+              >
+                {expanded ? t("work.readLess") : t("work.readMore")}
+              </button>
+            )}
+          </>
+        )}
+        <span className="inline-flex items-center gap-1.5 font-mono text-sm text-accent">
+          {t("work.ctaWebsite")}
+          <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-0.5" />
+        </span>
+      </div>
+    </div>
   );
 }
