@@ -28,6 +28,7 @@ export type SanityCaseStudy = {
   coverImageUrl: string | null;
   gallery: SanityGalleryItem[];
   mediaDescription: string | null;
+  externalUrl: string | null;
   featured: boolean;
   order: number;
 };
@@ -63,6 +64,7 @@ const caseStudiesQuery = groq`*[_type == "caseStudy"] | order(order asc) {
     caption
   },
   mediaDescription,
+  externalUrl,
   featured,
   order
 }`;
@@ -96,6 +98,7 @@ const caseStudyBySlugQuery = groq`*[_type == "caseStudy" && slug.current == $slu
     caption
   },
   mediaDescription,
+  externalUrl,
   featured,
   order
 }`;
@@ -119,6 +122,7 @@ export async function getCaseStudies(): Promise<SanityCaseStudy[]> {
       coverImageUrl: s.coverImage ?? null,
       gallery: [],
       mediaDescription: null,
+      externalUrl: null,
       featured: s.featured,
       order: i,
     }));
@@ -168,6 +172,7 @@ export async function getCaseStudyBySlug(slug: string): Promise<SanityCaseStudy 
       coverImageUrl: s.coverImage ?? null,
       gallery: [],
       mediaDescription: null,
+      externalUrl: null,
       featured: s.featured,
       order: 0,
     };

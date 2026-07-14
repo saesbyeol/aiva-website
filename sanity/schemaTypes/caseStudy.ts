@@ -43,6 +43,14 @@ export const caseStudy = defineType({
       validation: (r) => r.required(),
     }),
     defineField({
+      name: "externalUrl",
+      title: "Vanjski URL (web stranica)",
+      type: "url",
+      description:
+        "Za projekte web stranica. Ako je postavljeno, kartica prikazuje živi pregled stranice i otvara ovu poveznicu u novom tabu (umjesto interne stranice projekta). Dodajte i tag \"Web stranice\" da se pojavi pod tim filterom.",
+      validation: (r) => r.uri({ scheme: ["http", "https"] }),
+    }),
+    defineField({
       name: "year",
       title: "Godina",
       type: "string",

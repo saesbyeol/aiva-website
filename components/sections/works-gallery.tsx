@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, X, Play } from "lucide-react";
+import { ArrowRight, X, Play, ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/motion/reveal";
 import { useTranslations } from "next-intl";
@@ -36,6 +36,7 @@ type Work = {
   gradient: string;
   video: string | null;
   coverImage: string | null;
+  externalUrl: string | null;
 };
 
 function toWorks(caseStudies: SanityCaseStudy[], videoAds: SanityVideoAd[]): Work[] {
@@ -54,6 +55,7 @@ function toWorks(caseStudies: SanityCaseStudy[], videoAds: SanityVideoAd[]): Wor
       gradient: GRADIENTS[i % GRADIENTS.length],
       video: null,
       coverImage: s.coverImageUrl ?? null,
+      externalUrl: s.externalUrl ?? null,
     })),
     ...videoAds.map((a, i) => ({
       id: a._id,
@@ -69,6 +71,7 @@ function toWorks(caseStudies: SanityCaseStudy[], videoAds: SanityVideoAd[]): Wor
       gradient: GRADIENTS[(caseStudies.length + i) % GRADIENTS.length],
       video: a.videoUrl,
       coverImage: null,
+      externalUrl: null,
     })),
   ];
 }
@@ -266,7 +269,9 @@ export default function WorksGallery({ caseStudies, videoAds }: Props) {
               role="list"
             >
               {filtered.map((work, i) =>
-                work.video ? (
+                work.externalUrl ? (
+                  <WebsiteCard key={work.id} work={work} staggerIndex={i} />
+                ) : work.video ? (
                   <VideoCard
                     key={work.id}
                     work={work}
@@ -453,5 +458,59 @@ function VideoCard({ work, staggerIndex, onOpen }: { work: Work; staggerIndex: n
       </div>
       <CardBody work={work} cta={t("work.ctaVideo")} />
     </div>
+  );
+}
+
+// ─── Website card (live preview, whole card opens the site in a new tab) ──────
+
+function WebsiteCard({ work, staggerIndex }: { work: Work; staggerIndex: number }) {
+  const t = useTranslations();
+  return (
+    <a
+      href={work.externalUrl!}
+      target="_blank"
+      rel="noopener noreferrer"
+      role="listitem"
+      aria-label={`${t("work.ctaWebsite")}: ${work.title}`}
+      className={cardShell}
+      style={cardAnimation(staggerIndex)}
+    >
+      <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-bg">
+        {/* Live preview: scaled desktop render of the site (or an uploaded poster) */}
+        <div className="absolute inset-0 transition-transform duration-700 group-hover:scale-105">
+          {work.coverImage ? (
+            <Image
+              src={work.coverImage}
+              alt={work.title}
+              fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              className="object-cover object-top"
+            />
+          ) : (
+            <iframe
+              src={work.externalUrl!}
+              title={work.title}
+              loading="lazy"
+              tabIndex={-1}
+              aria-hidden
+              sandbox="allow-scripts allow-same-origin allow-popups"
+              className="absolute top-0 left-0 origin-top-left border-0 pointer-events-none"
+              style={{ width: "400%", height: "400%", transform: "scale(0.25)" }}
+            />
+          )}
+        </div>
+        {/* Readability veil */}
+        <div
+          className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-black/10 transition-colors duration-500 group-hover:from-black/10"
+          aria-hidden
+        />
+        {/* "Live" chip revealed on hover */}
+        <span className="absolute top-4 right-4 z-10 inline-flex items-center gap-1.5 rounded-full bg-black/50 backdrop-blur-sm border border-white/15 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wider text-white/90 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+          {t("work.liveBadge")}
+          <ArrowUpRight className="w-3.5 h-3.5" />
+        </span>
+      </div>
+      <CardBody work={work} cta={t("work.ctaWebsite")} />
+    </a>
   );
 }
