@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, X, Play, ArrowUpRight } from "lucide-react";
+import { ArrowRight, X, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/motion/reveal";
 import { useTranslations } from "next-intl";
@@ -465,37 +465,13 @@ function VideoCard({ work, staggerIndex, onOpen }: { work: Work; staggerIndex: n
 
 function WebsiteCard({ work, staggerIndex }: { work: Work; staggerIndex: number }) {
   const t = useTranslations();
-  const [expanded, setExpanded] = React.useState(false);
-  const [truncated, setTruncated] = React.useState(false);
-  const descRef = React.useRef<HTMLParagraphElement>(null);
-
-  // Measure (in clamped state) whether the description overflows two lines, so
-  // the toggle only appears when there's actually more text to read.
-  React.useEffect(() => {
-    const el = descRef.current;
-    if (el) setTruncated(el.scrollHeight > el.clientHeight + 1);
-  }, [work.description]);
-
-  const open = React.useCallback(() => {
-    if (work.externalUrl) window.open(work.externalUrl, "_blank", "noopener,noreferrer");
-  }, [work.externalUrl]);
-
   return (
-    <div
+    <Link
+      href={work.href!}
       role="listitem"
-      aria-label={`${t("work.ctaWebsite")}: ${work.title}`}
-      tabIndex={0}
-      className={cn(cardShell, "cursor-pointer")}
+      aria-label={work.title}
+      className={cardShell}
       style={cardAnimation(staggerIndex)}
-      onClick={open}
-      onKeyDown={(e) => {
-        // Ignore key events bubbling up from the inner toggle button.
-        if (e.target !== e.currentTarget) return;
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          open();
-        }
-      }}
     >
       <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-bg">
         {/* Live preview: scaled desktop render of the site (or an uploaded poster) */}
@@ -523,55 +499,11 @@ function WebsiteCard({ work, staggerIndex }: { work: Work; staggerIndex: number 
         </div>
         {/* Readability veil */}
         <div
-          className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-black/10 transition-colors duration-500 group-hover:from-black/10"
+          className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-black/5 transition-colors duration-500 group-hover:from-black/10"
           aria-hidden
         />
-        {/* "Live" chip revealed on hover */}
-        <span className="absolute top-4 right-4 z-10 inline-flex items-center gap-1.5 rounded-full bg-black/50 backdrop-blur-sm border border-white/15 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wider text-white/90 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-          {t("work.liveBadge")}
-          <ArrowUpRight className="w-3.5 h-3.5" />
-        </span>
       </div>
-
-      {/* Body — description is expandable since there's no internal detail page */}
-      <div className="pt-5 px-1.5 pb-1.5">
-        <p className="font-mono text-xs tracking-wider uppercase text-accent mb-3">
-          {work.category} · {work.year}
-        </p>
-        <h2 className="text-xl font-bold text-fg leading-snug mb-2.5 group-hover:text-accent transition-colors duration-300">
-          {work.title}
-        </h2>
-        {work.description && (
-          <>
-            <p
-              ref={descRef}
-              className={cn(
-                "text-body text-fg-secondary leading-relaxed mb-2",
-                !expanded && "line-clamp-2"
-              )}
-            >
-              {work.description}
-            </p>
-            {(truncated || expanded) && (
-              <button
-                type="button"
-                aria-expanded={expanded}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setExpanded((v) => !v);
-                }}
-                className="mb-3 font-mono text-xs text-fg-muted hover:text-accent transition-colors"
-              >
-                {expanded ? t("work.readLess") : t("work.readMore")}
-              </button>
-            )}
-          </>
-        )}
-        <span className="inline-flex items-center gap-1.5 font-mono text-sm text-accent">
-          {t("work.ctaWebsite")}
-          <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-0.5" />
-        </span>
-      </div>
-    </div>
+      <CardBody work={work} cta={t("work.ctaProject")} />
+    </Link>
   );
 }
