@@ -62,7 +62,7 @@ export async function POST(req: NextRequest) {
 
   // Email sending via Resend
   const resendKey = process.env.RESEND_API_KEY;
-  const toEmail = process.env.CONTACT_EMAIL ?? "alen@aiva.hr";
+  const toEmail = process.env.CONTACT_EMAIL ?? "leo@aiva.hr";
 
   if (resendKey) {
     try {
@@ -70,7 +70,7 @@ export async function POST(req: NextRequest) {
       const resend = new Resend(resendKey);
 
       await resend.emails.send({
-        from: "onboarding@resend.dev",
+        from: "noreply@aiva.hr",
         to: toEmail,
         replyTo: data.email,
         subject: `Nova poruka od ${data.name}${data.company ? ` (${data.company})` : ""}`,
