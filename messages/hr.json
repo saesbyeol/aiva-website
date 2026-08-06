@@ -235,8 +235,8 @@
     "details": [
       {
         "label": "E-pošta",
-        "value": "automation.aiva@gmail.com",
-        "href": "mailto:automation.aiva@gmail.com"
+        "value": "alen@aiva.hr",
+        "href": "mailto:alen@aiva.hr"
       },
       {
         "label": "Uvodni poziv",
@@ -285,7 +285,7 @@
     "required": "Obavezno",
     "errorGeneric": "Nešto je pošlo po krivu. Molimo pokušajte ponovo.",
     "errorRateLimit": "Previše zahtjeva. Pričekajte minutu i pokušajte ponovo.",
-    "errorSend": "Slanje poruke nije uspjelo. Molimo kontaktirajte nas direktno na automation.aiva@gmail.com.",
+    "errorSend": "Slanje poruke nije uspjelo. Molimo kontaktirajte nas direktno na alen@aiva.hr.",
     "errorInvalid": "Neispravni podaci u obrascu. Provjerite unos.",
     "validation": {
       "nameMin": "Ime mora imati najmanje 2 znaka",
