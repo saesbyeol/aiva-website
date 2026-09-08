@@ -1,7 +1,8 @@
 {
   "site": {
     "tagline": "AI sustavi koji povećavaju profit.",
-    "description": "Aiva gradi produkcijsko-spremne AI sustave, automatizacije, pipeline-ove za sadržaj i prilagođene LLM aplikacije koji se besprijekorno integriraju u vaše poslovanje i donose mjerljive rezultate."
+    "description": "Aiva gradi produkcijsko-spremne AI sustave, automatizacije, pipeline-ove za sadržaj i prilagođene LLM aplikacije koji se besprijekorno integriraju u vaše poslovanje i donose mjerljive rezultate.",
+    "poweredBy": "Powered by <brand>Modelity</brand>"
   },
   "nav": {
     "services": "Usluge",
@@ -21,7 +22,6 @@
     "company": "Tvrtka",
     "social": "Društvene mreže",
     "legal": "Pravno",
-    "builtWith": "Made with ❤️ by Aiva",
     "rights": "Sva prava pridržana.",
     "terms": "Uvjeti korištenja"
   },

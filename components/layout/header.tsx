@@ -9,6 +9,7 @@ import { getNavLinks } from "@/lib/constants";
 import { Button } from "@/components/ui/button";
 import { MobileNav } from "./mobile-nav";
 import { LocaleToggle } from "./locale-toggle";
+import { PoweredBy } from "./powered-by";
 
 export function Header() {
   const t = useTranslations();
@@ -69,13 +70,16 @@ export function Header() {
           aria-label="Main navigation"
         >
           {/* Logo */}
-          <Link
-            href="/"
-            className="text-xl font-extrabold tracking-tight text-fg hover:text-accent transition-colors"
-            aria-label="Aiva, home"
-          >
-            <span className="gradient-text">Aiva</span>
-          </Link>
+          <div className="flex flex-col justify-center">
+            <Link
+              href="/"
+              className="text-xl font-extrabold tracking-tight text-fg hover:text-accent transition-colors leading-tight"
+              aria-label="Aiva, home"
+            >
+              <span className="gradient-text">Aiva</span>
+            </Link>
+            <PoweredBy className="mt-0.5 text-[11px] leading-none text-fg-secondary" />
+          </div>
 
           {/* Desktop nav */}
           <ul className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-1" role="list">

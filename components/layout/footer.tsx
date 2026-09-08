@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { SITE, getFooterLinks } from "@/lib/constants";
 import { ArrowUpRight } from "lucide-react";
+import { PoweredBy } from "./powered-by";
 
 export function Footer() {
   const t = useTranslations();
@@ -16,13 +17,16 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr] gap-12">
           {/* Brand */}
           <div className="space-y-4">
-            <Link
-              href="/"
-              className="text-2xl font-extrabold tracking-tight"
-              aria-label="Aiva, home"
-            >
-              <span className="gradient-text">Aiva</span>
-            </Link>
+            <div>
+              <Link
+                href="/"
+                className="text-2xl font-extrabold tracking-tight"
+                aria-label="Aiva, home"
+              >
+                <span className="gradient-text">Aiva</span>
+              </Link>
+              <PoweredBy className="mt-1 text-sm text-fg-secondary" />
+            </div>
             <p className="text-fg-secondary text-sm max-w-xs leading-relaxed">
               {t("site.description")}
             </p>
@@ -94,9 +98,7 @@ export function Footer() {
           <p className="text-xs text-fg-muted">
             © {year} {SITE.name}. {t("footer.rights")}
           </p>
-          <p className="text-xs text-fg-muted">
-            {t("footer.builtWith")}
-          </p>
+          <PoweredBy className="text-label" />
         </div>
       </div>
     </footer>
