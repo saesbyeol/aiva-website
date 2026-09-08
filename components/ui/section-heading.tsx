@@ -8,6 +8,7 @@ interface SectionHeadingProps {
   align?: "left" | "center";
   className?: string;
   titleClassName?: string;
+  labelClassName?: string;
 }
 
 export function SectionHeading({
@@ -17,17 +18,18 @@ export function SectionHeading({
   align = "left",
   className,
   titleClassName,
+  labelClassName,
 }: SectionHeadingProps) {
   return (
     <div
       className={cn(
         "space-y-4",
-        align === "center" && "text-center mx-auto max-w-3xl",
+        align === "center" && "mx-auto max-w-3xl text-center",
         className
       )}
     >
       {label && (
-        <p className="text-label text-fg-muted" aria-label={label}>
+        <p className={cn("text-label text-fg-muted", labelClassName)} aria-label={label}>
           {label}
         </p>
       )}
