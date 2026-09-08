@@ -61,16 +61,16 @@ export function Header() {
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300 animate-[header-slide-down]",
           scrolled
-            ? "bg-bg/95 md:bg-bg/80 md:backdrop-blur-xl border-b border-border shadow-sm"
+            ? "bg-bg/95 lg:bg-bg/80 lg:backdrop-blur-xl border-b border-border shadow-sm"
             : "bg-transparent"
         )}
       >
         <nav
-          className="container-wide h-16 flex items-center justify-between relative"
+          className="container-wide h-16 flex items-center justify-between gap-4"
           aria-label="Main navigation"
         >
           {/* Logo */}
-          <div className="flex flex-col justify-center">
+          <div className="flex flex-col justify-center shrink-0">
             <Link
               href="/"
               className="text-xl font-extrabold tracking-tight text-fg hover:text-accent transition-colors leading-tight"
@@ -82,7 +82,7 @@ export function Header() {
           </div>
 
           {/* Desktop nav */}
-          <ul className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-1" role="list">
+          <ul className="hidden lg:flex flex-1 justify-center items-center gap-1" role="list">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
@@ -102,13 +102,13 @@ export function Header() {
           </ul>
 
           {/* Actions */}
-          <div className="flex items-center gap-2">
-            <LocaleToggle className="hidden md:flex" />
+          <div className="flex items-center gap-2 shrink-0">
+            <LocaleToggle className="hidden lg:flex" />
 
             {/* Theme toggle */}
             <button
               onClick={toggleTheme}
-              className="w-9 h-9 hidden md:flex items-center justify-center rounded-lg text-fg-secondary hover:text-fg hover:bg-bg-elevated transition-all"
+              className="w-9 h-9 hidden lg:flex items-center justify-center rounded-lg text-fg-secondary hover:text-fg hover:bg-bg-elevated transition-all"
               aria-label={`${t("nav.switchTo")} ${theme === "dark" ? t("nav.lightMode") : t("nav.darkMode")}`}
             >
               {theme === "dark" ? (
@@ -120,7 +120,7 @@ export function Header() {
 
             {pathname === "/" ? (
               <span
-                className="w-9 h-9 hidden md:flex items-center justify-center rounded-lg text-fg-muted opacity-40 cursor-not-allowed"
+                className="w-9 h-9 hidden lg:flex items-center justify-center rounded-lg text-fg-muted opacity-40 cursor-not-allowed"
                 aria-disabled="true"
                 aria-label={t("nav.backHome")}
               >
@@ -129,7 +129,7 @@ export function Header() {
             ) : (
               <Link
                 href="/"
-                className="w-9 h-9 hidden md:flex items-center justify-center rounded-lg text-fg-secondary hover:text-fg hover:bg-bg-elevated transition-all"
+                className="w-9 h-9 hidden lg:flex items-center justify-center rounded-lg text-fg-secondary hover:text-fg hover:bg-bg-elevated transition-all"
                 aria-label={t("nav.backHome")}
               >
                 <Home className="w-4 h-4" />
@@ -140,14 +140,14 @@ export function Header() {
               asChild
               variant="primary"
               size="sm"
-              className="hidden md:inline-flex"
+              className="hidden lg:inline-flex"
             >
               <Link href="/kontakt">{t("nav.bookCall")}</Link>
             </Button>
 
             {/* Mobile menu trigger */}
             <button
-              className="flex md:hidden w-9 h-9 items-center justify-center rounded-lg text-fg-secondary hover:text-fg hover:bg-bg-elevated transition-all"
+              className="flex lg:hidden w-9 h-9 items-center justify-center rounded-lg text-fg-secondary hover:text-fg hover:bg-bg-elevated transition-all"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-expanded={mobileOpen}
               aria-controls="mobile-nav"
