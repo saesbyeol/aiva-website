@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { SITE } from "./constants";
+import { COMPANY, SITE } from "./constants";
 
 interface SeoProps {
   title?: string;
@@ -52,10 +52,21 @@ export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: SITE.name,
+  // Aiva is a brand; the legal entity behind it is Modelity d.o.o. Search
+  // engines expect legalName/taxID/address to describe the registered company,
+  // and these must agree with the controller block in the privacy policy.
+  legalName: COMPANY.legalName,
+  taxID: COMPANY.oib,
   url: SITE.url,
   logo: `${SITE.url}/icon.png`,
   description: SITE.description,
   email: SITE.email,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: COMPANY.street,
+    addressLocality: COMPANY.city,
+    addressCountry: COMPANY.country,
+  },
   sameAs: [
     SITE.instagram,
     SITE.facebook,

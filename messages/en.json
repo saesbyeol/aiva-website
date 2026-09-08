@@ -297,52 +297,245 @@
   "privacy": {
     "badge": "Legal",
     "title": "Privacy Policy",
-    "updated": "Last updated: January 2025",
-    "s1Title": "1. Who we are",
-    "s1Body": "Aiva (\"Aiva\", \"we\", \"us\", or \"our\") operates the website {url}. This privacy policy explains how we handle information you provide to us or that we collect through use of this website.",
-    "s1Contact": "For questions, contact us at",
-    "s2Title": "2. Information we collect",
-    "s2FormLabel": "Contact form data",
-    "s2FormBody": "When you submit our contact form, we collect your name, email address, company name (optional), and message. It's used solely to respond to your inquiry.",
-    "s2AnalyticsLabel": "Analytics",
-    "s2AnalyticsBody": "If analytics is configured (Plausible), we collect anonymized data about site visits. Plausible does not use cookies and is GDPR-compliant. No personal data is collected.",
-    "s2CookiesLabel": "Cookies",
-    "s2CookiesBody": "This website does not use cookies for tracking or advertising. We may set a session cookie for theme preference (dark/light mode).",
-    "s3Title": "3. How we use your information",
-    "s3List": [
-      "To respond to inquiries submitted through our contact form",
-      "To understand overall website usage and improve performance",
-      "To comply with legal obligations"
-    ],
-    "s3NoBuy": "We do not sell, rent, or trade your personal data to third parties.",
-    "s4Title": "4. Data retention",
-    "s4Body": "Contact form data is retained for up to 12 months, after which it is deleted unless we have an ongoing contractual relationship. You may request deletion at any time.",
-    "s5Title": "5. Your rights",
-    "s5Body": "Under GDPR and applicable data protection laws, you have the right to: access your personal data, correct inaccuracies, request deletion, withdraw consent, and lodge a complaint with a supervisory authority.",
-    "s5Contact": "To exercise any of these rights, write to us at",
-    "s6Title": "6. Third-party services",
-    "s6Body": "We may use the following third-party services, each with its own privacy policy:",
-    "s6List": [
+    "updated": "Last updated: 8 September 2026",
+    "intro": "This Privacy Policy explains what personal data we collect through the aiva.hr website, the purposes for which we process it, the legal basis for doing so, who we share it with, how long we keep it, and what rights you have. It is aligned with Regulation (EU) 2016/679 (the General Data Protection Regulation, or GDPR) and the Croatian Act on the Implementation of the General Data Protection Regulation.",
+    "s1Title": "1. Data controller",
+    "s1Body": "The controller of your personal data, meaning the entity that determines the purposes and means of processing, is:",
+    "s1LabelEntity": "Controller",
+    "s1LabelBrand": "Brand",
+    "s1LabelAddress": "Registered office",
+    "s1LabelOib": "OIB (company tax number)",
+    "s1LabelContact": "Data protection contact",
+    "s1Dpo": "We have not appointed a data protection officer, as this is not mandatory under Article 37 GDPR given our activities and the scale of our processing. For any data protection matter, please write to the email address above.",
+    "s2Title": "2. What data we collect",
+    "s2Body": "We collect only the data we genuinely need for a specific purpose. It falls into the following categories:",
+    "s2Groups": [
       {
-        "name": "Resend",
-        "desc": "email delivery"
+        "name": "Contact form data",
+        "desc": "You provide this voluntarily when you send us an enquiry through the form:",
+        "items": [
+          "full name",
+          "email address",
+          "company name (optional)",
+          "indicative budget (optional)",
+          "the content of the message you send us"
+        ]
       },
       {
-        "name": "Plausible Analytics",
-        "desc": "privacy-friendly web analytics (optional)"
+        "name": "Intro call booking data",
+        "desc": "Appointments are booked through Calendly, which opens on its own website. The data you enter there (name, email address, chosen time slot and any note) is collected by Calendly and passed to us so we can arrange and hold the meeting.",
+        "items": []
       },
       {
-        "name": "Vercel",
-        "desc": "website hosting"
+        "name": "AI assistant conversation data",
+        "desc": "A chat widget is available on the site. If you use it, the content of the messages you type and technical data about the chat session are processed. Please do not enter sensitive personal data or confidential business information into the chat.",
+        "items": []
+      },
+      {
+        "name": "Technical data and server logs",
+        "desc": "Collected automatically on every visit to the site:",
+        "items": [
+          "IP address",
+          "browser and operating system type and version",
+          "date and time of access and the pages viewed",
+          "the source you arrived from"
+        ]
+      },
+      {
+        "name": "Display preferences",
+        "desc": "Your choice of dark or light mode is stored in your browser's local storage. It stays on your device and is not transmitted to us or to any third party.",
+        "items": []
       }
     ],
-    "s7Title": "7. Security",
-    "s7Body": "We implement appropriate technical and organizational measures to protect your personal data from unauthorized access, loss, or disclosure. All data is transmitted over HTTPS.",
-    "s8Title": "8. Changes to this policy",
-    "s8Body": "We may update this policy from time to time. The \"Last updated\" date at the top reflects the most recent revision. Continued use of the website constitutes acceptance of the updated policy.",
-    "s9Title": "9. Terms of use",
-    "s9Body1": "By accessing this website, you agree to lawful and good-faith use. It may not be used to transmit harmful, unlawful, or offensive content. We reserve the right to restrict access at our discretion.",
-    "s9Body2": "All content on this website is the property of Aiva and is protected by applicable intellectual property laws."
+    "s2Ip": "Please note that your IP address is also used to rate-limit form submissions as protection against abuse, and appears in the internal notification email we receive when an enquiry comes in.",
+    "s3Title": "3. Purposes of processing and legal basis",
+    "s3Body": "Every processing operation rests on a clearly identified legal basis under Article 6 GDPR:",
+    "s3Rows": [
+      {
+        "purpose": "Responding to enquiries sent through the contact form",
+        "basis": "Legitimate interest (Art. 6(1)(f))",
+        "detail": "Our legitimate interest is to reply to someone who has contacted us of their own accord. If the enquiry moves towards an engagement, the basis shifts to steps taken at the data subject's request prior to entering into a contract (Art. 6(1)(b))."
+      },
+      {
+        "purpose": "Arranging and holding an intro call",
+        "basis": "Pre-contractual steps (Art. 6(1)(b))",
+        "detail": "Processing is necessary so that we can arrange a time at your request and prepare for the conversation."
+      },
+      {
+        "purpose": "Delivering our services and performing client contracts",
+        "basis": "Performance of a contract (Art. 6(1)(b))",
+        "detail": "Processing of client contact persons' data in order to carry out the agreed engagement."
+      },
+      {
+        "purpose": "Operating the AI chat assistant on the site",
+        "basis": "Consent (Art. 6(1)(a))",
+        "detail": "You start the widget by your own action when you open a conversation. If you do not use it, no conversation content is processed."
+      },
+      {
+        "purpose": "Site security and abuse prevention",
+        "basis": "Legitimate interest (Art. 6(1)(f))",
+        "detail": "Rate limiting, spam protection and server logging so that incidents can be detected."
+      },
+      {
+        "purpose": "Measuring traffic and improving the site",
+        "basis": "Consent (Art. 6(1)(a))",
+        "detail": "Analytics runs only where enabled. The solution we use works without cookies and does not track individual visitors."
+      },
+      {
+        "purpose": "Meeting legal obligations",
+        "basis": "Legal obligation (Art. 6(1)(c))",
+        "detail": "Obligations arising from accounting, tax and other applicable legislation."
+      }
+    ],
+    "s4Title": "4. How long we keep your data",
+    "s4Body": "We keep data only for as long as it is needed for the purpose it was collected for, or for as long as the law requires:",
+    "s4Rows": [
+      {
+        "what": "Contact form enquiries that do not lead to an engagement",
+        "period": "12 months from the last communication"
+      },
+      {
+        "what": "Client data and contractual documentation",
+        "period": "For the duration of the engagement, and thereafter for the periods prescribed by accounting and tax legislation"
+      },
+      {
+        "what": "Server logs and security logs",
+        "period": "Up to 12 months"
+      },
+      {
+        "what": "AI assistant conversation history",
+        "period": "In line with the provider's settings and retention periods, as a rule up to 12 months"
+      },
+      {
+        "what": "Appointment booking data",
+        "period": "Up to 12 months after the appointment is held or cancelled"
+      }
+    ],
+    "s4After": "Once these periods expire, data is deleted or irreversibly anonymised. You may request deletion earlier, except where we are required to retain the data to meet a legal obligation or for the establishment, exercise or defence of legal claims.",
+    "s5Title": "5. Who receives your data",
+    "s5Body": "We do not sell, rent or trade your personal data to third parties for their own purposes. We share it only with service providers who process it on our behalf and on our instructions (processors), with whom we have data processing agreements in place under Article 28 GDPR:",
+    "s5ColLocation": "Processing location",
+    "s5List": [
+      {
+        "name": "Vercel Inc.",
+        "role": "Website hosting and server logs",
+        "location": "EU / USA"
+      },
+      {
+        "name": "Resend",
+        "role": "Delivery of contact form emails",
+        "location": "USA"
+      },
+      {
+        "name": "Chatbase",
+        "role": "AI chat assistant on the site",
+        "location": "USA"
+      },
+      {
+        "name": "Calendly LLC",
+        "role": "Intro call scheduling",
+        "location": "USA"
+      },
+      {
+        "name": "Plausible Insights OÜ",
+        "role": "Cookieless traffic statistics",
+        "location": "EU (Estonia)"
+      },
+      {
+        "name": "Usercentrics A/S (Cookiebot)",
+        "role": "Cookie consent management",
+        "location": "EU (Denmark)"
+      },
+      {
+        "name": "Sanity AS",
+        "role": "Content management system for the site",
+        "location": "EU / Norway"
+      }
+    ],
+    "s5Fonts": "Typefaces are served from our own server, because fonts are bundled into the application at build time. As a result, visiting the site sends no requests to Google's servers and your IP address is never disclosed to Google.",
+    "s5Authorities": "We may also disclose data to competent authorities where we are required to do so by applicable law, or where it is necessary to protect our legal interests.",
+    "s6Title": "6. Transfers outside the European Economic Area",
+    "s6Body": "Some of the processors listed above are based in the United States. In those cases the transfer relies on the European Commission's Standard Contractual Clauses under Article 46 GDPR and/or on the recipient's participation in the EU-U.S. Data Privacy Framework under the European Commission's adequacy decision pursuant to Article 45 GDPR, together with supplementary technical and organisational safeguards.",
+    "s6Copy": "You may request a copy of the safeguards we rely on at our data protection address.",
+    "s7Title": "7. Your rights",
+    "s7Body": "In relation to your personal data, you have the following rights:",
+    "s7List": [
+      {
+        "name": "Right of access",
+        "desc": "To obtain confirmation as to whether we process your personal data, and to be given access to that data and a copy of it."
+      },
+      {
+        "name": "Right to rectification",
+        "desc": "To have inaccurate data corrected and incomplete data completed."
+      },
+      {
+        "name": "Right to erasure",
+        "desc": "To have your data deleted where it is no longer necessary for the purpose it was collected for, or where you withdraw your consent."
+      },
+      {
+        "name": "Right to restriction of processing",
+        "desc": "To have processing temporarily suspended, for example while the accuracy of the data is verified or your objection is resolved."
+      },
+      {
+        "name": "Right to data portability",
+        "desc": "To receive the data you provided to us in a structured, commonly used and machine-readable format, and to transmit it to another controller."
+      },
+      {
+        "name": "Right to object",
+        "desc": "To object to processing based on our legitimate interest, in which case we will stop processing unless we can demonstrate compelling legitimate grounds to continue."
+      },
+      {
+        "name": "Right to withdraw consent",
+        "desc": "To withdraw consent at any time, without affecting the lawfulness of processing carried out before the withdrawal."
+      },
+      {
+        "name": "Right to lodge a complaint",
+        "desc": "To lodge a complaint with the supervisory authority for personal data protection."
+      }
+    ],
+    "s7How": "You can exercise any of these rights by writing to our data protection address. We will respond without undue delay and at the latest within one month of receiving your request. That period may be extended in justified cases, and we will tell you if it is. To protect your data we may ask you to confirm your identity. Exercising your rights is free of charge.",
+    "s8Title": "8. Cookies and similar technologies",
+    "s8Body": "Cookies are small text files stored on your device when you visit a website. We use them as sparingly as possible, in the following categories:",
+    "s8Groups": [
+      {
+        "name": "Strictly necessary cookies",
+        "desc": "Required for the basic operation and security of the site. They are set without consent because the site cannot function properly without them."
+      },
+      {
+        "name": "Consent management cookies",
+        "desc": "Record your choice in the consent banner so that you are not asked again on every visit."
+      },
+      {
+        "name": "Analytics cookies",
+        "desc": "Set only with your consent. The analytics solution we use operates without cookies and does not track individual visitors or build profiles of them."
+      },
+      {
+        "name": "Chat assistant cookies",
+        "desc": "The chat widget may set cookies or use local storage in order to maintain the continuity of your conversation."
+      }
+    ],
+    "s8Manage": "You can change or withdraw your consent at any time through the consent banner on the site. You can also delete all cookies yourself and block them in advance in your browser settings. Please note that disabling strictly necessary cookies may affect how the site works.",
+    "s8Storage": "Your display mode preference is saved in your browser's local storage rather than in a cookie, and remains solely on your device.",
+    "s9Title": "9. Data security",
+    "s9Body": "We apply appropriate technical and organisational security measures: all traffic to the site is encrypted using HTTPS/TLS, access to data is limited to those who need it to do their job, the contact form is protected by rate limiting and a spam detection mechanism, and credentials and keys are held in a protected environment separate from the source code.",
+    "s9Caveat": "No security measure can guarantee absolute safety when data is transmitted over the internet, but we review and improve our measures regularly. In the event of a personal data breach likely to result in a high risk to your rights and freedoms, we will notify you and the supervisory authority within the periods prescribed by the GDPR.",
+    "s10Title": "10. Automated decision-making and profiling",
+    "s10Body": "We do not carry out automated decision-making that produces legal effects concerning you or similarly significantly affects you within the meaning of Article 22 GDPR. The AI assistant available on the site provides informational answers only and does not make decisions about you.",
+    "s11Title": "11. Protection of minors",
+    "s11Body": "Our services are intended for business users and are not directed at people under the age of 16. We do not knowingly collect children's personal data. If you believe a child has provided us with their personal data, please contact us and we will remove it without delay.",
+    "s12Title": "12. Changes to this policy",
+    "s12Body": "We may update this policy from time to time to reflect changes in our services, technology or applicable law. The date of the last revision is shown at the top of this page. We will notify you of material changes by appropriate means, and we recommend reviewing the policy periodically.",
+    "s13Title": "13. Contact and complaints",
+    "s13Body": "For any question about this policy, about how we process your personal data, or to exercise your rights, please contact us at:",
+    "s13Azop": "If you believe that our processing of your personal data infringes data protection law, you have the right to lodge a complaint with the supervisory authority:",
+    "s13AzopName": "Croatian Personal Data Protection Agency (AZOP)",
+    "s13AzopLabelAddress": "Address",
+    "s13AzopLabelEmail": "Email",
+    "s13AzopLabelWeb": "Web",
+    "s14Title": "14. Terms of use",
+    "s14Body1": "By accessing this website you agree to use it lawfully and in good faith. You may not use the site to transmit harmful, unlawful or offensive content, to collect data without authorisation, or in any manner that jeopardises its operation, availability or security. We reserve the right to restrict or deny access to the site at our discretion.",
+    "s14Body2": "All content on this website, including text, graphics, logos, photographs and source code, is the property of Modelity d.o.o. or its licensors and is protected by copyright and intellectual property law. Reproduction, distribution, communication to the public or modification of the content without our prior written consent is not permitted.",
+    "s14Body3": "The content of the site is published for information purposes and constitutes neither a binding offer nor professional advice. To the extent permitted by applicable law, we accept no liability for damage arising from the use of, or inability to use, the site. All relations arising from use of the site are governed by the law of the Republic of Croatia, and the competent court in Koprivnica shall have jurisdiction over any disputes."
   },
   "notFound": {
     "label": "404",

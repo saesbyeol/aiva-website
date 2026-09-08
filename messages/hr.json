@@ -297,52 +297,245 @@
   "privacy": {
     "badge": "Pravno",
     "title": "Politika privatnosti",
-    "updated": "Zadnja izmjena: siječanj 2025.",
-    "s1Title": "1. Tko smo",
-    "s1Body": "Aiva (\"Aiva\", \"mi\", \"nas\" ili \"naš\") upravlja web-stranicom {url}. Ova politika privatnosti objašnjava kako postupamo s informacijama koje nam pružate ili koje prikupljamo korištenjem ove web-stranice.",
-    "s1Contact": "Za pitanja kontaktirajte nas na",
-    "s2Title": "2. Informacije koje prikupljamo",
-    "s2FormLabel": "Podaci obrasca za kontakt",
-    "s2FormBody": "Kada pošaljete naš obrazac za kontakt, prikupljamo vaše ime, e-mail adresu, naziv tvrtke (nije obavezno) i poruku. Koristi se isključivo za odgovaranje na vaš upit.",
-    "s2AnalyticsLabel": "Analitika",
-    "s2AnalyticsBody": "Ako je konfigurirana analitika (Plausible), prikupljamo anonimizirane podatke o posjetima stranice. Plausible ne koristi kolačiće i usklađen je s GDPR-om. Ne prikupljaju se osobni podaci.",
-    "s2CookiesLabel": "Kolačići",
-    "s2CookiesBody": "Ova web-stranica ne koristi kolačiće za praćenje ili oglašavanje. Možemo postaviti kolačić sesije za preferencije teme (tamni/svijetli način).",
-    "s3Title": "3. Kako koristimo vaše informacije",
-    "s3List": [
-      "Za odgovaranje na upite poslane putem našeg obrasca za kontakt",
-      "Za razumijevanje ukupne upotrebe web-stranice i poboljšanje performansi",
-      "Za usklađivanje s pravnim obvezama"
-    ],
-    "s3NoBuy": "Ne prodajemo, iznajmljujemo niti trgujemo vašim osobnim podacima trećim stranama.",
-    "s4Title": "4. Čuvanje podataka",
-    "s4Body": "Podaci obrasca za kontakt čuvaju se do 12 mjeseci, nakon čega se brišu osim ako imamo tekući ugovorni odnos. Možete zahtijevati brisanje u bilo trenutku.",
-    "s5Title": "5. Vaša prava",
-    "s5Body": "Prema GDPR-u i primjenjivim zakonima o zaštiti podataka, imate pravo: pristupiti osobnim podacima, ispraviti netočnosti, zahtijevati brisanje, povući pristanak i podnijeti pritužbu nadzornom tijelu.",
-    "s5Contact": "Za ostvarivanje bilo kojeg od ovih prava, pišite nam na",
-    "s6Title": "6. Usluge trećih strana",
-    "s6Body": "Možemo koristiti sljedeće usluge trećih strana, svaka s vlastitim politikama privatnosti:",
-    "s6List": [
+    "updated": "Zadnja izmjena: 8. rujna 2026.",
+    "intro": "Ova Politika privatnosti objašnjava koje osobne podatke prikupljamo putem web-stranice aiva.hr, u koje svrhe ih obrađujemo, na kojoj pravnoj osnovi, s kim ih dijelimo, koliko dugo ih čuvamo i koja prava imate. Politika je usklađena s Uredbom (EU) 2016/679 (Opća uredba o zaštiti podataka, dalje: GDPR) i Zakonom o provedbi Opće uredbe o zaštiti podataka.",
+    "s1Title": "1. Voditelj obrade",
+    "s1Body": "Voditelj obrade vaših osobnih podataka, odnosno subjekt koji određuje svrhe i sredstva obrade, jest:",
+    "s1LabelEntity": "Voditelj obrade",
+    "s1LabelBrand": "Brend",
+    "s1LabelAddress": "Sjedište",
+    "s1LabelOib": "OIB",
+    "s1LabelContact": "Kontakt za zaštitu podataka",
+    "s1Dpo": "Nismo imenovali službenika za zaštitu podataka jer to prema članku 37. GDPR-a nije obvezno za našu djelatnost i opseg obrade. Za sva pitanja o zaštiti podataka obratite se na gore navedenu adresu e-pošte.",
+    "s2Title": "2. Koje podatke prikupljamo",
+    "s2Body": "Prikupljamo isključivo podatke koji su nam nužni za konkretnu svrhu. Podatke dijelimo u sljedeće kategorije:",
+    "s2Groups": [
       {
-        "name": "Resend",
-        "desc": "dostava e-pošte"
+        "name": "Podaci iz obrasca za kontakt",
+        "desc": "Unosite ih dobrovoljno kada nam pošaljete upit putem obrasca:",
+        "items": [
+          "ime i prezime",
+          "adresa e-pošte",
+          "naziv tvrtke (nije obavezno)",
+          "okvirni budžet (nije obavezno)",
+          "sadržaj poruke koju nam šaljete"
+        ]
       },
       {
-        "name": "Plausible Analytics",
-        "desc": "web analitika koja čuva privatnost (nije obavezno)"
+        "name": "Podaci o rezervaciji uvodnog razgovora",
+        "desc": "Termin se rezervira putem usluge Calendly, koja se otvara na vlastitoj web-stranici. Podatke koje ondje unesete (ime, adresa e-pošte, odabrani termin i eventualna napomena) prikuplja Calendly te nam ih prosljeđuje radi dogovora i održavanja sastanka.",
+        "items": []
       },
       {
-        "name": "Vercel",
-        "desc": "hosting web-stranice"
+        "name": "Podaci iz razgovora s AI asistentom",
+        "desc": "Na stranici je dostupan chat widget. Ako ga koristite, obrađuju se sadržaj poruka koje upišete i tehnički podaci o sesiji razgovora. Molimo vas da u chat ne unosite osjetljive osobne podatke niti povjerljive poslovne informacije.",
+        "items": []
+      },
+      {
+        "name": "Tehnički podaci i zapisi poslužitelja",
+        "desc": "Prikupljaju se automatski pri svakom posjetu stranici:",
+        "items": [
+          "IP adresa",
+          "vrsta i verzija preglednika te operativnog sustava",
+          "datum i vrijeme pristupa te pregledane stranice",
+          "izvor s kojeg ste došli na stranicu"
+        ]
+      },
+      {
+        "name": "Postavke prikaza",
+        "desc": "Vaš odabir tamnog ili svijetlog načina prikaza sprema se u lokalnu pohranu vašeg preglednika. Taj podatak ostaje na vašem uređaju i ne dostavlja se nama niti trećim stranama.",
+        "items": []
       }
     ],
-    "s7Title": "7. Sigurnost",
-    "s7Body": "Implementiramo odgovarajuće tehničke i organizacijske mjere za zaštitu vaših osobnih podataka od neovlaštenog pristupa, gubitka ili otkrivanja. Svi podaci prenose se putem HTTPS-a.",
-    "s8Title": "8. Izmjene ove politike",
-    "s8Body": "Ovu politiku možemo ažurirati s vremena na vrijeme. Datum \"Zadnja izmjena\" na vrhu odražava najnoviju reviziju. Nastavak korištenja web-stranice podrazumijeva prihvaćanje ažurirane politike.",
-    "s9Title": "9. Uvjeti korištenja",
-    "s9Body1": "Pristupom ovoj web-stranici pristajete na zakonito i savjesno korištenje. Nije dopušteno koristiti je za prijenos štetnog, nezakonitog ili uvredljivog sadržaja. Zadržavamo pravo ograničenja pristupa prema vlastitoj prosudbi.",
-    "s9Body2": "Sav sadržaj na ovoj web-stranici vlasništvo je tvrtke Aiva i zaštićen je primjenjivim zakonima o intelektualnom vlasništvu."
+    "s2Ip": "Napominjemo da se IP adresa koristi i za ograničavanje broja slanja obrasca radi zaštite od zloupotrebe te se navodi u internoj obavijesti o zaprimljenom upitu koja nam se dostavlja e-poštom.",
+    "s3Title": "3. Svrhe obrade i pravna osnova",
+    "s3Body": "Svaku obradu provodimo na jasno određenoj pravnoj osnovi iz članka 6. GDPR-a:",
+    "s3Rows": [
+      {
+        "purpose": "Odgovaranje na upite poslane putem obrasca za kontakt",
+        "basis": "Legitimni interes (čl. 6. st. 1. t. f)",
+        "detail": "Naš legitimni interes je odgovoriti osobi koja nam se sama obratila. Ako upit vodi prema suradnji, osnova prelazi na poduzimanje radnji na zahtjev ispitanika prije sklapanja ugovora (čl. 6. st. 1. t. b)."
+      },
+      {
+        "purpose": "Dogovaranje i održavanje uvodnog razgovora",
+        "basis": "Radnje prije sklapanja ugovora (čl. 6. st. 1. t. b)",
+        "detail": "Obrada je nužna kako bismo na vaš zahtjev dogovorili termin i pripremili se za razgovor."
+      },
+      {
+        "purpose": "Pružanje usluga i izvršavanje ugovora s klijentima",
+        "basis": "Izvršavanje ugovora (čl. 6. st. 1. t. b)",
+        "detail": "Obrada podataka kontakt-osoba kod klijenata radi provedbe ugovorene suradnje."
+      },
+      {
+        "purpose": "Rad AI chat asistenta na stranici",
+        "basis": "Privola (čl. 6. st. 1. t. a)",
+        "detail": "Widget pokrećete vlastitom radnjom kada otvorite razgovor. Ako ga ne koristite, sadržaj razgovora se ne obrađuje."
+      },
+      {
+        "purpose": "Sigurnost stranice i sprječavanje zloupotrebe",
+        "basis": "Legitimni interes (čl. 6. st. 1. t. f)",
+        "detail": "Ograničavanje broja zahtjeva, zaštita od neželjenih poruka i vođenje zapisa poslužitelja radi otkrivanja incidenata."
+      },
+      {
+        "purpose": "Mjerenje posjećenosti i poboljšanje stranice",
+        "basis": "Privola (čl. 6. st. 1. t. a)",
+        "detail": "Analitika se pokreće samo ako je omogućena. Rješenje koje koristimo radi bez kolačića i bez praćenja pojedinačnih korisnika."
+      },
+      {
+        "purpose": "Ispunjavanje zakonskih obveza",
+        "basis": "Pravna obveza (čl. 6. st. 1. t. c)",
+        "detail": "Obveze koje proizlaze iz računovodstvenih, poreznih i drugih mjerodavnih propisa."
+      }
+    ],
+    "s4Title": "4. Koliko dugo čuvamo podatke",
+    "s4Body": "Podatke čuvamo samo onoliko dugo koliko je potrebno za svrhu zbog koje su prikupljeni, odnosno onoliko koliko nalažu propisi:",
+    "s4Rows": [
+      {
+        "what": "Upiti iz obrasca za kontakt koji ne rezultiraju suradnjom",
+        "period": "12 mjeseci od posljednje komunikacije"
+      },
+      {
+        "what": "Podaci klijenata i ugovorna dokumentacija",
+        "period": "Za vrijeme trajanja suradnje, a nakon toga u rokovima propisanima računovodstvenim i poreznim propisima"
+      },
+      {
+        "what": "Zapisi poslužitelja i sigurnosni zapisi",
+        "period": "Do 12 mjeseci"
+      },
+      {
+        "what": "Povijest razgovora s AI asistentom",
+        "period": "U skladu s postavkama i rokovima pružatelja usluge, u pravilu do 12 mjeseci"
+      },
+      {
+        "what": "Podaci o rezervaciji termina",
+        "period": "Do 12 mjeseci nakon održanog ili otkazanog termina"
+      }
+    ],
+    "s4After": "Nakon isteka navedenih rokova podaci se brišu ili nepovratno anonimiziraju. Brisanje možete zatražiti i ranije, osim kada smo podatke dužni zadržati radi ispunjenja zakonske obveze ili postavljanja, ostvarivanja ili obrane pravnih zahtjeva.",
+    "s5Title": "5. Primatelji podataka",
+    "s5Body": "Vaše osobne podatke ne prodajemo, ne iznajmljujemo niti ih razmjenjujemo s trećim stranama u njihove vlastite svrhe. Dijelimo ih isključivo s pružateljima usluga koji ih obrađuju u naše ime i po našim uputama (izvršitelji obrade), s kojima imamo sklopljene ugovore o obradi podataka u skladu s člankom 28. GDPR-a:",
+    "s5ColLocation": "Lokacija obrade",
+    "s5List": [
+      {
+        "name": "Vercel Inc.",
+        "role": "Hosting web-stranice i zapisi poslužitelja",
+        "location": "EU / SAD"
+      },
+      {
+        "name": "Resend",
+        "role": "Dostava e-pošte s obrasca za kontakt",
+        "location": "SAD"
+      },
+      {
+        "name": "Chatbase",
+        "role": "AI chat asistent na stranici",
+        "location": "SAD"
+      },
+      {
+        "name": "Calendly LLC",
+        "role": "Rezervacija termina uvodnog razgovora",
+        "location": "SAD"
+      },
+      {
+        "name": "Plausible Insights OÜ",
+        "role": "Statistika posjećenosti bez kolačića",
+        "location": "EU (Estonija)"
+      },
+      {
+        "name": "Usercentrics A/S (Cookiebot)",
+        "role": "Upravljanje privolama za kolačiće",
+        "location": "EU (Danska)"
+      },
+      {
+        "name": "Sanity AS",
+        "role": "Sustav za upravljanje sadržajem stranice",
+        "location": "EU / Norveška"
+      }
+    ],
+    "s5Fonts": "Tipografija se poslužuje s našeg poslužitelja jer se fontovi ugrađuju u aplikaciju prilikom izrade. Zbog toga se pri posjetu stranici ne šalju zahtjevi prema Googleovim poslužiteljima niti se vaša IP adresa otkriva Googleu.",
+    "s5Authorities": "Podatke možemo otkriti i nadležnim tijelima kada smo na to obvezni mjerodavnim propisima ili kada je to nužno radi zaštite naših pravnih interesa.",
+    "s6Title": "6. Prijenos podataka izvan Europskog gospodarskog prostora",
+    "s6Body": "Pojedini izvršitelji obrade navedeni u prethodnoj točki smješteni su u Sjedinjenim Američkim Državama. U tim se slučajevima prijenos temelji na standardnim ugovornim klauzulama Europske komisije iz članka 46. GDPR-a i/ili na sudjelovanju primatelja u okviru EU-U.S. Data Privacy Frameworka na temelju odluke Europske komisije o primjerenosti iz članka 45. GDPR-a, uz dodatne tehničke i organizacijske mjere zaštite.",
+    "s6Copy": "Presliku primijenjenih zaštitnih mjera možete zatražiti na našoj adresi za zaštitu podataka.",
+    "s7Title": "7. Vaša prava",
+    "s7Body": "U odnosu na svoje osobne podatke imate sljedeća prava:",
+    "s7List": [
+      {
+        "name": "Pravo na pristup",
+        "desc": "Zatražiti potvrdu obrađujemo li vaše osobne podatke te dobiti pristup tim podacima i njihovu presliku."
+      },
+      {
+        "name": "Pravo na ispravak",
+        "desc": "Zatražiti ispravak netočnih ili dopunu nepotpunih podataka."
+      },
+      {
+        "name": "Pravo na brisanje",
+        "desc": "Zatražiti brisanje podataka kada više nisu nužni za svrhu zbog koje su prikupljeni ili kada povučete privolu."
+      },
+      {
+        "name": "Pravo na ograničenje obrade",
+        "desc": "Zatražiti da privremeno obustavimo obradu, primjerice dok se ne provjeri točnost podataka ili razriješi vaš prigovor."
+      },
+      {
+        "name": "Pravo na prenosivost",
+        "desc": "Primiti podatke koje ste nam dostavili u strukturiranom, uobičajeno upotrebljavanom i strojno čitljivom obliku te ih prenijeti drugom voditelju obrade."
+      },
+      {
+        "name": "Pravo na prigovor",
+        "desc": "Uložiti prigovor na obradu koja se temelji na našem legitimnom interesu, u kojem ćemo slučaju obradu prekinuti osim ako dokažemo uvjerljive legitimne razloge za nastavak."
+      },
+      {
+        "name": "Pravo na povlačenje privole",
+        "desc": "Povući danu privolu u bilo kojem trenutku, bez utjecaja na zakonitost obrade provedene prije povlačenja."
+      },
+      {
+        "name": "Pravo na pritužbu",
+        "desc": "Podnijeti pritužbu nadzornom tijelu za zaštitu osobnih podataka."
+      }
+    ],
+    "s7How": "Zahtjev za ostvarivanje bilo kojeg od navedenih prava možete poslati na našu adresu za zaštitu podataka. Odgovorit ćemo bez nepotrebnog odgađanja, a najkasnije u roku od mjesec dana od zaprimanja zahtjeva. Taj se rok u opravdanim slučajevima može produljiti, o čemu ćemo vas obavijestiti. Radi zaštite vaših podataka možemo zatražiti dodatnu potvrdu vašeg identiteta. Ostvarivanje prava je besplatno.",
+    "s8Title": "8. Kolačići i slične tehnologije",
+    "s8Body": "Kolačići su male tekstualne datoteke koje se pohranjuju na vašem uređaju pri posjetu web-stranici. Koristimo ih u najmanjoj mogućoj mjeri i razvrstavamo ih u sljedeće kategorije:",
+    "s8Groups": [
+      {
+        "name": "Nužni kolačići",
+        "desc": "Potrebni su za osnovni rad i sigurnost stranice. Postavljaju se bez privole jer bez njih stranica ne može ispravno funkcionirati."
+      },
+      {
+        "name": "Kolačići za upravljanje privolama",
+        "desc": "Bilježe vaš odabir u traci za privole kako vas ne bismo pitali iznova pri svakom posjetu."
+      },
+      {
+        "name": "Analitički kolačići",
+        "desc": "Postavljaju se samo uz vašu privolu. Analitičko rješenje koje koristimo radi bez kolačića i ne prati pojedinačne korisnike niti stvara njihove profile."
+      },
+      {
+        "name": "Kolačići chat asistenta",
+        "desc": "Chat widget može postaviti kolačiće ili koristiti lokalnu pohranu radi održavanja tijeka vašeg razgovora."
+      }
+    ],
+    "s8Manage": "Privole možete izmijeniti ili povući u bilo kojem trenutku putem trake za privole na stranici. Sve kolačiće možete i samostalno izbrisati te njihovo postavljanje unaprijed blokirati u postavkama svog preglednika. Napominjemo da onemogućavanje nužnih kolačića može utjecati na funkcionalnost stranice.",
+    "s8Storage": "Vaš odabir načina prikaza sprema se u lokalnu pohranu preglednika, a ne u kolačić, i ostaje isključivo na vašem uređaju.",
+    "s9Title": "9. Sigurnost podataka",
+    "s9Body": "Primjenjujemo odgovarajuće tehničke i organizacijske mjere zaštite podataka: sav promet prema stranici šifriran je protokolom HTTPS/TLS, pristup podacima ograničen je na osobe kojima je nužan za obavljanje posla, obrazac za kontakt zaštićen je ograničenjem broja slanja i mehanizmom za otkrivanje neželjenih poruka, a pristupni podaci i ključevi čuvaju se u zaštićenom okruženju odvojeno od programskog koda.",
+    "s9Caveat": "Nijedna mjera zaštite ne može jamčiti apsolutnu sigurnost prijenosa podataka putem interneta, no svoje mjere redovito preispitujemo i unaprjeđujemo. U slučaju povrede osobnih podataka koja bi vjerojatno prouzročila visok rizik za vaša prava i slobode, obavijestit ćemo vas i nadzorno tijelo u rokovima propisanima GDPR-om.",
+    "s10Title": "10. Automatizirano odlučivanje i profiliranje",
+    "s10Body": "Ne provodimo automatizirano donošenje odluka koje bi proizvodilo pravne učinke na vas ili na vas na sličan način značajno utjecalo u smislu članka 22. GDPR-a. AI asistent dostupan na stranici daje isključivo informativne odgovore i ne donosi odluke koje se odnose na vas.",
+    "s11Title": "11. Zaštita maloljetnika",
+    "s11Body": "Naše su usluge namijenjene poslovnim korisnicima i nisu usmjerene na osobe mlađe od 16 godina. Svjesno ne prikupljamo osobne podatke djece. Ako smatrate da nam je dijete dostavilo svoje osobne podatke, javite nam se i te ćemo podatke bez odgode ukloniti.",
+    "s12Title": "12. Izmjene ove politike",
+    "s12Body": "Ovu politiku možemo povremeno ažurirati radi usklađivanja s promjenama u našim uslugama, tehnologiji ili mjerodavnim propisima. Datum posljednje izmjene naveden je na vrhu stranice. O bitnim izmjenama obavijestit ćemo vas na prikladan način, a preporučujemo da politiku povremeno pregledate.",
+    "s13Title": "13. Kontakt i pritužbe",
+    "s13Body": "Za sva pitanja o ovoj politici, o načinu na koji obrađujemo vaše osobne podatke ili za ostvarivanje svojih prava, obratite nam se na:",
+    "s13Azop": "Ako smatrate da obradom vaših osobnih podataka kršimo propise o zaštiti podataka, imate pravo podnijeti pritužbu nadzornom tijelu:",
+    "s13AzopName": "Agencija za zaštitu osobnih podataka (AZOP)",
+    "s13AzopLabelAddress": "Adresa",
+    "s13AzopLabelEmail": "E-pošta",
+    "s13AzopLabelWeb": "Web",
+    "s14Title": "14. Uvjeti korištenja",
+    "s14Body1": "Pristupom ovoj web-stranici pristajete na njezino zakonito i savjesno korištenje. Nije dopušteno koristiti stranicu za prijenos štetnog, nezakonitog ili uvredljivog sadržaja, za neovlašteno prikupljanje podataka niti na način koji ugrožava njezin rad, dostupnost ili sigurnost. Zadržavamo pravo ograničiti ili uskratiti pristup stranici prema vlastitoj prosudbi.",
+    "s14Body2": "Sav sadržaj na ovoj web-stranici, uključujući tekstove, grafičke elemente, logotipe, fotografije i programski kod, vlasništvo je društva Modelity d.o.o. odnosno njegovih davatelja licencije te je zaštićen propisima o autorskom pravu i pravima intelektualnog vlasništva. Umnožavanje, distribucija, javno priopćavanje ili izmjena sadržaja bez naše prethodne pisane suglasnosti nije dopuštena.",
+    "s14Body3": "Sadržaj stranice objavljen je u informativne svrhe i ne predstavlja obvezujuću ponudu niti stručni savjet. U mjeri dopuštenoj mjerodavnim pravom ne odgovaramo za štetu nastalu korištenjem ili nemogućnošću korištenja stranice. Na sve odnose koji proizlaze iz korištenja stranice primjenjuje se pravo Republike Hrvatske, a za rješavanje eventualnih sporova nadležan je stvarno nadležni sud u Koprivnici."
   },
   "notFound": {
     "label": "404",
