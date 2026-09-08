@@ -7,6 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: SITE.url, priority: 1.0 },
     { url: `${SITE.url}/usluge`, priority: 0.9 },
     { url: `${SITE.url}/radovi`, priority: 0.9 },
+    { url: `${SITE.url}/ai-recepcija`, priority: 0.9 },
     { url: `${SITE.url}/o-nama`, priority: 0.8 },
     { url: `${SITE.url}/kontakt`, priority: 0.8 },
   ].map((r) => ({

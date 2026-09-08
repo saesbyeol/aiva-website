@@ -47,6 +47,7 @@ export function getNavLinks(t: T) {
     { label: t("nav.services"), href: "/usluge" as const },
     { label: t("nav.work"), href: "/radovi" as const },
     { label: t("nav.about"), href: "/o-nama" as const },
+    { label: t("nav.voiceAgent"), href: "/ai-recepcija" as const },
     { label: t("nav.contact"), href: "/kontakt" as const },
   ];
 }
@@ -57,6 +58,7 @@ export function getFooterLinks(t: T) {
       { label: t("nav.about"), href: "/o-nama" as const },
       { label: t("nav.work"), href: "/radovi" as const },
       { label: t("nav.services"), href: "/usluge" as const },
+      { label: t("nav.voiceAgent"), href: "/ai-recepcija" as const },
       { label: t("nav.contact"), href: "/kontakt" as const },
     ],
     legal: [

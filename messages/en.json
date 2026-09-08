@@ -8,6 +8,7 @@
     "services": "Services",
     "work": "Our Work",
     "about": "About",
+    "voiceAgent": "AI receptionist",
     "contact": "Contact",
     "bookCall": "Book a call",
     "backHome": "Back to homepage",
@@ -577,6 +578,180 @@
     "services": {
       "title": "Services",
       "description": "From AI automation to custom LLM apps, we build AI systems that integrate into your stack and deliver measurable results."
+    },
+    "voiceAgent": {
+      "title": "AI receptionist",
+      "description": "A voice AI agent that answers incoming calls, handles questions and books appointments straight into your team's calendar."
     }
+  },
+  "voiceAgent": {
+    "badge": "Solution walkthrough · AI receptionist",
+    "title": "AI receptionist: from a phone enquiry to a booked appointment",
+    "intro1": "While your team is with a client, out on a job, or done for the day, the phone can still ring. An AI receptionist can take the call, answer questions and help the caller arrange a next step, from leaving a message to booking an appointment.",
+    "intro2": "Below we walk through how a solution like this works, which tools it connects to, and how it adapts to the way your company works day to day.",
+    "s1Label": "The basics",
+    "s1Title": "What is an AI receptionist?",
+    "s1Body1": "A voice AI agent is a system that holds a conversation with a caller and can carry out tasks through connected tools. An AI receptionist is one application of it, built to handle incoming phone calls.",
+    "s1Body2": "The person calling says what they need in their own words, and the agent leads the conversation according to your company's rules and information.",
+    "s1Body3": "It can explain a service, check availability, collect details or connect the call to a member of staff. Its scope is defined up front: which information it uses, what it is allowed to do, and when it needs to bring in your team.",
+    "s2Title": "What does a single call look like?",
+    "s2Intro": "Picture a car service centre that a client calls to arrange an appointment. This is an example conversation with an agent connected to the workshop's calendar.",
+    "s2AgentLabel": "AI receptionist",
+    "s2CallerLabel": "Client",
+    "s2Turns": [
+      {
+        "role": "agent",
+        "text": "Good afternoon, I'm the car service centre's AI assistant. How can I help you?"
+      },
+      {
+        "role": "caller",
+        "text": "I'd need an appointment for a minor service."
+      },
+      {
+        "role": "agent",
+        "text": "Which vehicle is the service for?"
+      },
+      {
+        "role": "caller",
+        "text": "A Golf, 2020. Thursday after three would suit me."
+      },
+      {
+        "role": "system",
+        "text": "The agent checks the calendar and the rules for how long the service takes. If a suitable slot is free, it can offer it."
+      },
+      {
+        "role": "agent",
+        "text": "Thursday at 15:30 is free. Does that work for you?"
+      }
+    ],
+    "s2After1": "Once the caller agrees, it collects a name and contact details and confirms the exact date, time and service. Only after the system confirms the booking went through does the agent say the appointment is reserved. Your team sees the booking in the calendar they already use day to day. If confirmations are connected, the client can also receive an SMS or email with the details.",
+    "s2After2": "If the requested slot is not available, the agent offers an alternative. If the booking fails, it says clearly that the appointment is not confirmed and offers to record the request for your team.",
+    "s3Title": "What happens in the background?",
+    "s3Body1": "During the conversation the system processes speech and works out what the caller is asking for. It answers using the information you have given it, and to check or write data it reaches into a connected business tool. It then delivers the result by voice, in the same conversation.",
+    "s3Body2": "A question about opening hours only needs up-to-date company information. A booking needs access to a calendar or scheduling system. Checking an order status needs a connection to the system that holds that data.",
+    "s3Body3": "That is why an AI receptionist is built around three things: the information it is allowed to use, the actions it can carry out, and the rules by which it leads the conversation.",
+    "s3Pillars": [
+      {
+        "name": "Information",
+        "desc": "The company content the agent is allowed to draw on when answering."
+      },
+      {
+        "name": "Actions",
+        "desc": "The concrete tasks it may carry out through connected tools."
+      },
+      {
+        "name": "Rules",
+        "desc": "How it leads the conversation, and when it hands over to your team."
+      }
+    ],
+    "s4Title": "What can it take on during a call?",
+    "s4Items": [
+      {
+        "icon": "MessageCircleQuestion",
+        "name": "Answers to common questions",
+        "desc": "Opening hours, location, services, how to prepare for a visit, and any prices you have approved for giving out over the phone."
+      },
+      {
+        "icon": "CalendarCheck",
+        "name": "Booking appointments",
+        "desc": "Checking availability and reserving a slot. Changes and cancellations can be added if the chosen system and integration support them."
+      },
+      {
+        "icon": "ClipboardList",
+        "name": "Recording enquiries and contacts",
+        "desc": "Name, contact details and a summary of the request, so your team has what it needs to pick the conversation up."
+      },
+      {
+        "icon": "PhoneForwarded",
+        "name": "Connecting to a member of staff",
+        "desc": "Routing the call to the right person or department according to rules agreed in advance and what your telephony allows."
+      }
+    ],
+    "s5Label": "Integrations",
+    "s5Title": "How does it connect to your tools?",
+    "s5Body1": "An AI receptionist reaches data through approved integrations. That lets it check current availability or status and carry out a specific action during the call.",
+    "s5Body2": "Google Calendar, for example, can be used to check what is booked and to write in an appointment. A CRM can store a new enquiry and contact, and a messaging system can deliver the booking confirmation.",
+    "s5Body3": "For every project we check what the existing software allows. The working details matter too: how long each service takes, opening hours, breaks, which staff are available and at which locations. A free slot in the calendar is only worth offering once it also fits those rules.",
+    "s6Title": "When does the AI answer the phone?",
+    "s6Intro": "How it answers is adapted to your organisation and to what your phone system allows.",
+    "s6Items": [
+      {
+        "name": "At the start of every call",
+        "desc": "The AI takes the enquiry and handles the agreed tasks, routing onward any call that needs a member of staff."
+      },
+      {
+        "name": "When nobody can pick up",
+        "desc": "The phone rings for your team first. After an agreed interval the call is forwarded to the AI receptionist."
+      },
+      {
+        "name": "Outside working hours",
+        "desc": "The AI can answer basic questions, capture a request or book a permitted appointment while the company is closed."
+      }
+    ],
+    "s7Title": "When does your team take the call over?",
+    "s7Body1": "A request to speak to a member of staff, a complex enquiry, a complaint, or the absence of reliable information are all reasons to bring in a person.",
+    "s7Body2": "Who such a call goes to, and what happens if that person is unavailable, is decided in advance. One option is to take a message and contact details for a call back, without promising a response time your team has not confirmed.",
+    "s7Body3": "The agent introduces itself as an AI assistant at the start. Its instructions and checks are set up so that it does not give out unapproved prices, does not invent free appointments, and does not declare a task done before the system confirms it.",
+    "s7Guardrails": [
+      "Introduces itself as an AI assistant at the start of the call.",
+      "Does not give out prices you have not approved for the phone.",
+      "Does not invent available appointments.",
+      "Does not declare a task done before the system confirms it."
+    ],
+    "s7GuardrailsLabel": "Rules the agent holds to",
+    "s8Title": "How do we approach a solution like this at Aiva?",
+    "s8Steps": [
+      {
+        "number": "01",
+        "name": "First we get to know your calls",
+        "desc": "What do people ask most often? What details do you need for a booking? Which conversations should always be taken by a member of staff? The answers define the scope of the AI receptionist."
+      },
+      {
+        "number": "02",
+        "name": "Then we connect the information and the tools",
+        "desc": "We prepare the company content, the conversation rules and the integrations needed. We also agree on data access and on how summaries or recordings are retained, where these are used."
+      },
+      {
+        "number": "03",
+        "name": "Before go-live we test real situations",
+        "desc": "Changing an appointment mid-conversation, a name that is hard to make out, the caller interrupting the agent, a full calendar and an unavailable system. We also test what the agent does when it cannot resolve a request."
+      },
+      {
+        "number": "04",
+        "name": "After go-live we watch what happens",
+        "desc": "How many enquiries were resolved, appointments booked and calls handed to the team? Where do callers get stuck? That data drives the adjustments that follow."
+      }
+    ],
+    "s9Title": "Frequently asked questions",
+    "s9Items": [
+      {
+        "q": "Do we have to change our existing phone number?",
+        "a": [
+          "Depending on your operator and phone system, the connection can be made through call forwarding or your existing exchange. Before choosing a solution we check how you can carry on using your own number."
+        ]
+      },
+      {
+        "q": "Can it speak Croatian and other languages?",
+        "a": [
+          "It can, given a technology that supports the languages you need. We test comprehension, the pronunciation of names and how natural the conversation feels using examples from your own business."
+        ]
+      },
+      {
+        "q": "What if we already have a scheduling system?",
+        "a": [
+          "We first check whether it supports a connection and which actions it allows. If writing to it directly is not possible, the agent can capture the request for your team to confirm afterwards."
+        ]
+      },
+      {
+        "q": "Who benefits most from a receptionist like this?",
+        "a": [
+          "Companies where appointments are often arranged by phone, where callers ask for the same information, or where enquiries come in while the team is busy. Car service centres, salons, accommodation providers and service trades are typical examples. Whether it fits depends on your actual calls and how the company works.",
+          "If most calls need expert judgement, a more useful role for the AI receptionist may be to collect the basic details and pass the enquiry to the right member of staff."
+        ]
+      }
+    ],
+    "ctaTitle": "How would an AI receptionist work for you?",
+    "ctaBody": "Tell us what kind of calls you get, when they are hardest to answer, and which tools you use. Together we can work out what an AI receptionist could take on and how it would work alongside your team.",
+    "ctaButton": "Arrange a conversation"
   }
 }

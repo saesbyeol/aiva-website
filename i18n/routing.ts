@@ -14,6 +14,7 @@ export const routing = defineRouting({
     "/radovi": { hr: "/radovi", en: "/work" },
     "/radovi/[slug]": { hr: "/radovi/[slug]", en: "/work/[slug]" },
     "/o-nama": { hr: "/o-nama", en: "/about" },
+    "/ai-recepcija": { hr: "/ai-recepcija", en: "/ai-receptionist" },
     "/kontakt": { hr: "/kontakt", en: "/contact" },
     "/privatnost": { hr: "/privatnost", en: "/privacy" },
   },

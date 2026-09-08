@@ -8,6 +8,7 @@
     "services": "Usluge",
     "work": "Naši projekti",
     "about": "O nama",
+    "voiceAgent": "AI recepcija",
     "contact": "Kontakt",
     "bookCall": "Rezervirajte poziv",
     "backHome": "Povratak na početnu stranicu",
@@ -577,6 +578,180 @@
     "services": {
       "title": "Usluge",
       "description": "Od AI automatizacije do prilagođenih LLM aplikacija, gradimo AI sustave koji se integriraju u vaš stek i donose mjerljive rezultate."
+    },
+    "voiceAgent": {
+      "title": "AI recepcija",
+      "description": "Glasovni AI agent koji preuzima dolazne pozive, odgovara na pitanja i dogovara termine u kalendaru vašeg tima."
     }
+  },
+  "voiceAgent": {
+    "badge": "Prikaz rješenja · AI recepcija",
+    "title": "AI recepcija: od telefonskog upita do dogovorenog termina",
+    "intro1": "Dok vaš tim razgovara s klijentom, radi na terenu ili je završio radni dan, telefon i dalje može zvoniti. AI recepcija može preuzeti poziv, odgovoriti na pitanja i pomoći osobi da dogovori sljedeći korak, od ostavljanja poruke do rezervacije termina.",
+    "intro2": "U nastavku prikazujemo kako takvo rješenje radi, s kojim se alatima povezuje i kako se prilagođava svakodnevnom radu tvrtke.",
+    "s1Label": "Osnove",
+    "s1Title": "Što je AI recepcija?",
+    "s1Body1": "Glasovni AI agent, odnosno voice agent, sustav je koji razgovara s korisnikom i može izvršavati zadatke kroz povezane alate. AI recepcija jedna je njegova primjena, namijenjena primanju dolaznih telefonskih poziva.",
+    "s1Body2": "Osoba koja nazove svojim riječima kaže što treba, a agent vodi razgovor prema pravilima i informacijama vaše tvrtke.",
+    "s1Body3": "Može objasniti uslugu, provjeriti raspoloživost, prikupiti podatke ili povezati poziv sa zaposlenikom. Opseg njegova rada određuje se unaprijed: koje informacije koristi, što smije napraviti i kada treba uključiti vaš tim.",
+    "s2Title": "Kako izgleda jedan poziv?",
+    "s2Intro": "Zamislimo autoservis kojem se klijent javlja radi dogovora termina. Ovo je primjer razgovora s agentom povezanim s kalendarom servisa.",
+    "s2AgentLabel": "AI recepcija",
+    "s2CallerLabel": "Klijent",
+    "s2Turns": [
+      {
+        "role": "agent",
+        "text": "Dobar dan, ja sam AI asistent autoservisa. Kako vam mogu pomoći?"
+      },
+      {
+        "role": "caller",
+        "text": "Trebao bih termin za mali servis."
+      },
+      {
+        "role": "agent",
+        "text": "Za koje vozilo trebate servis?"
+      },
+      {
+        "role": "caller",
+        "text": "Golf, 2020. godište. Odgovaralo bi mi u četvrtak poslije tri."
+      },
+      {
+        "role": "system",
+        "text": "Agent provjerava kalendar i pravila trajanja usluge. Ako je odgovarajući termin dostupan, može ga ponuditi."
+      },
+      {
+        "role": "agent",
+        "text": "U četvrtak je slobodno u 15:30. Odgovara li vam?"
+      }
+    ],
+    "s2After1": "Nakon pristanka prikuplja ime i kontakt te potvrđuje točan datum, vrijeme i uslugu. Tek kada sustav potvrdi uspješan upis, agent govori da je termin rezerviran. Vaš tim vidi dogovor u kalendaru koji koristi za svakodnevni rad. Ako je povezano slanje potvrda, klijent može dobiti i SMS ili e-mail s detaljima.",
+    "s2After2": "Ako traženi termin nije dostupan, agent nudi drugu mogućnost. Ako rezervacija ne uspije, jasno kaže da termin nije potvrđen i nudi da zabilježi zahtjev za vaš tim.",
+    "s3Title": "Što se događa u pozadini?",
+    "s3Body1": "Tijekom razgovora sustav obrađuje govor i prepoznaje zahtjev pozivatelja. Za odgovor koristi informacije koje ste mu dali, a za provjeru ili upis podataka pristupa povezanom poslovnom alatu. Rezultat zatim prenosi glasom, u nastavku istog razgovora.",
+    "s3Body2": "Za pitanje o radnom vremenu dovoljna je ažurna informacija o tvrtki. Za rezervaciju je potreban pristup kalendaru ili sustavu za naručivanje. Za provjeru statusa narudžbe potrebno je povezivanje sa sustavom u kojem se taj podatak nalazi.",
+    "s3Body3": "Zato se AI recepcija gradi oko tri stvari: informacija koje smije koristiti, radnji koje može izvršiti i pravila po kojima vodi razgovor.",
+    "s3Pillars": [
+      {
+        "name": "Informacije",
+        "desc": "Sadržaj o tvrtki koji agent smije koristiti u odgovorima."
+      },
+      {
+        "name": "Radnje",
+        "desc": "Konkretni zadaci koje smije izvršiti kroz povezane alate."
+      },
+      {
+        "name": "Pravila",
+        "desc": "Način na koji vodi razgovor i kada ga predaje vašem timu."
+      }
+    ],
+    "s4Title": "Što može preuzeti tijekom razgovora?",
+    "s4Items": [
+      {
+        "icon": "MessageCircleQuestion",
+        "name": "Odgovore na česta pitanja",
+        "desc": "Radno vrijeme, lokaciju, usluge, pripremu za dolazak i cijene koje ste odobrili za davanje telefonom."
+      },
+      {
+        "icon": "CalendarCheck",
+        "name": "Dogovaranje termina",
+        "desc": "Provjeru raspoloživosti i rezervaciju. Promjene i otkazivanja mogu se dodati ako ih odabrani sustav i integracija podržavaju."
+      },
+      {
+        "icon": "ClipboardList",
+        "name": "Bilježenje upita i kontakata",
+        "desc": "Ime, kontakt i sažetak zahtjeva, kako bi vaš tim imao potrebne informacije za nastavak razgovora."
+      },
+      {
+        "icon": "PhoneForwarded",
+        "name": "Povezivanje sa zaposlenikom",
+        "desc": "Usmjeravanje poziva odgovarajućoj osobi ili odjelu prema unaprijed dogovorenim pravilima i dostupnim mogućnostima telefonije."
+      }
+    ],
+    "s5Label": "Integracije",
+    "s5Title": "Kako se povezuje s vašim alatima?",
+    "s5Body1": "AI recepcija pristupa podacima kroz odobrene integracije. Time može provjeriti trenutačnu dostupnost ili status i izvršiti konkretnu radnju tijekom poziva.",
+    "s5Body2": "Primjerice, Google Calendar može služiti za provjeru zauzetosti i upis sastanka. CRM može spremiti novi upit i kontakt, a sustav za slanje poruka dostaviti potvrdu rezervacije.",
+    "s5Body3": "Za svaki projekt provjerava se što postojeći programi omogućuju. Važni su i detalji rada: trajanje pojedine usluge, radno vrijeme, pauze, raspoloživi zaposlenici i lokacije. Slobodno mjesto u kalendaru vrijedi ponuditi tek kada odgovara i tim pravilima.",
+    "s6Title": "Kada se AI javlja na telefon?",
+    "s6Intro": "Način javljanja prilagođava se vašoj organizaciji i mogućnostima telefonskog sustava.",
+    "s6Items": [
+      {
+        "name": "Na početku svakog poziva",
+        "desc": "AI prima upit i rješava dogovorene zadatke, a pozive koji trebaju zaposlenika usmjerava dalje."
+      },
+      {
+        "name": "Kada se nitko ne stigne javiti",
+        "desc": "Telefon prvo zvoni vašem timu. Nakon dogovorenog vremena poziv se preusmjerava AI recepciji."
+      },
+      {
+        "name": "Izvan radnog vremena",
+        "desc": "AI može odgovoriti na osnovna pitanja, prikupiti zahtjev ili rezervirati dopušteni termin dok je tvrtka zatvorena."
+      }
+    ],
+    "s7Title": "Kada razgovor preuzima vaš tim?",
+    "s7Body1": "Zahtjev za razgovor sa zaposlenikom, složen upit, reklamacija ili nedostatak pouzdane informacije razlozi su za uključivanje čovjeka.",
+    "s7Body2": "Unaprijed se određuje kome se takav poziv upućuje i što se događa ako ta osoba nije dostupna. Jedna je mogućnost uzeti poruku i kontakt za povratni poziv, bez obećavanja vremena javljanja koje vaš tim nije potvrdio.",
+    "s7Body3": "Agent se na početku predstavlja kao AI asistent. Upute i provjere postavljaju se tako da ne daje nepotvrđene cijene, ne izmišlja slobodne termine i ne proglašava zadatak obavljenim prije potvrde sustava.",
+    "s7Guardrails": [
+      "Predstavlja se kao AI asistent na početku razgovora.",
+      "Ne daje cijene koje niste odobrili za davanje telefonom.",
+      "Ne izmišlja slobodne termine.",
+      "Ne proglašava zadatak obavljenim prije potvrde sustava."
+    ],
+    "s7GuardrailsLabel": "Pravila koja agent poštuje",
+    "s8Title": "Kako u Aivi pristupamo ovakvom rješenju?",
+    "s8Steps": [
+      {
+        "number": "01",
+        "name": "Prvo upoznajemo vaše pozive",
+        "desc": "Što ljudi najčešće pitaju? Koje podatke trebate za termin? Koje razgovore uvijek treba preuzeti zaposlenik? Odgovori određuju opseg AI recepcije."
+      },
+      {
+        "number": "02",
+        "name": "Zatim povezujemo informacije i alate",
+        "desc": "Pripremamo sadržaj o tvrtki, pravila razgovora i potrebne integracije. Dogovaramo i pristup podacima te način čuvanja sažetaka ili snimki, ako se koriste."
+      },
+      {
+        "number": "03",
+        "name": "Prije uključivanja testiramo stvarne situacije",
+        "desc": "Promjenu termina usred razgovora, nejasno izgovoreno ime, prekidanje agenta, zauzet kalendar i nedostupan sustav. Testiramo i što agent radi kada zahtjev ne može riješiti."
+      },
+      {
+        "number": "04",
+        "name": "Nakon uključivanja pratimo što se događa",
+        "desc": "Koliko je upita riješeno, termina dogovoreno i poziva predano timu? Gdje pozivatelji zapinju? Ti podaci usmjeravaju daljnje prilagodbe."
+      }
+    ],
+    "s9Title": "Česta pitanja",
+    "s9Items": [
+      {
+        "q": "Moramo li promijeniti postojeći telefonski broj?",
+        "a": [
+          "Ovisno o operateru i telefonskom sustavu, povezivanje je moguće preko preusmjeravanja poziva ili postojeće centrale. Prije odabira rješenja provjeravamo kako možete nastaviti koristiti svoj broj."
+        ]
+      },
+      {
+        "q": "Može li razgovarati na hrvatskom i drugim jezicima?",
+        "a": [
+          "Može, uz odabir tehnologije koja podržava tražene jezike. Razumijevanje, izgovor imena i prirodnost razgovora provjeravamo na primjerima iz vašeg poslovanja."
+        ]
+      },
+      {
+        "q": "Što ako već imamo program za naručivanje?",
+        "a": [
+          "Najprije provjeravamo podržava li povezivanje i koje radnje dopušta. Ako izravan upis nije moguć, agent može prikupiti zahtjev koji vaš tim naknadno potvrđuje."
+        ]
+      },
+      {
+        "q": "Kome ovakva recepcija najviše koristi?",
+        "a": [
+          "Tvrtkama u kojima se telefonom često dogovaraju termini, traže iste informacije ili ostavljaju upiti dok je tim zauzet. Primjeri su autoservisi, saloni, smještajni objekti i servisne djelatnosti. Prikladnost ovisi o stvarnim pozivima i načinu rada pojedine tvrtke.",
+          "Ako većina poziva zahtijeva stručnu procjenu, korisnija uloga AI recepcije može biti prikupljanje osnovnih podataka i predaja upita odgovarajućem zaposleniku."
+        ]
+      }
+    ],
+    "ctaTitle": "Kako bi AI recepcija radila kod vas?",
+    "ctaBody": "Recite nam kakve pozive primate, kada se na njih najteže stignete javiti i koje alate koristite. Zajedno možemo odrediti što bi AI recepcija mogla preuzeti i kako bi surađivala s vašim timom.",
+    "ctaButton": "Dogovorite razgovor"
   }
 }
