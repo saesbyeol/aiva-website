@@ -25,6 +25,15 @@ function useInViewOnce(amount = 0.15) {
       setVisible(true);
       return;
     }
+    // A ratio threshold is unsatisfiable once the element is taller than the
+    // viewport can cover: 15% of a 12,000px block is 1,800px, so on a 1,000px
+    // screen the observer never fires and the content stays at opacity 0
+    // forever. Clamp the threshold to what is actually reachable for this
+    // element's height so tall sections still reveal.
+    const height = el.getBoundingClientRect().height;
+    const reachable = height > 0 ? Math.min(1, window.innerHeight / height) : 1;
+    const threshold = Math.min(amount, reachable * 0.9);
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -32,7 +41,7 @@ function useInViewOnce(amount = 0.15) {
           observer.disconnect();
         }
       },
-      { threshold: amount }
+      { threshold }
     );
     observer.observe(el);
     return () => observer.disconnect();
