@@ -767,7 +767,6 @@
       "Speaks Croatian and English",
       "Writes the appointment into your calendar"
     ],
-    "heroCta1": "Talk to the agent",
     "heroCta2": "Arrange a conversation",
     "callCard": {
       "incoming": "Incoming call",
@@ -796,8 +795,10 @@
     "demo": {
       "label": "Live",
       "title": "Call the agent right now, from your browser",
-      "body": "Open the widget in the corner of the screen and talk to the AI receptionist as if you had phoned in. Ask a question, request an appointment, or try to trip it up.",
-      "hint": "You will need a microphone."
+      "body": "Press the button and talk to the AI receptionist as if you had phoned in. Ask a question, request an appointment, or try to trip it up.",
+      "hint": "You will need a microphone. The conversation opens in the corner of the screen.",
+      "cta": "Start the conversation",
+      "ctaLoading": "Getting the agent ready"
     },
     "player": {
       "play": "Play the conversation",
@@ -824,12 +825,31 @@
       "faqA": "On Saturdays we are open from 8 to 13. We are closed on Sundays.",
       "sourceLabel": "Answered from information you approved",
       "slotTaken": "Thursday, free slots",
-      "slots": ["08:00", "10:30", "15:30", "16:00", "17:30", "18:00"],
+      "slots": [
+        "08:00",
+        "10:30",
+        "15:30",
+        "16:00",
+        "17:30",
+        "18:00"
+      ],
       "record": [
-        ["Name", "Ivan Horvat"],
-        ["Contact", "+385 91 •••• 678"],
-        ["Request", "Minor service, Golf 2020."],
-        ["Appointment", "Thursday, 15:30"]
+        [
+          "Name",
+          "Ivan Horvat"
+        ],
+        [
+          "Contact",
+          "+385 91 •••• 678"
+        ],
+        [
+          "Request",
+          "Minor service, Golf 2020."
+        ],
+        [
+          "Appointment",
+          "Thursday, 15:30"
+        ]
       ],
       "routeTo": "Sales",
       "routeNote": "The call is passed to the right team under the rules you set. If nobody is available, the agent takes a message and a contact."

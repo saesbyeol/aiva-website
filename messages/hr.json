@@ -767,7 +767,6 @@
       "Razgovara na hrvatskom",
       "Upisuje termin u vaš kalendar"
     ],
-    "heroCta1": "Razgovarajte s agentom",
     "heroCta2": "Dogovorite razgovor",
     "callCard": {
       "incoming": "Dolazni poziv",
@@ -796,8 +795,10 @@
     "demo": {
       "label": "Uživo",
       "title": "Nazovite agenta odmah, iz preglednika",
-      "body": "Otvorite widget u kutu ekrana i razgovarajte s AI recepcijom kao da ste nazvali. Postavite pitanje, zatražite termin ili je pokušajte zbuniti.",
-      "hint": "Za razgovor je potreban mikrofon."
+      "body": "Pritisnite gumb i razgovarajte s AI recepcijom kao da ste nazvali. Postavite pitanje, zatražite termin ili je pokušajte zbuniti.",
+      "hint": "Za razgovor je potreban mikrofon. Razgovor se otvara u kutu ekrana.",
+      "cta": "Započni razgovor",
+      "ctaLoading": "Pripremam agenta"
     },
     "player": {
       "play": "Reproduciraj razgovor",
@@ -824,12 +825,31 @@
       "faqA": "Subotom radimo od 8 do 13 sati. Nedjeljom ne radimo.",
       "sourceLabel": "Odgovor iz informacija koje ste odobrili",
       "slotTaken": "Četvrtak, slobodni termini",
-      "slots": ["08:00", "10:30", "15:30", "16:00", "17:30", "18:00"],
+      "slots": [
+        "08:00",
+        "10:30",
+        "15:30",
+        "16:00",
+        "17:30",
+        "18:00"
+      ],
       "record": [
-        ["Ime", "Ivan Horvat"],
-        ["Kontakt", "+385 91 •••• 678"],
-        ["Zahtjev", "Mali servis, Golf 2020."],
-        ["Termin", "Četvrtak, 15:30"]
+        [
+          "Ime",
+          "Ivan Horvat"
+        ],
+        [
+          "Kontakt",
+          "+385 91 •••• 678"
+        ],
+        [
+          "Zahtjev",
+          "Mali servis, Golf 2020."
+        ],
+        [
+          "Termin",
+          "Četvrtak, 15:30"
+        ]
       ],
       "routeTo": "Prodaja",
       "routeNote": "Poziv se prosljeđuje odjelu prema pravilima koja ste postavili. Ako nitko nije dostupan, agent bilježi poruku i kontakt."

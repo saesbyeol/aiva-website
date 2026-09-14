@@ -19,7 +19,13 @@ import Script from "next/script";
  * Suppressing it from here (rather than in the layout) means the rule cannot
  * outlive the widget, including across client-side navigation.
  */
-export function ElevenLabsWidget({ agentId }: { agentId: string }) {
+export function ElevenLabsWidget({
+  agentId,
+  language,
+}: {
+  agentId: string;
+  language: string;
+}) {
   React.useEffect(() => {
     const root = document.documentElement;
     root.classList.add("voice-widget-active");
@@ -28,7 +34,10 @@ export function ElevenLabsWidget({ agentId }: { agentId: string }) {
 
   return (
     <>
-      <elevenlabs-convai agent-id={agentId} />
+      {/* `language` follows the page locale. It only takes effect for
+          languages enabled on the agent in the ElevenLabs dashboard; with a
+          single-language agent the widget keeps that language regardless. */}
+      <elevenlabs-convai agent-id={agentId} language={language} />
       <Script
         src="https://unpkg.com/@elevenlabs/convai-widget-embed"
         strategy="afterInteractive"

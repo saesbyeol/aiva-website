@@ -3,7 +3,6 @@ import {
   ArrowRight,
   Database,
   Mic,
-  MoveDownRight,
   Settings2,
   ShieldCheck,
   Workflow,
@@ -26,6 +25,7 @@ import { AbilitySwitcher, type Ability } from "@/components/voice-agent/ability-
 import { IntegrationMap, type Tool } from "@/components/voice-agent/integration-map";
 import { PickupModes, type Trigger } from "@/components/voice-agent/pickup-modes";
 import { ElevenLabsWidget } from "@/components/voice-agent/elevenlabs-widget";
+import { TalkButton } from "@/components/voice-agent/talk-button";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 const CONVAI_AGENT_ID = "agent_8601m1k7w4cxe9ktwszx5d7471pb";
@@ -132,17 +132,7 @@ export default async function VoiceAgentPage({ params }: Props) {
               </ul>
 
               <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:gap-4">
-                <Button
-                  asChild
-                  size="lg"
-                  variant="primary"
-                  className="group w-full sm:w-auto"
-                >
-                  <a href="#demo">
-                    <Mic className="h-4 w-4 shrink-0" />
-                    <span className="min-w-0 truncate">{t("voiceAgent.heroCta1")}</span>
-                  </a>
-                </Button>
+                <TalkButton className="w-full sm:w-auto" />
                 <Button
                   asChild
                   size="lg"
@@ -225,21 +215,16 @@ export default async function VoiceAgentPage({ params }: Props) {
           <h2 className="text-h2 text-fg mb-5 text-balance">
             {t("voiceAgent.demo.title")}
           </h2>
-          <p className="text-body-lg text-fg-secondary mx-auto mb-6 max-w-xl leading-relaxed">
+          <p className="text-body-lg text-fg-secondary mx-auto mb-8 max-w-xl leading-relaxed">
             {t("voiceAgent.demo.body")}
           </p>
-          <p className="text-fg-muted flex items-center justify-center gap-2 text-xs">
+
+          <TalkButton className="mx-auto" />
+
+          <p className="text-fg-muted mt-5 flex items-center justify-center gap-2 text-xs">
             <Mic className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
             {t("voiceAgent.demo.hint")}
           </p>
-
-          {/* The hero CTA scrolls here, so the section has to finish the
-              journey and point at the widget itself, which floats in the
-              lower-right corner rather than sitting in the page flow. */}
-          <MoveDownRight
-            className="text-accent/60 motion-safe:animate-nudge mt-10 ml-auto h-7 w-7"
-            aria-hidden="true"
-          />
         </div>
       </section>
 
@@ -454,7 +439,7 @@ export default async function VoiceAgentPage({ params }: Props) {
         </div>
       </section>
 
-      <ElevenLabsWidget agentId={CONVAI_AGENT_ID} />
+      <ElevenLabsWidget agentId={CONVAI_AGENT_ID} language={locale} />
     </>
   );
 }

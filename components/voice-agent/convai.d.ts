@@ -12,7 +12,7 @@ declare module "react" {
       "elevenlabs-convai": React.DetailedHTMLProps<
         React.HTMLAttributes<HTMLElement>,
         HTMLElement
-      > & { "agent-id": string };
+      > & { "agent-id": string; language?: string };
     }
   }
 }
