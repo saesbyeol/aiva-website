@@ -588,12 +588,8 @@
     "badge": "Prikaz rješenja · AI recepcija",
     "title": "AI recepcija: od telefonskog upita do dogovorenog termina",
     "intro1": "Dok vaš tim razgovara s klijentom, radi na terenu ili je završio radni dan, telefon i dalje može zvoniti. AI recepcija može preuzeti poziv, odgovoriti na pitanja i pomoći osobi da dogovori sljedeći korak, od ostavljanja poruke do rezervacije termina.",
-    "intro2": "U nastavku prikazujemo kako takvo rješenje radi, s kojim se alatima povezuje i kako se prilagođava svakodnevnom radu tvrtke.",
     "s1Label": "Osnove",
     "s1Title": "Što je AI recepcija?",
-    "s1Body1": "Glasovni AI agent, odnosno voice agent, sustav je koji razgovara s korisnikom i može izvršavati zadatke kroz povezane alate. AI recepcija jedna je njegova primjena, namijenjena primanju dolaznih telefonskih poziva.",
-    "s1Body2": "Osoba koja nazove svojim riječima kaže što treba, a agent vodi razgovor prema pravilima i informacijama vaše tvrtke.",
-    "s1Body3": "Može objasniti uslugu, provjeriti raspoloživost, prikupiti podatke ili povezati poziv sa zaposlenikom. Opseg njegova rada određuje se unaprijed: koje informacije koristi, što smije napraviti i kada treba uključiti vaš tim.",
     "s2Title": "Kako izgleda jedan poziv?",
     "s2Intro": "Zamislimo autoservis kojem se klijent javlja radi dogovora termina. Ovo je primjer razgovora s agentom povezanim s kalendarom servisa.",
     "s2AgentLabel": "AI recepcija",
@@ -627,8 +623,6 @@
     "s2After1": "Nakon pristanka prikuplja ime i kontakt te potvrđuje točan datum, vrijeme i uslugu. Tek kada sustav potvrdi uspješan upis, agent govori da je termin rezerviran. Vaš tim vidi dogovor u kalendaru koji koristi za svakodnevni rad. Ako je povezano slanje potvrda, klijent može dobiti i SMS ili e-mail s detaljima.",
     "s2After2": "Ako traženi termin nije dostupan, agent nudi drugu mogućnost. Ako rezervacija ne uspije, jasno kaže da termin nije potvrđen i nudi da zabilježi zahtjev za vaš tim.",
     "s3Title": "Što se događa u pozadini?",
-    "s3Body1": "Tijekom razgovora sustav obrađuje govor i prepoznaje zahtjev pozivatelja. Za odgovor koristi informacije koje ste mu dali, a za provjeru ili upis podataka pristupa povezanom poslovnom alatu. Rezultat zatim prenosi glasom, u nastavku istog razgovora.",
-    "s3Body2": "Za pitanje o radnom vremenu dovoljna je ažurna informacija o tvrtki. Za rezervaciju je potreban pristup kalendaru ili sustavu za naručivanje. Za provjeru statusa narudžbe potrebno je povezivanje sa sustavom u kojem se taj podatak nalazi.",
     "s3Body3": "Zato se AI recepcija gradi oko tri stvari: informacija koje smije koristiti, radnji koje može izvršiti i pravila po kojima vodi razgovor.",
     "s3Pillars": [
       {
@@ -725,6 +719,21 @@
     "s9Title": "Česta pitanja",
     "s9Items": [
       {
+        "q": "Što je zapravo glasovni AI agent?",
+        "a": [
+          "Glasovni AI agent, odnosno voice agent, sustav je koji razgovara s korisnikom i može izvršavati zadatke kroz povezane alate. AI recepcija jedna je njegova primjena, namijenjena primanju dolaznih telefonskih poziva.",
+          "Osoba koja nazove svojim riječima kaže što treba, a agent vodi razgovor prema pravilima i informacijama vaše tvrtke.",
+          "Može objasniti uslugu, provjeriti raspoloživost, prikupiti podatke ili povezati poziv sa zaposlenikom. Opseg njegova rada određuje se unaprijed: koje informacije koristi, što smije napraviti i kada treba uključiti vaš tim."
+        ]
+      },
+      {
+        "q": "Što se događa u pozadini tijekom razgovora?",
+        "a": [
+          "Tijekom razgovora sustav obrađuje govor i prepoznaje zahtjev pozivatelja. Za odgovor koristi informacije koje ste mu dali, a za provjeru ili upis podataka pristupa povezanom poslovnom alatu. Rezultat zatim prenosi glasom, u nastavku istog razgovora.",
+          "Za pitanje o radnom vremenu dovoljna je ažurna informacija o tvrtki. Za rezervaciju je potreban pristup kalendaru ili sustavu za naručivanje. Za provjeru statusa narudžbe potrebno je povezivanje sa sustavom u kojem se taj podatak nalazi."
+        ]
+      },
+      {
         "q": "Moramo li promijeniti postojeći telefonski broj?",
         "a": [
           "Ovisno o operateru i telefonskom sustavu, povezivanje je moguće preko preusmjeravanja poziva ili postojeće centrale. Prije odabira rješenja provjeravamo kako možete nastaviti koristiti svoj broj."
@@ -752,6 +761,103 @@
     ],
     "ctaTitle": "Kako bi AI recepcija radila kod vas?",
     "ctaBody": "Recite nam kakve pozive primate, kada se na njih najteže stignete javiti i koje alate koristite. Zajedno možemo odrediti što bi AI recepcija mogla preuzeti i kako bi surađivala s vašim timom.",
-    "ctaButton": "Dogovorite razgovor"
+    "ctaButton": "Dogovorite razgovor",
+    "heroChips": [
+      "Javlja se 24 sata dnevno",
+      "Razgovara na hrvatskom",
+      "Upisuje termin u vaš kalendar"
+    ],
+    "heroCta1": "Razgovarajte s agentom",
+    "heroCta2": "Dogovorite razgovor",
+    "callCard": {
+      "incoming": "Dolazni poziv",
+      "connected": "Razgovor u tijeku",
+      "number": "+385 91 •••• 678",
+      "ringing": "zvoni",
+      "agentLabel": "AI recepcija",
+      "lineRinging": "Telefon zvoni. Nitko od vašeg tima nije slobodan.",
+      "lineSpeaking": "U četvrtak je slobodno u 15:30. Odgovara li vam?",
+      "stepChecking": "Kalendar provjeren",
+      "stepCheckingBusy": "Provjera kalendara",
+      "stepBooked": "Termin upisan"
+    },
+    "calc": {
+      "label": "Trošak propuštenog poziva",
+      "title": "Koliko vas košta telefon koji nitko ne javi?",
+      "intro": "Pomaknite klizače na brojke iz svog poslovanja. Račun je jednostavan i radi s vašim pretpostavkama, ne s našima.",
+      "missedLabel": "Propuštenih poziva tjedno",
+      "missedValue": "{count} poziva",
+      "valueLabel": "Prosječna vrijednost jednog posla",
+      "convertLabel": "Udio poziva koji bi postao posao",
+      "resultLabel": "Procjena mjesečno",
+      "resultPerMonth": "Otprilike {jobs} posla mjesečno za koje niste ni čuli.",
+      "disclaimer": "Ovo je vaš izračun, ne naše obećanje. Brojke služe za procjenu vrijednosti propuštenih poziva i ne jamče rezultat."
+    },
+    "demo": {
+      "label": "Uživo",
+      "title": "Nazovite agenta odmah, iz preglednika",
+      "body": "Otvorite widget u kutu ekrana i razgovarajte s AI recepcijom kao da ste nazvali. Postavite pitanje, zatražite termin ili je pokušajte zbuniti.",
+      "hint": "Za razgovor je potreban mikrofon."
+    },
+    "player": {
+      "play": "Reproduciraj razgovor",
+      "pause": "Pauziraj",
+      "replay": "Ponovi razgovor",
+      "behindTheScenes": "Iza kulisa"
+    },
+    "s2Steps": [
+      {
+        "name": "Prepoznaje zahtjev",
+        "detail": "Iz izgovorenog izdvaja uslugu, vozilo i željeni termin."
+      },
+      {
+        "name": "Provjerava kalendar",
+        "detail": "Traži slobodno mjesto koje odgovara trajanju usluge i radnom vremenu."
+      },
+      {
+        "name": "Upisuje termin",
+        "detail": "Tek kad sustav potvrdi upis, agent kaže da je termin rezerviran."
+      }
+    ],
+    "abilityPanels": {
+      "faqQ": "Radite li subotom?",
+      "faqA": "Subotom radimo od 8 do 13 sati. Nedjeljom ne radimo.",
+      "sourceLabel": "Odgovor iz informacija koje ste odobrili",
+      "slotTaken": "Četvrtak, slobodni termini",
+      "slots": ["08:00", "10:30", "15:30", "16:00", "17:30", "18:00"],
+      "record": [
+        ["Ime", "Ivan Horvat"],
+        ["Kontakt", "+385 91 •••• 678"],
+        ["Zahtjev", "Mali servis, Golf 2020."],
+        ["Termin", "Četvrtak, 15:30"]
+      ],
+      "routeTo": "Prodaja",
+      "routeNote": "Poziv se prosljeđuje odjelu prema pravilima koja ste postavili. Ako nitko nije dostupan, agent bilježi poruku i kontakt."
+    },
+    "integration": {
+      "callerLabel": "Poziv",
+      "callerDesc": "Osoba nazove vaš postojeći broj.",
+      "agentLabel": "AI recepcija",
+      "agentDesc": "Vodi razgovor i poziva alate kad treba podatak.",
+      "tools": [
+        {
+          "name": "Kalendar",
+          "desc": "Provjera zauzetosti i upis termina."
+        },
+        {
+          "name": "CRM",
+          "desc": "Novi upit, kontakt i sažetak razgovora."
+        },
+        {
+          "name": "SMS i e-mail",
+          "desc": "Potvrda termina pozivatelju."
+        }
+      ]
+    },
+    "pickup": {
+      "teamLabel": "Tim",
+      "agentLabel": "AI",
+      "closedLabel": "Zatvoreno"
+    }
   }
 }

@@ -588,12 +588,8 @@
     "badge": "Solution walkthrough · AI receptionist",
     "title": "AI receptionist: from a phone enquiry to a booked appointment",
     "intro1": "While your team is with a client, out on a job, or done for the day, the phone can still ring. An AI receptionist can take the call, answer questions and help the caller arrange a next step, from leaving a message to booking an appointment.",
-    "intro2": "Below we walk through how a solution like this works, which tools it connects to, and how it adapts to the way your company works day to day.",
     "s1Label": "The basics",
     "s1Title": "What is an AI receptionist?",
-    "s1Body1": "A voice AI agent is a system that holds a conversation with a caller and can carry out tasks through connected tools. An AI receptionist is one application of it, built to handle incoming phone calls.",
-    "s1Body2": "The person calling says what they need in their own words, and the agent leads the conversation according to your company's rules and information.",
-    "s1Body3": "It can explain a service, check availability, collect details or connect the call to a member of staff. Its scope is defined up front: which information it uses, what it is allowed to do, and when it needs to bring in your team.",
     "s2Title": "What does a single call look like?",
     "s2Intro": "Picture a car service centre that a client calls to arrange an appointment. This is an example conversation with an agent connected to the workshop's calendar.",
     "s2AgentLabel": "AI receptionist",
@@ -627,8 +623,6 @@
     "s2After1": "Once the caller agrees, it collects a name and contact details and confirms the exact date, time and service. Only after the system confirms the booking went through does the agent say the appointment is reserved. Your team sees the booking in the calendar they already use day to day. If confirmations are connected, the client can also receive an SMS or email with the details.",
     "s2After2": "If the requested slot is not available, the agent offers an alternative. If the booking fails, it says clearly that the appointment is not confirmed and offers to record the request for your team.",
     "s3Title": "What happens in the background?",
-    "s3Body1": "During the conversation the system processes speech and works out what the caller is asking for. It answers using the information you have given it, and to check or write data it reaches into a connected business tool. It then delivers the result by voice, in the same conversation.",
-    "s3Body2": "A question about opening hours only needs up-to-date company information. A booking needs access to a calendar or scheduling system. Checking an order status needs a connection to the system that holds that data.",
     "s3Body3": "That is why an AI receptionist is built around three things: the information it is allowed to use, the actions it can carry out, and the rules by which it leads the conversation.",
     "s3Pillars": [
       {
@@ -725,6 +719,21 @@
     "s9Title": "Frequently asked questions",
     "s9Items": [
       {
+        "q": "What actually is a voice AI agent?",
+        "a": [
+          "A voice AI agent is a system that holds a conversation with a caller and can carry out tasks through connected tools. An AI receptionist is one application of it, built to handle incoming phone calls.",
+          "The person calling says what they need in their own words, and the agent leads the conversation according to your company's rules and information.",
+          "It can explain a service, check availability, collect details or connect the call to a member of staff. Its scope is defined up front: which information it uses, what it is allowed to do, and when it needs to bring in your team."
+        ]
+      },
+      {
+        "q": "What happens behind the scenes during a call?",
+        "a": [
+          "During the conversation the system processes speech and works out what the caller is asking for. It answers using the information you have given it, and to check or write data it reaches into a connected business tool. It then delivers the result by voice, in the same conversation.",
+          "A question about opening hours only needs up-to-date company information. A booking needs access to a calendar or scheduling system. Checking an order status needs a connection to the system that holds that data."
+        ]
+      },
+      {
         "q": "Do we have to change our existing phone number?",
         "a": [
           "Depending on your operator and phone system, the connection can be made through call forwarding or your existing exchange. Before choosing a solution we check how you can carry on using your own number."
@@ -752,6 +761,103 @@
     ],
     "ctaTitle": "How would an AI receptionist work for you?",
     "ctaBody": "Tell us what kind of calls you get, when they are hardest to answer, and which tools you use. Together we can work out what an AI receptionist could take on and how it would work alongside your team.",
-    "ctaButton": "Arrange a conversation"
+    "ctaButton": "Arrange a conversation",
+    "heroChips": [
+      "Answers 24 hours a day",
+      "Speaks Croatian and English",
+      "Writes the appointment into your calendar"
+    ],
+    "heroCta1": "Talk to the agent",
+    "heroCta2": "Arrange a conversation",
+    "callCard": {
+      "incoming": "Incoming call",
+      "connected": "Call in progress",
+      "number": "+385 91 •••• 678",
+      "ringing": "ringing",
+      "agentLabel": "AI receptionist",
+      "lineRinging": "The phone is ringing. Nobody on your team is free.",
+      "lineSpeaking": "Thursday at 15:30 is free. Does that work for you?",
+      "stepChecking": "Calendar checked",
+      "stepCheckingBusy": "Checking the calendar",
+      "stepBooked": "Appointment booked"
+    },
+    "calc": {
+      "label": "The cost of a missed call",
+      "title": "What does a phone nobody answers cost you?",
+      "intro": "Move the sliders to the numbers from your own business. The arithmetic is simple, and it runs on your assumptions rather than ours.",
+      "missedLabel": "Missed calls per week",
+      "missedValue": "{count} calls",
+      "valueLabel": "Average value of one job",
+      "convertLabel": "Share of calls that would become work",
+      "resultLabel": "Estimated per month",
+      "resultPerMonth": "Roughly {jobs} jobs a month you never even heard about.",
+      "disclaimer": "This is your calculation, not our promise. The figures estimate what missed calls are worth and guarantee no result."
+    },
+    "demo": {
+      "label": "Live",
+      "title": "Call the agent right now, from your browser",
+      "body": "Open the widget in the corner of the screen and talk to the AI receptionist as if you had phoned in. Ask a question, request an appointment, or try to trip it up.",
+      "hint": "You will need a microphone."
+    },
+    "player": {
+      "play": "Play the conversation",
+      "pause": "Pause",
+      "replay": "Play again",
+      "behindTheScenes": "Behind the scenes"
+    },
+    "s2Steps": [
+      {
+        "name": "Works out the request",
+        "detail": "Picks the service, the vehicle and the preferred time out of what was said."
+      },
+      {
+        "name": "Checks the calendar",
+        "detail": "Looks for a free slot that fits the service duration and your opening hours."
+      },
+      {
+        "name": "Writes the appointment",
+        "detail": "Only once the system confirms the entry does the agent say it is booked."
+      }
+    ],
+    "abilityPanels": {
+      "faqQ": "Are you open on Saturdays?",
+      "faqA": "On Saturdays we are open from 8 to 13. We are closed on Sundays.",
+      "sourceLabel": "Answered from information you approved",
+      "slotTaken": "Thursday, free slots",
+      "slots": ["08:00", "10:30", "15:30", "16:00", "17:30", "18:00"],
+      "record": [
+        ["Name", "Ivan Horvat"],
+        ["Contact", "+385 91 •••• 678"],
+        ["Request", "Minor service, Golf 2020."],
+        ["Appointment", "Thursday, 15:30"]
+      ],
+      "routeTo": "Sales",
+      "routeNote": "The call is passed to the right team under the rules you set. If nobody is available, the agent takes a message and a contact."
+    },
+    "integration": {
+      "callerLabel": "Call",
+      "callerDesc": "Someone dials your existing number.",
+      "agentLabel": "AI receptionist",
+      "agentDesc": "Leads the conversation and calls a tool when it needs data.",
+      "tools": [
+        {
+          "name": "Calendar",
+          "desc": "Checking availability and writing the appointment."
+        },
+        {
+          "name": "CRM",
+          "desc": "A new enquiry, contact and summary of the call."
+        },
+        {
+          "name": "SMS and email",
+          "desc": "Confirmation sent to the caller."
+        }
+      ]
+    },
+    "pickup": {
+      "teamLabel": "Team",
+      "agentLabel": "AI",
+      "closedLabel": "Closed"
+    }
   }
 }
