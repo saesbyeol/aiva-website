@@ -798,7 +798,10 @@
       "body": "Pritisnite gumb i razgovarajte s AI recepcijom kao da ste nazvali. Postavite pitanje, zatražite termin ili je pokušajte zbuniti.",
       "hint": "Za razgovor je potreban mikrofon. Razgovor se otvara u kutu ekrana.",
       "cta": "Započni razgovor",
-      "ctaLoading": "Pripremam agenta"
+      "ctaLoading": "Pripremam agenta",
+      "blockedTitle": "Razgovor uživo nije se učitao",
+      "blockedBody": "Blokator oglasa ili proširenje za privatnost najčešće blokira ovu vrstu widgeta. Isključite ga za ovu stranicu i osvježite, ili nam se javite izravno pa ćemo vam pustiti snimku razgovora.",
+      "blockedCta": "Javite nam se"
     },
     "player": {
       "play": "Reproduciraj razgovor",

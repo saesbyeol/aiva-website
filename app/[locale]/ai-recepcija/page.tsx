@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import {
   ArrowRight,
   Database,
-  Mic,
   Settings2,
   ShieldCheck,
   Workflow,
@@ -219,12 +218,7 @@ export default async function VoiceAgentPage({ params }: Props) {
             {t("voiceAgent.demo.body")}
           </p>
 
-          <TalkButton className="mx-auto" />
-
-          <p className="text-fg-muted mt-5 flex items-center justify-center gap-2 text-xs">
-            <Mic className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-            {t("voiceAgent.demo.hint")}
-          </p>
+          <TalkButton className="mx-auto" whenUnavailable="explain" />
         </div>
       </section>
 

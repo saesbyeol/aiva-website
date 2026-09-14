@@ -798,7 +798,10 @@
       "body": "Press the button and talk to the AI receptionist as if you had phoned in. Ask a question, request an appointment, or try to trip it up.",
       "hint": "You will need a microphone. The conversation opens in the corner of the screen.",
       "cta": "Start the conversation",
-      "ctaLoading": "Getting the agent ready"
+      "ctaLoading": "Getting the agent ready",
+      "blockedTitle": "The live conversation did not load",
+      "blockedBody": "An ad blocker or privacy extension usually blocks this kind of widget. Turn it off for this page and refresh, or get in touch and we will play you a recorded conversation instead.",
+      "blockedCta": "Get in touch"
     },
     "player": {
       "play": "Play the conversation",
