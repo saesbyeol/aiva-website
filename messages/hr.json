@@ -293,7 +293,7 @@
   "privacy": {
     "badge": "Pravno",
     "title": "Politika privatnosti",
-    "updated": "Zadnja izmjena: 8. rujna 2026.",
+    "updated": "Zadnja izmjena: 15. rujna 2026.",
     "intro": "Ova Politika privatnosti objašnjava koje osobne podatke prikupljamo putem web-stranice aiva.hr, u koje svrhe ih obrađujemo, na kojoj pravnoj osnovi, s kim ih dijelimo, koliko dugo ih čuvamo i koja prava imate. Politika je usklađena s Uredbom (EU) 2016/679 (Opća uredba o zaštiti podataka, dalje: GDPR) i Zakonom o provedbi Opće uredbe o zaštiti podataka.",
     "s1Title": "1. Voditelj obrade",
     "s1Body": "Voditelj obrade vaših osobnih podataka, odnosno subjekt koji određuje svrhe i sredstva obrade, jest:",
@@ -341,6 +341,11 @@
         "name": "Postavke prikaza",
         "desc": "Vaš odabir tamnog ili svijetlog načina prikaza sprema se u lokalnu pohranu vašeg preglednika. Taj podatak ostaje na vašem uređaju i ne dostavlja se nama niti trećim stranama.",
         "items": []
+      },
+      {
+        "name": "Podaci iz glasovne demonstracije",
+        "desc": "Na stranici AI recepcija dostupna je glasovna demonstracija koja se pokreće isključivo vašom izričitom radnjom. Ako je pokrenete, vaš preglednik zatražit će pristup mikrofonu, a vaš govor i odgovori agenta obrađuju se kod pružatelja usluge ElevenLabs Inc. u Sjedinjenim Američkim Državama. Ako demonstraciju ne pokrenete, mikrofon se ne koristi i nikakvi glasovni podaci ne nastaju. Molimo vas da tijekom demonstracije ne izgovarate osjetljive osobne podatke niti povjerljive poslovne informacije.",
+        "items": []
       }
     ],
     "s2Ip": "Napominjemo da se IP adresa koristi i za ograničavanje broja slanja obrasca radi zaštite od zloupotrebe te se navodi u internoj obavijesti o zaprimljenom upitu koja nam se dostavlja e-poštom.",
@@ -365,7 +370,7 @@
       {
         "purpose": "Rad AI chat asistenta na stranici",
         "basis": "Privola (čl. 6. st. 1. t. a)",
-        "detail": "Widget pokrećete vlastitom radnjom kada otvorite razgovor. Ako ga ne koristite, sadržaj razgovora se ne obrađuje."
+        "detail": "Widget se učitava tek nakon što u traci za privole prihvatite kolačiće za tu namjenu. Ako privolu ne date, widget se ne učitava i nikakav sadržaj razgovora ne nastaje."
       },
       {
         "purpose": "Sigurnost stranice i sprječavanje zloupotrebe",
@@ -381,6 +386,11 @@
         "purpose": "Ispunjavanje zakonskih obveza",
         "basis": "Pravna obveza (čl. 6. st. 1. t. c)",
         "detail": "Obveze koje proizlaze iz računovodstvenih, poreznih i drugih mjerodavnih propisa."
+      },
+      {
+        "purpose": "Glasovna demonstracija AI recepcije",
+        "basis": "Privola (čl. 6. st. 1. t. a)",
+        "detail": "Demonstraciju pokrećete izričitom radnjom, nakon obavijesti o tome da se koristi mikrofon i da se govor obrađuje kod pružatelja usluge u SAD-u. Privolu možete povući tako da prekinete razgovor i zatvorite stranicu; već obrađeni podaci brišu se u rokovima navedenima niže."
       }
     ],
     "s4Title": "4. Koliko dugo čuvamo podatke",
@@ -405,6 +415,10 @@
       {
         "what": "Podaci o rezervaciji termina",
         "period": "Do 12 mjeseci nakon održanog ili otkazanog termina"
+      },
+      {
+        "what": "Snimke i transkripti glasovne demonstracije",
+        "period": "U skladu s postavkama i rokovima pružatelja usluge ElevenLabs, u pravilu do 30 dana"
       }
     ],
     "s4After": "Nakon isteka navedenih rokova podaci se brišu ili nepovratno anonimiziraju. Brisanje možete zatražiti i ranije, osim kada smo podatke dužni zadržati radi ispunjenja zakonske obveze ili postavljanja, ostvarivanja ili obrane pravnih zahtjeva.",
@@ -446,6 +460,11 @@
         "name": "Sanity AS",
         "role": "Sustav za upravljanje sadržajem stranice",
         "location": "EU / Norveška"
+      },
+      {
+        "name": "ElevenLabs Inc.",
+        "role": "Glasovni AI agent u demonstraciji na stranici (obrada govora)",
+        "location": "SAD"
       }
     ],
     "s5Fonts": "Tipografija se poslužuje s našeg poslužitelja jer se fontovi ugrađuju u aplikaciju prilikom izrade. Zbog toga se pri posjetu stranici ne šalju zahtjevi prema Googleovim poslužiteljima niti se vaša IP adresa otkriva Googleu.",
