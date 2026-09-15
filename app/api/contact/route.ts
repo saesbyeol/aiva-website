@@ -94,12 +94,11 @@ export async function POST(req: NextRequest) {
 
       return NextResponse.json({ ok: true });
     } catch (e) {
-      const msg = e instanceof Error ? e.message : String(e);
-      console.error("Resend error:", msg);
-      return NextResponse.json(
-        { error: t("form.errorSend"), detail: msg },
-        { status: 500 }
-      );
+      // Log the real cause for us; return a generic message to the caller.
+      // Resend's errors quote request context and configuration details that a
+      // stranger submitting a contact form has no business reading.
+      console.error("Resend error:", e instanceof Error ? e.message : String(e));
+      return NextResponse.json({ error: t("form.errorSend") }, { status: 500 });
     }
   }
 
