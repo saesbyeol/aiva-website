@@ -1,6 +1,10 @@
 {
-  "regions": ["fra1"],
-  "functionFailoverRegions": ["arn1"],
+  "functions": {
+    "app/api/contact/route.ts": {
+      "regions": ["fra1"],
+      "functionFailoverRegions": ["arn1"]
+    }
+  },
   "headers": [
     {
       "source": "/(.*)",
