@@ -205,3 +205,60 @@ npm audit:   {'low': 2, 'moderate': 19, 'high': 19, 'critical': 1, 'total': 41}
 - P0 Task 6 Step 6's prose contradicted its own code block on hook ordering.
 - P0 Tasks 6 and 8 both claimed a repo test enforces message-catalogue key parity. **No such test exists.** A ~10-line parity test is a strong P2 candidate — next-intl renders the key path rather than throwing, so a missing English key would silently display `privacy.s2Groups.5.desc` on the legal page.
 - **P2 Task 4** tells the operator to enable Plausible, asserting "the existing policy text already covers it accurately." It did not — the policy claims consent as the basis while the script was ungated. Fixed in this branch by gating the code; the P2 sentence should be corrected when that task runs.
+
+---
+
+## Correction to E1's root-cause hypothesis — 2026-09-15, post-deploy
+
+The audit stated that the consent banner "never renders" and named as its
+leading hypothesis a domain-group mismatch (`aiva.hr` registered while the
+site serves `www.aiva.hr`). **Both parts need correcting.**
+
+**What was actually true.** Two separate causes were conflated:
+
+1. The committed `NEXT_PUBLIC_COOKIEBOT_ID` belonged to a Cookiebot account
+   that had been retired. The script loaded and served nothing. This was the
+   real configuration fault, and it is fixed — the current domain group is
+   `1ee10f88-bd07-4af5-9648-e8c99eec697b`.
+2. The observation that no banner rendered was **contaminated by the
+   auditing browser**, which sends `navigator.globalPrivacyControl: true`
+   and `doNotTrack: "1"`. Cookiebot honours GPC by auto-declining every
+   optional category and suppressing the banner, since the visitor has
+   already expressed a preference at the browser level. That is correct,
+   compliant behaviour, not a defect — and it produces exactly the
+   fingerprint the audit misread as a broken banner: `hasResponse: false`,
+   no dialog in the DOM, every category false.
+
+Verified after deploy, on `www.aiva.hr`:
+
+- Cookiebot's config endpoint returns a full banner config for
+  `www.aiva.hr`, and the explicit "domain is not authorized" error for
+  `localhost` — so domain authorisation works and was never the fault.
+- `Cookiebot.renew()` renders the dialog (2560x338) with all four
+  categories and `www.aiva.hr` listed as scanned.
+- The site owner confirms the banner appears normally in a browser without
+  privacy extensions.
+
+**The audit's substantive finding is unaffected, and was in fact understated.**
+E1's core claim — that Chatbase and ElevenLabs executed before any consent —
+was measured in a browser actively signalling Global Privacy Control. The
+trackers loaded anyway. A visitor transmitting an explicit do-not-track
+signal was tracked regardless, which is a worse fact than the one the audit
+recorded.
+
+**Lesson for future audits of consent behaviour:** the auditing browser's own
+privacy signals are part of the measurement apparatus. Record
+`navigator.globalPrivacyControl` and `navigator.doNotTrack` alongside any
+consent-state observation, and confirm banner behaviour in a clean profile
+before attributing absence to server-side misconfiguration.
+
+## End-to-end verification of the consent gate — 2026-09-15, production
+
+The path no test could exercise locally, confirmed on `www.aiva.hr`:
+
+| State                                                        | Chatbase                              | Plausible                                          |
+| ------------------------------------------------------------ | ------------------------------------- | -------------------------------------------------- |
+| `hasResponse: false`, all categories denied                  | not loaded                            | not loaded                                         |
+| `submitCustomConsent(true,true,true)` → `method: "explicit"` | **loaded**, `window.chatbase` present | not loaded (env var unset in production — correct) |
+
+The gate closes and opens as designed.
