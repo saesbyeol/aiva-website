@@ -423,7 +423,7 @@
     ],
     "s4After": "Once these periods expire, data is deleted or irreversibly anonymised. You may request deletion earlier, except where we are required to retain the data to meet a legal obligation or for the establishment, exercise or defence of legal claims.",
     "s5Title": "5. Who receives your data",
-    "s5Body": "We do not sell, rent or trade your personal data to third parties for their own purposes. We share it only with service providers who process it on our behalf and on our instructions (processors), with whom we have data processing agreements in place under Article 28 GDPR:",
+    "s5Body": "We do not sell, rent or trade your personal data to third parties for their own purposes. We share it only with service providers who process it on our behalf and on our instructions (processors), with whom we have concluded, or are in the process of concluding, data processing agreements under Article 28 GDPR:",
     "s5ColLocation": "Processing location",
     "s5List": [
       {
