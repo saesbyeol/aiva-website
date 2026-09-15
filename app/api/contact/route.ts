@@ -22,9 +22,17 @@ function checkRateLimit(ip: string): boolean {
 
 // ─── Schema ────────────────────────────────────────────────────────────────────
 const schema = z.object({
-  name: z.string().min(2).max(100),
+  name: z
+    .string()
+    .min(2)
+    .max(100)
+    .regex(/^[^\r\n]*$/, "no line breaks"),
   email: z.string().email(),
-  company: z.string().max(100).optional(),
+  company: z
+    .string()
+    .max(100)
+    .regex(/^[^\r\n]*$/, "no line breaks")
+    .optional(),
   message: z.string().min(20).max(2000),
   budget: z.string().optional(),
   website: z.string().max(0).optional(), // honeypot
