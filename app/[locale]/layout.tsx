@@ -8,6 +8,8 @@ import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { setRequestLocale, getMessages, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
+import { ConsentProvider } from "@/components/privacy/consent-provider";
+import { ChatbaseWidget } from "@/components/privacy/chatbase-widget";
 
 // ─── Fonts ──────────────────────────────────────────────────────────────────
 const syne = Syne({
@@ -105,24 +107,20 @@ export default async function LocaleLayout({
         />
       </head>
       <body className={`${syne.variable} ${inter.variable}`}>
-        {plausibleDomain && (
-          <Script
-            defer
-            data-domain={plausibleDomain}
-            src="https://plausible.io/js/script.js"
-            strategy="afterInteractive"
-          />
-        )}
-        <Script
-          id="chatbase-widget"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="EbGKmwn46Oc5zd54aPaAF";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();`,
-          }}
-        />
-        <NextIntlClientProvider messages={messages}>
-          <SiteShell>{children}</SiteShell>
-        </NextIntlClientProvider>
+        <ConsentProvider>
+          {plausibleDomain && (
+            <Script
+              defer
+              data-domain={plausibleDomain}
+              src="https://plausible.io/js/script.js"
+              strategy="afterInteractive"
+            />
+          )}
+          <ChatbaseWidget />
+          <NextIntlClientProvider messages={messages}>
+            <SiteShell>{children}</SiteShell>
+          </NextIntlClientProvider>
+        </ConsentProvider>
       </body>
     </html>
   );
