@@ -5,7 +5,8 @@ test.describe("Consent gating", () => {
     const thirdParty: string[] = [];
     page.on("request", (r) => {
       const url = r.url();
-      if (/chatbase\.co|unpkg\.com|elevenlabs\.io/.test(url)) thirdParty.push(url);
+      if (/chatbase\.co|elevenlabs\.io|\/vendor\/convai-widget-embed/.test(url))
+        thirdParty.push(url);
     });
 
     await page.goto("/ai-recepcija");
@@ -20,7 +21,8 @@ test.describe("Consent gating", () => {
   test("voice demo loads ElevenLabs only after explicit activation", async ({ page }) => {
     const elevenlabs: string[] = [];
     page.on("request", (r) => {
-      if (/unpkg\.com|elevenlabs\.io/.test(r.url())) elevenlabs.push(r.url());
+      if (/\/vendor\/convai-widget-embed|elevenlabs\.io/.test(r.url()))
+        elevenlabs.push(r.url());
     });
 
     await page.goto("/ai-recepcija");
@@ -28,7 +30,9 @@ test.describe("Consent gating", () => {
     expect(elevenlabs, "ElevenLabs loaded before activation").toEqual([]);
 
     await page.getByRole("button", { name: /Pokreni demo/i }).click();
-    await page.waitForRequest(/unpkg\.com|elevenlabs\.io/, { timeout: 15_000 });
+    await page.waitForRequest(/\/vendor\/convai-widget-embed\.js|elevenlabs\.io/, {
+      timeout: 15_000,
+    });
 
     expect(elevenlabs.length).toBeGreaterThan(0);
   });

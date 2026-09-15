@@ -9,9 +9,10 @@ import { useVoiceDemo } from "./voice-demo-provider";
  * the demo.
  *
  * Returning null before activation is what makes this a gate rather than a
- * cosmetic one: no custom element, no embed script, no request to unpkg or
- * to api.us.elevenlabs.io, and no microphone prompt until the visitor has
- * read what the demo does and pressed the button.
+ * cosmetic one: no custom element, no embed script, no request to
+ * /vendor/convai-widget-embed.js or to api.us.elevenlabs.io, and no
+ * microphone prompt until the visitor has read what the demo does and
+ * pressed the button.
  *
  * The site-wide Chatbase bubble claims the same bottom-right corner at a
  * near-maximum z-index, so this component hides it for as long as it is
@@ -41,10 +42,12 @@ export function ElevenLabsWidget({
           languages enabled on the agent in the ElevenLabs dashboard; with a
           single-language agent the widget keeps that language regardless. */}
       <elevenlabs-convai agent-id={agentId} language={language} />
-      <Script
-        src="https://unpkg.com/@elevenlabs/convai-widget-embed"
-        strategy="afterInteractive"
-      />
+      {/* Served from our own origin, pinned to the version recorded in
+          docs/vendor-bundles.md. unpkg's bare package URL resolves to whatever
+          is newest at request time with no integrity check, which would let a
+          malicious publish run arbitrary JavaScript on this origin — the same
+          origin as the contact form. */}
+      <Script src="/vendor/convai-widget-embed.js" strategy="afterInteractive" />
     </>
   );
 }
