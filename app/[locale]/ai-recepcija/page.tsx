@@ -93,6 +93,7 @@ export default async function VoiceAgentPage({ params }: Props) {
     <VoiceDemoProvider>
       <script
         type="application/ld+json"
+        nonce={nonce}
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 

@@ -77,6 +77,10 @@ function buildCsp(nonce: string): string {
     // Falls back to default-src 'self' when absent, which would block the
     // ConvAI widget's AudioWorklet — it's instantiated from a blob: URL.
     `worker-src 'self' blob:`,
+    // No-op today: browsers ignore upgrade-insecure-requests in a
+    // report-only policy (Chrome logs a console warning about it on every
+    // page load), so it isn't upgrading anything yet. Kept so it's already
+    // in place and starts working the moment this policy is enforced.
     `upgrade-insecure-requests`,
     // Report-only collector: without these, violations only ever reach each
     // visitor's own browser console and the observation window collects
@@ -115,12 +119,23 @@ export default function middleware(request: NextRequest) {
   // request headers for the render pass — any header not named here gets
   // deleted, not just left alone. Today every path we hit already gets a
   // full list from next-intl, so falling back to [] has never mattered in
-  // practice. But if some future path ever returns a response without one,
-  // falling back to [] would mean the render receives x-nonce as its ONLY
-  // request header — silently dropping cookie, host, accept-language and
-  // RSC routing headers with no error. Seeding from the real incoming
-  // request headers instead means an empty existing list degrades to "keep
-  // everything we already had," not "keep nothing."
+  // practice.
+  //
+  // Seeding the fallback from the real incoming request headers instead of
+  // [] does NOT actually preserve them, despite appearances. Next's router
+  // (router-utils/resolve-routes.js) rebuilds each overridden header as
+  // `req.headers[key] = middlewareHeaders['x-middleware-request-' + key]`,
+  // which is `undefined` for every name here since we never set a matching
+  // `x-middleware-request-*` value for anything but x-nonce and
+  // content-security-policy-report-only. So this seeded list wipes exactly
+  // the same headers `[]` would have — it's defensive verbosity, not
+  // working protection. It's also not reachable in practice through
+  // next-intl's current code paths: the only bare `NextResponse.next()` it
+  // returns (with no override-headers response at all) is the `catch` for
+  // malformed percent-encoding, which errors out before this logic runs
+  // regardless. Genuinely protecting this branch would require also
+  // emitting an `x-middleware-request-*` value for each seeded name, not
+  // just listing the names.
   const overrideNames = existingOverrides
     ? existingOverrides.split(",").map((name) => name.trim())
     : Array.from(request.headers.keys());

@@ -1,5 +1,6 @@
 {
   "regions": ["fra1"],
+  "functionFailoverRegions": ["arn1"],
   "headers": [
     {
       "source": "/(.*)",
