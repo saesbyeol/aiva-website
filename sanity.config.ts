@@ -25,7 +25,10 @@ export default defineConfig({
               .child(S.documentTypeList("videoAd").title("Video oglasi")),
           ]),
     }),
-    visionTool(),
+    // Vision is an arbitrary GROQ console. It is genuinely useful while
+    // building queries and has no place on a public production URL, so it
+    // ships only in development.
+    ...(process.env.NODE_ENV === "development" ? [visionTool()] : []),
   ],
 
   schema: {
