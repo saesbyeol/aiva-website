@@ -72,10 +72,12 @@ function findCallControl(): HTMLButtonElement | null {
   ).el;
 }
 
-function useWidgetState(): State {
+function useWidgetState(activated: boolean): State {
   const [state, setState] = React.useState<State>("loading");
 
   React.useEffect(() => {
+    if (!activated) return;
+
     if (findCallControl()) {
       setState("ready");
       return;
@@ -95,7 +97,7 @@ function useWidgetState(): State {
       clearInterval(poll);
       clearTimeout(giveUp);
     };
-  }, []);
+  }, [activated]);
 
   return state;
 }
@@ -114,7 +116,7 @@ export function TalkButton({
 }) {
   const t = useTranslations("voiceAgent.demo");
   const { activated } = useVoiceDemo();
-  const state = useWidgetState();
+  const state = useWidgetState(activated);
 
   // Before activation there is no widget to drive, so the button is replaced
   // by the notice that starts it. The hero already carries its own CTA, so

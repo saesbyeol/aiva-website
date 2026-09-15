@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { Syne, Inter } from "next/font/google";
-import Script from "next/script";
 import "@/styles/globals.css";
 import { SiteShell } from "@/components/layout/site-shell";
 import { constructMetadata, organizationSchema, websiteSchema } from "@/lib/seo";
@@ -10,6 +9,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { ConsentProvider } from "@/components/privacy/consent-provider";
 import { ChatbaseWidget } from "@/components/privacy/chatbase-widget";
+import { PlausibleAnalytics } from "@/components/privacy/plausible-analytics";
 
 // ─── Fonts ──────────────────────────────────────────────────────────────────
 const syne = Syne({
@@ -108,14 +108,7 @@ export default async function LocaleLayout({
       </head>
       <body className={`${syne.variable} ${inter.variable}`}>
         <ConsentProvider>
-          {plausibleDomain && (
-            <Script
-              defer
-              data-domain={plausibleDomain}
-              src="https://plausible.io/js/script.js"
-              strategy="afterInteractive"
-            />
-          )}
+          {plausibleDomain && <PlausibleAnalytics domain={plausibleDomain} />}
           <ChatbaseWidget />
           <NextIntlClientProvider messages={messages}>
             <SiteShell>{children}</SiteShell>
