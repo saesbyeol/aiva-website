@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { getTranslations } from "next-intl/server";
+import { escapeHtml } from "@/lib/escape-html";
 
 // ─── Rate limiting (in-memory, resets on cold start) ──────────────────────────
 const rateMap = new Map<string, { count: number; resetAt: number }>();
@@ -34,13 +35,9 @@ export async function POST(req: NextRequest) {
   const t = await getTranslations();
 
   // IP-based rate limiting
-  const ip =
-    req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
+  const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
   if (!checkRateLimit(ip)) {
-    return NextResponse.json(
-      { error: t("form.errorRateLimit") },
-      { status: 429 }
-    );
+    return NextResponse.json({ error: t("form.errorRateLimit") }, { status: 429 });
   }
 
   // Parse + validate
@@ -49,10 +46,7 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     data = schema.parse(body);
   } catch (e) {
-    return NextResponse.json(
-      { error: t("form.errorInvalid") },
-      { status: 400 }
-    );
+    return NextResponse.json({ error: t("form.errorInvalid") }, { status: 400 });
   }
 
   // Honeypot check
@@ -78,14 +72,14 @@ export async function POST(req: NextRequest) {
           <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; color: #111;">
             <h2 style="color: #6366f1;">Nova poruka putem obrasca za kontakt</h2>
             <table style="width: 100%; border-collapse: collapse;">
-              <tr><td style="padding: 8px 0; color: #666; width: 120px;">Ime</td><td style="padding: 8px 0; font-weight: 600;">${data.name}</td></tr>
-              <tr><td style="padding: 8px 0; color: #666;">E-mail</td><td style="padding: 8px 0;"><a href="mailto:${data.email}">${data.email}</a></td></tr>
-              ${data.company ? `<tr><td style="padding: 8px 0; color: #666;">Tvrtka</td><td style="padding: 8px 0;">${data.company}</td></tr>` : ""}
+              <tr><td style="padding: 8px 0; color: #666; width: 120px;">Ime</td><td style="padding: 8px 0; font-weight: 600;">${escapeHtml(data.name)}</td></tr>
+              <tr><td style="padding: 8px 0; color: #666;">E-mail</td><td style="padding: 8px 0;"><a href="mailto:${encodeURIComponent(data.email)}">${escapeHtml(data.email)}</a></td></tr>
+              ${data.company ? `<tr><td style="padding: 8px 0; color: #666;">Tvrtka</td><td style="padding: 8px 0;">${escapeHtml(data.company)}</td></tr>` : ""}
             </table>
             <div style="margin-top: 16px; padding: 16px; background: #f9f9f9; border-radius: 8px; border-left: 3px solid #6366f1;">
-              <p style="margin: 0; white-space: pre-wrap;">${data.message}</p>
+              <p style="margin: 0; white-space: pre-wrap;">${escapeHtml(data.message)}</p>
             </div>
-            <p style="margin-top: 24px; color: #999; font-size: 12px;">Poslano putem aiva.agency obrasca &middot; IP: ${ip}</p>
+            <p style="margin-top: 24px; color: #999; font-size: 12px;">Poslano putem aiva.agency obrasca &middot; IP: ${escapeHtml(ip)}</p>
           </div>
         `,
       });
