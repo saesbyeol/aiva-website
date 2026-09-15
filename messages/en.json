@@ -29,12 +29,7 @@
   "hero": {
     "eyebrow": "AI automation for modern businesses",
     "headlinePrefix": "AI systems that",
-    "words": [
-      "increase profit.",
-      "optimize.",
-      "save time.",
-      "scale."
-    ],
+    "words": ["increase profit.", "optimize.", "save time.", "scale."],
     "description": "We help businesses bring AI into everyday operations through marketing, content, and sales-process automation.",
     "cta1": "Book a free call",
     "cta2": "Our work",
@@ -801,7 +796,11 @@
       "ctaLoading": "Getting the agent ready",
       "blockedTitle": "The live conversation did not load",
       "blockedBody": "An ad blocker or privacy extension usually blocks this kind of widget. Turn it off for this page and refresh, or get in touch and we will play you a recorded conversation instead.",
-      "blockedCta": "Get in touch"
+      "blockedCta": "Get in touch",
+      "activateTitle": "Start the demo call",
+      "activateBody": "The demo uses ElevenLabs (USA) and asks for microphone access. Starting it means you agree to your speech being processed for the purpose of this demonstration.",
+      "activateCta": "Start demo",
+      "activatePrivacy": "More in our Privacy Policy"
     },
     "player": {
       "play": "Play the conversation",
@@ -828,31 +827,12 @@
       "faqA": "On Saturdays we are open from 8 to 13. We are closed on Sundays.",
       "sourceLabel": "Answered from information you approved",
       "slotTaken": "Thursday, free slots",
-      "slots": [
-        "08:00",
-        "10:30",
-        "15:30",
-        "16:00",
-        "17:30",
-        "18:00"
-      ],
+      "slots": ["08:00", "10:30", "15:30", "16:00", "17:30", "18:00"],
       "record": [
-        [
-          "Name",
-          "Ivan Horvat"
-        ],
-        [
-          "Contact",
-          "+385 91 •••• 678"
-        ],
-        [
-          "Request",
-          "Minor service, Golf 2020."
-        ],
-        [
-          "Appointment",
-          "Thursday, 15:30"
-        ]
+        ["Name", "Ivan Horvat"],
+        ["Contact", "+385 91 •••• 678"],
+        ["Request", "Minor service, Golf 2020."],
+        ["Appointment", "Thursday, 15:30"]
       ],
       "routeTo": "Sales",
       "routeNote": "The call is passed to the right team under the rules you set. If nobody is available, the agent takes a message and a contact."

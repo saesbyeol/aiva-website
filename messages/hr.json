@@ -29,12 +29,7 @@
   "hero": {
     "eyebrow": "AI automatizacija za moderne tvrtke",
     "headlinePrefix": "AI sustavi koji",
-    "words": [
-      "povećavaju profit.",
-      "optimiziraju.",
-      "štede vrijeme.",
-      "skaliraju."
-    ],
+    "words": ["povećavaju profit.", "optimiziraju.", "štede vrijeme.", "skaliraju."],
     "description": "Pomažemo tvrtkama da uvedu AI u svakodnevno poslovanje kroz automatizaciju marketinga, sadržaja i prodajnih procesa.",
     "cta1": "Rezerviraj besplatan poziv",
     "cta2": "Naši projekti",
@@ -801,7 +796,11 @@
       "ctaLoading": "Pripremam agenta",
       "blockedTitle": "Razgovor uživo nije se učitao",
       "blockedBody": "Blokator oglasa ili proširenje za privatnost najčešće blokira ovu vrstu widgeta. Isključite ga za ovu stranicu i osvježite, ili nam se javite izravno pa ćemo vam pustiti snimku razgovora.",
-      "blockedCta": "Javite nam se"
+      "blockedCta": "Javite nam se",
+      "activateTitle": "Pokrenite demo razgovor",
+      "activateBody": "Demo koristi ElevenLabs (SAD) i traži pristup vašem mikrofonu. Pokretanjem prihvaćate da se sadržaj razgovora obradi u svrhu demonstracije.",
+      "activateCta": "Pokreni demo",
+      "activatePrivacy": "Više u Politici privatnosti"
     },
     "player": {
       "play": "Reproduciraj razgovor",
@@ -828,31 +827,12 @@
       "faqA": "Subotom radimo od 8 do 13 sati. Nedjeljom ne radimo.",
       "sourceLabel": "Odgovor iz informacija koje ste odobrili",
       "slotTaken": "Četvrtak, slobodni termini",
-      "slots": [
-        "08:00",
-        "10:30",
-        "15:30",
-        "16:00",
-        "17:30",
-        "18:00"
-      ],
+      "slots": ["08:00", "10:30", "15:30", "16:00", "17:30", "18:00"],
       "record": [
-        [
-          "Ime",
-          "Ivan Horvat"
-        ],
-        [
-          "Kontakt",
-          "+385 91 •••• 678"
-        ],
-        [
-          "Zahtjev",
-          "Mali servis, Golf 2020."
-        ],
-        [
-          "Termin",
-          "Četvrtak, 15:30"
-        ]
+        ["Ime", "Ivan Horvat"],
+        ["Kontakt", "+385 91 •••• 678"],
+        ["Zahtjev", "Mali servis, Golf 2020."],
+        ["Termin", "Četvrtak, 15:30"]
       ],
       "routeTo": "Prodaja",
       "routeNote": "Poziv se prosljeđuje odjelu prema pravilima koja ste postavili. Ako nitko nije dostupan, agent bilježi poruku i kontakt."

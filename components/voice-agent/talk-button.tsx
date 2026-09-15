@@ -5,6 +5,8 @@ import { useTranslations } from "next-intl";
 import { Loader2, Mic, TriangleAlert } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
+import { useVoiceDemo } from "./voice-demo-provider";
+import { ActivateDemoCard } from "./activate-demo-card";
 
 /**
  * Starts a real conversation with the embedded ConvAI agent.
@@ -111,7 +113,15 @@ export function TalkButton({
   whenUnavailable?: "hide" | "explain";
 }) {
   const t = useTranslations("voiceAgent.demo");
+  const { activated } = useVoiceDemo();
   const state = useWidgetState();
+
+  // Before activation there is no widget to drive, so the button is replaced
+  // by the notice that starts it. The hero already carries its own CTA, so
+  // only the demo section renders the card; the hero renders nothing.
+  if (!activated) {
+    return whenUnavailable === "explain" ? <ActivateDemoCard /> : null;
+  }
 
   if (state === "unavailable") {
     if (whenUnavailable === "hide") return null;

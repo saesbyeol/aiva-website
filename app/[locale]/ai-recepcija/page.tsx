@@ -25,6 +25,7 @@ import { IntegrationMap, type Tool } from "@/components/voice-agent/integration-
 import { PickupModes, type Trigger } from "@/components/voice-agent/pickup-modes";
 import { ElevenLabsWidget } from "@/components/voice-agent/elevenlabs-widget";
 import { TalkButton } from "@/components/voice-agent/talk-button";
+import { VoiceDemoProvider } from "@/components/voice-agent/voice-demo-provider";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 const CONVAI_AGENT_ID = "agent_8601m1k7w4cxe9ktwszx5d7471pb";
@@ -87,7 +88,7 @@ export default async function VoiceAgentPage({ params }: Props) {
   };
 
   return (
-    <>
+    <VoiceDemoProvider>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
@@ -434,7 +435,7 @@ export default async function VoiceAgentPage({ params }: Props) {
       </section>
 
       <ElevenLabsWidget agentId={CONVAI_AGENT_ID} language={locale} />
-    </>
+    </VoiceDemoProvider>
   );
 }
 

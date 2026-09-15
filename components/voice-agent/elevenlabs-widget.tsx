@@ -2,22 +2,20 @@
 
 import * as React from "react";
 import Script from "next/script";
+import { useVoiceDemo } from "./voice-demo-provider";
 
 /**
- * ElevenLabs ConvAI embed: a floating widget that lets a visitor hold a real
- * conversation with the agent this page describes.
+ * ElevenLabs ConvAI embed, loaded only after the visitor explicitly starts
+ * the demo.
  *
- * The custom element is rendered immediately but stays inert until the embed
- * script upgrades it, so nothing blocks first paint. `afterInteractive` keeps
- * the bundle off the critical path while still loading it without a user
- * gesture, because the point of the widget is that it is already there when
- * someone decides to try it.
+ * Returning null before activation is what makes this a gate rather than a
+ * cosmetic one: no custom element, no embed script, no request to unpkg or
+ * to api.us.elevenlabs.io, and no microphone prompt until the visitor has
+ * read what the demo does and pressed the button.
  *
  * The site-wide Chatbase bubble claims the same bottom-right corner at a
  * near-maximum z-index, so this component hides it for as long as it is
  * mounted: on the page about the voice agent, the voice agent is the demo.
- * Suppressing it from here (rather than in the layout) means the rule cannot
- * outlive the widget, including across client-side navigation.
  */
 export function ElevenLabsWidget({
   agentId,
@@ -26,11 +24,16 @@ export function ElevenLabsWidget({
   agentId: string;
   language: string;
 }) {
+  const { activated } = useVoiceDemo();
+
   React.useEffect(() => {
+    if (!activated) return;
     const root = document.documentElement;
     root.classList.add("voice-widget-active");
     return () => root.classList.remove("voice-widget-active");
-  }, []);
+  }, [activated]);
+
+  if (!activated) return null;
 
   return (
     <>
