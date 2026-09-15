@@ -78,7 +78,9 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
-        {/* Cookiebot — must be first script so it can block others before they run */}
+        {/* Cookiebot must be the first script in <head> and must NOT be async:
+            auto-blocking works by installing interceptors before any other
+            script runs, and async forfeits that ordering guarantee. */}
         {cookiebotId && (
           <script
             id="Cookiebot"
@@ -87,7 +89,6 @@ export default async function LocaleLayout({
             data-blockingmode="auto"
             data-culture={locale.toUpperCase()}
             type="text/javascript"
-            async
           />
         )}
         <script
