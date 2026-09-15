@@ -21,9 +21,11 @@ import { useVoiceDemo } from "./voice-demo-provider";
 export function ElevenLabsWidget({
   agentId,
   language,
+  nonce,
 }: {
   agentId: string;
   language: string;
+  nonce?: string;
 }) {
   const { activated } = useVoiceDemo();
 
@@ -46,8 +48,19 @@ export function ElevenLabsWidget({
           docs/vendor-bundles.md. unpkg's bare package URL resolves to whatever
           is newest at request time with no integrity check, which would let a
           malicious publish run arbitrary JavaScript on this origin — the same
-          origin as the contact form. */}
-      <Script src="/vendor/convai-widget-embed.js" strategy="afterInteractive" />
+          origin as the contact form.
+
+          `nonce` is the per-request CSP nonce, threaded down from the page.
+          Next.js does not apply it to next/script automatically; without it
+          this script is blocked once the CSP is enforced. `script-src 'self'`
+          already covers this origin, but the nonce is required too once
+          'strict-dynamic' is present — strict-dynamic makes the host
+          allowlist (including 'self') irrelevant for script-src. */}
+      <Script
+        src="/vendor/convai-widget-embed.js"
+        strategy="afterInteractive"
+        nonce={nonce}
+      />
     </>
   );
 }

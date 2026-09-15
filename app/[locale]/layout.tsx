@@ -6,6 +6,7 @@ import { constructMetadata, organizationSchema, websiteSchema } from "@/lib/seo"
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { setRequestLocale, getMessages, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
+import { headers } from "next/headers";
 import { routing } from "@/i18n/routing";
 import { ConsentProvider } from "@/components/privacy/consent-provider";
 import { ChatbaseWidget } from "@/components/privacy/chatbase-widget";
@@ -73,6 +74,7 @@ export default async function LocaleLayout({
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
   const messages = await getMessages();
+  const nonce = (await headers()).get("x-nonce") ?? undefined;
 
   const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
   const cookiebotId = process.env.NEXT_PUBLIC_COOKIEBOT_ID;
@@ -91,16 +93,19 @@ export default async function LocaleLayout({
             data-blockingmode="auto"
             data-culture={locale.toUpperCase()}
             type="text/javascript"
+            nonce={nonce}
           />
         )}
         <script
           type="application/ld+json"
+          nonce={nonce}
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(organizationSchema),
           }}
         />
         <script
           type="application/ld+json"
+          nonce={nonce}
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(websiteSchema),
           }}
@@ -108,8 +113,10 @@ export default async function LocaleLayout({
       </head>
       <body className={`${syne.variable} ${inter.variable}`}>
         <ConsentProvider>
-          {plausibleDomain && <PlausibleAnalytics domain={plausibleDomain} />}
-          <ChatbaseWidget />
+          {plausibleDomain && (
+            <PlausibleAnalytics domain={plausibleDomain} nonce={nonce} />
+          )}
+          <ChatbaseWidget nonce={nonce} />
           <NextIntlClientProvider messages={messages}>
             <SiteShell>{children}</SiteShell>
           </NextIntlClientProvider>

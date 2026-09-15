@@ -27,6 +27,7 @@ import { ElevenLabsWidget } from "@/components/voice-agent/elevenlabs-widget";
 import { TalkButton } from "@/components/voice-agent/talk-button";
 import { VoiceDemoProvider } from "@/components/voice-agent/voice-demo-provider";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { headers } from "next/headers";
 
 const CONVAI_AGENT_ID = "agent_8601m1k7w4cxe9ktwszx5d7471pb";
 
@@ -60,6 +61,7 @@ export default async function VoiceAgentPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations();
+  const nonce = (await headers()).get("x-nonce") ?? undefined;
 
   const turns = t.raw("voiceAgent.s2Turns") as Turn[];
   const systemSteps = t.raw("voiceAgent.s2Steps") as SystemStep[];
@@ -434,7 +436,7 @@ export default async function VoiceAgentPage({ params }: Props) {
         </div>
       </section>
 
-      <ElevenLabsWidget agentId={CONVAI_AGENT_ID} language={locale} />
+      <ElevenLabsWidget agentId={CONVAI_AGENT_ID} language={locale} nonce={nonce} />
     </VoiceDemoProvider>
   );
 }
