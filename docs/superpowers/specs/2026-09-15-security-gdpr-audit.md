@@ -27,12 +27,14 @@ scripts[type="text/plain"]        : []        ← zero scripts deferred
 ```
 
 Simultaneously loaded and executing, with no consent:
+
 - `https://www.chatbase.co/embed.min.js`
 - `https://unpkg.com/@elevenlabs/convai-widget-embed` (widget upgraded, `shadowRoot` present)
 
 Confirmed live network call: `OPTIONS https://www.chatbase.co/api/get-chatbot-styles/EbGKmwn46Oc5zd54aPaAF` → 204.
 
 Three independent causes:
+
 1. Banner never renders. Leading hypothesis (unproven): the Cookiebot domain group is registered for `aiva.hr`, but the site serves from `www.aiva.hr` (apex 307-redirects to www).
 2. `async` on the Cookiebot tag (`app/[locale]/layout.tsx:90`) defeats pre-execution interception. The adjacent code comment states the script "must be first script so it can block others before they run" — the `async` contradicts it.
 3. Auto-blocking only defers domains in Cookiebot's tracker database; `chatbase.co` and `unpkg.com` are not in it, so auto-blocking cannot gate them under any configuration.
@@ -45,6 +47,7 @@ messages/en.json privacy.*  → elevenlabs:False  microphone:False  voice:False
 ```
 
 Commit timeline:
+
 - `075032a` 2026-09-08 — GDPR policy lands
 - `d577e91` 2026-09-08 — AI recepcija product page
 - `4ef29b2` 2026-09-14 — "rebuild the AI recepcija page around a **live demo**"
@@ -66,20 +69,21 @@ Zod validates length, not content. `email` is constrained by zod's validator; `n
 ### E4 — Dependency vulnerabilities (production tree)
 
 `npm audit --omit=dev`: 44 total — 2 critical, 21 high.
+
 - **`next@16.1.6` (direct) — CRITICAL: HTTP request smuggling in rewrites.** Fix: `16.3.5`, non-breaking minor.
 - `nodemailer` (direct) — HIGH SMTP command injection. **Imported nowhere in source: dead dependency.**
 - Remainder largely transitive via `sanity`/`@sanity/vision` studio toolchain.
 
 ### E5 — Live response headers (`https://www.aiva.hr`)
 
-| Header | State |
-|---|---|
-| `content-security-policy` | **MISSING** |
-| `cross-origin-opener-policy` | **MISSING** |
-| `strict-transport-security` | present, `max-age=63072000`, no `includeSubDomains`, no `preload` |
-| `x-xss-protection` | `1; mode=block` — deprecated, OWASP advises `0` |
-| `set-cookie` | `NEXT_LOCALE=hr; Path=/; SameSite=lax` — no `Secure`, undisclosed in cookie inventory |
-| `x-vercel-id` | `fra1::iad1::…` — **function executes in US-East**, edge in Frankfurt |
+| Header                       | State                                                                                 |
+| ---------------------------- | ------------------------------------------------------------------------------------- |
+| `content-security-policy`    | **MISSING**                                                                           |
+| `cross-origin-opener-policy` | **MISSING**                                                                           |
+| `strict-transport-security`  | present, `max-age=63072000`, no `includeSubDomains`, no `preload`                     |
+| `x-xss-protection`           | `1; mode=block` — deprecated, OWASP advises `0`                                       |
+| `set-cookie`                 | `NEXT_LOCALE=hr; Path=/; SameSite=lax` — no `Secure`, undisclosed in cookie inventory |
+| `x-vercel-id`                | `fra1::iad1::…` — **function executes in US-East**, edge in Frankfurt                 |
 
 ### E6 — Rate limiter: pattern dangerous, exploit NOT confirmed
 
@@ -90,7 +94,7 @@ Real weaknesses that remain: in-memory `Map` is per-instance (concurrency multip
 ### E7 — Other confirmed findings
 
 - `route.ts:98` returns `detail: msg` — raw SDK error text to any caller.
-- `unpkg.com/@elevenlabs/convai-widget-embed` — unversioned, no SRI. unpkg serves *latest*; a malicious publish executes arbitrary JS on the origin, including on the contact form.
+- `unpkg.com/@elevenlabs/convai-widget-embed` — unversioned, no SRI. unpkg serves _latest_; a malicious publish executes arbitrary JS on the origin, including on the contact form.
 - `agent_8601m1k7w4cxe9ktwszx5d7471pb` hardcoded and public — embeddable by third parties, billed to the account, unless domain-allowlisted in the ElevenLabs dashboard.
 - `GET /studio` → 200, publicly reachable, ships `visionTool` (arbitrary GROQ console). Data access still requires Sanity auth.
 - Visitor IP embedded in every notification email (`route.ts:88`). **Disclosed** in `privacy.s2Ip` — to the site's credit.
@@ -102,7 +106,8 @@ Real weaknesses that remain: in-memory `Map` is per-instance (concurrency multip
 ## Legal analysis
 
 ### GDPR / ePrivacy
-- **Art. 5(3) ePrivacy** (Croatian *Zakon o elektroničkim komunikacijama*): storage/access on terminal equipment without prior consent. Violated by E1.
+
+- **Art. 5(3) ePrivacy** (Croatian _Zakon o elektroničkim komunikacijama_): storage/access on terminal equipment without prior consent. Violated by E1.
 - **Art. 6**: no valid basis for the Chatbase and ElevenLabs processing as deployed. The policy asserts consent as the basis for the chat assistant; the script loads on page load. That assertion is currently false.
 - **Art. 13**: voice processing wholly undisclosed (E2).
 - **Art. 28**: DPA required with ElevenLabs. Status unknown — must be confirmed.
@@ -110,14 +115,18 @@ Real weaknesses that remain: in-memory `Map` is per-instance (concurrency multip
 - **Art. 9 (open question):** voice recordings become special-category data if used for speaker identification. Requires written confirmation from ElevenLabs that no voiceprinting occurs. **Escalate to counsel.**
 
 ### EU AI Act
+
 Article 50 (transparency for AI systems interacting with natural persons, and marking of synthetic audio) became applicable **2 August 2026**. In force as of this audit.
-- *Website demo:* likely satisfied by context ("AI recepcija"), but disclosure should be explicit at call start rather than implied by a heading.
-- *The product sold:* an AI receptionist answering real end-customer calls places obligations on Modelity and on its clients. Allocation between provider and deployer is a contractual question. **Escalate to counsel.**
+
+- _Website demo:_ likely satisfied by context ("AI recepcija"), but disclosure should be explicit at call start rather than implied by a heading.
+- _The product sold:_ an AI receptionist answering real end-customer calls places obligations on Modelity and on its clients. Allocation between provider and deployer is a contractual question. **Escalate to counsel.**
 
 ### Croatian company law
+
 **ZTD čl. 21** requires a d.o.o. to state on its website: full legal name, seat, the commercial court of registration and MBS number, share capital and whether paid in full. Currently `Modelity d.o.o.`, address and OIB appear **only inside the privacy policy**; MBS, court and share capital appear nowhere. The footer shows brand, email and copyright only.
 
 ### Minor legal items
+
 - `NEXT_LOCALE` cookie absent from the cookie inventory; lacks `Secure`.
 - Policy describes Plausible analytics; `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` is unset in production, so it does not run.
 - Privacy policy served `noIndex: true` — a transparency notice should be findable.
@@ -126,11 +135,11 @@ Article 50 (transparency for AI systems interacting with natural persons, and ma
 
 ## Remediation phases
 
-| Phase | Theme | Plan |
-|---|---|---|
-| **P0** | Stop the legal bleeding | `2026-09-15-p0-legal-critical.md` |
-| **P1** | Security hardening | `2026-09-15-p1-hardening.md` |
-| **P2** | Legal completeness | `2026-09-15-p2-legal-completeness.md` |
+| Phase  | Theme                   | Plan                                  |
+| ------ | ----------------------- | ------------------------------------- |
+| **P0** | Stop the legal bleeding | `2026-09-15-p0-legal-critical.md`     |
+| **P1** | Security hardening      | `2026-09-15-p1-hardening.md`          |
+| **P2** | Legal completeness      | `2026-09-15-p2-legal-completeness.md` |
 
 ## Decisions taken
 
@@ -144,3 +153,55 @@ Article 50 (transparency for AI systems interacting with natural persons, and ma
 - Board member name(s) as registered.
 - Whether an ElevenLabs DPA is signed, and ElevenLabs' written position on voiceprinting.
 - Whether the Cookiebot domain group includes `www.aiva.hr`.
+
+---
+
+## Post-remediation verification — 2026-09-15
+
+Branch `fix/security-gdpr-p0`, 12 commits, `e29900e..44936bf`.
+
+**Verified state at HEAD** (cold run, port 3000 confirmed free beforehand):
+
+```
+Playwright:  75 passed, 1 skipped   (26s, both projects)   — baseline was 22
+tsc:         clean
+npm audit:   {'low': 2, 'moderate': 19, 'high': 19, 'critical': 1, 'total': 41}
+                                                            — baseline was 44 total, 2 critical, 21 high
+```
+
+### Finding status
+
+| Finding                                   | Status                     | Evidence                                                                                                                                                                                                                                                                                          |
+| ----------------------------------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **E1** consent layer inert                | **Partially closed**       | Cause 2 (`async`) fixed. Cause 3 (auto-blocking cannot gate chatbase/unpkg) fixed in React for both. **Cause 1 — the banner never renders — is untouched and is a dashboard action (Task 9).** Trackers no longer execute without consent; the consent _interface_ is still absent in production. |
+| **E2** voice agent legally invisible      | **Closed in code**         | ElevenLabs disclosed as processor, voice data as a category, consent as Art. 6 basis, retention row — both locales, verified rendered. Two caveats below.                                                                                                                                         |
+| **E3** HTML injection into operator inbox | **Closed**                 | All five interpolations escaped via `lib/escape-html.ts`; the adjacent CRLF header-injection path found during review was closed too. Tests are exact-string and were mutation-verified.                                                                                                          |
+| **E4** dependency vulnerabilities         | **Partially closed**       | `next@16.3.5` exact-pinned, `nodemailer` removed. **1 critical remains** (`tar@7.5.11` via `@sanity/vision`). The P0 definition of done says "no critical" — that bullet is NOT met.                                                                                                              |
+| E5, E6, E7                                | Out of P0 scope, untouched | —                                                                                                                                                                                                                                                                                                 |
+
+### Open items that cannot be closed in this repository
+
+1. **Task 9 — Cookiebot domain group.** Until `www.aiva.hr` is registered, `useConsent()` never reports consent, so Chatbase is off site-wide while `privacy.s8Manage` tells visitors they can manage consent through a banner that does not render. **Task 9 belongs in the same deploy window as this merge, not later.**
+2. **Task 10 — ElevenLabs DPA.** `privacy.s5Body` states that listed processors have Art. 28 agreements in place, and this branch adds ElevenLabs to that list. That sentence is false until the DPA is signed. **Deploy gate.**
+3. **Art. 9 voiceprinting question** — unanswered; needs ElevenLabs' written position.
+4. **The 30-day retention figure** is disclosed but unverified against the ElevenLabs dashboard.
+
+### Known-and-accepted, with owners
+
+- **Withdrawing marketing consent does not unload Chatbase.** The embed injects itself onto `document.body`; unmounting the React `<Script>` leaves the global, bubble and its storage alive. Correct remedy is a forced reload on withdrawal — a product decision with UX cost — or an accepted limitation. Moot until Task 9.
+- **No test exercises the real Cookiebot.** A fake `window.Cookiebot` now proves the gate can open, but the live CMP path is untestable locally because the env var is unset.
+- **`privacy.s2Groups[0].items` lists an "indicative budget" field the contact form does not collect.** Pre-existing, not introduced here. P2 candidate.
+- **`middleware` file convention is deprecated in Next 16.3** in favour of `proxy`. P1 Task 3 rewrites that exact file and must decide deliberately.
+
+### Carried into P1 with new information
+
+- **P1 Task 2** — unpkg currently resolves `@elevenlabs/convai-widget-embed` to **0.18.2**. That is the version to vendor and hash. Note the script now loads on a click the site actively invites, so this should not slip.
+- **P1 Task 8** — `@sanity/vision` is a _production_ dependency. Moving it to `devDependencies` drops `tar` out of the production tree and closes the last critical as a side effect, rather than needing a new task.
+
+### Corrections to the plans themselves, found during execution
+
+- P0 Task 8 Step 8's English URL was wrong (`/en/privatnost` 307s; the real path is `/en/privacy`).
+- P0 Task 7's test asserted `expect([200,400,429]).toContain(status)`, which cannot fail. Replaced with a real unit spec.
+- P0 Task 6 Step 6's prose contradicted its own code block on hook ordering.
+- P0 Tasks 6 and 8 both claimed a repo test enforces message-catalogue key parity. **No such test exists.** A ~10-line parity test is a strong P2 candidate — next-intl renders the key path rather than throwing, so a missing English key would silently display `privacy.s2Groups.5.desc` on the legal page.
+- **P2 Task 4** tells the operator to enable Plausible, asserting "the existing policy text already covers it accurately." It did not — the policy claims consent as the basis while the script was ungated. Fixed in this branch by gating the code; the P2 sentence should be corrected when that task runs.
