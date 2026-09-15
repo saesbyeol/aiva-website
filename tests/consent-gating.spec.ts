@@ -62,6 +62,17 @@ test.describe("Consent gating", () => {
     // other test in this file exercises only the denied path, which would
     // pass identically if useConsent() returned denied unconditionally. This
     // proves the provider actually opens the gate when consent is granted.
+    //
+    // The real Cookiebot script is blocked so the injected consent state is
+    // authoritative. Without this the test is environment-dependent: it passes
+    // when NEXT_PUBLIC_COOKIEBOT_ID is unset (as in CI), and fails the moment a
+    // developer sets a real one locally — because the live script fetches its
+    // own config and overwrites window.Cookiebot, replacing the fake with a
+    // denied state, since localhost is not an authorised domain. What this test
+    // is about is our provider's response to a consent state, not Cookiebot's
+    // own behaviour, so pinning that state is the honest way to assert it.
+    await page.route("**/consent.cookiebot.com/**", (route) => route.abort());
+
     await page.addInitScript(() => {
       (window as unknown as { Cookiebot: unknown }).Cookiebot = {
         consent: {
