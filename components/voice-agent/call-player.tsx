@@ -2,8 +2,7 @@
 
 import * as React from "react";
 import { useTranslations } from "next-intl";
-import { Bot, Check, Pause, Play, RotateCcw, Settings2, User } from "lucide-react";
-import { Waveform } from "./waveform";
+import { Bot, Check, Settings2, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export type Turn = { role: "agent" | "caller" | "system"; text: string };
@@ -77,57 +76,17 @@ export function CallPlayer({
     return () => clearTimeout(timer);
   }, [playing, index, durations, turns.length]);
 
-  const finished = index >= turns.length - 1;
-  const elapsed = durations.slice(0, index + 1).reduce((a, b) => a + b, 0);
-  const seconds = Math.round(elapsed / 1000);
-
-  // A system turn is the agent working, not speaking.
-  const speaking = playing && turns[index]?.role !== "system";
-
   // Behind-the-scenes steps light up across the back half of the call, where
   // the transcript's own system turn sits.
   const stepsLit = turns
     .slice(0, index + 1)
     .filter((turn) => turn.role === "system").length;
 
-  const toggle = () => {
-    if (finished) {
-      setIndex(-1);
-      setPlaying(true);
-      return;
-    }
-    setPlaying((p) => !p);
-  };
-
   return (
     <div
       ref={rootRef}
       className="border-border bg-bg-elevated overflow-hidden rounded-3xl border shadow-lg"
     >
-      {/* Transport */}
-      <div className="border-border bg-bg-secondary flex items-center gap-3 border-b px-4 py-3 sm:px-5">
-        <button
-          type="button"
-          onClick={toggle}
-          className="bg-accent hover:bg-accent-dark focus-visible:ring-accent focus-visible:ring-offset-bg flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-white transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
-          aria-label={finished ? t("replay") : playing ? t("pause") : t("play")}
-        >
-          {finished ? (
-            <RotateCcw className="h-4 w-4" />
-          ) : playing ? (
-            <Pause className="h-4 w-4" />
-          ) : (
-            <Play className="ml-0.5 h-4 w-4" />
-          )}
-        </button>
-
-        <Waveform active={speaking} className="h-6 flex-1" />
-
-        <span className="text-fg-muted shrink-0 font-mono text-xs tabular-nums">
-          00:{String(seconds).padStart(2, "0")}
-        </span>
-      </div>
-
       <div className="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr]">
         {/* Transcript */}
         <ol className="space-y-5 p-5 sm:p-7" role="list">
