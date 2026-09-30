@@ -11,7 +11,7 @@ export const SITE = {
   description:
     "Pomažemo tvrtkama da uvedu AI u svakodnevno poslovanje kroz automatizaciju marketinga, sadržaja i prodajnih procesa.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://aiva.hr",
-  email: "modelitymodelling@gmail.com",
+  email: "alen@aiva.hr",
   instagram: "https://www.instagram.com/aiva.hr",
   facebook: "https://web.facebook.com/people/Aiva/61586583368219/",
 } as const;
@@ -31,7 +31,7 @@ export const COMPANY = {
   oib: "33666234446",
   // Data-protection enquiries are handled separately from general contact
   // (SITE.email), so a GDPR request never sits in a sales inbox.
-  privacyEmail: "modelitymodelling@gmail.com",
+  privacyEmail: "alen@aiva.hr",
 } as const;
 
 /** Croatian supervisory authority — where data subjects may lodge a complaint. */

@@ -64,7 +64,7 @@ export async function POST(req: NextRequest) {
 
   // Email sending via Resend
   const resendKey = process.env.RESEND_API_KEY;
-  const toEmail = process.env.CONTACT_EMAIL ?? "modelitymodelling@gmail.com";
+  const toEmail = process.env.CONTACT_EMAIL ?? "alen@aiva.hr";
 
   if (resendKey) {
     try {
