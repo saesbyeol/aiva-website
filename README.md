@@ -39,7 +39,7 @@ Edit `.env.local`:
 
 ```env
 RESEND_API_KEY=re_xxxxxxxxxxxx
-CONTACT_EMAIL=hello@aiva.agency
+CONTACT_EMAIL=modelitymodelling@gmail.com
 NEXT_PUBLIC_SITE_URL=https://aiva.agency
 NEXT_PUBLIC_PLAUSIBLE_DOMAIN=aiva.agency
 ```

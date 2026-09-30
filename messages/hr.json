@@ -231,8 +231,8 @@
     "details": [
       {
         "label": "E-pošta",
-        "value": "leo@aiva.hr",
-        "href": "mailto:leo@aiva.hr"
+        "value": "modelitymodelling@gmail.com",
+        "href": "mailto:modelitymodelling@gmail.com"
       },
       {
         "label": "Uvodni poziv",
@@ -281,7 +281,7 @@
     "required": "Obavezno",
     "errorGeneric": "Nešto je pošlo po krivu. Molimo pokušajte ponovo.",
     "errorRateLimit": "Previše zahtjeva. Pričekajte minutu i pokušajte ponovo.",
-    "errorSend": "Slanje poruke nije uspjelo. Molimo kontaktirajte nas direktno na leo@aiva.hr.",
+    "errorSend": "Slanje poruke nije uspjelo. Molimo kontaktirajte nas direktno na modelitymodelling@gmail.com.",
     "errorInvalid": "Neispravni podaci u obrascu. Provjerite unos.",
     "validation": {
       "nameMin": "Ime mora imati najmanje 2 znaka",

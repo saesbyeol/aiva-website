@@ -231,8 +231,8 @@
     "details": [
       {
         "label": "Email",
-        "value": "leo@aiva.hr",
-        "href": "mailto:leo@aiva.hr"
+        "value": "modelitymodelling@gmail.com",
+        "href": "mailto:modelitymodelling@gmail.com"
       },
       {
         "label": "Intro call",
@@ -281,7 +281,7 @@
     "required": "Required",
     "errorGeneric": "Something went wrong. Please try again.",
     "errorRateLimit": "Too many requests. Please wait a minute and try again.",
-    "errorSend": "We couldn't send your message. Please contact us directly at leo@aiva.hr.",
+    "errorSend": "We couldn't send your message. Please contact us directly at modelitymodelling@gmail.com.",
     "errorInvalid": "Invalid form data. Please check your entries.",
     "validation": {
       "nameMin": "Name must be at least 2 characters",
