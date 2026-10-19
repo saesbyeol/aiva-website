@@ -78,6 +78,11 @@ export default async function LocaleLayout({
 
   const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
   const cookiebotId = process.env.NEXT_PUBLIC_COOKIEBOT_ID;
+  // Same rule as generateMetadata: HR keeps SITE.description, EN gets its own.
+  const schemaDescription =
+    locale === "en"
+      ? { description: (await getTranslations({ locale }))("site.description") }
+      : {};
 
   return (
     <html lang={locale} suppressHydrationWarning>
@@ -100,14 +105,14 @@ export default async function LocaleLayout({
           type="application/ld+json"
           nonce={nonce}
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(organizationSchema),
+            __html: JSON.stringify({ ...organizationSchema, ...schemaDescription }),
           }}
         />
         <script
           type="application/ld+json"
           nonce={nonce}
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(websiteSchema),
+            __html: JSON.stringify({ ...websiteSchema, ...schemaDescription }),
           }}
         />
       </head>

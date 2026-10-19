@@ -22,6 +22,8 @@ export function LocaleToggle({ className }: { className?: string }) {
     );
   }
 
+  if (routing.locales.length < 2) return null;
+
   return (
     <div className={cn("flex items-center gap-1 text-sm font-medium", className)}>
       {routing.locales.map((loc, i) => (

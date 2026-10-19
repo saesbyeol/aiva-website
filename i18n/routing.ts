@@ -1,8 +1,12 @@
 import { defineRouting } from "next-intl/routing";
 
+// Set NEXT_PUBLIC_SITE_LOCALE=en on a Vercel project to build the English-only
+// site: Croatian routes disappear and English is served prefix-free at "/".
+const englishOnly = process.env.NEXT_PUBLIC_SITE_LOCALE === "en";
+
 export const routing = defineRouting({
-  locales: ["hr", "en"],
-  defaultLocale: "hr",
+  locales: englishOnly ? ["en"] : ["hr", "en"],
+  defaultLocale: englishOnly ? "en" : "hr",
   localePrefix: "as-needed",
   // Croatian must always be served prefix-free at "/", regardless of the
   // visitor's Accept-Language header or any previously-set cookie. English
